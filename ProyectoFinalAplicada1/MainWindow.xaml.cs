@@ -22,6 +22,7 @@ namespace ProyectoFinalAplicada1
     {
         public MainWindow()
         {
+
             InitializeComponent();
         }
     }
