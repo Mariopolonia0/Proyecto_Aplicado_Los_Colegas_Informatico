@@ -18,14 +18,14 @@ namespace ProyectoFinalAplicada1.DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-           /* modelBuilder.Entity<Usuarios>().HasData(new Usuarios
+            modelBuilder.Entity<Usuarios>().HasData(new Usuarios
             {
                 UsuarioId = 1,
                 Nombres = "Eladio.",
-                Apellidos = "Jiménez L.",
-                NombreUsuario = "user01",
-                Contrasena = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4"
-            });*/
+                Apellidos = "Fermin.",
+                NombreUsuario = "COD1",
+                Contrasena = "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5"
+            });
         }
 
     }

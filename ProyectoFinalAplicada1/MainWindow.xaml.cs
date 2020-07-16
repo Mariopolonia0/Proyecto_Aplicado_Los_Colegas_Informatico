@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoFinalAplicada1.UI.Registro;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,27 @@ namespace ProyectoFinalAplicada1
         {
 
             InitializeComponent();
+        }
+
+        private void UsuariosMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            rUsuarios usuarios = new rUsuarios();
+            usuarios.Show();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

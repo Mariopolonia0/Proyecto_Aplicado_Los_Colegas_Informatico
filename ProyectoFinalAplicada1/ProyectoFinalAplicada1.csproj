@@ -7,12 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\agregar.png" />
+    <None Remove="Resources\Buscar.png" />
     <None Remove="Resources\Eliminar.png" />
+    <None Remove="Resources\Guardar.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="DATA\" />
-    <Folder Include="UI\Registro\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,7 +26,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\agregar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Buscar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Eliminar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Guardar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
@@ -42,6 +53,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="DATA\Usuario.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
