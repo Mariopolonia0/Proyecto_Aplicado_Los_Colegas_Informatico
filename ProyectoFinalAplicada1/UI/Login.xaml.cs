@@ -21,5 +21,18 @@ namespace ProyectoFinalAplicada1.UI
         {
             InitializeComponent();
         }
+
+
+        private void IngresarButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CancelarButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+       
     }
 }

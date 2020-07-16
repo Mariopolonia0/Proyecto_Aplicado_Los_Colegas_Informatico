@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Login" Height="230" Width="350">
     <Grid>
-
+        
         <StackPanel Orientation="Vertical" Margin="10">
             <StackPanel Orientation="Vertical">
                 <Label Content="Nombre Usuario"/>
@@ -17,12 +17,23 @@
                 <Label Content="Contraseña"/>
 
                 <PasswordBox x:Name="ContrasenaPasswordBox"/>
-                <!--.Attach="True" PasswordHelper:PasswordHelper.Password="{Binding Contrasena, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
-
-                <Button x:Name="IngresarButton" Content="Ingresar" Margin="30" Width="60" Height="24" Click="IngresarButton_Click"/>
-                <Button x:Name="CancelarButton" Content="Cancelar" Width="60" Height="24" Click="CancelarButton_Click"/>
+                
             </StackPanel>
-        </StackPanel>
-
+            <StackPanel Orientation="Horizontal" Margin="0,15" >
+                <Button x:Name="IngresarButton" Margin="80,0" Click="IngresarButton_Click" Width="61">
+                        <StackPanel Orientation="Horizontal">
+                            <!--<Image Source="/Resources/add.png"  />-->
+                            <Label Content="Ingresar" Width="54" />
+                        </StackPanel>
+                    </Button>
+                <Button x:Name="CancelarButton"   Margin="-53,0" Click="CancelarButton_Click" Width="73">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resources/Eliminar.png"  />
+                            <Label Content="Cancelar" />
+                        </StackPanel>
+                    </Button>
+                    
+                </StackPanel>
+            </StackPanel>
     </Grid>
 </Window>
