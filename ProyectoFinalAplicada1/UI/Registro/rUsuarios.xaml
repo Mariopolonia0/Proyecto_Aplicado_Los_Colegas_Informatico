@@ -33,7 +33,7 @@
 
                 <Label Content="Contraseña:"/>
                 <PasswordBox x:Name="ContrasenaPasswordBox"/>
-                <!--:PasswordHelper.Attach="True" PasswordHelper:PasswordHelper.Password="{Binding Contrasena,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>-->
+                <!--:PasswordHelper.Attach="True" PasswordHelper:PasswordHelper.Password="{Binding Contrasena, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
 
                 <Label Content="Confirmar contraseña:"/>
                 <PasswordBox x:Name="ConfirmarContrasenaPasswordBox"/>
