@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI"
         mc:Ignorable="d"
+       Icon="/Resources/Window.png"
         Title="Login" Height="230" Width="350">
     <Grid>
-        
+
         <StackPanel Orientation="Vertical" Margin="10">
             <StackPanel Orientation="Vertical">
                 <Label Content="Nombre Usuario"/>
@@ -17,23 +18,23 @@
                 <Label Content="Contraseña"/>
 
                 <PasswordBox x:Name="ContrasenaPasswordBox"/>
-                
+
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,15" >
-                <Button x:Name="IngresarButton" Margin="80,0" Click="IngresarButton_Click" Width="61">
-                        <StackPanel Orientation="Horizontal">
-                            <!--<Image Source="/Resources/add.png"  />-->
-                            <Label Content="Ingresar" Width="54" />
-                        </StackPanel>
-                    </Button>
+                <Button x:Name="IngresarButton" Margin="80,0" Click="IngresarButton_Click" Width="73">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/entrar.png" Height="32" Width="15"  />
+                        <Label Content="Ingresar" Width="54" />
+                    </StackPanel>
+                </Button>
                 <Button x:Name="CancelarButton"   Margin="-53,0" Click="CancelarButton_Click" Width="73">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="/Resources/Eliminar.png"  />
-                            <Label Content="Cancelar" />
-                        </StackPanel>
-                    </Button>
-                    
-                </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Eliminar.png"  />
+                        <Label Content="Cancelar" />
+                    </StackPanel>
+                </Button>
+
             </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>

@@ -59,5 +59,15 @@ namespace ProyectoFinalAplicada1.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] entrar {
+            get {
+                object obj = ResourceManager.GetObject("entrar", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
