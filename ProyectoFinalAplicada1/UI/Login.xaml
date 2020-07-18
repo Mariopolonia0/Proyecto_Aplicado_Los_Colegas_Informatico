@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI"
         mc:Ignorable="d"
-       Icon="/Resources/Window.png"
+        Icon="/Resources/Window.png"
         Title="Login" Height="230" Width="350">
     <Grid>
 
