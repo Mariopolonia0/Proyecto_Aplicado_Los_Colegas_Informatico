@@ -46,11 +46,11 @@ namespace ProyectoFinalAplicada1.UI.Consultas
                 listado = UsuariosBLL.GetList(c => true);
             }
 
-            if (DesdeDataPicker.SelectedDate != null)
+            /*if (DesdeDataPicker.SelectedDate != null)
                 listado = UsuariosBLL.GetList(c => c.FechaIngreso.Date >= DesdeDataPicker.SelectedDate);
 
             if (HastaDatePicker.SelectedDate != null)
-                listado = UsuariosBLL.GetList(c => c.FechaIngreso.Date <= HastaDatePicker.SelectedDate);
+                listado = UsuariosBLL.GetList(c => c.FechaIngreso.Date <= HastaDatePicker.SelectedDate);*/
 
             DatosDataGrid.ItemsSource = null;
             DatosDataGrid.ItemsSource = listado;
