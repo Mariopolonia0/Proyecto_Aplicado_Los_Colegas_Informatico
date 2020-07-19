@@ -9,7 +9,7 @@ namespace ProyectoFinalAplicada1.DAL
     public class Contexto : DbContext
     {
         public DbSet<Usuarios> Usuarios { get; set; }
-
+        public DbSet<Usuarios> UsuariosDetalle { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.EnableSensitiveDataLogging().UseSqlite(@"Data Source= DATA\UsuarioS.db");

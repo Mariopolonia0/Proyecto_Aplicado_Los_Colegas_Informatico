@@ -10,36 +10,18 @@
     <Grid>
 
         <StackPanel Orientation="Vertical" Margin="10,5,10,0">
+            <StackPanel Orientation="Horizontal" >
 
-            <StackPanel Orientation="Horizontal" Height="58">
-                
-                
-                <StackPanel Width="92">
-                    <Label Content="Usuario Id"/>
-                    <TextBox x:Name="IdUsuarioTextBox"/>
-                </StackPanel>
 
-                <StackPanel Orientation="Vertical" Margin="10,0" Width="96">
-                    <Label Content="Nombre" />
-                    <TextBox x:Name="NombreTextBox"/>
-                </StackPanel>
-
-                <StackPanel Margin="5,0">
-                    <Label Content="Filtro:" />
-                    <ComboBox x:Name="FiltroComboBox" Width="100">
-                        <ComboBoxItem Content="UsuarioId"/>
-                        <ComboBoxItem Content="Nombres"/>
+                <StackPanel Orientation="Horizontal" >
+                    <ComboBox x:Name="SeleccionComboBox"  SelectedIndex="0" Height="32" Width="95">
+                        <ComboBoxItem  Content="Todos"  />
+                        <ComboBoxItem  Content="Usuario ID" />
+                        <ComboBoxItem  Content="Nombre" />
                     </ComboBox>
+                    <TextBox x:Name="BusquedaTextBox" Margin="5,5" Height="32" Width="143"  />
                 </StackPanel>
-
-                <StackPanel Margin="5,0">
-                    <Label Content="Critero:"/>
-                    <TextBox x:Name="CriterioTextBox" Width="100"/>
-
-                </StackPanel>
-
-                <StackPanel Margin="5,0"/>
-
+  
                 <Button x:Name="BuscarButton" Height="34" Width="93" Click="BuscarButton_Click" >
                     <StackPanel Orientation="Horizontal" >
                         <Image Source="/Resources/Buscar.png"  />
@@ -49,13 +31,7 @@
 
             </StackPanel>
             <StackPanel HorizontalAlignment="Left" >
-                <DataGrid x:Name="DatosDataGrid" Height="350" Width="550">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Usuario Id" Binding="{Binding UsuarioId}"/>
-                        <DataGridTextColumn Header="Nombre" Binding="{Binding Nombres}"/>
-                        <DataGridTextColumn Header="Apellido" Binding="{Binding Apellidos}"/>
-                    </DataGrid.Columns>
-                </DataGrid>
+                <DataGrid x:Name="DetalleDataGrid" Height="350" Width="550" ItemsSource="{Binding Detalle}"/>
             </StackPanel>
         </StackPanel>
 
