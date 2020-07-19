@@ -12,29 +12,19 @@
         <StackPanel Orientation="Vertical" Margin="10,5,10,0">
 
             <StackPanel Orientation="Horizontal" Height="58">
-                <StackPanel>
-                    <Label Content="Desde:"/>
-                    <DatePicker x:Name="DesdeDataPicker"/>
+                <StackPanel Width="92">
+                    <Label Content="Usuario Id"/>
+                    <TextBox x:Name="IdUsuarioTextBox"/>
                 </StackPanel>
 
-                <StackPanel Orientation="Vertical" Margin="5,0">
-                    <Label Content="Hasta:" />
-                    <DatePicker x:Name="HastaDatePicker"/>
+                <StackPanel Orientation="Vertical" Margin="10,0" Width="96">
+                    <Label Content="Nombre" />
+                    <TextBox x:Name="NombreTextBox"/>
                 </StackPanel>
 
-                <StackPanel Margin="5,0">
-                    <Label Content="Filtro:" />
-                    <ComboBox x:Name="FiltroComboBox" Width="100">
-                        <ComboBoxItem Content="EstudianteId"/>
-                        <ComboBoxItem Content="Nombres"/>
-                    </ComboBox>
-                </StackPanel>
+                
 
-                <StackPanel Margin="5,0">
-                    <Label Content="Critero:"/>
-                    <TextBox x:Name="CriterioTextBox" Width="100"/>
-
-                </StackPanel>
+                <StackPanel Margin="5,0"/>
 
                 <Button x:Name="BuscarButton" Height="34" Width="93" Click="ConsultarButton_Click" >
                     <StackPanel Orientation="Horizontal" >
@@ -45,7 +35,13 @@
 
             </StackPanel>
             <StackPanel HorizontalAlignment="Left" >
-                <DataGrid x:Name="DatosDataGrid" Height="350" Width="527"/>
+                <DataGrid x:Name="DatosDataGrid" Height="350" Width="527">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Usuario Id" Binding="{Binding UsuarioId}"/>
+                        <DataGridTextColumn Header="Nombre" Binding="{Binding Nombres}"/>
+                        <DataGridTextColumn Header="Apellido" Binding="{Binding Apellidos}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
             </StackPanel>
         </StackPanel>
 

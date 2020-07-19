@@ -11,16 +11,16 @@
 
         <StackPanel>
             <Menu Height="18">
-                <MenuItem Header="Registros" Click="MenuItem_Click">
+                <MenuItem Header="Registros" >
                     
                     <MenuItem x:Name="UsuariosMenuItem" Header="Registro Usuarios" Click="UsuariosMenuItem_Click" />
                 </MenuItem>
 
-                <MenuItem Header="Consultas" Click="MenuItem_Click_1">
-                    <MenuItem x:Name="UsuarioMenuItem" Header="Consulta Usuarios"  />
+                <MenuItem Header="Consultas"  >
+                    <MenuItem x:Name="UsuarioMenuItem" Header="Consulta Usuarios"  Click="UsuarioMenuItem_Click"  />
                 </MenuItem>
 
-                <MenuItem Header="Ayuda" Click="MenuItem_Click_2">
+                <MenuItem Header="Ayuda" >
 
                     <MenuItem x:Name="InformacionMenuItem" Header="Informacion" />
                 </MenuItem>

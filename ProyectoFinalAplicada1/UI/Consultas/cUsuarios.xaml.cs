@@ -27,7 +27,7 @@ namespace ProyectoFinalAplicada1.UI.Consultas
         private void ConsultarButton_Click(object sender, RoutedEventArgs e)
         {
             var listado = new List<Usuarios>();
-
+        /*
             if (CriterioTextBox.Text.Trim().Length > 0)
             {
                 switch (FiltroComboBox.SelectedIndex)
@@ -45,7 +45,7 @@ namespace ProyectoFinalAplicada1.UI.Consultas
             {
                 listado = UsuariosBLL.GetList(c => true);
             }
-
+        */
             /*if (DesdeDataPicker.SelectedDate != null)
                 listado = UsuariosBLL.GetList(c => c.FechaIngreso.Date >= DesdeDataPicker.SelectedDate);
 

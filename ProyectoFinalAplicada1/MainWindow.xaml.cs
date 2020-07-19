@@ -1,4 +1,5 @@
-﻿using ProyectoFinalAplicada1.UI.Registro;
+﻿using ProyectoFinalAplicada1.UI.Consultas;
+using ProyectoFinalAplicada1.UI.Registro;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,19 +34,10 @@ namespace ProyectoFinalAplicada1
             usuarios.Show();
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void UsuarioMenuItem_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
-        {
-
+            cUsuarios usuarios = new cUsuarios();
+            usuarios.Show();
         }
     }
 }
