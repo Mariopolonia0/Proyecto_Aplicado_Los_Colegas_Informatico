@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI"
+        xmlns:PasswordHelper="clr-namespace:ProyectoFinalAplicada1.Resources.PasswordHelper"
         mc:Ignorable="d"
         Icon="/Resources/Window.png"
         Title="Login" Height="230" Width="350">
@@ -17,7 +18,7 @@
 
                 <Label Content="Contraseña"/>
 
-                <PasswordBox x:Name="ContrasenaPasswordBox"/>
+                <PasswordBox x:Name="ContrasenaPasswordBox" PasswordHelper:PasswordHelper.Attach="True" PasswordHelper:PasswordHelper.Password="{Binding Contrasena, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,15" >

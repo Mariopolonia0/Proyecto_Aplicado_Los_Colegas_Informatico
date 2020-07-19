@@ -19,20 +19,20 @@ namespace ProyectoFinalAplicada1.UI.Registro
     /// </summary>
     public partial class rUsuarios : Window
     {
-        private Usuarios usuario = new Usuarios();
+        private Usuarios usuarios = new Usuarios();
 
         public rUsuarios()
         {
             InitializeComponent();
-            this.DataContext = usuario;
+            this.DataContext = usuarios;
         }
 
         private void Limpiar()
         {
-            this.usuario = new Usuarios();
+            this.usuarios = new Usuarios();
             ContrasenaPasswordBox.Password = string.Empty;
             ConfirmarContrasenaPasswordBox.Password = string.Empty;
-            this.DataContext = usuario;
+            this.DataContext = usuarios;
         }
 
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
@@ -113,7 +113,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
             if (!Validar())
                 return;
 
-            var paso = UsuariosBLL.Guardar(usuario);
+            var paso = UsuariosBLL.Guardar(usuarios);
 
             if (paso)
             {
@@ -141,14 +141,23 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            var estudiante = UsuariosBLL.Buscar(Convert.ToInt32(UsuarioIdTextBox.Text));
+            var usuarios = UsuariosBLL.Buscar(int.Parse(UsuarioIdTextBox.Text));
 
-            if (usuario != null)
-                this.usuario = estudiante;
+            if (usuarios != null)
+            {
+                this.usuarios = usuarios;
+            }
             else
+            {
+                this.usuarios = new Entidades.Usuarios();
+                MessageBox.Show("Usuario no existe", "Fallo",
+                     MessageBoxButton.OK, MessageBoxImage.Information);
                 Limpiar();
+            }
+                
+            //Limpiar();
 
-            this.DataContext = this.usuario;
+            this.DataContext = this.usuarios;
         }
 
     }

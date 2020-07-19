@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
+	  <StartWorkingDirectory>$(MSBuildProjectDirectory)</StartWorkingDirectory>
+	  <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
@@ -13,10 +14,6 @@
     <None Remove="Resources\entrar.png" />
     <None Remove="Resources\Guardar.png" />
     <None Remove="Resources\Window.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="DATA\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -64,7 +61,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="DATA\Usuario.db">
+    <Folder Include="DATA\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="DATA\UsuarioS.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

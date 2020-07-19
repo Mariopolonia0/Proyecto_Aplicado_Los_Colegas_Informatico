@@ -48,7 +48,6 @@ namespace ProyectoFinalAplicada1.UI
                 ContrasenaPasswordBox.Clear();
                 NombreUsuarioTextBox.Focus();
             }
-
         }
 
         private void CancelarButton_Click(object sender, RoutedEventArgs e)
@@ -59,7 +58,5 @@ namespace ProyectoFinalAplicada1.UI
             Application.Current.Shutdown();
 
         }
-
-       
     }
 }

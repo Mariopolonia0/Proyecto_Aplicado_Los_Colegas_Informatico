@@ -12,7 +12,7 @@ namespace ProyectoFinalAplicada1.DAL
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.EnableSensitiveDataLogging().UseSqlite(@"Data Source= DATA\Usuario.db");
+            optionsBuilder.EnableSensitiveDataLogging().UseSqlite(@"Data Source= DATA\UsuarioS.db");
         }
         //
         protected override void OnModelCreating(ModelBuilder modelBuilder)

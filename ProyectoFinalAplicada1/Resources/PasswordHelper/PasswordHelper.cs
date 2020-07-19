@@ -66,7 +66,7 @@ namespace ProyectoFinalAplicada1.Resources.PasswordHelper
             passwordBox.PasswordChanged += PasswordChanged;
         }
 
-        private static void Attach(DependencyObject sender,
+        public static void Attach(DependencyObject sender,
             DependencyPropertyChangedEventArgs e)
         {
             PasswordBox passwordBox = sender as PasswordBox;

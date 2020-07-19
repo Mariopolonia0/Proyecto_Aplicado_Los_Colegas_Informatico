@@ -24,10 +24,15 @@ namespace ProyectoFinalAplicada1.UI.Consultas
             InitializeComponent();
         }
 
-        private void ConsultarButton_Click(object sender, RoutedEventArgs e)
+        /*private void ConsultarButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }*/
+
+        private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
             var listado = new List<Usuarios>();
-        /*
+
             if (CriterioTextBox.Text.Trim().Length > 0)
             {
                 switch (FiltroComboBox.SelectedIndex)
@@ -45,15 +50,16 @@ namespace ProyectoFinalAplicada1.UI.Consultas
             {
                 listado = UsuariosBLL.GetList(c => true);
             }
-        */
-            /*if (DesdeDataPicker.SelectedDate != null)
-                listado = UsuariosBLL.GetList(c => c.FechaIngreso.Date >= DesdeDataPicker.SelectedDate);
+
+           /* if (DesdeDataPicker.SelectedDate != null)
+                listado = UsuariosBLL.GetList(c => c.UsuarioId.int >= DesdeDataPicker.SelectedDate);
 
             if (HastaDatePicker.SelectedDate != null)
-                listado = UsuariosBLL.GetList(c => c.FechaIngreso.Date <= HastaDatePicker.SelectedDate);*/
+                listado = UsuariosBLL.GetList(c => c.UsuarioId.Date <= HastaDatePicker.SelectedDate);*/
 
             DatosDataGrid.ItemsSource = null;
             DatosDataGrid.ItemsSource = listado;
+
         }
     }
 }

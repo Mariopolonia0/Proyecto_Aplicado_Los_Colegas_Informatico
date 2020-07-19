@@ -160,7 +160,7 @@ namespace ProyectoFinalAplicada1.BLL
             return Lista;
         }
 
-        //Metodo para encriptar la clave 
+        //Metodo para encriptar la clave.
         private static string GetSHA256(string str)
         {
             SHA256 sha256 = SHA256Managed.Create();
@@ -173,6 +173,7 @@ namespace ProyectoFinalAplicada1.BLL
         }
 
 
+        //Metodo para validar Usuario Login.
         public static bool Validar(string nombreusuario, string contrasena)
         {
             bool paso = false;
