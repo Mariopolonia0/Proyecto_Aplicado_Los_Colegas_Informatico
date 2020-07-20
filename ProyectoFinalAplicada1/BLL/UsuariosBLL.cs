@@ -7,6 +7,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Security.Cryptography;
 using System.Text;
+using System.Windows.Input;
 
 namespace ProyectoFinalAplicada1.BLL
 {
@@ -114,7 +115,6 @@ namespace ProyectoFinalAplicada1.BLL
             }
             return eliminado;
         }
-
 
         //Metodo Buscar.
         public static Usuarios Buscar(int id)
