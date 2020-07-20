@@ -12,8 +12,7 @@ namespace ProyectoFinalAplicada1.BLL
 {
     public class UsuariosBLL
     {
-
-        //Verifica si usuario existe en BD
+        //Metodo Existe.
         public static bool Existe(int id)
         {
             Contexto contexto = new Contexto();
@@ -34,16 +33,7 @@ namespace ProyectoFinalAplicada1.BLL
             return encontrado;
         }
 
-        //Metodo para guardar 
-        public static bool Guardar(Usuarios usuario)
-        {
-            if (!Existe(usuario.UsuarioId))
-                return Insertar(usuario);
-            else
-                return Modificar(usuario);
-        }
-
-        //Metodo para guardar en la base de datos
+        //Metodo Insertar.
         private static bool Insertar(Usuarios usuario)
         {
             Contexto contexto = new Contexto();
@@ -66,7 +56,7 @@ namespace ProyectoFinalAplicada1.BLL
             return guardado;
         }
 
-        //Metodo para Modificar en la base de datos
+        //Metodo Modificar.
         private static bool Modificar(Usuarios usuario)
         {
             Contexto contexto = new Contexto();
@@ -88,7 +78,16 @@ namespace ProyectoFinalAplicada1.BLL
             return modificado;
         }
 
-        //Eliminar un registro de usuario
+        //Metodo Guardar.
+        public static bool Guardar(Usuarios usuario)
+        {
+            if (!Existe(usuario.UsuarioId))
+                return Insertar(usuario);
+            else
+                return Modificar(usuario);
+        }
+
+        //Metodo Eliminar.
         public static bool Eliminar(int id)
         {
             Contexto contexto = new Contexto();
@@ -117,7 +116,7 @@ namespace ProyectoFinalAplicada1.BLL
         }
 
 
-        //Buscar un registro de usuario
+        //Metodo Buscar.
         public static Usuarios Buscar(int id)
         {
             Contexto contexto = new Contexto();
@@ -139,6 +138,7 @@ namespace ProyectoFinalAplicada1.BLL
             return usuario;
         }
 
+        //Metodo List.
         public static List<Usuarios> GetList(Expression<Func<Usuarios, bool>> usuario)
         {
             Contexto contexto = new Contexto();
@@ -172,8 +172,7 @@ namespace ProyectoFinalAplicada1.BLL
             return sb.ToString();
         }
 
-
-        //Metodo para validar Usuario Login.
+        //Metodo para validar Usuario y contraseña en el Login.
         public static bool Validar(string nombreusuario, string contrasena)
         {
             bool paso = false;

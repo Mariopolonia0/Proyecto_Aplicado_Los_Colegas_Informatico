@@ -35,11 +35,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
             this.DataContext = usuarios;
         }
 
-        private void NuevoButton_Click(object sender, RoutedEventArgs e)
-        {
-            Limpiar();
-        }
-
+        //Verifica que no allá campos vacío.
         private bool Validar()
         {
             bool esValido = true;
@@ -104,10 +100,16 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 GuardarButton.IsEnabled = true;
             }
 
-
             return esValido;
         }
 
+        //Botón Nuevo.
+        private void NuevoButton_Click(object sender, RoutedEventArgs e)
+        {
+            Limpiar();
+        }
+
+        //Botón Guardar.
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             if (!Validar())
@@ -118,14 +120,15 @@ namespace ProyectoFinalAplicada1.UI.Registro
             if (paso)
             {
                 Limpiar();
-                MessageBox.Show("Transaccion exitosa!", "Exito",
+                MessageBox.Show("Transacción exitosa!", "Exito",
                     MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
-                MessageBox.Show("Transaccion Fallida", "Fallo",
+                MessageBox.Show("Transacción Fallida", "Fallo",
                     MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
+        //Botón Eliminar.
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
             if (UsuariosBLL.Eliminar(Convert.ToInt32(UsuarioIdTextBox.Text)))
@@ -135,10 +138,11 @@ namespace ProyectoFinalAplicada1.UI.Registro
                     MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
-                MessageBox.Show("No fue posible eliminar", "Fallo",
+                MessageBox.Show("No fue posible eliminar el registro", "Fallo",
                     MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
+        //Botón Buscar.
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
             var usuarios = UsuariosBLL.Buscar(int.Parse(UsuarioIdTextBox.Text));
@@ -150,13 +154,12 @@ namespace ProyectoFinalAplicada1.UI.Registro
             else
             {
                 this.usuarios = new Entidades.Usuarios();
-                MessageBox.Show("Usuario no existe", "Fallo",
+                MessageBox.Show("El Usuario no existe", "Fallo",
                      MessageBoxButton.OK, MessageBoxImage.Information);
                 Limpiar();
             }
                 
             //Limpiar();
-
             this.DataContext = this.usuarios;
         }
 
