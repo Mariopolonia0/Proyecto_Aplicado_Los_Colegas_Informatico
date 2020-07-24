@@ -39,5 +39,17 @@ namespace ProyectoFinalAplicada1
             cUsuarios usuarios = new cUsuarios();
             usuarios.Show();
         }
+
+        private void ClienteMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            rCliente cliente = new rCliente();
+            cliente.Show();
+        }
+
+        private void VendedorMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            rVendedores vendedores = new rVendedores();
+            vendedores.Show();
+        }
     }
 }

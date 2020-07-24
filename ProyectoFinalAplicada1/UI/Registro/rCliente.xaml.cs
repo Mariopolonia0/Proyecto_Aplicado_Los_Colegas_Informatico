@@ -23,3 +23,27 @@ namespace ProyectoFinalAplicada1.UI.Registro
         }
     }
 }
+/*
+ 
+  
+ por si eladio no queda convesido de la 
+ razon de por que quite el idusuario del registro de cliente
+ 
+
+
+  <StackPanel Orientation="Horizontal" Grid.Row="8">
+            <TextBlock Name="UsuarioIdLabel" Text="UsuarioId" Margin="80,5,5,5" Grid.Row="8" Width="72" />
+            <TextBox Name="UsuarioIdTextBox"  Foreground="Blue" Grid.Row="8" Width="76">
+                <TextBox.Text>
+                    <Binding Path="UsuarioId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </StackPanel>
+     
+     
+     
+     */

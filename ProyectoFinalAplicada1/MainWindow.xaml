@@ -8,23 +8,66 @@
         Icon="/Resources/Window.png"
         Title="Menu Pricipal" Height="400" Width="600">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="14*"/>
+            <ColumnDefinition Width="61*"/>
+        </Grid.ColumnDefinitions>
 
-        <StackPanel>
-            <Menu Height="18">
-                <MenuItem Header="Registros" >
+        <StackPanel Grid.ColumnSpan="2">
+            <Menu Height="35">
+                <MenuItem Header="Registros" FontFamily="15" >
+
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/Registro.png"/>
+                    </MenuItem.Icon>
+
+                    <MenuItem x:Name="UsuariosMenuItem" Header="Usuarios" Click="UsuariosMenuItem_Click" >
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/Usuario.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                     
-                    <MenuItem x:Name="UsuariosMenuItem" Header="Registro Usuarios" Click="UsuariosMenuItem_Click" />
+                    <MenuItem  x:Name="ClienteMenuItem" Header="Clintes" Click="ClienteMenuItem_Click" >
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/Cliente.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem> 
+                     
+                        
+                    <MenuItem x:Name="FacturasMenuItem" Header="Facturas"  />
+                    <MenuItem x:Name="VentasMenuItem" Header="Ventas"  />
+                    <MenuItem x:Name="ComprasMenuItem" Header="Compras"  />
+                    <MenuItem x:Name="ProductosMenuItem" Header="Productos"  />
+                    <MenuItem x:Name="VendedorMenuItem" Header="Vendedor" Click="VendedorMenuItem_Click"  >
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/vendedores.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="CategoriasMenuItem" Header="Categorias"  />
+
                 </MenuItem>
 
-                <MenuItem Header="Consultas"  >
+                <MenuItem Header="Consultas" Height="35"  >
+
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/Consulta.png"/>
+                    </MenuItem.Icon>
+                    
                     <MenuItem x:Name="UsuarioMenuItem" Header="Consulta Usuarios"  Click="UsuarioMenuItem_Click"  />
+                     
                 </MenuItem>
 
                 <MenuItem Header="Ayuda" >
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/Ayuda.png"/>
+                    </MenuItem.Icon>
 
                     <MenuItem x:Name="InformacionMenuItem" Header="Informacion" />
                 </MenuItem>
             </Menu>
+            <StackPanel Height="360">
+                <Image Width="598" Source="/Resources/Fondo.jfif" Height="467"/>
+            </StackPanel>
         </StackPanel>
 
     </Grid>

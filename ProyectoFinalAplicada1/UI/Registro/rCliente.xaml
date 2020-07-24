@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
         mc:Ignorable="d"
+        Icon="/Resources/Window.png"
         Title="Registro Cliente" Height="290" Width="350">
     <Grid>
 
@@ -54,7 +55,7 @@
             </TextBox>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="3">
-            <TextBlock Name="EmailLabel" Text="Email" Margin="30,5,5,5" Width="63" />
+            <TextBlock Name="EmailLabel" Text="Email" Margin="30,5,5,5" Width="62" />
             <TextBox Name="EmailTextBox" Margin="0,1,0,0" Grid.Column="1"  Foreground="Blue" Grid.ColumnSpan="2" Width="215">
                 <TextBox.Text>
                     <Binding Path="Email" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
@@ -76,13 +77,9 @@
             </TextBox>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="5">
-            <TextBlock Name="CelularLabel" Text="Celular" Margin="30,5,5,5" Width="61" />
+            <TextBlock Name="CelularLabel" Text="Celular" Margin="30,5,5,5" Width="62" />
             <TextBox x:Name="CelularTextBox"  Foreground="Blue" Width="172">
-                <Binding Path="Celular" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                    <Binding.ValidationRules>
-                       
-                    </Binding.ValidationRules>
-                </Binding>
+                <Binding Path="Celular" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay"/>
             </TextBox>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="6">
@@ -108,18 +105,7 @@
             </TextBox>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="8">
-            <TextBlock Name="UsuarioIdLabel" Text="UsuarioId" Margin="80,5,5,5" Grid.Row="8" Width="72" />
-            <TextBox Name="UsuarioIdTextBox"  Foreground="Blue" Grid.Row="8" Width="76">
-                <TextBox.Text>
-                    <Binding Path="UsuarioId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                        <Binding.ValidationRules>
-                            <ExceptionValidationRule/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
-        </StackPanel>
+       
 
 
         <StackPanel Orientation="Horizontal" Grid.Row="9"  Margin="1,5,0,5" >
