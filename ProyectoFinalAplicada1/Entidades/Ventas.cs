@@ -23,12 +23,10 @@ namespace ProyectoFinalAplicada1.Entidades
         public Ventas()
         {
             VentaId = 0;
-            
             Fecha = DateTime.Now;
             ClienteId = 0;
             Monto = 0;
             UsuarioId = 0;
-
             VentaDetalle = new List<VentasDetalles>();
         }
 

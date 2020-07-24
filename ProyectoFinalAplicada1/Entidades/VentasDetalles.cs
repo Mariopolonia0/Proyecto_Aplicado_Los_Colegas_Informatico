@@ -27,7 +27,6 @@ namespace ProyectoFinalAplicada1.Entidades
             Precio = 0;
             ITBIS = 0;
         }
-
         public VentasDetalles(int ventaid, int productoid, int cantidad, string descripcion, decimal precio)
         {
             Id = 0;
@@ -37,7 +36,6 @@ namespace ProyectoFinalAplicada1.Entidades
             //Descripcion = descripcion;
             Precio = precio;
             ITBIS = cantidad * precio;
-
         }
 
     }

@@ -16,7 +16,6 @@ namespace ProyectoFinalAplicada1.Entidades
         public int UsuarioID { get; set; }
 
     }
-
     public class FacturaDetalles
     {
         [Key]
@@ -27,7 +26,6 @@ namespace ProyectoFinalAplicada1.Entidades
         public int facturaId { get; set; }
 
     }
-
 }
 
 
