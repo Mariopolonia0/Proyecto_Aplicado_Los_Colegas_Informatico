@@ -26,19 +26,19 @@ namespace ProyectoFinalAplicada1.UI.Registro
             this.DataContext = clientes;
             ClienteIdTextBox.Text = "0";
         }
-
+        //
         private bool Existe()
         {
             Clientes clienteA = ClientesBLL.Buscar(clientes.ClienteId);
             return (clientes != null);
         }
-
+        //
         private void Actualizar()
         {
             this.DataContext = null;
             this.DataContext = clientes;
         }
-
+        //
         private void Limpiar()
         {
             ClienteIdTextBox.Text = "0";
@@ -49,7 +49,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
             DireccionTextBox.Text = string.Empty;
             //UsuarioIdTextBox.Text = "0";
         }
-
+        //
         private bool Validar()
         {
             bool esValido = true;
@@ -126,7 +126,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
             return esValido;
         }
-
+        //
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
             var clientes = ClientesBLL.Buscar(int.Parse(ClienteIdTextBox.Text));

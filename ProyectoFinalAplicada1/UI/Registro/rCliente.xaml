@@ -8,7 +8,7 @@
         Icon="/Resources/Window.png"
         Title="Registro Cliente" Height="450" Width="350">
     <Grid>
-
+        
         <StackPanel Orientation="Vertical" Margin="4,0,4,0">
             <StackPanel Orientation="Vertical">
                 <Label Content="Cliente Id:"/>
@@ -23,6 +23,7 @@
                     </Button>
                 </StackPanel>
 
+                <!---->
                 <Label Content="Nombres:"/>
                 <TextBox x:Name="NombresTextBox" Text="{Binding Nombres}" />
 
