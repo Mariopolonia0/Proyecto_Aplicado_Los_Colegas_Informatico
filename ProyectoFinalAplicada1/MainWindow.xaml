@@ -27,7 +27,7 @@
                         </MenuItem.Icon>
                     </MenuItem>
                     
-                    <MenuItem  x:Name="ClienteMenuItem" Header="Clintes" Click="ClienteMenuItem_Click" >
+                    <MenuItem  x:Name="ClienteMenuItem" Header="Clientes" Click="ClienteMenuItem_Click" >
                         <MenuItem.Icon>
                             <Image Source="/Resources/Cliente.png"/>
                         </MenuItem.Icon>

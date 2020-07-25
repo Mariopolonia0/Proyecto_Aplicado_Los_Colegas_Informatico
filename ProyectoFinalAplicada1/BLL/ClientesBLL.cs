@@ -9,23 +9,17 @@ using System.Text;
 
 namespace ProyectoFinalAplicada1.BLL
 {
-    public class ComprasBLL
+    public class ClientesBLL
     {
 
-        public static bool Guardar(Compras compras)
+        public static bool Guardar(Clientes clientes)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
 
             try
             {
-                foreach (var item in compras.CompraDetalle)
-                {
-                    var producto = contexto.Productos.Find(item.ProductoId);
-                    if (producto != null)
-                        producto.Cantidad += item.Cantidad;
-                }
-                if (contexto.Compras.Add(compras) != null)
+                if (contexto.Clientes.Add(clientes) != null)
                     paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
@@ -40,19 +34,16 @@ namespace ProyectoFinalAplicada1.BLL
             return paso;
         }
 
-        public static Compras Buscar(int id)
+
+        public static Clientes Buscar(int id)
         {
             Contexto contexto = new Contexto();
-            Compras compras = new Compras();
-
+            Clientes clientes = new Clientes();
             try
             {
-                compras = contexto.Compras.Include(x => x.CompraDetalle)
-                    .Where(p => p.CompraId == id)
-                    .SingleOrDefault();
-
+                clientes = contexto.Clientes.Find(id);
             }
-            catch
+            catch (Exception)
             {
                 throw;
             }
@@ -61,22 +52,38 @@ namespace ProyectoFinalAplicada1.BLL
                 contexto.Dispose();
             }
 
-            return compras;
+            return clientes;
         }
-        public static bool Modificar(Compras compras)
+
+        public static bool Modificar(Clientes clientes)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
-
             try
             {
-                contexto.Database.ExecuteSqlRaw($"Delete FROM ComprasDetalles Where CompraId={compras.CompraId}");
-                foreach (var anterior in compras.CompraDetalle)
-                {
-                    contexto.Entry(anterior).State = EntityState.Added;
-                }
-                contexto.Entry(compras).State = EntityState.Modified;
-                paso = (contexto.SaveChanges() > 0);
+                contexto.Entry(clientes).State = EntityState.Modified;
+                paso = contexto.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return paso;
+        }
+
+        public static bool Eliminar(int id)
+        {
+            bool paso = false;
+            Contexto contexto = new Contexto();
+            try
+            {
+                var eliminar = contexto.Clientes.Find(id);
+                contexto.Entry(eliminar).State = EntityState.Deleted;
+                paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
             {
@@ -88,22 +95,17 @@ namespace ProyectoFinalAplicada1.BLL
             }
 
             return paso;
-
         }
 
-        public static bool Eliminar(int id)
+        public static List<Clientes> GetList(Expression<Func<Clientes, bool>> clientes)
         {
-            bool paso = false;
+            List<Clientes> lista = new List<Clientes>();
             Contexto contexto = new Contexto();
-
             try
             {
-                var eliminar = contexto.Compras.Find(id);
-                contexto.Entry(eliminar).State = EntityState.Deleted;
-
-                paso = (contexto.SaveChanges() > 0);
+                lista = contexto.Clientes.Where(clientes).ToList();
             }
-            catch
+            catch (Exception)
             {
                 throw;
             }
@@ -111,30 +113,6 @@ namespace ProyectoFinalAplicada1.BLL
             {
                 contexto.Dispose();
             }
-
-            return paso;
-        }
-
-
-
-
-        public static List<Compras> GetList(Expression<Func<Compras, bool>> compras)
-        {
-            List<Compras> lista = new List<Compras>();
-            Contexto contexto = new Contexto();
-            try
-            {
-                lista = contexto.Compras.Where(compras).ToList();
-            }
-            catch
-            {
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
-
             return lista;
         }
 

@@ -92,10 +92,4 @@
     <Folder Include="DATA\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="DATA\UsuarioS.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>

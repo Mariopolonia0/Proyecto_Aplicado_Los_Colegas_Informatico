@@ -71,8 +71,6 @@ namespace ProyectoFinalAplicada1.UI.Consultas
                             MessageBox.Show("EN LA PROXIMA ACTULIZACION PODRA BUSCAR POR NOMBRE", "AVISO", MessageBoxButton.OK, MessageBoxImage.Information);
                             return;
                         }
-
-                        break;
                     }
             }
         }   
