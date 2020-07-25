@@ -7,7 +7,6 @@ namespace ProyectoFinalAplicada1.Entidades
 {
     public class VentasDetalles
     {
-
         [Key]
         public int Id { get; set; }
         public int VentaId { get; set; }
