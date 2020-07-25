@@ -37,7 +37,7 @@
                     <MenuItem x:Name="FacturasMenuItem" Header="Facturas"  />
                     <MenuItem x:Name="VentasMenuItem" Header="Ventas"  />
                     <MenuItem x:Name="ComprasMenuItem" Header="Compras"  />
-                    <MenuItem x:Name="ProductosMenuItem" Header="Productos"  />
+                    <MenuItem x:Name="ProductosMenuItem" Header="Productos" Click="ProductosMenuItem_Click"/>
                     <MenuItem x:Name="VendedorMenuItem" Header="Vendedor" Click="VendedorMenuItem_Click"  >
                         <MenuItem.Icon>
                             <Image Source="/Resources/vendedores.png"/>
