@@ -120,6 +120,32 @@ namespace ProyectoFinalAplicada1.Migrations
                     b.ToTable("ComprasDetalles");
                 });
 
+            modelBuilder.Entity("ProyectoFinalAplicada1.Entidades.Facturas", b =>
+                {
+                    b.Property<int>("FacturaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ClienteID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Total")
+                        .HasColumnType("REAL");
+
+                    b.Property<int>("UsuarioID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("VendedorId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("FacturaId");
+
+                    b.ToTable("Facturas");
+                });
+
             modelBuilder.Entity("ProyectoFinalAplicada1.Entidades.Productos", b =>
                 {
                     b.Property<int>("ProductoId")
@@ -205,6 +231,26 @@ namespace ProyectoFinalAplicada1.Migrations
                             NombreUsuario = "COD1",
                             Nombres = "Eladio."
                         });
+                });
+
+            modelBuilder.Entity("ProyectoFinalAplicada1.Entidades.Vendedores", b =>
+                {
+                    b.Property<int>("VendedorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Apellidos")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Nombres")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("VendedorId");
+
+                    b.ToTable("Vendedores");
                 });
 
             modelBuilder.Entity("ProyectoFinalAplicada1.Entidades.Ventas", b =>
