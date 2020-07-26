@@ -3,6 +3,7 @@ using ProyectoFinalAplicada1.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -60,6 +61,35 @@ namespace ProyectoFinalAplicada1.UI.Registro
         private bool Validar()
         {
             bool esValido = true;
+
+            //Solo numero
+            if (!Regex.IsMatch(ClienteIdTextBox.Text, "^[0-9]+$"))
+            {
+                MessageBox.Show("Solo se permiten caracteres numericos.", "Campo ClienteId.", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+            if (!Regex.IsMatch(TelefonoTextBox.Text, "^[0-9]+$"))
+            {
+                MessageBox.Show("Solo se permiten caracteres numericos.", "Campo Telefono.", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+            if (!Regex.IsMatch(CedulaTextBox.Text, "^[0-9]+$"))
+            {
+                MessageBox.Show("Solo se permiten caracteres numericos.", "Campo Cedula.", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            //Campo vacio
+            if (ClienteIdTextBox.Text.Length == 0)
+            {
+                esValido = false;
+                GuardarButton.IsEnabled = false;
+                MessageBox.Show("ClienteId está vacio", "Fallo",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                ClienteIdTextBox.Focus();
+                GuardarButton.IsEnabled = true;
+            }
 
             if (NombresTextBox.Text.Length == 0)
             {
@@ -134,8 +164,24 @@ namespace ProyectoFinalAplicada1.UI.Registro
             return esValido;
         }
         //
+        public bool ValidarBuscar()
+        {
+            bool ValidarB = true;
+            if (ClienteIdTextBox.Text.Length == 0)
+            {
+                ValidarB = false;
+                GuardarButton.IsEnabled = false;
+                MessageBox.Show("ClienteId está vacio", "Fallo",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                ClienteIdTextBox.Focus();
+                GuardarButton.IsEnabled = true;
+            }
+            return ValidarB;
+        }
+        //
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
+            ValidarBuscar();
             var clientes = ClientesBLL.Buscar(int.Parse(ClienteIdTextBox.Text));
 
             if (clientes != null)

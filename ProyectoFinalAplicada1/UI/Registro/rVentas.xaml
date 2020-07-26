@@ -19,7 +19,7 @@
                 <!--TextBox-->
                 <TextBox x:Name="VentaIdTextBox" Text="{Binding VentaId}" Width="132"/>
 
-                <Button Name="BucarButton" Margin="20,0" >
+                <Button Name="BucarButton" Margin="20,0" Click="BucarButton_Click" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Buscar.png" />
                         <Label Content="Buscar" />

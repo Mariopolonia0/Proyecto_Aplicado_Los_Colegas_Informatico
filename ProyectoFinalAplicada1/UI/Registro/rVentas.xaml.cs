@@ -21,5 +21,10 @@ namespace ProyectoFinalAplicada1.UI.Registro
         {
             InitializeComponent();
         }
+
+        private void BucarButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
