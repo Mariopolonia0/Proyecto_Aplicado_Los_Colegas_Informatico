@@ -16,6 +16,8 @@ namespace ProyectoFinalAplicada1.DAL
         public DbSet<Clientes> Clientes { get; set; }
         public DbSet<Facturas> Facturas { get; set; }
         public DbSet<Vendedores> Vendedores { get; set; }
+        public DbSet<Vendedores> Categorias { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.EnableSensitiveDataLogging().UseSqlite(@"Data Source= DATA\Usuario.db");
