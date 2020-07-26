@@ -9,14 +9,34 @@ using ProyectoFinalAplicada1.DAL;
 namespace ProyectoFinalAplicada1.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200726115656_Migracion_Inicial")]
-    partial class Migracion_Inicial
+    [Migration("20200726160649_Migracion-Inicial")]
+    partial class MigracionInicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.6");
+
+            modelBuilder.Entity("ProyectoFinalAplicada1.Entidades.Categorias", b =>
+                {
+                    b.Property<int>("CategoriaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Estado")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CategoriaId");
+
+                    b.ToTable("Categorias");
+                });
 
             modelBuilder.Entity("ProyectoFinalAplicada1.Entidades.Clientes", b =>
                 {
@@ -155,6 +175,9 @@ namespace ProyectoFinalAplicada1.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Cantidad")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CategoriaId")
                         .HasColumnType("INTEGER");
 
                     b.Property<double>("Costo")

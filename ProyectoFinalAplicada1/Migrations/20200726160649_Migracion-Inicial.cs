@@ -3,10 +3,25 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProyectoFinalAplicada1.Migrations
 {
-    public partial class Migracion_Inicial : Migration
+    public partial class MigracionInicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Categorias",
+                columns: table => new
+                {
+                    CategoriaId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Nombre = table.Column<string>(nullable: true),
+                    Estado = table.Column<string>(nullable: true),
+                    Descripcion = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Categorias", x => x.CategoriaId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Clientes",
                 columns: table => new
@@ -78,7 +93,8 @@ namespace ProyectoFinalAplicada1.Migrations
                     Costo = table.Column<double>(nullable: false),
                     Ganancia = table.Column<double>(nullable: false),
                     UsuarioId = table.Column<int>(nullable: false),
-                    Cantidad = table.Column<int>(nullable: false)
+                    Cantidad = table.Column<int>(nullable: false),
+                    CategoriaId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -217,6 +233,9 @@ namespace ProyectoFinalAplicada1.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Categorias");
+
             migrationBuilder.DropTable(
                 name: "Clientes");
 

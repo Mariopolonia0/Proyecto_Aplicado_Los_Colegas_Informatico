@@ -66,5 +66,11 @@ namespace ProyectoFinalAplicada1
             rFacturas facturas = new rFacturas();
             facturas.Show();
         }
+
+        private void CategoriasMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            rCategorias categorias = new rCategorias();
+            categorias.Show();
+        }
     }
 }

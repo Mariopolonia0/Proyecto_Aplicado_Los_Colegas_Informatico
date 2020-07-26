@@ -16,6 +16,26 @@ namespace ProyectoFinalAplicada1.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.6");
 
+            modelBuilder.Entity("ProyectoFinalAplicada1.Entidades.Categorias", b =>
+                {
+                    b.Property<int>("CategoriaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Estado")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CategoriaId");
+
+                    b.ToTable("Categorias");
+                });
+
             modelBuilder.Entity("ProyectoFinalAplicada1.Entidades.Clientes", b =>
                 {
                     b.Property<int>("ClienteId")
@@ -153,6 +173,9 @@ namespace ProyectoFinalAplicada1.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Cantidad")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CategoriaId")
                         .HasColumnType("INTEGER");
 
                     b.Property<double>("Costo")
