@@ -18,11 +18,12 @@
 
                 <!--Button-->
                 <!--"BucarButton_Click"-->
-                <Button Name="BucarButton" Width="60" Height="20" Margin="5,0"  />
+                <Button Name="BucarButton" Width="60" Height="20" Margin="5,0" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Buscar.png" />
                         <Label Content="Buscar" Margin="4,0" Padding="-1"/>
                     </StackPanel>
+                </Button>
 
             </StackPanel>
 
