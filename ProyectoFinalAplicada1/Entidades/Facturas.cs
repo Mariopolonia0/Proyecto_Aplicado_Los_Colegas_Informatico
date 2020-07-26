@@ -12,7 +12,7 @@ namespace ProyectoFinalAplicada1.Entidades
         public DateTime Fecha { get; set; }
         public int ClienteID { get; set; }
         public int VendedorId { get; set; }
-        public double Tatal { get; set; }
+        public double Total { get; set; }
         public int UsuarioID { get; set; }
 
     }

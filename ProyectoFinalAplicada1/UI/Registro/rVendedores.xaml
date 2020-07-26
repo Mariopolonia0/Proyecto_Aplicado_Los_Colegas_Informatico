@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
         mc:Ignorable="d"
-        Icon="/Resources/Window.png"
+        Icon="/Resources/vendedores.png"
         Title="Registro Vendedores"  FontSize="15" Height="297" Width="319">
     <Grid Margin="0,0,0,-6" >
         <StackPanel Orientation="Vertical">

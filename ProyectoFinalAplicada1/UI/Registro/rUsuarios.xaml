@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
         xmlns:PasswordHelper="clr-namespace:ProyectoFinalAplicada1.Resources.PasswordHelper"
         mc:Ignorable="d"
-        Icon="/Resources/Window.png"
+        Icon="/Resources/Usuario.png"
         Title="Registro Usuarios" Height="400" Width="400">
     <Grid>
 

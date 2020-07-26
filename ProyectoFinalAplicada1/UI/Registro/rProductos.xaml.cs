@@ -35,7 +35,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
             CantidadTextBox.Text = "0";
             PrecioTextBox.Text = "0";
             CostoTextBox.Text = "0";
-            UsuarioIdTextBox.Text = "0";
+            
         }
 
         private bool Existe()
@@ -108,13 +108,13 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 GuardarButton.IsEnabled = true;
             }
 
-            if (UsuarioIdTextBox.Text.Length == 0)
+            if (ProductoIdTextBox.Text.Length == 0)
             {
                 esValido = false;
                 GuardarButton.IsEnabled = false;
                 MessageBox.Show("UsuarioId está vacia", "Fallo",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
-                UsuarioIdTextBox.Focus();
+                ProductoIdTextBox.Focus();
                 GuardarButton.IsEnabled = true;
             }
 

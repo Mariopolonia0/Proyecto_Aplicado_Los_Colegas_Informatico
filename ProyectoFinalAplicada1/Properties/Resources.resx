@@ -124,7 +124,13 @@
   <data name="entrar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\entrar.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Factura" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\factura.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Nuevo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Nuevo.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="producto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\producto.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

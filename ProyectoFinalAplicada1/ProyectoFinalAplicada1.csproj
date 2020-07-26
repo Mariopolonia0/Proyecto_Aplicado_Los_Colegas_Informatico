@@ -15,9 +15,12 @@
     <None Remove="Resources\Consulta.png" />
     <None Remove="Resources\Eliminar.png" />
     <None Remove="Resources\entrar.png" />
+    <None Remove="Resources\Factura.png" />
     <None Remove="Resources\Fondo.jfif" />
     <None Remove="Resources\Guardar.png" />
+    <None Remove="Resources\Imprimir.png" />
     <None Remove="Resources\Nuevo.png" />
+    <None Remove="Resources\producto.png" />
     <None Remove="Resources\Registro.png" />
     <None Remove="Resources\Usuario.png" />
     <None Remove="Resources\vendedores.png" />
@@ -57,13 +60,22 @@
     <Content Include="Resources\Window.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\Factura.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Fondo.jfif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Guardar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Imprimir.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Nuevo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\producto.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Registro.png">

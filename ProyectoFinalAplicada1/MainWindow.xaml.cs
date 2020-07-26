@@ -34,7 +34,7 @@ namespace ProyectoFinalAplicada1
         private void UsuariosMenuItem_Click(object sender, RoutedEventArgs e)
         {
             rUsuarios usuarios = new rUsuarios();
-            usuarios.Show();
+            usuarios.Show()  ;
         }
 
         private void UsuarioMenuItem_Click(object sender, RoutedEventArgs e)
@@ -59,6 +59,12 @@ namespace ProyectoFinalAplicada1
         {
             rProductos productos = new rProductos();
             productos.Show();
+        }
+
+        private void FacturasMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            rFacturas facturas = new rFacturas();
+            facturas.Show();
         }
     }
 }

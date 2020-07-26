@@ -8,11 +8,6 @@
         Icon="/Resources/Window.png"
         Title="Menu Pricipal" Height="400" Width="600">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="14*"/>
-            <ColumnDefinition Width="61*"/>
-        </Grid.ColumnDefinitions>
-
         <StackPanel Grid.ColumnSpan="2">
             <Menu Height="35">
                 <MenuItem Header="Registros" FontFamily="15" >
@@ -31,16 +26,27 @@
                         <MenuItem.Icon>
                             <Image Source="/Resources/Cliente.png"/>
                         </MenuItem.Icon>
-                    </MenuItem> 
-                     
-                        
-                    <MenuItem x:Name="FacturasMenuItem" Header="Facturas"  />
+                    </MenuItem>
+
+                    <MenuItem x:Name="FacturasMenuItem" Header="Facturas" Click="FacturasMenuItem_Click" >
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/Factura.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    
+                    
                     <MenuItem x:Name="VentasMenuItem" Header="Ventas"  />
                     <MenuItem x:Name="ComprasMenuItem" Header="Compras"  />
-                    <MenuItem x:Name="ProductosMenuItem" Header="Productos" Click="ProductosMenuItem_Click"/>
+                    <MenuItem x:Name="ProductosMenuItem" Header="Productos" Click="ProductosMenuItem_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/producto.png" />
+                        </MenuItem.Icon>
+                        
+                    </MenuItem>
+                  
                     <MenuItem x:Name="VendedorMenuItem" Header="Vendedor" Click="VendedorMenuItem_Click"  >
                         <MenuItem.Icon>
-                            <Image Source="/Resources/vendedores.png"/>
+                            <Image Source="/Resources/vendedores.png" />
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem x:Name="CategoriasMenuItem" Header="Categorias"  />
