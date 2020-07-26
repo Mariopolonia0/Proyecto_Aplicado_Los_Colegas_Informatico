@@ -11,15 +11,14 @@ namespace ProyectoFinalAplicada1.BLL
 {
     public class VendedoresBLL
     {
-        public static bool Guardar(Vendedores vendedores)
+        public static bool Existe(int id)
         {
-            bool paso = false;
             Contexto contexto = new Contexto();
+            bool encontrado = false;
 
             try
             {
-                if (contexto.Vendedores.Add(vendedores) != null)
-                    paso = contexto.SaveChanges() > 0;
+                encontrado = contexto.Vendedores.Any(v => v.VendedorId == id);
             }
             catch (Exception)
             {
@@ -30,17 +29,102 @@ namespace ProyectoFinalAplicada1.BLL
                 contexto.Dispose();
             }
 
-            return paso;
+            return encontrado;
         }
 
+        private static bool Insertar(Vendedores vendedores)
+        {
+            bool key = false;
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                contexto.Vendedores.Add(vendedores);
+                key = contexto.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return key;
+        }
+
+        private static bool Modificar(Vendedores vendedores)
+        {
+            bool key = false;
+            Contexto contexto = new Contexto();
+
+            try
+            {
+
+                contexto.Entry(vendedores).State = EntityState.Modified;
+                key = contexto.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return key;
+        }
+
+        public static bool Guardar(Vendedores vendedores)
+        {
+            if (!Existe(vendedores.VendedorId))
+            {
+                return Insertar(vendedores);
+            }
+            else
+            {
+                return Modificar(vendedores);
+            }
+        }
+
+        public static bool Eliminar(int id)
+        {
+            bool key = false;
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                var vendedores = contexto.Vendedores.Find(id);
+
+                if (vendedores != null)
+                {
+                    contexto.Vendedores.Remove(vendedores);
+                    key = contexto.SaveChanges() > 0;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return key;
+        }
 
         public static Vendedores Buscar(int id)
         {
             Contexto contexto = new Contexto();
-            Vendedores vendedores = new Vendedores();
+            Vendedores vendedores;
+
             try
             {
                 vendedores = contexto.Vendedores.Find(id);
+
             }
             catch (Exception)
             {
@@ -54,55 +138,14 @@ namespace ProyectoFinalAplicada1.BLL
             return vendedores;
         }
 
-        public static bool Modificar(Vendedores vendedores)
-        {
-            bool paso = false;
-            Contexto contexto = new Contexto();
-            try
-            {
-                contexto.Entry(vendedores).State = EntityState.Modified;
-                paso = contexto.SaveChanges() > 0;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
-            return paso;
-        }
-
-        public static bool Eliminar(int id)
-        {
-            bool paso = false;
-            Contexto contexto = new Contexto();
-            try
-            {
-                var eliminar = contexto.Vendedores.Find(id);
-                contexto.Entry(eliminar).State = EntityState.Deleted;
-                paso = contexto.SaveChanges() > 0;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
-
-            return paso;
-        }
-
-        public static List<Vendedores> GetList(Expression<Func<Vendedores, bool>> vendedores)
+        public static List<Vendedores> GetList(Expression<Func<Vendedores, bool>> criterio)
         {
             List<Vendedores> lista = new List<Vendedores>();
             Contexto contexto = new Contexto();
+
             try
             {
-                lista = contexto.Vendedores.Where(vendedores).ToList();
+                lista = contexto.Vendedores.Where(criterio).ToList();
             }
             catch (Exception)
             {
@@ -112,6 +155,7 @@ namespace ProyectoFinalAplicada1.BLL
             {
                 contexto.Dispose();
             }
+
             return lista;
         }
     }
