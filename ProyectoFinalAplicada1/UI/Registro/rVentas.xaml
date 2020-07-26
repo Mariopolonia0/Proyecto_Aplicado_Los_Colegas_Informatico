@@ -9,12 +9,12 @@
     <Grid>
 
         <StackPanel Orientation="Vertical" Margin="10,10,10,10">
-            <Label Content="CompraId" FontSize="11"/>
+            <Label Content="VentaId" FontSize="11"/>
 
-            <!--OrdenIdTextBox y BuscarButton-->
+            <!--VentaIdTextBox y BuscarButton-->
             <StackPanel Orientation="Horizontal">
                 <!--TextBox-->
-                <TextBox Name="CompraIdIdTextBox" Width="625" Height="20" Margin="5,0" Text="{Binding OrdenId}"/>
+                <TextBox Name="CompraIdIdTextBox" Width="625" Height="20" Margin="5,0" Text="{Binding VentanId}"/>
 
                 <!--Button-->
                 <!--"BucarButton_Click"-->
@@ -42,7 +42,7 @@
             <Label Content="Monto" FontSize="11"/>
             <TextBox Name="MontoTextBox" Width="695" Height="20" IsReadOnly="True" Margin="5,0" Text="{Binding Monto}" HorizontalAlignment="Left"/>
 
-            <GroupBox Header="Orden Detalle" Width="697" BorderBrush="#FF414649" HorizontalAlignment="Left" Margin="5,10,5,0">
+            <GroupBox Header="Venta Detalle" Width="697" BorderBrush="#FF414649" HorizontalAlignment="Left" Margin="5,10,5,0">
 
                 <StackPanel Orientation="Vertical">
 
