@@ -286,8 +286,8 @@ namespace ProyectoFinalAplicada1.Migrations
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("Monto")
-                        .HasColumnType("TEXT");
+                    b.Property<double>("Monto")
+                        .HasColumnType("REAL");
 
                     b.Property<int>("UsuarioId")
                         .HasColumnType("INTEGER");
@@ -306,11 +306,17 @@ namespace ProyectoFinalAplicada1.Migrations
                     b.Property<int>("Cantidad")
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("ITBIS")
+                    b.Property<double>("Costo")
+                        .HasColumnType("REAL");
+
+                    b.Property<string>("Descripcion")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("Precio")
-                        .HasColumnType("TEXT");
+                    b.Property<double>("ITBIS")
+                        .HasColumnType("REAL");
+
+                    b.Property<double>("Precio")
+                        .HasColumnType("REAL");
 
                     b.Property<int>("ProductoId")
                         .HasColumnType("INTEGER");

@@ -32,21 +32,24 @@
 
                 <Label Content="Categoria"/>
                 <StackPanel Orientation="Horizontal">
-                <ComboBox Name="CategoriaIdComboBox" Width="200" Height="25" Margin="5,0" HorizontalAlignment="Left"/>
+                    <ComboBox Name="CategoriaIdComboBox" Width="321" Height="25" Margin="5,0"  >
+                        
+                    </ComboBox>
 
-            </StackPanel>
+                </StackPanel>
 
-            <Label Content="Precio:"/>
+                <Label Content="Precio:"/>
                 <TextBox x:Name="PrecioTextBox" Text="{Binding Precio}"/>
 
                 <Label Content="ITBIS:"/>
-                <TextBox x:Name="ITBISTextBox" Text="{Binding ITBIS}"/>
+                <TextBox x:Name="ITBISTextBox" Text="{Binding ITBIS}" TextChanged="ITBISTextBox_TextChanged" />
 
                 <Label Content="Cantidad:"/>
                 <TextBox x:Name="CantidadTextBox" Text="{Binding Cantidad}"/>
 
                 <Label Content="Costo:"/>
-                <TextBox x:Name="CostoTextBox" Text="{Binding Costo}"/>
+                <Label x:Name="CostoLabel" />
+                <!--TextBox x:Name="CostoTextBox" Text="{Binding Costo}"/-->
 
                 <Label Content="Ganancia:"/>
                 <TextBox x:Name="GananciaTextBox" Text="{Binding Ganancia}"/>

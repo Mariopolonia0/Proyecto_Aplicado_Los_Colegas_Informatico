@@ -29,6 +29,8 @@ namespace ProyectoFinalAplicada1.UI.Registro
             CategoriaIdComboBox.ItemsSource = CategoriasBLL.GetCategorias();
             CategoriaIdComboBox.SelectedValuePath = "Categoria";
             CategoriaIdComboBox.DisplayMemberPath = "Nombre";
+            productos.CategoriaId = 1;
+            productos.Costo = 0;
         }
 
         private void Limpiar()
@@ -37,7 +39,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
             DescripcionTextBox.Text = string.Empty;
             CantidadTextBox.Text = "0";
             PrecioTextBox.Text = "0";
-            CostoTextBox.Text = "0";
+            //CostoTextBox.Text = "0";
             CategoriaIdComboBox.SelectedItem = null;
         }
 
@@ -91,7 +93,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 GuardarButton.IsEnabled = true;
             }
 
-            if (CostoTextBox.Text.Length == 0)
+           /* if (//CostoTextBox.Text.Length == 0)
             {
                 esValido = false;
                 GuardarButton.IsEnabled = false;
@@ -100,7 +102,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 CostoTextBox.Focus();
                 GuardarButton.IsEnabled = true;
             }
-
+            */
             if (GananciaTextBox.Text.Length == 0)
             {
                 esValido = false;
@@ -131,7 +133,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 GuardarButton.IsEnabled = true;
             }
 
-            if (CategoriaIdComboBox.Text.Length == 0)
+           /* if (CategoriaIdComboBox.Text.Length == 0)
             {
                 esValido = false;
                 GuardarButton.IsEnabled = false;
@@ -140,7 +142,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 CategoriaIdComboBox.Focus();
                 GuardarButton.IsEnabled = true;
             }
-
+            */
             if (FechaDatePicker.Text.Length == 0)
             {
                 esValido = false;
@@ -209,5 +211,20 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 MessageBox.Show("No fue posible eliminar el producto", "Fallo",
                     MessageBoxButton.OK, MessageBoxImage.Error);
         }
+
+        private void ITBISTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            productos.Costo = productos.Precio + productos.ITBIS;
+            CostoLabel.Content = productos.Costo.ToString();
+        }
+
+
+
+        /*  private void ITBISTextBox_TextChanged(object sender, TextChangedEventArgs e)
+          {
+              productos.Costo = productos.Precio + productos.ITBIS;
+              CostoTextBox.Text = productos.Costo.ToString();
+          }*/
+
     }
 }
