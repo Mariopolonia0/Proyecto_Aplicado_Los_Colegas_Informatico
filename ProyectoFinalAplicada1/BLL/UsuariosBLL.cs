@@ -124,7 +124,7 @@ namespace ProyectoFinalAplicada1.BLL
 
             try
             {
-                usuario = contexto.Usuarios.Find(id);
+                usuario = contexto.Usuarios.Find("id");
 
             }
             catch (Exception)
@@ -137,6 +137,8 @@ namespace ProyectoFinalAplicada1.BLL
             }
             return usuario;
         }
+
+        
 
         //Metodo List.
         public static List<Usuarios> GetList(Expression<Func<Usuarios, bool>> usuario)
@@ -191,14 +193,12 @@ namespace ProyectoFinalAplicada1.BLL
             }
             catch (Exception)
             {
-
                 throw;
             }
             finally
             {
                 contexto.Dispose();
             }
-
             return paso;
         }
     }

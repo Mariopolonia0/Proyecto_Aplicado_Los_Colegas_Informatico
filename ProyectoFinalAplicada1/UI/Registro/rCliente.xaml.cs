@@ -25,6 +25,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
             InitializeComponent();
             this.DataContext = clientes;
             ClienteIdTextBox.Text = "0";
+            this.clientes.UsuarioId = 1;
         }
         //
         private bool Existe()

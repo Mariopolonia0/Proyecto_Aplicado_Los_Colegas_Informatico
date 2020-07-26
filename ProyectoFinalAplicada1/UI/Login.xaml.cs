@@ -1,4 +1,5 @@
 ﻿using ProyectoFinalAplicada1.BLL;
+using ProyectoFinalAplicada1.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,11 +19,12 @@ namespace ProyectoFinalAplicada1.UI
     /// </summary>
     public partial class Login : Window
     {
-
         MainWindow Principal = new MainWindow();
+        
         public Login()
         {
             InitializeComponent();
+            
         }
 
         //Metodo
@@ -31,12 +33,13 @@ namespace ProyectoFinalAplicada1.UI
             base.OnClosed(e);
 
             Application.Current.Shutdown();
-        }*/
+        }
+        */
 
         private void IngresarButton_Click(object sender, RoutedEventArgs e)
         {
             bool paso = UsuariosBLL.Validar(NombreUsuarioTextBox.Text, ContrasenaPasswordBox.Password);
-
+            
             if (paso)
             {
                 this.Close();

@@ -25,6 +25,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
         {
             InitializeComponent();
             this.DataContext = usuarios;
+
         }
 
         private void Limpiar()

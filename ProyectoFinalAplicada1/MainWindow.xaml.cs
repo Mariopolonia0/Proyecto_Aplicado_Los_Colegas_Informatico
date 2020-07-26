@@ -1,4 +1,5 @@
-﻿using ProyectoFinalAplicada1.UI.Consultas;
+﻿using ProyectoFinalAplicada1.Entidades;
+using ProyectoFinalAplicada1.UI.Consultas;
 using ProyectoFinalAplicada1.UI.Registro;
 using System;
 using System.Collections.Generic;
@@ -22,10 +23,12 @@ namespace ProyectoFinalAplicada1
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
 
             InitializeComponent();
+           
         }
 
         private void UsuariosMenuItem_Click(object sender, RoutedEventArgs e)
