@@ -36,7 +36,7 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <ComboBox Name="SuplidorIdComboBox" Width="264" Height="20" Margin="5,0" HorizontalAlignment="Left"/>
+                <ComboBox Name="SuplidorComboBox" Width="264" Height="20" Margin="5,0" HorizontalAlignment="Left"/>
 
             </StackPanel>
 
