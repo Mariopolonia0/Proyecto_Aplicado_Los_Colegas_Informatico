@@ -1,20 +1,19 @@
-﻿<Window x:Class="ProyectoFinalAplicada1.UI.Registro.rProductos"
+﻿<Window x:Class="ProyectoFinalAplicada1.UI.Registro.rCategorias"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
         mc:Ignorable="d"
-        Icon="/Resources/producto.png"
-        Title="Registro Productos" Height="540" Width="350" FontSize="14">
+        Title="Registro Categorias" Height="285" Width="295">
     <Grid>
 
         <StackPanel Orientation="Vertical" Margin="4,0,4,0">
             <StackPanel Orientation="Vertical">
-                <Label Content="Producto Id:"/>
+                <Label Content="CategoriaId:"/>
                 <!-- -->
                 <StackPanel Orientation="Horizontal">
-                    <TextBox x:Name="ProductoIdTextBox" Text="{Binding ProductoId}" Width="100" Height="18"/>
+                    <TextBox x:Name="CategoriaIdTextBox" Text="{Binding CategoriaId}" Width="100" Height="18"/>
                     <Button x:Name="BuscarButton" Margin="6,0" Click="BuscarButton_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Resources/Buscar.png" Height="20"/>
@@ -24,32 +23,15 @@
                 </StackPanel>
 
                 <!---->
+                <Label Content="Nombre:"/>
+                <TextBox x:Name="NombreTextBox" Text="{Binding Nombre}"/>
+
+                <Label Content="Estado:"/>
+                <TextBox x:Name="EstadoTextBox" Text="{Binding Estado}"/>
+
                 <Label Content="Descripcion:"/>
                 <TextBox x:Name="DescripcionTextBox" Text="{Binding Descripcion}" />
 
-                <Label Content="Fecha:"/>
-                <DatePicker Name="FechaDatePicker" Width="327" Height="20" SelectedDate="{Binding Fecha}" Margin="0,0" Padding="-1" HorizontalAlignment="Left"/>
-
-                <Label Content="Categoria"/>
-                <StackPanel Orientation="Horizontal">
-                <ComboBox Name="CategoriaIdComboBox" Width="200" Height="25" Margin="5,0" HorizontalAlignment="Left"/>
-
-            </StackPanel>
-
-            <Label Content="Precio:"/>
-                <TextBox x:Name="PrecioTextBox" Text="{Binding Precio}"/>
-
-                <Label Content="ITBIS:"/>
-                <TextBox x:Name="ITBISTextBox" Text="{Binding ITBIS}"/>
-
-                <Label Content="Cantidad:"/>
-                <TextBox x:Name="CantidadTextBox" Text="{Binding Cantidad}"/>
-
-                <Label Content="Costo:"/>
-                <TextBox x:Name="CostoTextBox" Text="{Binding Costo}"/>
-
-                <Label Content="Ganancia:"/>
-                <TextBox x:Name="GananciaTextBox" Text="{Binding Ganancia}"/>
             </StackPanel>
 
 
@@ -76,6 +58,7 @@
                 </Button>
             </StackPanel>
         </StackPanel>
+
 
     </Grid>
 </Window>

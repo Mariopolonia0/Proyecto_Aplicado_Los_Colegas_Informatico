@@ -66,5 +66,11 @@ namespace ProyectoFinalAplicada1
             rVentas ventas = new rVentas();
             ventas.Show();
         }
+
+        private void CategoriasMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            rCategorias categorias = new rCategorias();
+            categorias.Show();
+        }
     }
 }

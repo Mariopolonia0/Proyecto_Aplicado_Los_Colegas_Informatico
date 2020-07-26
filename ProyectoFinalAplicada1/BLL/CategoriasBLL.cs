@@ -9,8 +9,9 @@ using System.Text;
 
 namespace ProyectoFinalAplicada1.BLL
 {
-    public class VendedoresBLL
+    public class CategoriasBLL
     {
+        //Metodo Existe.
         public static bool Existe(int id)
         {
             Contexto contexto = new Contexto();
@@ -18,7 +19,7 @@ namespace ProyectoFinalAplicada1.BLL
 
             try
             {
-                encontrado = contexto.Vendedores.Any(v => v.VendedorId == id);
+                encontrado = contexto.Categorias.Any(c => c.CategoriaId == id);
             }
             catch (Exception)
             {
@@ -32,14 +33,15 @@ namespace ProyectoFinalAplicada1.BLL
             return encontrado;
         }
 
-        private static bool Insertar(Vendedores vendedores)
+        //Metodo Insertar.
+        private static bool Insertar(Categorias categorias)
         {
             bool key = false;
             Contexto contexto = new Contexto();
 
             try
             {
-                contexto.Vendedores.Add(vendedores);
+                contexto.Categorias.Add(categorias);
                 key = contexto.SaveChanges() > 0;
             }
             catch (Exception)
@@ -54,7 +56,8 @@ namespace ProyectoFinalAplicada1.BLL
             return key;
         }
 
-        private static bool Modificar(Vendedores vendedores)
+        //Metodo Modificar.
+        private static bool Modificar(Categorias categorias)
         {
             bool key = false;
             Contexto contexto = new Contexto();
@@ -62,7 +65,7 @@ namespace ProyectoFinalAplicada1.BLL
             try
             {
 
-                contexto.Entry(vendedores).State = EntityState.Modified;
+                contexto.Entry(categorias).State = EntityState.Modified;
                 key = contexto.SaveChanges() > 0;
             }
             catch (Exception)
@@ -77,18 +80,20 @@ namespace ProyectoFinalAplicada1.BLL
             return key;
         }
 
-        public static bool Guardar(Vendedores vendedores)
+        //Metodo Guardar.
+        public static bool Guardar(Categorias categorias)
         {
-            if (!Existe(vendedores.VendedorId))
+            if (!Existe(categorias.CategoriaId))
             {
-                return Insertar(vendedores);
+                return Insertar(categorias);
             }
             else
             {
-                return Modificar(vendedores);
+                return Modificar(categorias);
             }
         }
 
+        //Metodo Eliminar.
         public static bool Eliminar(int id)
         {
             bool key = false;
@@ -96,11 +101,11 @@ namespace ProyectoFinalAplicada1.BLL
 
             try
             {
-                var vendedores = contexto.Vendedores.Find(id);
+                var categorias = contexto.Categorias.Find(id);
 
-                if (vendedores != null)
+                if (categorias != null)
                 {
-                    contexto.Vendedores.Remove(vendedores);
+                    contexto.Categorias.Remove(categorias);
                     key = contexto.SaveChanges() > 0;
                 }
             }
@@ -116,14 +121,15 @@ namespace ProyectoFinalAplicada1.BLL
             return key;
         }
 
-        public static Vendedores Buscar(int id)
+        //Metodo Buscar.
+        public static Categorias Buscar(int id)
         {
             Contexto contexto = new Contexto();
-            Vendedores vendedores;
+            Categorias categorias;
 
             try
             {
-                vendedores = contexto.Vendedores.Find(id);
+                categorias = contexto.Categorias.Find(id);
 
             }
             catch (Exception)
@@ -135,20 +141,21 @@ namespace ProyectoFinalAplicada1.BLL
                 contexto.Dispose();
             }
 
-            return vendedores;
+            return categorias;
         }
 
-        public static List<Vendedores> GetList(Expression<Func<Vendedores, bool>> criterio)
+        public static List<Categorias> GetCategorias()
         {
-            List<Vendedores> lista = new List<Vendedores>();
             Contexto contexto = new Contexto();
+            List<Categorias> categorias = new List<Categorias>();
 
             try
             {
-                lista = contexto.Vendedores.Where(criterio).ToList();
+                categorias = contexto.Categorias.ToList();
             }
             catch (Exception)
             {
+
                 throw;
             }
             finally
@@ -156,7 +163,8 @@ namespace ProyectoFinalAplicada1.BLL
                 contexto.Dispose();
             }
 
-            return lista;
+            return categorias;
         }
+
     }
 }

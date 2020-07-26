@@ -8,6 +8,21 @@ namespace ProyectoFinalAplicada1.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Categorias",
+                columns: table => new
+                {
+                    CategoriaId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Nombre = table.Column<string>(nullable: true),
+                    Estado = table.Column<string>(nullable: true),
+                    Descripcion = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Categorias", x => x.CategoriaId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Clientes",
                 columns: table => new
                 {
@@ -49,6 +64,23 @@ namespace ProyectoFinalAplicada1.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Facturas",
+                columns: table => new
+                {
+                    FacturaId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Fecha = table.Column<DateTime>(nullable: false),
+                    ClienteID = table.Column<int>(nullable: false),
+                    VendedorId = table.Column<int>(nullable: false),
+                    Total = table.Column<double>(nullable: false),
+                    UsuarioID = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Facturas", x => x.FacturaId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Productos",
                 columns: table => new
                 {
@@ -61,7 +93,8 @@ namespace ProyectoFinalAplicada1.Migrations
                     Costo = table.Column<double>(nullable: false),
                     Ganancia = table.Column<double>(nullable: false),
                     UsuarioId = table.Column<int>(nullable: false),
-                    Cantidad = table.Column<int>(nullable: false)
+                    Cantidad = table.Column<int>(nullable: false),
+                    CategoriaId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -82,6 +115,21 @@ namespace ProyectoFinalAplicada1.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Usuarios", x => x.UsuarioId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Vendedores",
+                columns: table => new
+                {
+                    VendedorId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Nombres = table.Column<string>(nullable: true),
+                    Apellidos = table.Column<string>(nullable: true),
+                    UsuarioId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Vendedores", x => x.VendedorId);
                 });
 
             migrationBuilder.CreateTable(
@@ -186,16 +234,25 @@ namespace ProyectoFinalAplicada1.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Categorias");
+
+            migrationBuilder.DropTable(
                 name: "Clientes");
 
             migrationBuilder.DropTable(
                 name: "ComprasDetalles");
 
             migrationBuilder.DropTable(
+                name: "Facturas");
+
+            migrationBuilder.DropTable(
                 name: "Productos");
 
             migrationBuilder.DropTable(
                 name: "UsuarioDetalle");
+
+            migrationBuilder.DropTable(
+                name: "Vendedores");
 
             migrationBuilder.DropTable(
                 name: "VentasDetalles");

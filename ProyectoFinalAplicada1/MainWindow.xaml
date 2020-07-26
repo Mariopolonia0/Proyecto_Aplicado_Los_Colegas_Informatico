@@ -47,7 +47,7 @@
                             <Image Source="/Resources/vendedores.png" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem x:Name="CategoriasMenuItem" Header="Categorias"  />
+                    <MenuItem x:Name="CategoriasMenuItem" Header="Categorias" Click="CategoriasMenuItem_Click" />
 
                 </MenuItem>
 

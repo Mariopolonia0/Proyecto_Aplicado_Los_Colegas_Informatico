@@ -29,7 +29,7 @@
                 <!--, Mode=TwoWay, ValidatesOnExceptions=True-->
 
                 <Label Content="Apellidos:"/>
-                <TextBox x:Name="ApellidosTextBox" Text="{Binding Apellido}" />
+                <TextBox x:Name="ApellidosTextBox" Text="{Binding Apellidos}" />
 
             </StackPanel>
             <StackPanel Orientation="Horizontal" >
