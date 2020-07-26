@@ -26,8 +26,9 @@ namespace ProyectoFinalAplicada1.UI.Registro
             InitializeComponent();
             this.DataContext = productos;
             ProductoIdTextBox.Text = "0";
-
             CategoriaIdComboBox.ItemsSource = CategoriasBLL.GetCategorias();
+            CategoriaIdComboBox.SelectedValuePath = "Categoria";
+            CategoriaIdComboBox.DisplayMemberPath = "Nombre";
         }
 
         private void Limpiar()
@@ -127,6 +128,26 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 MessageBox.Show("Cantidad está vacia", "Fallo",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 CantidadTextBox.Focus();
+                GuardarButton.IsEnabled = true;
+            }
+
+            if (CategoriaIdComboBox.Text.Length == 0)
+            {
+                esValido = false;
+                GuardarButton.IsEnabled = false;
+                MessageBox.Show("Categoria está vacia", "Fallo",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                CategoriaIdComboBox.Focus();
+                GuardarButton.IsEnabled = true;
+            }
+
+            if (FechaDatePicker.Text.Length == 0)
+            {
+                esValido = false;
+                GuardarButton.IsEnabled = false;
+                MessageBox.Show("Fecha está vacia", "Fallo",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                FechaDatePicker.Focus();
                 GuardarButton.IsEnabled = true;
             }
 

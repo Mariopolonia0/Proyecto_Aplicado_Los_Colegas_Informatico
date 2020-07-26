@@ -26,6 +26,10 @@ namespace ProyectoFinalAplicada1.UI.Registro
             this.DataContext = clientes;
             ClienteIdTextBox.Text = "0";
             this.clientes.UsuarioId = 1;
+            SexoComboBox.ItemsSource = ClientesBLL.GetClientes();
+            SexoComboBox.SelectedValuePath = "Clientes";
+            SexoComboBox.DisplayMemberPath = "Sexo";
+
         }
         //
         private bool Existe()
@@ -48,6 +52,8 @@ namespace ProyectoFinalAplicada1.UI.Registro
             TelefonoTextBox.Text = string.Empty;
             CedulaTextBox.Text = string.Empty;
             DireccionTextBox.Text = string.Empty;
+            SexoComboBox.SelectedItem = null;
+
             //UsuarioIdTextBox.Text = "0";
         }
         //
@@ -115,13 +121,13 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 GuardarButton.IsEnabled = true;
             }
 
-            if (SexoTextBox.Text.Length == 0)
+            if (SexoComboBox.Text.Length == 0)
             {
                 esValido = false;
                 GuardarButton.IsEnabled = false;
                 MessageBox.Show("Sexo está vacia", "Fallo",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
-                SexoTextBox.Focus();
+                SexoComboBox.Focus();
                 GuardarButton.IsEnabled = true;
             }
 
@@ -135,6 +141,8 @@ namespace ProyectoFinalAplicada1.UI.Registro
             if (clientes != null)
             {
                 this.clientes = clientes;
+                /*SexoComboBox.SelectedValuePath = "Clientes";
+                SexoComboBox.DisplayMemberPath = "Sexo";*/
             }
             else
             {

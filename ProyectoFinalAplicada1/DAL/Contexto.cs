@@ -14,7 +14,7 @@ namespace ProyectoFinalAplicada1.DAL
         public DbSet<Productos> Productos { get; set; }
         public DbSet<Compras> Compras { get; set; }
         public DbSet<Clientes> Clientes { get; set; }
-        public DbSet<Facturas> Facturas { get; set; }
+       // public DbSet<Facturas> Facturas { get; set; }
         public DbSet<Vendedores> Vendedores { get; set; }
         public DbSet<Categorias> Categorias { get; set; }
 
@@ -25,6 +25,9 @@ namespace ProyectoFinalAplicada1.DAL
         //
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Clientes>().HasData(new Clientes {  Sexo = "Masculino", ClienteId =-1 });
+            modelBuilder.Entity<Clientes>().HasData(new Clientes {  Sexo = "Femenino" ,ClienteId =-2});
+
             modelBuilder.Entity<Usuarios>().HasData(new Usuarios
             {
                 UsuarioId = 1,

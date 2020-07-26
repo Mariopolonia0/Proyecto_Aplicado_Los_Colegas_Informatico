@@ -41,9 +41,11 @@
 
                 <Label Content="Direccion:"/>
                 <TextBox x:Name="DireccionTextBox" Text="{Binding Direccion}"/>
+            </StackPanel>
 
-                <Label Content="Sexo:"/>
-                <TextBox x:Name="SexoTextBox" Text="{Binding Sexo}"/>
+            <Label Content="Sexo:"/>
+            <StackPanel Orientation="Horizontal">
+                <ComboBox Name="SexoComboBox" Width="100" Height="25" Margin="5,0" HorizontalAlignment="Left"/>
             </StackPanel>
 
 

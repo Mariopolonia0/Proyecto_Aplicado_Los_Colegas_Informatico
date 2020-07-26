@@ -64,23 +64,6 @@ namespace ProyectoFinalAplicada1.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Facturas",
-                columns: table => new
-                {
-                    FacturaId = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Fecha = table.Column<DateTime>(nullable: false),
-                    ClienteID = table.Column<int>(nullable: false),
-                    VendedorId = table.Column<int>(nullable: false),
-                    Total = table.Column<double>(nullable: false),
-                    UsuarioID = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Facturas", x => x.FacturaId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Productos",
                 columns: table => new
                 {
@@ -216,6 +199,16 @@ namespace ProyectoFinalAplicada1.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Clientes",
+                columns: new[] { "ClienteId", "Apellidos", "Cedula", "Direccion", "Email", "Nombres", "Sexo", "Telefono", "UsuarioId" },
+                values: new object[] { -1, null, "", "", "", "", "Masculino", "", 0 });
+
+            migrationBuilder.InsertData(
+                table: "Clientes",
+                columns: new[] { "ClienteId", "Apellidos", "Cedula", "Direccion", "Email", "Nombres", "Sexo", "Telefono", "UsuarioId" },
+                values: new object[] { -2, null, "", "", "", "", "Femenino", "", 0 });
+
+            migrationBuilder.InsertData(
                 table: "Usuarios",
                 columns: new[] { "UsuarioId", "Apellidos", "Contrasena", "NombreUsuario", "Nombres" },
                 values: new object[] { 1, "Fermin.", "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5", "COD1", "Eladio." });
@@ -241,9 +234,6 @@ namespace ProyectoFinalAplicada1.Migrations
 
             migrationBuilder.DropTable(
                 name: "ComprasDetalles");
-
-            migrationBuilder.DropTable(
-                name: "Facturas");
 
             migrationBuilder.DropTable(
                 name: "Productos");

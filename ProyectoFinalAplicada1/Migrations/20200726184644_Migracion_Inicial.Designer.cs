@@ -9,7 +9,7 @@ using ProyectoFinalAplicada1.DAL;
 namespace ProyectoFinalAplicada1.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200726162219_Migracion_Inicial")]
+    [Migration("20200726184644_Migracion_Inicial")]
     partial class Migracion_Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -71,6 +71,30 @@ namespace ProyectoFinalAplicada1.Migrations
                     b.HasKey("ClienteId");
 
                     b.ToTable("Clientes");
+
+                    b.HasData(
+                        new
+                        {
+                            ClienteId = -1,
+                            Cedula = "",
+                            Direccion = "",
+                            Email = "",
+                            Nombres = "",
+                            Sexo = "Masculino",
+                            Telefono = "",
+                            UsuarioId = 0
+                        },
+                        new
+                        {
+                            ClienteId = -2,
+                            Cedula = "",
+                            Direccion = "",
+                            Email = "",
+                            Nombres = "",
+                            Sexo = "Femenino",
+                            Telefono = "",
+                            UsuarioId = 0
+                        });
                 });
 
             modelBuilder.Entity("ProyectoFinalAplicada1.Entidades.Compras", b =>
@@ -140,32 +164,6 @@ namespace ProyectoFinalAplicada1.Migrations
                     b.HasIndex("CompraId");
 
                     b.ToTable("ComprasDetalles");
-                });
-
-            modelBuilder.Entity("ProyectoFinalAplicada1.Entidades.Facturas", b =>
-                {
-                    b.Property<int>("FacturaId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ClienteID")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("Fecha")
-                        .HasColumnType("TEXT");
-
-                    b.Property<double>("Total")
-                        .HasColumnType("REAL");
-
-                    b.Property<int>("UsuarioID")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("VendedorId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("FacturaId");
-
-                    b.ToTable("Facturas");
                 });
 
             modelBuilder.Entity("ProyectoFinalAplicada1.Entidades.Productos", b =>

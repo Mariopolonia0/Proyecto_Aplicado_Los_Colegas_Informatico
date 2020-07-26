@@ -2,6 +2,7 @@
 using ProyectoFinalAplicada1.DAL;
 using ProyectoFinalAplicada1.Entidades;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -11,7 +12,6 @@ namespace ProyectoFinalAplicada1.BLL
 {
     public class ClientesBLL
     {
-
         public static bool Guardar(Clientes clientes)
         {
             bool paso = false;
@@ -53,6 +53,11 @@ namespace ProyectoFinalAplicada1.BLL
             }
 
             return clientes;
+        }
+
+        internal static IEnumerable GetList(Clientes clientes)
+        {
+            throw new NotImplementedException();
         }
 
         public static bool Modificar(Clientes clientes)
@@ -97,23 +102,26 @@ namespace ProyectoFinalAplicada1.BLL
             return paso;
         }
 
-        public static List<Clientes> GetList(Expression<Func<Clientes, bool>> clientes)
+        public static List<Clientes> GetClientes()
         {
-            List<Clientes> lista = new List<Clientes>();
             Contexto contexto = new Contexto();
+            List<Clientes> clientes = new List<Clientes>();
+
             try
             {
-                lista = contexto.Clientes.Where(clientes).ToList();
+                clientes = contexto.Clientes.ToList();
             }
             catch (Exception)
             {
+
                 throw;
             }
             finally
             {
                 contexto.Dispose();
             }
-            return lista;
+
+            return clientes;
         }
 
     }
