@@ -54,5 +54,11 @@ namespace ProyectoFinalAplicada1
             rVendedores vendedores = new rVendedores();
             vendedores.Show();
         }
+
+        private void ProductosMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            rProductos productos = new rProductos();
+            productos.Show();
+        }
     }
 }

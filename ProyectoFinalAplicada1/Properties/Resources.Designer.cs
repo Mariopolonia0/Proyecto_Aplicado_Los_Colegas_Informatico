@@ -79,5 +79,15 @@ namespace ProyectoFinalAplicada1.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Nuevo {
+            get {
+                object obj = ResourceManager.GetObject("Nuevo", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
