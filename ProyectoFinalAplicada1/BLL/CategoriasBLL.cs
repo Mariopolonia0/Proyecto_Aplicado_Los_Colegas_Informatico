@@ -144,17 +144,18 @@ namespace ProyectoFinalAplicada1.BLL
             return categorias;
         }
 
-        public static List<Categorias> GetList(Expression<Func<Categorias, bool>> criterio)
+        public static List<Categorias> GetCategorias()
         {
-            List<Categorias> lista = new List<Categorias>();
             Contexto contexto = new Contexto();
+            List<Categorias> categorias = new List<Categorias>();
 
             try
             {
-                lista = contexto.Categorias.Where(criterio).ToList();
+                categorias = contexto.Categorias.ToList();
             }
             catch (Exception)
             {
+
                 throw;
             }
             finally
@@ -162,7 +163,7 @@ namespace ProyectoFinalAplicada1.BLL
                 contexto.Dispose();
             }
 
-            return lista;
+            return categorias;
         }
 
     }

@@ -26,6 +26,8 @@ namespace ProyectoFinalAplicada1.UI.Registro
             InitializeComponent();
             this.DataContext = productos;
             ProductoIdTextBox.Text = "0";
+
+            CategoriaIdComboBox.ItemsSource = CategoriasBLL.GetCategorias();
         }
 
         private void Limpiar()
@@ -35,7 +37,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
             CantidadTextBox.Text = "0";
             PrecioTextBox.Text = "0";
             CostoTextBox.Text = "0";
-            
+            CategoriaIdComboBox.SelectedItem = null;
         }
 
         private bool Existe()

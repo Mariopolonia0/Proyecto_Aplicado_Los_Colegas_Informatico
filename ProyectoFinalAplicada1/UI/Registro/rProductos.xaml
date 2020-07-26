@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
         mc:Ignorable="d"
         Icon="/Resources/producto.png"
-        Title="Registro Productos" Height="510" Width="350" FontSize="14">
+        Title="Registro Productos" Height="540" Width="350" FontSize="14">
     <Grid>
 
         <StackPanel Orientation="Vertical" Margin="4,0,4,0">
@@ -30,7 +30,13 @@
                 <Label Content="Fecha:"/>
                 <DatePicker Name="FechaDatePicker" Width="327" Height="20" SelectedDate="{Binding Fecha}" Margin="0,0" Padding="-1" HorizontalAlignment="Left"/>
 
-                <Label Content="Precio:"/>
+                <Label Content="Categoria"/>
+                <StackPanel Orientation="Horizontal">
+                <ComboBox Name="CategoriaIdComboBox" Width="200" Height="25" Margin="5,0" HorizontalAlignment="Left"/>
+
+            </StackPanel>
+
+            <Label Content="Precio:"/>
                 <TextBox x:Name="PrecioTextBox" Text="{Binding Precio}"/>
 
                 <Label Content="ITBIS:"/>
