@@ -28,14 +28,12 @@
                         </MenuItem.Icon>
                     </MenuItem>
 
-                    <MenuItem x:Name="FacturasMenuItem" Header="Facturas" Click="FacturasMenuItem_Click" >
+                    <MenuItem x:Name="VentasMenuItem" Header="Ventas" Click="VentasMenuItem_Click"  >
                         <MenuItem.Icon>
-                            <Image Source="/Resources/Factura.png"/>
+                            <Image Source="/Resources/Venta.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                     
-                    
-                    <MenuItem x:Name="VentasMenuItem" Header="Ventas"  />
                     <MenuItem x:Name="ComprasMenuItem" Header="Compras"  />
                     <MenuItem x:Name="ProductosMenuItem" Header="Productos" Click="ProductosMenuItem_Click">
                         <MenuItem.Icon>

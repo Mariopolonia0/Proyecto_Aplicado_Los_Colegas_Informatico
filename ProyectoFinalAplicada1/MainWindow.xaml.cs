@@ -61,10 +61,10 @@ namespace ProyectoFinalAplicada1
             productos.Show();
         }
 
-        private void FacturasMenuItem_Click(object sender, RoutedEventArgs e)
+        private void VentasMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            rFacturas facturas = new rFacturas();
-            facturas.Show();
+            rVentas ventas = new rVentas();
+            ventas.Show();
         }
     }
 }
