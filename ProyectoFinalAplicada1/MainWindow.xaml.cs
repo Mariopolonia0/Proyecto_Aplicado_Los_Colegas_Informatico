@@ -72,5 +72,35 @@ namespace ProyectoFinalAplicada1
             rCategorias categorias = new rCategorias();
             categorias.Show();
         }
+
+        /*private void ProductoMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            cProductos productos = new cProductos();
+            productos.Show();
+        }
+        */
+        private void VendedoresMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            cVendedores vendedores = new cVendedores();
+            vendedores.Show();
+        }
+
+        private void CategoriaMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            cCategorias categorias = new cCategorias();
+            categorias.Show();
+        }
+
+        private void ClientesMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            cClientes clientes = new cClientes();
+            clientes.Show();
+        }
+
+        private void ProductoMenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            cProductos cproductos = new cProductos();
+            cproductos.Show();
+        }
     }
 }

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
         mc:Ignorable="d"
         Icon="/Resources/Cliente.png"
-        Title="Registro Cliente" Height="450" Width="350">
+        Title="Registro Cliente" Height="470" Width="350">
     <Grid>
         
         <StackPanel Orientation="Vertical" Margin="4,0,4,0">

@@ -175,7 +175,7 @@ namespace ProyectoFinalAplicada1.BLL
         }
 
         //Metodo para validar Usuario y contraseña en el Login.
-        public static bool Validar(string nombreusuario, string contrasena)
+        public static bool Autorizar(string nombreusuario, string contrasena)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
