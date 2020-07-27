@@ -38,7 +38,7 @@ namespace ProyectoFinalAplicada1.UI
 
         private void IngresarButton_Click(object sender, RoutedEventArgs e)
         {
-            bool paso = UsuariosBLL.Validar(NombreUsuarioTextBox.Text, ContrasenaPasswordBox.Password);
+            bool paso = UsuariosBLL.Autorizar(NombreUsuarioTextBox.Text, ContrasenaPasswordBox.Password);
             
             if (paso)
             {
