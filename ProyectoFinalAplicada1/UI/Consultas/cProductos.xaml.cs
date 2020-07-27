@@ -37,8 +37,11 @@ namespace ProyectoFinalAplicada1.UI.Consultas
                         break;
 
                     case 1: //Descripcion                       
-                        listado = ProductosBLL.GetList(d => d.Descripcion.Contains(CriterioTextBox.Text, StringComparison.OrdinalIgnoreCase));
+                        listado = ProductosBLL.GetList(p => p.Descripcion.Contains(CriterioTextBox.Text, StringComparison.OrdinalIgnoreCase));
                         break;
+                   /* case 2: //Precio                       
+                        listado = ProductosBLL.GetList(p => p.Precio
+                        break;*/
                 }
             }
             else
@@ -46,11 +49,8 @@ namespace ProyectoFinalAplicada1.UI.Consultas
                 listado = ProductosBLL.GetList(c => true);
             }
 
-            if (DesdeDataPicker.SelectedDate != null)
-                listado = ProductosBLL.GetList(c => c.FechaEntrada.Date >= DesdeDataPicker.SelectedDate);
-
-            /*if (HastaDatePicker.SelectedDate != null)
-                listado = ProductosBLL.GetList(c => c.FechaIngreso.Date <= HastaDatePicker.SelectedDate);*/
+            if (EntradaDatePicker.SelectedDate != null)
+                listado = ProductosBLL.GetList(c => c.FechaEntrada.Date >= EntradaDatePicker.SelectedDate);
 
             DatosDataGrid.ItemsSource = null;
             DatosDataGrid.ItemsSource = listado;
