@@ -176,8 +176,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
             }
 
             return esValido;
-        }
-
-        
+        }  
     }
 }

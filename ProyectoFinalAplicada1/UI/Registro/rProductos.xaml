@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
         mc:Ignorable="d"
         Icon="/Resources/producto.png"
-        Title="Registro Productos" Height="540" Width="350" FontSize="14">
+        Title="Registro Productos" Height="591" Width="350" FontSize="14">
     <Grid>
 
         <StackPanel Orientation="Vertical" Margin="4,0,4,0">
@@ -32,31 +32,46 @@
 
                 <Label Content="Categoria"/>
                 <StackPanel Orientation="Horizontal">
-                    <ComboBox Name="CategoriaIdComboBox" Width="321" Height="25" Margin="5,0"  >
-                        
-                    </ComboBox>
-
+                    <ComboBox Name="CategoriaIdComboBox" Width="321" Height="25" Margin="5,0"  />
                 </StackPanel>
 
                 <Label Content="Precio:"/>
                 <TextBox x:Name="PrecioTextBox" Text="{Binding Precio}"/>
+                
+                <Label Content="Ganancia:"/>
+                <ComboBox x:Name="GananciaComboBox" SelectedIndex="0" SelectionChanged="GananciaComboBox_SelectionChanged"  >
+                    <ComboBoxItem  Content="Seleccione opcion"/>
+                    <ComboBoxItem  Content="75%"/>
+                    <ComboBoxItem  Content="50%"/>
+                    <ComboBoxItem  Content="30%"/>
+                    <ComboBoxItem  Content="0%" />
+
+                </ComboBox>
+
+                
 
                 <Label Content="ITBIS:"/>
-                <TextBox x:Name="ITBISTextBox" Text="{Binding ITBIS}" TextChanged="ITBISTextBox_TextChanged" />
+                <ComboBox x:Name="ITBISComboBox" SelectedIndex="0" SelectionChanged="ITBISComboBox_SelectionChanged" >
+                    <ComboBoxItem  Content="Seleccione opcion"/>
+                    <ComboBoxItem  Content="18%"/>
+                    <ComboBoxItem  Content="10%"/>
+                    <ComboBoxItem  Content="0%" />
+
+                </ComboBox>
 
                 <Label Content="Cantidad:"/>
                 <TextBox x:Name="CantidadTextBox" Text="{Binding Cantidad}"/>
 
                 <Label Content="Costo:"/>
-                <Label x:Name="CostoLabel" />
+                <!--TextBlock x:Name="CostoTextBlock"  Text="{Binding Costo}" /-->
+                <Label x:Name="CostoLabel" Content="{Binding Costo}" Height="40" />
                 <!--TextBox x:Name="CostoTextBox" Text="{Binding Costo}"/-->
 
-                <Label Content="Ganancia:"/>
-                <TextBox x:Name="GananciaTextBox" Text="{Binding Ganancia}"/>
+                
             </StackPanel>
 
 
-            <StackPanel Orientation="Horizontal" Margin="0,15">
+            <StackPanel Orientation="Horizontal" Margin="0,15" Width="299">
                 <Button x:Name="NuevoButton" Click="NuevoButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Nuevo.png" Height="20"/>
