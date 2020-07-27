@@ -9,8 +9,8 @@ using ProyectoFinalAplicada1.DAL;
 namespace ProyectoFinalAplicada1.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200727035351_Migracion Inicia")]
-    partial class MigracionInicia
+    [Migration("20200727171937_Inicial Migracion")]
+    partial class InicialMigracion
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -280,6 +280,9 @@ namespace ProyectoFinalAplicada1.Migrations
                 {
                     b.Property<int>("VentaId")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Cantidad")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("ClienteId")

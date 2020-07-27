@@ -18,6 +18,7 @@ namespace ProyectoFinalAplicada1.Entidades
         public double GananciaTotal { get; set; }
         public double ITBISTotal { get; set; }
         public double CostoTotal { get; set; }
+        public int Cantidad { get; set; }
 
         [ForeignKey("VentaId")]
         public virtual List<VentasDetalles> VentaDetalle { get; set; }
@@ -32,6 +33,7 @@ namespace ProyectoFinalAplicada1.Entidades
             GananciaTotal = 0;
             ITBISTotal = 0;
             CostoTotal = 0;
+            Cantidad = 0;
             VentaDetalle = new List<VentasDetalles>();
         }
 

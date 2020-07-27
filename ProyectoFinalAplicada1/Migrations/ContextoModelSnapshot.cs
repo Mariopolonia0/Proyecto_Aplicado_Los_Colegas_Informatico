@@ -280,6 +280,9 @@ namespace ProyectoFinalAplicada1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("ClienteId")
                         .HasColumnType("INTEGER");
 

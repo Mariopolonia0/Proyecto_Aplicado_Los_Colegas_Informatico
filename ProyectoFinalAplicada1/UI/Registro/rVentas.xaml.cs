@@ -72,10 +72,12 @@ namespace ProyectoFinalAplicada1.UI.Registro
         private void Limpiar()
         {
             VentaIdTextBox.Text = "0";
-           // NombresTextBox.Text = string.Empty;
-           // ApellidosTextBox.Text = string.Empty;
+            ClienteIdTextBox.Text = string.Empty;
+            ProductoIdTextBox.Text = string.Empty;
            // UsuarioIdTextBox.Text = 0;
         }
+
+        
         private void Cargar()
         {
             this.DataContext = null;
@@ -87,6 +89,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
         {
             if (!Validar())
                 return;
+
             Productos producto = ProductosBLL.Buscar(Convert.ToInt32(ProductoIdTextBox.Text));
             venta.VentaDetalle.Add(new VentasDetalles(Convert.ToInt32(VentaIdTextBox.Text),producto.ProductoId, Convert.ToInt32(CantidadTextBox.Text),producto.Descripcion,producto.Precio,producto.ITBIS,producto.Ganancia,producto.Costo ));
             Cargar();
@@ -99,10 +102,10 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
             venta.ITBISTotal = venta.ITBISTotal + producto.ITBIS;
             ITBISTotalTextBox.Text = venta.ITBISTotal.ToString();
-            //hay que convertir la cantidad a entero parar calcular el total de los costos
-            //venta.CostoTotal = producto.Costo  +( venta.CostoTotal * Convert.ToInt32(ProductoIdTextBox.Text));
-            CostoTotalTextBox.Text = venta.CostoTotal.ToString();
 
+            venta.CostoTotal = (producto.Costo* venta.Cantidad) + venta.CostoTotal;
+            CostoTotalTextBox.Text = venta.CostoTotal.ToString();
+            CantidadTextBox.Text = "";
         }
 
         private void RemoverButton_Click(object sender, RoutedEventArgs e)
@@ -190,6 +193,13 @@ namespace ProyectoFinalAplicada1.UI.Registro
             }
 
             return esValido;
-        }  
+        }
+
+        private void NuevoButton_Click(object sender, RoutedEventArgs e)
+        {
+                Limpiar();
+        }
+
+
     }
 }
