@@ -25,7 +25,11 @@ namespace ProyectoFinalAplicada1.UI.Registro
             InitializeComponent();
             this.DataContext = venta;
             VentaIdTextBox.Text = "0";
-            venta.Monto = 0;
+            venta.CostoTotal = 0;
+            venta.GananciaTotal = 0;
+            venta.ITBISTotal = 0;
+            venta.PrecioTotal = 0;
+
         }
 
         private void ProductoIdTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -84,10 +88,20 @@ namespace ProyectoFinalAplicada1.UI.Registro
             if (!Validar())
                 return;
             Productos producto = ProductosBLL.Buscar(Convert.ToInt32(ProductoIdTextBox.Text));
-            venta.VentaDetalle.Add(new VentasDetalles(Convert.ToInt32(VentaIdTextBox.Text), Convert.ToInt32(ProductoIdTextBox.Text), Convert.ToInt32(CantidadTextBox.Text),producto.Descripcion,producto.Precio ));
+            venta.VentaDetalle.Add(new VentasDetalles(Convert.ToInt32(VentaIdTextBox.Text),producto.ProductoId, Convert.ToInt32(CantidadTextBox.Text),producto.Descripcion,producto.Precio,producto.ITBIS,producto.Ganancia,producto.Costo ));
             Cargar();
-            venta.Monto = venta.Monto + producto.Precio;
-            totalFacturaTextBox.Text = venta.Monto.ToString();
+
+            venta.PrecioTotal = venta.PrecioTotal + producto.Precio;
+            PrecioTotalTextBox.Text = venta.PrecioTotal.ToString();
+
+            venta.GananciaTotal = venta.GananciaTotal + producto.Ganancia;
+            GananciaTotalTextBox.Text = venta.GananciaTotal.ToString();
+
+            venta.ITBISTotal = venta.ITBISTotal + producto.ITBIS;
+            ITBISTotalTextBox.Text = venta.ITBISTotal.ToString();
+            //hay que convertir la cantidad a entero parar calcular el total de los costos
+            //venta.CostoTotal = producto.Costo  +( venta.CostoTotal * Convert.ToInt32(ProductoIdTextBox.Text));
+            CostoTotalTextBox.Text = venta.CostoTotal.ToString();
 
         }
 

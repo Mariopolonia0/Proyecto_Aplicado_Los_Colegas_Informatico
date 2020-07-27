@@ -15,6 +15,7 @@ namespace ProyectoFinalAplicada1.Entidades
         public string Descripcion { get; set; }
         public double Precio { get; set; }
         public double ITBIS { get; set; }
+        public double Ganancia { get; set; }
         public double Costo { get; set; }
 
         public VentasDetalles()
@@ -27,7 +28,7 @@ namespace ProyectoFinalAplicada1.Entidades
             Precio = 0;
             ITBIS = 0;
         }
-        public VentasDetalles(int ventaid, int productoid, int cantidad, string descripcion, double precio)
+        public VentasDetalles(int ventaid, int productoid, int cantidad, string descripcion,double precio,double itbis,double ganancia, double costo)
         {
             Id = 0;
             VentaId = ventaid;
@@ -35,8 +36,14 @@ namespace ProyectoFinalAplicada1.Entidades
             Cantidad = cantidad;
             Descripcion = descripcion;
             Precio = precio;
-            ITBIS = cantidad * precio;
-            Costo = precio + ITBIS;
+            ITBIS = itbis;
+            Ganancia = ganancia;
+            Costo = costo * cantidad;
+        }
+
+        public double costototal()
+        {
+            return this.Costo;
         }
 
     }

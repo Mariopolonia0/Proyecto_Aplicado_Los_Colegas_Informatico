@@ -264,7 +264,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 case 3:
                     productos.Ganancia = 0.30;
                     Costo = Convert.ToDouble(PrecioTextBox.Text) * 0.30;
-                    productos.Costo = productos.Costo + Costo;
+                    productos.Costo = productos.Precio + Costo;
                     CostoLabel.Content = productos.Costo.ToString();
                     break;
 

@@ -9,8 +9,8 @@ using ProyectoFinalAplicada1.DAL;
 namespace ProyectoFinalAplicada1.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200727012617_Primera migracion")]
-    partial class Primeramigracion
+    [Migration("20200727035351_Migracion Inicia")]
+    partial class MigracionInicia
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -285,10 +285,19 @@ namespace ProyectoFinalAplicada1.Migrations
                     b.Property<int>("ClienteId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<double>("CostoTotal")
+                        .HasColumnType("REAL");
+
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");
 
-                    b.Property<double>("Monto")
+                    b.Property<double>("GananciaTotal")
+                        .HasColumnType("REAL");
+
+                    b.Property<double>("ITBISTotal")
+                        .HasColumnType("REAL");
+
+                    b.Property<double>("PrecioTotal")
                         .HasColumnType("REAL");
 
                     b.Property<int>("UsuarioId")
@@ -313,6 +322,9 @@ namespace ProyectoFinalAplicada1.Migrations
 
                     b.Property<string>("Descripcion")
                         .HasColumnType("TEXT");
+
+                    b.Property<double>("Ganancia")
+                        .HasColumnType("REAL");
 
                     b.Property<double>("ITBIS")
                         .HasColumnType("REAL");

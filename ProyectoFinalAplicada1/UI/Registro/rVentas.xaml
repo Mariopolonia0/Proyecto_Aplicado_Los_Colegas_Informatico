@@ -82,6 +82,7 @@
                             <DataGridTextColumn Header="Cantidad"  Binding="{Binding Cantidad}"/>
                             <DataGridTextColumn Header="Descripción"  Binding="{Binding Descripcion}"/>
                             <DataGridTextColumn Header="Precio"  Binding="{Binding Precio}"/>
+                            <DataGridTextColumn Header="Ganancia"  Binding="{Binding Ganancia}"/>
                             <DataGridTextColumn Header="ITBIS" Binding="{Binding ITBIS}"/>
                             <DataGridTextColumn Header="Costo"  Binding="{Binding Costo}"/>
                         </DataGrid.Columns>
@@ -91,9 +92,20 @@
 
             </GroupBox>
 
-            <StackPanel Orientation="Vertical">
-                <Label Content="Monto Total"/>
-                <TextBox x:Name="totalFacturaTextBox" Text="{Binding Monto}" />
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Precio Total" Margin="10,0"/>
+                <Label Content="Ganancia Total" Margin="10,0"/>
+                <Label Content="ITBIS Total" Margin="10,0"/>
+                <Label Content="Coto Total" Margin="28,0"/>
+               
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"  Height="24">
+                <TextBox x:Name="PrecioTotalTextBox" Width="65" Margin="15,0"   />
+                <TextBox x:Name="GananciaTotalTextBox"  Width="77" Margin="12,0" />
+                <TextBox x:Name="ITBISTotalTextBox"  Width="77" Margin="18,0" />
+                <TextBox x:Name="CostoTotalTextBox"  Width="77" Margin="7,0" />
+                
+                
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Width="417" Height="55" >
