@@ -166,5 +166,25 @@ namespace ProyectoFinalAplicada1.BLL
             return categorias;
         }
 
+        public static List<Categorias> GetList(Expression<Func<Categorias, bool>> categorias)
+        {
+            List<Categorias> lista = new List<Categorias>();
+            Contexto contexto = new Contexto();
+            try
+            {
+                lista = contexto.Categorias.Where(categorias).ToList();
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return lista;
+        }
+
     }
 }

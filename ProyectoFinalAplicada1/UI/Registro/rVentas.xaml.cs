@@ -119,8 +119,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
             Cargar();
 
             CantidadTextBox.Clear();
-
-
             /*if (DetalleDataGrid.Items.Count > 1 && DetalleDataGrid.SelectedIndex < DetalleDataGrid.Items.Count - 1)
             {
                 venta.VentaDetalle.RemoveAt(DetalleDataGrid.SelectedIndex);

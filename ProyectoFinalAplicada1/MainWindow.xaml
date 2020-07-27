@@ -51,6 +51,7 @@
 
                 </MenuItem>
 
+                <!--Consultas-->
                 <MenuItem Header="Consultas" Height="35"  >
 
                     <MenuItem.Icon>
@@ -58,7 +59,16 @@
                     </MenuItem.Icon>
                     
                     <MenuItem x:Name="UsuarioMenuItem" Header="Consulta Usuarios"  Click="UsuarioMenuItem_Click"  />
-                     
+
+                    <MenuItem x:Name="ProductoMenuItem" Header="Consulta Productos" Click="ProductoMenuItem_Click_1"/>
+
+                    <MenuItem x:Name="VendedoresMenuItem" Header="Consulta Vendedores" Click="VendedoresMenuItem_Click"/>
+
+                    <MenuItem x:Name="CategoriaMenuItem" Header="Consulta Categorias" Click="CategoriaMenuItem_Click"/>
+
+                    <MenuItem x:Name="ClientesMenuItem" Header="Consulta Clientes" Click="ClientesMenuItem_Click"/>
+
+
                 </MenuItem>
 
                 <MenuItem Header="Ayuda" >
