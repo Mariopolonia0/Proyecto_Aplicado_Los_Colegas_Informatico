@@ -107,11 +107,22 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
         private void RemoverButton_Click(object sender, RoutedEventArgs e)
         {
-            if (DetalleDataGrid.Items.Count > 1 && DetalleDataGrid.SelectedIndex < DetalleDataGrid.Items.Count - 1)
+
+            if (DetalleDataGrid.SelectedIndex < 0)
+                return;
+
+            venta.VentaDetalle.RemoveAt(DetalleDataGrid.SelectedIndex);
+
+            Cargar();
+
+            CantidadTextBox.Clear();
+
+
+            /*if (DetalleDataGrid.Items.Count > 1 && DetalleDataGrid.SelectedIndex < DetalleDataGrid.Items.Count - 1)
             {
                 venta.VentaDetalle.RemoveAt(DetalleDataGrid.SelectedIndex);
                 Cargar();
-            }
+            }*/
         }
 
         private bool Validar()
@@ -168,17 +179,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 GuardarButton.IsEnabled = true;
             }
 
-
-            /* if (CategoriaIdComboBox.Text.Length == 0)
-             {
-                 esValido = false;
-                 GuardarButton.IsEnabled = false;
-                 MessageBox.Show("Categoria está vacia", "Fallo",
-                     MessageBoxButton.OK, MessageBoxImage.Warning);
-                 CategoriaIdComboBox.Focus();
-                 GuardarButton.IsEnabled = true;
-             }
-             */
             if (FechaDatePicker.Text.Length == 0)
             {
                 esValido = false;
