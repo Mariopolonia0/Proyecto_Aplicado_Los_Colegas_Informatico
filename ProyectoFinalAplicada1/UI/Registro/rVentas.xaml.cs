@@ -32,6 +32,19 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
         }
 
+        private void Limpiar()
+        {
+            VentaIdTextBox.Text = "0";
+            ClienteIdTextBox.Text = string.Empty;
+            ProductoIdTextBox.Text = string.Empty;
+            CantidadTextBox.Text = string.Empty;
+            DescripcionTextBox.Text = string.Empty;
+            PrecioTotalTextBox.Text = "0";
+            GananciaTotalTextBox.Text = "0";
+            ITBISTotalTextBox.Text = "0";
+            CostoTotalTextBox.Text = "0";   
+        }
+
         private void ProductoIdTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (ProductoIdTextBox.Text.Length == 0)
@@ -69,13 +82,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
             this.DataContext = this.venta;
         }
 
-        private void Limpiar()
-        {
-            VentaIdTextBox.Text = "0";
-            ClienteIdTextBox.Text = string.Empty;
-            ProductoIdTextBox.Text = string.Empty;
-           // UsuarioIdTextBox.Text = 0;
-        }
+        
 
         
         private void Cargar()
