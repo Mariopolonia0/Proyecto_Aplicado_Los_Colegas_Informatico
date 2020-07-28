@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
         mc:Ignorable="d"
         Icon="/Resources/Venta.png"
-        Title="Registro Ventas" Height="568" Width="743">
-    <Grid >
+        Title="Registro Ventas" Height="594" Width="743">
+    <Grid  >
 
         <StackPanel Orientation="Vertical" Margin="5,10,10,-11">
             <Label Content="Venta Id" FontSize="11"/>
@@ -37,7 +37,7 @@
 
             <StackPanel Orientation="Vertical" >
                 <Label Content="Cliente Id" />
-                <TextBox Name="ClienteIdTextBox" Text="{Binding ClienteId}"  />
+                <TextBox Name="ClienteIdTextBox" Text="{Binding ClienteId}" Height="23"  />
             </StackPanel>
 
             <GroupBox Header="Orden Detalle" Margin="0,10"  BorderBrush="#FF414649" Height="252"  >
@@ -82,9 +82,6 @@
                             <DataGridTextColumn Header="Cantidad"  Binding="{Binding Cantidad}"/>
                             <DataGridTextColumn Header="Descripción"  Binding="{Binding Descripcion}"/>
                             <DataGridTextColumn Header="Precio"  Binding="{Binding Precio}"/>
-                            <DataGridTextColumn Header="Ganancia"  Binding="{Binding Ganancia}"/>
-                            <DataGridTextColumn Header="ITBIS" Binding="{Binding ITBIS}"/>
-                            <DataGridTextColumn Header="Costo"  Binding="{Binding Costo}"/>
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -93,23 +90,16 @@
             </GroupBox>
 
             <StackPanel Orientation="Horizontal">
-                <Label Content="Precio Total" Margin="10,0"/>
-                <Label Content="Ganancia Total" Margin="10,0"/>
-                <Label Content="ITBIS Total" Margin="10,0"/>
-                <Label Content="Coto Total" Margin="28,0"/>
-               
+                <Label Content="ITBIS Total" Margin="18,0"/>
+                <Label Content="Precio Total" Margin="75,0"/>
+
             </StackPanel>
             <StackPanel Orientation="Horizontal"  Height="24">
-                <TextBox x:Name="PrecioTotalTextBox" Width="65" Margin="15,0"   />
-                <TextBox x:Name="GananciaTotalTextBox"  Width="77" Margin="12,0" />
-                <TextBox x:Name="ITBISTotalTextBox"  Width="77" Margin="18,0" />
-                <TextBox x:Name="CostoTotalTextBox"  Width="77" Margin="7,0" />
-                
-                
+                <TextBox x:Name="ITBISTotalTextBox"  Width="122" Margin="20,0" />
+                <TextBox x:Name="PrecioTotalTextBox"  Width="123" Margin="18,0" />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Width="417" Height="55" >
-
                 <Button x:Name="NuevoButton" Width="99" Height="30" Click="NuevoButton_Click" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Nuevo.png" />
@@ -117,7 +107,7 @@
                     </StackPanel>
                 </Button>
 
-                <Button x:Name="GuardarButton" Width="98" Height="30" Margin="5,0,0,0" >
+                <Button x:Name="GuardarButton" Width="98" Height="30" Margin="5,0,0,0" Click="GuardarButton_Click" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Guardar.png" />
                         <Label Content="Guardar"  Margin="4,0"/>
@@ -138,9 +128,6 @@
                     </StackPanel>
                 </Button>
             </StackPanel>
-
-
-            <!--Barra de botones-->
 
         </StackPanel>
 

@@ -31,9 +31,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
             CategoriaIdComboBox.DisplayMemberPath = "Nombre";
             productos.CategoriaId = 1;
             productos.Costo = 0;
-            
-
-
         }
 
         private void Limpiar()
@@ -42,7 +39,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
             DescripcionTextBox.Text = string.Empty;
             CantidadTextBox.Text = "0";
             PrecioTextBox.Text = "0";
-            //CostoTextBox.Text = "0";
             CategoriaIdComboBox.SelectedItem = null;
         }
 

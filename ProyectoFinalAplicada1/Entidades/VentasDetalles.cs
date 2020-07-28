@@ -16,7 +16,7 @@ namespace ProyectoFinalAplicada1.Entidades
         public double Precio { get; set; }
         public double ITBIS { get; set; }
         public double Ganancia { get; set; }
-        public double Costo { get; set; }
+        
 
         public VentasDetalles()
         {
@@ -38,12 +38,7 @@ namespace ProyectoFinalAplicada1.Entidades
             Precio = precio;
             ITBIS = itbis;
             Ganancia = ganancia;
-            Costo = costo * cantidad;
-        }
-
-        public double costototal()
-        {
-            return this.Costo;
+            
         }
 
     }

@@ -29,7 +29,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
             venta.GananciaTotal = 0;
             venta.ITBISTotal = 0;
             venta.PrecioTotal = 0;
-
         }
 
         private void Limpiar()
@@ -39,10 +38,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
             ProductoIdTextBox.Text = string.Empty;
             CantidadTextBox.Text = string.Empty;
             DescripcionTextBox.Text = string.Empty;
-            PrecioTotalTextBox.Text = "0";
-            GananciaTotalTextBox.Text = "0";
-            ITBISTotalTextBox.Text = "0";
-            CostoTotalTextBox.Text = "0";   
+
         }
 
         private void ProductoIdTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -59,7 +55,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
             else
             {
                 DescripcionTextBox.Text = producto.Descripcion;
-            }            
+            }
         }
 
         private void BucarButton_Click(object sender, RoutedEventArgs e)
@@ -82,15 +78,11 @@ namespace ProyectoFinalAplicada1.UI.Registro
             this.DataContext = this.venta;
         }
 
-        
-
-        
         private void Cargar()
         {
             this.DataContext = null;
             this.DataContext = venta;
         }
-
 
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -98,23 +90,23 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 return;
 
             Productos producto = ProductosBLL.Buscar(Convert.ToInt32(ProductoIdTextBox.Text));
-            venta.VentaDetalle.Add(new VentasDetalles(Convert.ToInt32(VentaIdTextBox.Text),producto.ProductoId, Convert.ToInt32(CantidadTextBox.Text),producto.Descripcion,producto.Precio,producto.ITBIS,producto.Ganancia,producto.Costo ));
+            venta.VentaDetalle.Add(new VentasDetalles(Convert.ToInt32(VentaIdTextBox.Text), producto.ProductoId, Convert.ToInt32(CantidadTextBox.Text), producto.Descripcion, producto.Precio, producto.ITBIS, producto.Ganancia, producto.Costo));
             Cargar();
 
-            venta.PrecioTotal = venta.PrecioTotal + producto.Precio;
-            PrecioTotalTextBox.Text = venta.PrecioTotal.ToString();
+            /* venta.PrecioTotal = venta.PrecioTotal + producto.Precio;
+             PrecioTotalTextBox.Text = venta.PrecioTotal.ToString();
 
-            venta.GananciaTotal = venta.GananciaTotal + producto.Ganancia;
-            GananciaTotalTextBox.Text = venta.GananciaTotal.ToString();
+             venta.GananciaTotal = venta.GananciaTotal + producto.Ganancia;
+             GananciaTotalTextBox.Text = venta.GananciaTotal.ToString();
 
-            venta.ITBISTotal = venta.ITBISTotal + producto.ITBIS;
-            ITBISTotalTextBox.Text = venta.ITBISTotal.ToString();
+             venta.ITBISTotal = venta.ITBISTotal + producto.ITBIS;
+             ITBISTotalTextBox.Text = venta.ITBISTotal.ToString();
 
-            venta.CostoTotal = (producto.Costo* venta.Cantidad) + venta.CostoTotal;
-            CostoTotalTextBox.Text = venta.CostoTotal.ToString();
-            CantidadTextBox.Text = "";
+             venta.CostoTotal = (producto.Costo* venta.Cantidad) + venta.CostoTotal;
+             CostoTotalTextBox.Text = venta.CostoTotal.ToString();
+             */
+            CantidadTextBox.Text = "0";
         }
-
         private void RemoverButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -122,17 +114,9 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 return;
 
             venta.VentaDetalle.RemoveAt(DetalleDataGrid.SelectedIndex);
-
             Cargar();
-
             CantidadTextBox.Clear();
-            /*if (DetalleDataGrid.Items.Count > 1 && DetalleDataGrid.SelectedIndex < DetalleDataGrid.Items.Count - 1)
-            {
-                venta.VentaDetalle.RemoveAt(DetalleDataGrid.SelectedIndex);
-                Cargar();
-            }*/
         }
-
         private bool Validar()
         {
             bool esValido = true;
@@ -196,15 +180,74 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 FechaDatePicker.Focus();
                 GuardarButton.IsEnabled = true;
             }
-
+            if (CantidadTextBox.Text.Length == 0 | Convert.ToInt32( CantidadTextBox.Text)==0)
+            {
+                esValido = false;
+                GuardarButton.IsEnabled = false;
+                MessageBox.Show("Cantidad está vacia", "Fallo",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                CantidadTextBox.Focus();
+                GuardarButton.IsEnabled = true;
+            }
             return esValido;
         }
 
+        private bool Validarguardar()
+        {
+            bool esValido = true;
+
+            if (VentaIdTextBox.Text.Length == 0)
+            {
+                esValido = false;
+                GuardarButton.IsEnabled = false;
+                MessageBox.Show("Venta Id está vacio", "Fallo",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                VentaIdTextBox.Focus();
+                GuardarButton.IsEnabled = true;
+            }
+
+            if (ClienteIdTextBox.Text.Length == 0)
+            {
+                esValido = false;
+                GuardarButton.IsEnabled = false;
+                MessageBox.Show("Cliente Id está vacia", "Fallo",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                ClienteIdTextBox.Focus();
+                GuardarButton.IsEnabled = true;
+            }
+
+            if (FechaDatePicker.Text.Length == 0)
+            {
+                esValido = false;
+                GuardarButton.IsEnabled = false;
+                MessageBox.Show("Fecha está vacia", "Fallo",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                FechaDatePicker.Focus();
+                GuardarButton.IsEnabled = true;
+            }
+            return esValido;
+        }
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
                 Limpiar();
         }
 
+        private void GuardarButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!Validarguardar())
+                return;
 
+            var paso = VentasBLL.Guardar(venta);
+
+            if (paso)
+            {
+                Limpiar();
+                MessageBox.Show("Transacción exitosa!", "Exito",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+                MessageBox.Show("Transacción Fallida", "Fallo",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+        }
     }
 }
