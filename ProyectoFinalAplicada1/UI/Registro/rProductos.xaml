@@ -28,7 +28,7 @@
                 <TextBox x:Name="DescripcionTextBox" Text="{Binding Descripcion}" />
 
                 <Label Content="Fecha:"/>
-                <DatePicker Name="FechaDatePicker" Width="327" Height="20" SelectedDate="{Binding Fecha}" Margin="0,0" Padding="-1" HorizontalAlignment="Left"/>
+                <DatePicker Name="FechaDatePicker" Width="327" Height="20" SelectedDate="{Binding Fecha,StringFormat=dd/MM/yyyy}" Margin="0,0" Padding="-1" HorizontalAlignment="Left"/>
 
                 <Label Content="Categoria"/>
                 <StackPanel Orientation="Horizontal">

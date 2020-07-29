@@ -31,7 +31,7 @@
             <StackPanel Orientation="Vertical">
 
                 <Label Content="Fecha" FontSize="11"/>
-                <DatePicker x:Name="FechaDatePicker" SelectedDate="{Binding Fecha}"  />
+                <DatePicker x:Name="FechaDatePicker" SelectedDate="{Binding Fecha,StringFormat=dd/MM/yyyy}"  />
 
             </StackPanel>
 
