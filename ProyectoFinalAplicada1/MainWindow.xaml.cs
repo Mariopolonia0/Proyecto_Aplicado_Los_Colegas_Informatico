@@ -102,5 +102,11 @@ namespace ProyectoFinalAplicada1
             cProductos cproductos = new cProductos();
             cproductos.Show();
         }
+
+        private void cVentasMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            cVentas ventas = new cVentas();
+            ventas.Show();
+        }
     }
 }

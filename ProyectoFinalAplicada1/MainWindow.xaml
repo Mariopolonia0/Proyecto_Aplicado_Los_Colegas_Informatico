@@ -68,6 +68,8 @@
 
                     <MenuItem x:Name="ClientesMenuItem" Header="Consulta Clientes" Click="ClientesMenuItem_Click"/>
 
+                    <MenuItem x:Name="cVentasMenuItem" Header="Consulta Ventas" Click="cVentasMenuItem_Click"/>
+
 
                 </MenuItem>
 
