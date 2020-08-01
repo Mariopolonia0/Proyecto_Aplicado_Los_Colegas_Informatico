@@ -35,7 +35,7 @@ namespace ProyectoFinalAplicada1.Entidades
             ProductoId = productoid;
             Cantidad = cantidad;
             Descripcion = descripcion;
-            Precio = precio;
+            Precio =  precio * cantidad;
             ITBIS = itbis;
             Ganancia = ganancia;
             

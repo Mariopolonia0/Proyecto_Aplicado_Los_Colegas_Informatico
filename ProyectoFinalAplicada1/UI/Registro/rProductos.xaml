@@ -17,7 +17,7 @@
                     <TextBox x:Name="ProductoIdTextBox" Text="{Binding ProductoId}" Width="100" Height="23"/>
                     <Button x:Name="BuscarButton" Margin="6,0" Click="BuscarButton_Click">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Resources/Buscar.png" Height="20"/>
+                            <Image Source="/Resources/Buscar.png" Height="28" Width="31"/>
                             <Label Content="Buscar"/>
                         </StackPanel>
                     </Button>
@@ -27,7 +27,7 @@
                 <TextBox x:Name="DescripcionTextBox" Text="{Binding Descripcion}" />
 
                 <Label Content="Fecha"/>
-                <DatePicker Name="FechaDatePicker" Width="327" Height="20" SelectedDate="{Binding Fecha,StringFormat=dd/MM/yyyy}" Margin="0,0" Padding="-1" HorizontalAlignment="Left"/>
+                <DatePicker Name="FechaDatePicker"  SelectedDate="{Binding Fecha,StringFormat=dd/MM/yyyy}"   />
 
                 <Label Content="Categoria"/>
                 <ComboBox Name="CategoriaIdComboBox"  />

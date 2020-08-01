@@ -6,19 +6,19 @@
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
         mc:Ignorable="d"
         Icon="/Resources/Venta.png"
-        Title="Registro Ventas" Height="619" Width="743" FontSize="15">
+        Title="Registro Ventas" Height="619" Width="766" FontSize="15">
     <Grid  >
 
-        <StackPanel Orientation="Vertical" Width="743" Margin="0,0,0,-14">
+        <StackPanel Orientation="Vertical" >
             <Label Content="Venta Id" />
 
             <!--OrdenIdTextBox y BuscarButton-->
             <!--Button-->
             <!--"BucarButton_Click"-->
-            <StackPanel Orientation="Horizontal" Height="30">
-                <!--TextBox-->
-                <TextBox x:Name="VentaIdTextBox" Text="{Binding VentaId}" Width="132"/>
-
+            <StackPanel Orientation="Horizontal" >
+                
+                <TextBox x:Name="VentaIdTextBox" Width="150" Text="{Binding VentaId}"/>
+                
                 <Button Name="BucarButton" Margin="20,0" Click="BucarButton_Click" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Buscar.png" />
@@ -29,35 +29,28 @@
 
 
             <StackPanel Orientation="Vertical">
-
                 <Label Content="Fecha" />
                 <DatePicker x:Name="FechaDatePicker" SelectedDate="{Binding Fecha,StringFormat=dd/MM/yyyy}"  />
-
             </StackPanel>
 
             <StackPanel Orientation="Vertical" >
                 <Label Content="Cliente Id" />
-                <TextBox Name="ClienteIdTextBox" Text="{Binding ClienteId}" Height="23"  />
+                <TextBox Name="ClienteIdTextBox" Text="{Binding ClienteId}"  />
             </StackPanel>
 
-            <GroupBox Header="Orden Detalle" Margin="0,10"  BorderBrush="#FF414649" Height="252"  >
-
+            <GroupBox Header="Orden Detalle" BorderBrush="#FF414649"   >
                 <StackPanel Orientation="Vertical">
-
                     <StackPanel Orientation="Horizontal" >
                         <Label Content="Producto ID" FontSize="14" Margin="0,0,0,0"/>
                         <Label Content="Cantidad" FontSize="14" Margin="19,0,0,0"/>
-                        <Label Content="Descripcion" FontSize="14" Margin="19,0,0,0"/>
+                        <Label Content="Descripcion" FontSize="14" Margin="25,0,0,0"/>
 
                     </StackPanel>
-
-                    <!--TextChanged="CantidadTextBox_TextChanged"-->
-                    <!-- SelectionChanged="ProductosComboBox_SelectionChanged"  -->
-
+                    
                     <StackPanel Orientation="Horizontal"  >
-                        <TextBox Name="ProductoIdTextBox" Width="70" Height="20" Margin="05,0,0,0" TextChanged="ProductoIdTextBox_TextChanged" Text="{Binding ProductoId}"  />
+                        <TextBox x:Name="ProductoIdTextBox" Width="70" Height="20" Margin="5,0,0,0" Text="{Binding ProductoId}" TextChanged="ProductoIdTextBox_TextChanged_1" />
                         <TextBox x:Name="CantidadTextBox" Width="70" Height="20" Margin="33,0,0,0" Text="{Binding Cantidad}" />
-                        <TextBox x:Name="DescripcionTextBox" Width="260" Height="20" Margin="16,0,0,0" Text="{Binding Descripcion}" />
+                        <TextBox x:Name="DescripcionTextBox" Width="260" Height="20" Margin="22,0,0,0" Text="{Binding Descripcion}" />
 
                         <Button Name="AgregarButton" Width="88" Height="23" Margin="22,0,5,0" Click="AgregarButton_Click" >
                             <StackPanel Orientation="Horizontal">
@@ -75,10 +68,10 @@
                         </Button>
                     </StackPanel>
 
-                    <DataGrid x:Name="DetalleDataGrid" Height="170" HorizontalAlignment="Left" AlternatingRowBackground="#FFBAE3FF" AutoGenerateColumns="False" ItemsSource="{Binding VentaDetalle}" Margin="0,5,0,0" Width="735">
+                    <DataGrid x:Name="DetalleDataGrid" AlternatingRowBackground="#FFBAE3FF" AutoGenerateColumns="False" ItemsSource="{Binding VentaDetalle}" Margin="0,5,0,0" Width="735"  Height="189">
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Producto Id"  Binding="{Binding ProductoId}"/>
+                            <DataGridTextColumn Header="ProductoIdTextBox"  Binding="{Binding ProductoId}"/>
                             <DataGridTextColumn Header="Cantidad"  Binding="{Binding Cantidad}"/>
                             <DataGridTextColumn Header="Descripción"  Binding="{Binding Descripcion}"/>
                             <DataGridTextColumn Header="Precio"  Binding="{Binding Precio}"/>
@@ -91,12 +84,12 @@
 
             <StackPanel Orientation="Horizontal">
                 <Label Content="ITBIS Total" Margin="18,0"/>
-                <Label Content="Precio Total" Margin="75,0"/>
+                <Label Content="Precio Total" Margin="70,0"/>
 
             </StackPanel>
             <StackPanel Orientation="Horizontal"  Height="43">
-                <Label x:Name="ITBISTotalLabel" Content="0"  Width="122" Margin="20,0" />
-                <Label x:Name="PrecioTotalLabel" Content="0" Width="123" Margin="18,0" />
+                <Label x:Name="ITBISTotalLabel" FontSize="20" Content="0"  Width="122" Margin="20,0" />
+                <Label x:Name="PrecioTotalLabel" FontSize="20" Content="0" Width="123" Margin="25,0" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="538" Height="49" >
 

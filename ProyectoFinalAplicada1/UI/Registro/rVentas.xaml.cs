@@ -38,24 +38,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
             ProductoIdTextBox.Text = string.Empty;
             CantidadTextBox.Text = string.Empty;
             DescripcionTextBox.Text = string.Empty;
-
-        }
-
-        private void ProductoIdTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (ProductoIdTextBox.Text.Length == 0)
-                return;
-
-            Productos producto = ProductosBLL.Buscar(Convert.ToInt32(ProductoIdTextBox.Text));
-            if (producto == null)
-            {
-                MessageBox.Show("producto no existe");
-                DescripcionTextBox.Text = "";
-            }
-            else
-            {
-                DescripcionTextBox.Text = producto.Descripcion;
-            }
         }
 
         private void BucarButton_Click(object sender, RoutedEventArgs e)
@@ -74,7 +56,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 Limpiar();
             }
 
-            //Limpiar();
+            Limpiar();
             this.DataContext = this.venta;
         }
 
@@ -93,19 +75,8 @@ namespace ProyectoFinalAplicada1.UI.Registro
             venta.VentaDetalle.Add(new VentasDetalles(Convert.ToInt32(VentaIdTextBox.Text), producto.ProductoId, Convert.ToInt32(CantidadTextBox.Text), producto.Descripcion, producto.Precio, producto.ITBIS, producto.Ganancia, producto.Costo));
             Cargar();
 
-            venta.CostoTotal = venta.CostoTotal + producto.Costo;
+            venta.CostoTotal = venta.CostoTotal + (producto.Costo * Convert.ToInt32(CantidadTextBox.Text));
             PrecioTotalLabel.Content = venta.CostoTotal.ToString();
-
-            /* venta.PrecioTotal = venta.PrecioTotal + producto.Precio;
-             PrecioTotalTextBox.Text = venta.PrecioTotal.ToString();
-
-             venta.GananciaTotal = venta.GananciaTotal + producto.Ganancia;
-             GananciaTotalTextBox.Text = venta.GananciaTotal.ToString();
-
-             venta.ITBISTotal = venta.ITBISTotal + producto.ITBIS;
-             ITBISTotalTextBox.Text = venta.ITBISTotal.ToString();
-             */
-
 
             CantidadTextBox.Text = "0";
         }
@@ -250,6 +221,23 @@ namespace ProyectoFinalAplicada1.UI.Registro
             else
                 MessageBox.Show("Transacción Fallida", "Fallo",
                     MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        private void ProductoIdTextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+            if (ProductoIdTextBox.Text.Length == 0)
+                return;
+
+            Productos producto = ProductosBLL.Buscar(Convert.ToInt32(ProductoIdTextBox.Text));
+            if (producto == null)
+            {
+                MessageBox.Show("producto no existe");
+                DescripcionTextBox.Text = "";
+            }
+            else
+            {
+                DescripcionTextBox.Text = producto.Descripcion;
+            }
         }
     }
 }
