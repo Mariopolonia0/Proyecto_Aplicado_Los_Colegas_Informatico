@@ -196,6 +196,54 @@ namespace ProyectoFinalAplicada1.BLL
 
             return clientes;
         }
+        //Email
+        public static bool AutorizarEmail(string email)
+        {
+            bool paso = false;
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                paso = contexto.Clientes
+                    .Any(u => u.Email.Equals(email)
+                          );
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return paso;
+        }
+
+        public static bool AutorizarTelefono(string telefono)
+        {
+            bool paso = false;
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                paso = contexto.Clientes
+                    .Any(u => u.Telefono.Equals(telefono)
+                          );
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return paso;
+        }
 
     }
 }

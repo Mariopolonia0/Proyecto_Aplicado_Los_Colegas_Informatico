@@ -161,6 +161,24 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 GuardarButton.IsEnabled = true;
             }
 
+            bool paso1 = ClientesBLL.AutorizarEmail(EmailTextBox.Text);
+
+            if (paso1)
+            {
+                MessageBox.Show("Email ya existe!", "Error!");
+                EmailTextBox.Clear();
+                EmailTextBox.Focus();
+            }
+
+            bool paso2 = ClientesBLL.AutorizarTelefono(TelefonoTextBox.Text);
+
+            if (paso1)
+            {
+                MessageBox.Show("Telefono ya existe!", "Error!");
+                TelefonoTextBox.Clear();
+                TelefonoTextBox.Focus();
+            }
+
             return esValido;
         }
         //
@@ -210,6 +228,8 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
+            
+
             if (!Validar())
                 return;
 

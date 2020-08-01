@@ -27,15 +27,6 @@ namespace ProyectoFinalAplicada1.UI
             
         }
 
-        //Metodo
-        /*protected override void OnClosed(EventArgs e)
-        {
-            base.OnClosed(e);
-
-            Application.Current.Shutdown();
-        }
-        */
-
         private void IngresarButton_Click(object sender, RoutedEventArgs e)
         {
             bool paso = UsuariosBLL.Autorizar(NombreUsuarioTextBox.Text, ContrasenaPasswordBox.Password);
