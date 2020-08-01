@@ -108,5 +108,7 @@ namespace ProyectoFinalAplicada1
             cVentas ventas = new cVentas();
             ventas.Show();
         }
+
+       
     }
 }

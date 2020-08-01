@@ -37,7 +37,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
         {
             ProductoIdTextBox.Text = "0";
             DescripcionTextBox.Text = string.Empty;
-            CantidadTextBox.Text = "0";
+          //  CantidadTextBox.Text = "0";
             PrecioTextBox.Text = "0";
             CategoriaIdComboBox.SelectedItem = null;
         }
@@ -94,7 +94,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 GuardarButton.IsEnabled = true;
             }
             */
-            if (GananciaComboBox.SelectedIndex == 0)
+          /*  if (GananciaComboBox.SelectedIndex == 0)
             {
                 esValido = false;
                 GuardarButton.IsEnabled = false;
@@ -103,7 +103,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 GananciaComboBox.Focus();
                 GuardarButton.IsEnabled = true;
             }
-
+            */
             if (ProductoIdTextBox.Text.Length == 0)
             {
                 esValido = false;
@@ -114,7 +114,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 GuardarButton.IsEnabled = true;
             }
 
-            if (CantidadTextBox.Text.Length == 0)
+           /* if (CantidadTextBox.Text.Length == 0)
             {
                 esValido = false;
                 GuardarButton.IsEnabled = false;
@@ -123,7 +123,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 CantidadTextBox.Focus();
                 GuardarButton.IsEnabled = true;
             }
-
+            */
             if (ITBISComboBox.SelectedIndex == 0)
             {
                 esValido = false;
@@ -236,7 +236,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
             }
         }
 
-        private void GananciaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        /*private void GananciaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             double Costo = 0;
 
@@ -270,7 +270,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
                     CostoLabel.Content = productos.Costo.ToString();
                     break;
             }
-        }
+        }*/
     }
 
 }

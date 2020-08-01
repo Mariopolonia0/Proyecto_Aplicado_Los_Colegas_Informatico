@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
         mc:Ignorable="d"
-        Icon="/Resources/producto.png"
-        Title="Registro Productos" Height="591" Width="350" FontSize="14">
+        Icon="/Resources/Productos.jfif"
+        Title="Registro Productos" Height="520" Width="350" FontSize="14">
     <Grid>
-
+        
         <StackPanel Orientation="Vertical" Margin="4,0,4,0">
-            <StackPanel Orientation="Vertical">
-                <Label Content="Producto Id:"/>
-                <!-- -->
+            <StackPanel Orientation="Vertical" Height="424">
+                <Label Content="Producto Id"/>
+                
                 <StackPanel Orientation="Horizontal">
-                    <TextBox x:Name="ProductoIdTextBox" Text="{Binding ProductoId}" Width="100" Height="18"/>
+                    <TextBox x:Name="ProductoIdTextBox" Text="{Binding ProductoId}" Width="100" Height="23"/>
                     <Button x:Name="BuscarButton" Margin="6,0" Click="BuscarButton_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Resources/Buscar.png" Height="20"/>
@@ -23,32 +23,20 @@
                     </Button>
                 </StackPanel>
 
-                <!---->
-                <Label Content="Descripcion:"/>
+                <Label Content="Descripcion"/>
                 <TextBox x:Name="DescripcionTextBox" Text="{Binding Descripcion}" />
 
-                <Label Content="Fecha:"/>
+                <Label Content="Fecha"/>
                 <DatePicker Name="FechaDatePicker" Width="327" Height="20" SelectedDate="{Binding Fecha,StringFormat=dd/MM/yyyy}" Margin="0,0" Padding="-1" HorizontalAlignment="Left"/>
 
                 <Label Content="Categoria"/>
-                <StackPanel Orientation="Horizontal">
-                    <ComboBox Name="CategoriaIdComboBox" Width="321" Height="25" Margin="5,0"  />
-                </StackPanel>
-
-                <Label Content="Precio:"/>
+                <ComboBox Name="CategoriaIdComboBox"  />
+                
+                <Label Content="Precio"/>
                 <TextBox x:Name="PrecioTextBox" Text="{Binding Precio}"/>
                 
-                <Label Content="Ganancia:"/>
-                <ComboBox x:Name="GananciaComboBox" SelectedIndex="0" SelectionChanged="GananciaComboBox_SelectionChanged"  >
-                    <ComboBoxItem  Content="Seleccione opcion"/>
-                    <ComboBoxItem  Content="75%"/>
-                    <ComboBoxItem  Content="50%"/>
-                    <ComboBoxItem  Content="30%"/>
-                    <ComboBoxItem  Content="0%" />
-
-                </ComboBox>
-
-                
+                <Label Content="Ganancia"/>
+                <TextBox x:Name="GananciaTextBox" Text="{Binding Ganancia}"/>
 
                 <Label Content="ITBIS:"/>
                 <ComboBox x:Name="ITBISComboBox" SelectedIndex="0" SelectionChanged="ITBISComboBox_SelectionChanged" >
@@ -56,40 +44,31 @@
                     <ComboBoxItem  Content="18%"/>
                     <ComboBoxItem  Content="10%"/>
                     <ComboBoxItem  Content="0%" />
-
                 </ComboBox>
 
-                <Label Content="Cantidad:"/>
-                <TextBox x:Name="CantidadTextBox" Text="{Binding Cantidad}"/>
-
-                <Label Content="Costo:"/>
-                <!--TextBlock x:Name="CostoTextBlock"  Text="{Binding Costo}" /-->
-                <Label x:Name="CostoLabel" Content="{Binding Costo}" Height="40" />
-                <!--TextBox x:Name="CostoTextBox" Text="{Binding Costo}"/-->
-
-                
+                <Label Content="Costo:" Height="26"/>
+                <Label x:Name="CostoLabel" Content="{Binding Costo}" Height="31" />
+                    
             </StackPanel>
-
-
-            <StackPanel Orientation="Horizontal" Margin="0,15" Width="299">
-                <Button x:Name="NuevoButton" Click="NuevoButton_Click">
+            <StackPanel Orientation="Horizontal" Width="304" Height="41">
+                <Button x:Name="NuevoButton" Click="NuevoButton_Click" Width="83">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/Nuevo.png" Height="20"/>
-                        <Label Content="Nuevo"/>
+                        <Image Source="/Resources/Nuevo.png" Height="38" Width="30"/>
+                        <Label Content="Nuevo" Height="30"/>
                     </StackPanel>
                 </Button>
 
                 <Button x:Name="GuardarButton" Margin="15,0" Click="GuardarButton_Click">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/Guardar.png" Height="20"/>
-                        <Label Content="Guardar"/>
+                        <Image Source="/Resources/Guardar.png" Height="38" Width="30"/>
+                        <Label Content="Guardar" Height="30"/>
                     </StackPanel>
                 </Button>
 
                 <Button x:Name="EliminarButton" Click="EliminarButton_Click" >
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/Eliminar.png" Height="20"/>
-                        <Label Content="Eliminar"/>
+                        <Image Source="/Resources/Cancelar.jfif" Height="38" Width="30"/>
+                        <Label Content="Eliminar" Height="30"/>
                     </StackPanel>
                 </Button>
             </StackPanel>

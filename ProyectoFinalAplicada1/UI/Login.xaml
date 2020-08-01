@@ -7,10 +7,10 @@
         xmlns:PasswordHelper="clr-namespace:ProyectoFinalAplicada1.Resources.PasswordHelper"
         mc:Ignorable="d"
         Icon="/Resources/Window.png"
-        Title="Login" Height="230" Width="350">
+        Title="Login" Height="230" Width="350" FontSize="15" FontFamily="Segoe UI" Topmost="True">
     <Grid>
 
-        <StackPanel Orientation="Vertical" Margin="10">
+        <StackPanel Orientation="Vertical" Margin="10,10,10,10">
             <StackPanel Orientation="Vertical">
                 <Label Content="Nombre Usuario"/>
 
@@ -21,17 +21,17 @@
                 <PasswordBox x:Name="ContrasenaPasswordBox" PasswordHelper:PasswordHelper.Attach="True" PasswordHelper:PasswordHelper.Password="{Binding Contrasena, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,15" >
-                <Button x:Name="IngresarButton" Margin="80,0" Click="IngresarButton_Click" Width="73">
+            <StackPanel Orientation="Horizontal" Margin="0,15" Height="42" >
+                <Button x:Name="IngresarButton" Margin="50,0" Click="IngresarButton_Click">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/entrar.png" Height="32" Width="15"  />
-                        <Label Content="Ingresar" Width="54" />
+                        <Image Source="/Resources/entrar.png" Height="44" Width="31"  />
+                        <Label Content="Ingresar" Height="30"  />
                     </StackPanel>
                 </Button>
-                <Button x:Name="CancelarButton"   Margin="-53,0" Click="CancelarButton_Click" Width="73">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/Eliminar.png"  />
-                        <Label Content="Cancelar" />
+                <Button x:Name="CancelarButton"   Margin="5,0" Click="CancelarButton_Click">
+                    <StackPanel Orientation="Horizontal" >
+                        <Image Source="/Resources/Cancelar.jfif" Height="39" Width="30"  />
+                        <Label Content="Cancelar" Height="30" />
                     </StackPanel>
                 </Button>
 

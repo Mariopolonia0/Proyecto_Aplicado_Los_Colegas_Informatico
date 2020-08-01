@@ -35,7 +35,7 @@
             <StackPanel Orientation="Horizontal" >
                 <Button x:Name="NuevoButton" Margin="5,0" Click="NuevoButton_Click" >
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/agregar.png"  />
+                        <Image Source="/Resources/Nuevo.png"  />
                         <Label Content="Nuevo" />
                     </StackPanel>
                 </Button>

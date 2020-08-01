@@ -61,8 +61,6 @@
                         <TextBox Name="CantidadTextBox" Width="50" Height="20" HorizontalAlignment="Left" Margin="23,0,0,0" />
                         <TextBox Name="CostoTextBox" Width="50" Height="20" IsReadOnly="True" HorizontalAlignment="Left" Margin="23,0,0,0"/>
                         <TextBox Name="DescripcionTextBox" Width="117" Height="20" IsReadOnly="True" HorizontalAlignment="Left" Margin="23,0,0,0"/>
-                        <TextBox Name="TotalTexbox" Width="79" Height="20" IsReadOnly="True" HorizontalAlignment="Left" Margin="23,0,0,0"/>
-                        <TextBox Name="InventarioTextBox" Width="50" Height="20" IsReadOnly="True" HorizontalAlignment="Left" Margin="23,0,0,0"/>
 
                         <Button Name="AgregarButton" Width="69" Height="20" Margin="22,0,5,0">
                             <StackPanel Orientation="Horizontal">

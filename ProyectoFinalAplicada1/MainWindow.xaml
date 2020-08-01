@@ -9,16 +9,16 @@
         Title="Menu Pricipal" Height="400" Width="600">
     <Grid>
         <StackPanel Grid.ColumnSpan="2">
-            <Menu Height="35">
-                <MenuItem Header="Registros" FontFamily="15" >
+            <Menu Height="46">
+                <MenuItem Header="   Registros" Width="94"   >
 
                     <MenuItem.Icon>
-                        <Image Source="/Resources/Registro.png"/>
+                        <Image Source="/Resources/Registro.png" Margin="-4,-15,-14,-15"/>
                     </MenuItem.Icon>
 
                     <MenuItem x:Name="UsuariosMenuItem" Header="Usuarios" Click="UsuariosMenuItem_Click" >
                         <MenuItem.Icon>
-                            <Image Source="/Resources/Usuario.png"/>
+                            <Image Source="/Resources/Usuario.png" />
                         </MenuItem.Icon>
                     </MenuItem>
                     
@@ -33,11 +33,16 @@
                             <Image Source="/Resources/Venta.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    
-                    <MenuItem x:Name="ComprasMenuItem" Header="Compras"  />
+
+                    <MenuItem x:Name="ComprasMenuItem" Header="Compras"  >
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/Comprar.jfif"/>
+                        </MenuItem.Icon>
+
+                    </MenuItem>
                     <MenuItem x:Name="ProductosMenuItem" Header="Productos" Click="ProductosMenuItem_Click">
                         <MenuItem.Icon>
-                            <Image Source="/Resources/producto.png" />
+                            <Image Source="/Resources/Productos.jfif" />
                         </MenuItem.Icon>
                         
                     </MenuItem>
@@ -52,10 +57,10 @@
                 </MenuItem>
 
                 <!--Consultas-->
-                <MenuItem Header="Consultas" Height="35"  >
-
+                <MenuItem Header="   Consulta"  Height="46" Width="92"  >
+                    
                     <MenuItem.Icon>
-                        <Image Source="/Resources/Consulta.png"/>
+                        <Image Source="/Resources/Consulta.jfif"  Margin="-4,-15,-14,-15"/>
                     </MenuItem.Icon>
                     
                     <MenuItem x:Name="UsuarioMenuItem" Header="Consulta Usuarios"  Click="UsuarioMenuItem_Click"  />
@@ -73,16 +78,16 @@
 
                 </MenuItem>
 
-                <MenuItem Header="Ayuda" >
+                <MenuItem Header="   Ayuda" Width="72" >
                     <MenuItem.Icon>
-                        <Image Source="/Resources/Ayuda.png"/>
+                        <Image Source="/Resources/Ayuda.jfif"  Margin="-4,-15,-14,-15"/>
                     </MenuItem.Icon>
 
                     <MenuItem x:Name="InformacionMenuItem" Header="Informacion" />
                 </MenuItem>
             </Menu>
             <StackPanel Height="360">
-                <Image Width="598" Source="/Resources/Fondo.jfif" Height="467"/>
+                <Image Width="598" Source="/Resources/Fondo.jfif" Height="451"/>
             </StackPanel>
         </StackPanel>
 

@@ -9,9 +9,12 @@
 
   <ItemGroup>
     <None Remove="Resources\agregar.png" />
-    <None Remove="Resources\Ayuda.png" />
+    <None Remove="Resources\Ayuda.jfif" />
     <None Remove="Resources\Buscar.png" />
+    <None Remove="Resources\Cancelar.jfif" />
     <None Remove="Resources\Cliente.png" />
+    <None Remove="Resources\Comprar.jfif" />
+    <None Remove="Resources\Consulta.jfif" />
     <None Remove="Resources\Consulta.png" />
     <None Remove="Resources\Eliminar.png" />
     <None Remove="Resources\entrar.png" />
@@ -19,7 +22,7 @@
     <None Remove="Resources\Guardar.png" />
     <None Remove="Resources\Imprimir.png" />
     <None Remove="Resources\Nuevo.png" />
-    <None Remove="Resources\producto.png" />
+    <None Remove="Resources\Productos.jfif" />
     <None Remove="Resources\Registro.png" />
     <None Remove="Resources\Usuario.png" />
     <None Remove="Resources\vendedores.png" />
@@ -39,13 +42,22 @@
     <Resource Include="Resources\agregar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Ayuda.png">
+    <Resource Include="Resources\Ayuda.jfif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Buscar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Cancelar.jfif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Cliente.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Comprar.jfif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Consulta.jfif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Consulta.png">
@@ -60,6 +72,9 @@
     <Content Include="Resources\Window.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\Productos.jfif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Venta.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -73,9 +88,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Nuevo.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\producto.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Registro.png">

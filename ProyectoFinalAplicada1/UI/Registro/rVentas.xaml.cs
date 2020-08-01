@@ -93,6 +93,9 @@ namespace ProyectoFinalAplicada1.UI.Registro
             venta.VentaDetalle.Add(new VentasDetalles(Convert.ToInt32(VentaIdTextBox.Text), producto.ProductoId, Convert.ToInt32(CantidadTextBox.Text), producto.Descripcion, producto.Precio, producto.ITBIS, producto.Ganancia, producto.Costo));
             Cargar();
 
+            venta.CostoTotal = venta.CostoTotal + producto.Costo;
+            PrecioTotalLabel.Content = venta.CostoTotal.ToString();
+
             /* venta.PrecioTotal = venta.PrecioTotal + producto.Precio;
              PrecioTotalTextBox.Text = venta.PrecioTotal.ToString();
 
@@ -101,10 +104,9 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
              venta.ITBISTotal = venta.ITBISTotal + producto.ITBIS;
              ITBISTotalTextBox.Text = venta.ITBISTotal.ToString();
-
-             venta.CostoTotal = (producto.Costo* venta.Cantidad) + venta.CostoTotal;
-             CostoTotalTextBox.Text = venta.CostoTotal.ToString();
              */
+
+
             CantidadTextBox.Text = "0";
         }
         private void RemoverButton_Click(object sender, RoutedEventArgs e)
