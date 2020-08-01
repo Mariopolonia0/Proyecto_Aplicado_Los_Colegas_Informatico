@@ -124,7 +124,7 @@ namespace ProyectoFinalAplicada1.BLL
 
             try
             {
-                usuario = contexto.Usuarios.Find("id");
+                usuario = contexto.Usuarios.Find(id);
 
             }
             catch (Exception)
@@ -175,7 +175,33 @@ namespace ProyectoFinalAplicada1.BLL
         }
 
         //Metodo para validar Usuario y contraseña en el Login.
-        public static bool Autorizar(string nombreusuario, string contrasena)
+        public static bool Autorizar(string nombre, string contrasena)
+        {
+            bool paso = false;
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                paso = contexto.Usuarios
+                    .Any(u => u.NombreUsuario.Equals(nombre)
+                                && u.Contrasena.Equals(GetSHA256(contrasena))
+                          );
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return paso;
+        }
+
+
+        /*public static bool Autorizar(string nombreusuario, string contrasena)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
@@ -200,6 +226,6 @@ namespace ProyectoFinalAplicada1.BLL
                 contexto.Dispose();
             }
             return paso;
-        }
+        }*/
     }
 }

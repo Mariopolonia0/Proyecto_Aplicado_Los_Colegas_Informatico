@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProyectoFinalAplicada1.Migrations
 {
-    public partial class InicialMigracion : Migration
+    public partial class Migration_Inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -191,8 +191,7 @@ namespace ProyectoFinalAplicada1.Migrations
                     Descripcion = table.Column<string>(nullable: true),
                     Precio = table.Column<double>(nullable: false),
                     ITBIS = table.Column<double>(nullable: false),
-                    Ganancia = table.Column<double>(nullable: false),
-                    Costo = table.Column<double>(nullable: false)
+                    Ganancia = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -218,7 +217,7 @@ namespace ProyectoFinalAplicada1.Migrations
             migrationBuilder.InsertData(
                 table: "Usuarios",
                 columns: new[] { "UsuarioId", "Apellidos", "Contrasena", "NombreUsuario", "Nombres" },
-                values: new object[] { 1, "Fermin.", "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5", "COD1", "Eladio." });
+                values: new object[] { 1, "Admin", "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918", "admin", "Admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_ComprasDetalles_CompraId",

@@ -247,10 +247,10 @@ namespace ProyectoFinalAplicada1.Migrations
                         new
                         {
                             UsuarioId = 1,
-                            Apellidos = "Fermin.",
-                            Contrasena = "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5",
-                            NombreUsuario = "COD1",
-                            Nombres = "Eladio."
+                            Apellidos = "Admin",
+                            Contrasena = "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
+                            NombreUsuario = "admin",
+                            Nombres = "Admin"
                         });
                 });
 
@@ -317,9 +317,6 @@ namespace ProyectoFinalAplicada1.Migrations
 
                     b.Property<int>("Cantidad")
                         .HasColumnType("INTEGER");
-
-                    b.Property<double>("Costo")
-                        .HasColumnType("REAL");
 
                     b.Property<string>("Descripcion")
                         .HasColumnType("TEXT");

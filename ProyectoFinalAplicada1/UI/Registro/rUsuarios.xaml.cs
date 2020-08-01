@@ -143,23 +143,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
                     MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
-        //Solo Numeros.
-        /*public void SN(KeyPressedEventArgs e)
-        {
-            try
-            {
-                if (Char.IsNumber(e.KeyChar))
-                {
-                    e.Handled = false;
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }*/
-
-
         //Botón Buscar.
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {

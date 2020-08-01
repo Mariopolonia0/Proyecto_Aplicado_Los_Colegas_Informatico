@@ -12,15 +12,16 @@ namespace ProyectoFinalAplicada1.BLL
 {
     public class ClientesBLL
     {
-        public static bool Guardar(Clientes clientes)
+
+        //Metodo Existe.
+        public static bool Existe(int id)
         {
-            bool paso = false;
             Contexto contexto = new Contexto();
+            bool encontrado = false;
 
             try
             {
-                if (contexto.Clientes.Add(clientes) != null)
-                    paso = contexto.SaveChanges() > 0;
+                encontrado = contexto.Clientes.Any(c => c.ClienteId == id);
             }
             catch (Exception)
             {
@@ -31,17 +32,114 @@ namespace ProyectoFinalAplicada1.BLL
                 contexto.Dispose();
             }
 
-            return paso;
+            return encontrado;
+        }
+
+        //Metodo Insertar.
+        private static bool Insertar(Clientes clientes)
+        {
+            bool key = false;
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                contexto.Clientes.Add(clientes);
+                key = contexto.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return key;
+        }
+
+        //Metodo Modificar.
+        private static bool Modificar(Clientes clientes)
+        {
+            bool key = false;
+            Contexto contexto = new Contexto();
+
+            try
+            {
+
+                contexto.Entry(clientes).State = EntityState.Modified;
+                key = contexto.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return key;
         }
 
 
+        internal static IEnumerable GetList(Clientes clientes)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        //Metodo Guardar.
+        public static bool Guardar(Clientes clientes)
+        {
+            if (!Existe(clientes.ClienteId))
+            {
+                return Insertar(clientes);
+            }
+            else
+            {
+                return Modificar(clientes);
+            }
+        }
+
+        //Metodo Eliminar.
+        public static bool Eliminar(int id)
+        {
+            bool key = false;
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                var clientes = contexto.Clientes.Find(id);
+
+                if (clientes != null)
+                {
+                    contexto.Clientes.Remove(clientes);
+                    key = contexto.SaveChanges() > 0;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return key;
+        }
+
+        //Metodo Buscar.
         public static Clientes Buscar(int id)
         {
             Contexto contexto = new Contexto();
-            Clientes clientes = new Clientes();
+            Clientes clientes;
+
             try
             {
                 clientes = contexto.Clientes.Find(id);
+
             }
             catch (Exception)
             {
@@ -55,42 +153,16 @@ namespace ProyectoFinalAplicada1.BLL
             return clientes;
         }
 
-        internal static IEnumerable GetList(Clientes clientes)
+        //
+        public static List<Clientes> GetList(Expression<Func<Clientes, bool>> clientes)
         {
-            throw new NotImplementedException();
-        }
-
-        public static bool Modificar(Clientes clientes)
-        {
-            bool paso = false;
+            List<Clientes> lista = new List<Clientes>();
             Contexto contexto = new Contexto();
             try
             {
-                contexto.Entry(clientes).State = EntityState.Modified;
-                paso = contexto.SaveChanges() > 0;
+                lista = contexto.Clientes.Where(clientes).ToList();
             }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
-            return paso;
-        }
-
-        public static bool Eliminar(int id)
-        {
-            bool paso = false;
-            Contexto contexto = new Contexto();
-            try
-            {
-                var eliminar = contexto.Clientes.Find(id);
-                contexto.Entry(eliminar).State = EntityState.Deleted;
-                paso = contexto.SaveChanges() > 0;
-            }
-            catch (Exception)
+            catch
             {
                 throw;
             }
@@ -99,9 +171,10 @@ namespace ProyectoFinalAplicada1.BLL
                 contexto.Dispose();
             }
 
-            return paso;
+            return lista;
         }
 
+        //
         public static List<Clientes> GetClientes()
         {
             Contexto contexto = new Contexto();

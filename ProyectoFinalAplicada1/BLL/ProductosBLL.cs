@@ -12,15 +12,15 @@ namespace ProyectoFinalAplicada1.BLL
     public class ProductosBLL
     {
 
-        public static bool Guardar(Productos productos)
+        //Metodo Existe.
+        public static bool Existe(int id)
         {
-            bool paso = false;
             Contexto contexto = new Contexto();
+            bool encontrado = false;
 
             try
             {
-                if (contexto.Productos.Add(productos) != null)
-                    paso = contexto.SaveChanges() > 0;
+                encontrado = contexto.Productos.Any(c => c.ProductoId == id);
             }
             catch (Exception)
             {
@@ -31,17 +31,108 @@ namespace ProyectoFinalAplicada1.BLL
                 contexto.Dispose();
             }
 
-            return paso;
+            return encontrado;
+        }
+
+        //Metodo Insertar.
+        private static bool Insertar(Productos productos)
+        {
+            bool key = false;
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                contexto.Productos.Add(productos);
+                key = contexto.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return key;
+        }
+
+        //Metodo Modificar.
+        private static bool Modificar(Productos productos)
+        {
+            bool key = false;
+            Contexto contexto = new Contexto();
+
+            try
+            {
+
+                contexto.Entry(productos).State = EntityState.Modified;
+                key = contexto.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return key;
+        }
+
+        //Metodo Guardar.
+        public static bool Guardar(Productos productos)
+        {
+            if (!Existe(productos.ProductoId))
+            {
+                return Insertar(productos);
+            }
+            else
+            {
+                return Modificar(productos);
+            }
+        }
+
+        //Metodo Eliminar.
+        public static bool Eliminar(int id)
+        {
+            bool key = false;
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                var productos = contexto.Productos.Find(id);
+
+                if (productos != null)
+                {
+                    contexto.Productos.Remove(productos);
+                    key = contexto.SaveChanges() > 0;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return key;
         }
 
 
+        //Metodo Buscar.
         public static Productos Buscar(int id)
         {
             Contexto contexto = new Contexto();
-            Productos productos = new Productos();
+            Productos productos;
+
             try
             {
                 productos = contexto.Productos.Find(id);
+
             }
             catch (Exception)
             {
@@ -55,47 +146,6 @@ namespace ProyectoFinalAplicada1.BLL
             return productos;
         }
 
-        public static bool Modificar(Productos productos)
-        {
-            bool paso = false;
-            Contexto contexto = new Contexto();
-            try
-            {
-                contexto.Entry(productos).State = EntityState.Modified;
-                paso = contexto.SaveChanges() > 0;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
-            return paso;
-        }
-
-        public static bool Eliminar(int id)
-        {
-            bool paso = false;
-            Contexto contexto = new Contexto();
-            try
-            {
-                var eliminar = contexto.Productos.Find(id);
-                contexto.Entry(eliminar).State = EntityState.Deleted;
-                paso = contexto.SaveChanges() > 0;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
-
-            return paso;
-        }
 
         public static List<Productos> GetList(Expression<Func<Productos, bool>> productos)
         {
