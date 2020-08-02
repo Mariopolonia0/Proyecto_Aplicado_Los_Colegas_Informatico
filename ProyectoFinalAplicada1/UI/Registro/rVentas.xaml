@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
         mc:Ignorable="d"
         Icon="/Resources/Venta.png"
-        Title="Registro Ventas" Height="619" Width="766" FontSize="15">
+        Title="Registro Ventas" Height="648" Width="766" FontSize="15">
     <Grid  >
 
         <StackPanel Orientation="Vertical" >
@@ -36,6 +36,11 @@
             <StackPanel Orientation="Vertical" >
                 <Label Content="Cliente Id" />
                 <TextBox Name="ClienteIdTextBox" Text="{Binding ClienteId}"  />
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" >
+                <Label Content="Vendedor Id" />
+                <ComboBox Name="VendedorIdTextBox"  />
             </StackPanel>
 
             <GroupBox Header="Orden Detalle" BorderBrush="#FF414649"   >

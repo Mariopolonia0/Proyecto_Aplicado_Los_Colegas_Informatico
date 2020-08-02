@@ -14,6 +14,7 @@ namespace ProyectoFinalAplicada1.Entidades
         public DateTime Fecha { get; set; }
         public int ClienteId { get; set; }
         public int UsuarioId { get; set; }
+        public int VendedorId { get; set; }
         public double PrecioTotal { get; set; }
         public double GananciaTotal { get; set; }
         public double ITBISTotal { get; set; }
@@ -29,6 +30,7 @@ namespace ProyectoFinalAplicada1.Entidades
             Fecha = DateTime.Now;
             ClienteId = 0;
             UsuarioId = 0;
+            VendedorId = 0;
             PrecioTotal = 0;
             GananciaTotal = 0;
             ITBISTotal = 0;

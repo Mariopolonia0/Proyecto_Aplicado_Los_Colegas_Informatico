@@ -9,20 +9,19 @@ namespace ProyectoFinalAplicada1.DAL
     public class Contexto : DbContext
     {
         public DbSet<Usuarios> Usuarios { get; set; }
-        public DbSet<Usuarios> UsuariosDetalle { get; set; }
         public DbSet<Ventas> Ventas { get; set; }
         public DbSet<Productos> Productos { get; set; }
         public DbSet<Compras> Compras { get; set; }
         public DbSet<Clientes> Clientes { get; set; }
-       // public DbSet<Facturas> Facturas { get; set; }
         public DbSet<Vendedores> Vendedores { get; set; }
         public DbSet<Categorias> Categorias { get; set; }
+        public DbSet<Suplidores> Suplidores { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.EnableSensitiveDataLogging().UseSqlite(@"Data Source= DATA\Usuario.db");
+            optionsBuilder.EnableSensitiveDataLogging().UseSqlite(@"Data Source= DATA\BDProyectoFinal.db");
         }
-        //
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Clientes>().HasData(new Clientes {  Sexo = "Masculino", ClienteId =-1 });

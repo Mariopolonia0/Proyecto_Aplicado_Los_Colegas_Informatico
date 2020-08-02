@@ -23,27 +23,6 @@ namespace ProyectoFinalAplicada1.Entidades
             NombreUsuario = string.Empty;
             Contrasena = string.Empty;
         }
-
-        [ForeignKey("UsuarioId")]
-        public List<UsuarioDetalle> Detalle { get; set; } = new List<UsuarioDetalle>();
-    }
-
-    public class UsuarioDetalle
-    {
-
-        [Key]
-        public int UsuarioId { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public string NombreUsuario { get; set; }
-
-        public UsuarioDetalle(int usuarioId, string nombre,string apellido)
-        {
-            UsuarioId = usuarioId;
-            Nombre = nombre.ToString();
-            Apellido = apellido.ToString();
-           // NombreUsuario = nombreusuario.ToString();
-        }
     }
 }
 
