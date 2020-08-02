@@ -109,6 +109,10 @@ namespace ProyectoFinalAplicada1
             ventas.Show();
         }
 
-       
+        private void ComprasMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            rCompras compras = new rCompras();
+            compras.Show();
+        }
     }
 }
