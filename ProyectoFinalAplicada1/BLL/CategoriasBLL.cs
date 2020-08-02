@@ -186,5 +186,29 @@ namespace ProyectoFinalAplicada1.BLL
             return lista;
         }
 
+        //Datos duplicado
+        public static bool DuplicadoDescripcion(string descripcion)
+        {
+            bool paso = false;
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                paso = contexto.Categorias.Any(u => u.Descripcion.Equals(descripcion));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return paso;
+        }
+
+
     }
 }
