@@ -196,17 +196,17 @@ namespace ProyectoFinalAplicada1.BLL
 
             return clientes;
         }
+
+        //Metodo Datos Duplicados.
         //Email
-        public static bool AutorizarEmail(string email)
+        public static bool DuplicadoEmail(string email)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
 
             try
             {
-                paso = contexto.Clientes
-                    .Any(u => u.Email.Equals(email)
-                          );
+                paso = contexto.Clientes.Any(c => c.Email.Equals(email));
             }
             catch (Exception)
             {
@@ -221,16 +221,38 @@ namespace ProyectoFinalAplicada1.BLL
             return paso;
         }
 
-        public static bool AutorizarTelefono(string telefono)
+        //Telefono
+        public static bool DuplicadoTelefono(string telefono)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
 
             try
             {
-                paso = contexto.Clientes
-                    .Any(u => u.Telefono.Equals(telefono)
-                          );
+                paso = contexto.Clientes.Any(u => u.Telefono.Equals(telefono));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return paso;
+        }
+
+        //Telefono
+        public static bool DuplicadoCedula(string cedula)
+        {
+            bool paso = false;
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                paso = contexto.Clientes.Any(u => u.Cedula.Equals(cedula));
             }
             catch (Exception)
             {

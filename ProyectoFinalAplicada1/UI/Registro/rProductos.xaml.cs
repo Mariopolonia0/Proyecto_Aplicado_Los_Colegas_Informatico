@@ -28,7 +28,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
             ProductoIdTextBox.Text = "0";
             CategoriaIdComboBox.ItemsSource = CategoriasBLL.GetCategorias();
             CategoriaIdComboBox.SelectedValuePath = "Categoria";
-            CategoriaIdComboBox.DisplayMemberPath = "Nombre";
+            CategoriaIdComboBox.DisplayMemberPath = "Descripcion";
             productos.CategoriaId = 1;
             productos.Costo = 0;
         }

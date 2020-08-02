@@ -31,9 +31,9 @@ namespace ProyectoFinalAplicada1.UI.Registro
         private void Limpiar()
         {
             CategoriaIdTextBox.Text = "0";
-            NombreTextBox.Text = string.Empty;
+            //NombreTextBox.Text = string.Empty;
             DescripcionTextBox.Text = string.Empty;
-            EstadoTextBox.Text = string.Empty;
+            //EstadoTextBox.Text = string.Empty;
         }
 
         private bool Existe()
@@ -56,7 +56,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 GuardarButton.IsEnabled = true;
             }
 
-            if (NombreTextBox.Text.Length == 0)
+            /*if (NombreTextBox.Text.Length == 0)
             {
                 esValido = false;
                 GuardarButton.IsEnabled = false;
@@ -64,7 +64,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 NombreTextBox.Focus();
                 GuardarButton.IsEnabled = true;
-            }
+            }*/
 
             if (DescripcionTextBox.Text.Length == 0)
             {
@@ -72,6 +72,19 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 GuardarButton.IsEnabled = false;
                 MessageBox.Show("Descripcion está vacio", "Fallo",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
+                DescripcionTextBox.Focus();
+                GuardarButton.IsEnabled = true;
+            }
+
+            //esValido = CategoriasBLL.DuplicadoDescripcion(DescripcionTextBox.Text);
+
+            if (CategoriasBLL.DuplicadoDescripcion(DescripcionTextBox.Text))
+            {
+                esValido = false;
+                GuardarButton.IsEnabled = false;
+                MessageBox.Show("Esta Descripcion ya existe!", "Error!",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                DescripcionTextBox.Clear();
                 DescripcionTextBox.Focus();
                 GuardarButton.IsEnabled = true;
             }

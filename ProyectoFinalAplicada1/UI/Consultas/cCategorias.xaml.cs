@@ -36,15 +36,7 @@ namespace ProyectoFinalAplicada1.UI.Consultas
                         listado = CategoriasBLL.GetList(v => v.CategoriaId == Utilidades.ToInt(CriterioTextBox.Text));
                         break;
 
-                    case 1: //Nombre                      
-                        listado = CategoriasBLL.GetList(v => v.Nombre.Contains(CriterioTextBox.Text, StringComparison.OrdinalIgnoreCase));
-                        break;
-
-                    case 2: //Estado                       
-                        listado = CategoriasBLL.GetList(v => v.Estado.Contains(CriterioTextBox.Text, StringComparison.OrdinalIgnoreCase));
-                        break;
-
-                        case 3: //Descripcion                       
+                        case 2: //Descripcion                       
                             listado = CategoriasBLL.GetList(v => v.Descripcion.Contains(CriterioTextBox.Text, StringComparison.OrdinalIgnoreCase));
                             break;
                 }

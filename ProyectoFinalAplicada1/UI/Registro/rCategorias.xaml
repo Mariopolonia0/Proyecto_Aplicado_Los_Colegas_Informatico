@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
         mc:Ignorable="d"
-        Title="Registro Categorias" Height="285" Width="295">
+        Title="Registro Categorias" Height="200" Width="295">
     <Grid>
 
         <StackPanel Orientation="Vertical" Margin="4,0,4,0">
@@ -22,13 +22,13 @@
                     </Button>
                 </StackPanel>
 
-                <!---->
+                <!--
                 <Label Content="Nombre:"/>
                 <TextBox x:Name="NombreTextBox" Text="{Binding Nombre}"/>
 
                 <Label Content="Estado:"/>
                 <TextBox x:Name="EstadoTextBox" Text="{Binding Estado}"/>
-
+-->
                 <Label Content="Descripcion:"/>
                 <TextBox x:Name="DescripcionTextBox" Text="{Binding Descripcion}" />
 

@@ -50,37 +50,19 @@ namespace ProyectoFinalAplicada1.UI.Registro
             ClienteIdTextBox.Text = "0";
             NombresTextBox.Text = string.Empty;
             EmailTextBox.Text = string.Empty;
+            ApellidosTextBox.Text = string.Empty;
             TelefonoTextBox.Text = string.Empty;
             CedulaTextBox.Text = string.Empty;
             DireccionTextBox.Text = string.Empty;
             SexoComboBox.SelectedItem = null;
-
             //UsuarioIdTextBox.Text = "0";
         }
-        //
+
+        //Campo vacio
         private bool Validar()
         {
             bool esValido = true;
 
-            //Solo numero
-            if (!Regex.IsMatch(ClienteIdTextBox.Text, "^[0-9]+$"))
-            {
-                MessageBox.Show("Solo se permiten caracteres numericos.", "Campo ClienteId.", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-
-            if (!Regex.IsMatch(TelefonoTextBox.Text, "^[0-9]+$"))
-            {
-                MessageBox.Show("Solo se permiten caracteres numericos.", "Campo Telefono.", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-
-            if (!Regex.IsMatch(CedulaTextBox.Text, "^[0-9]+$"))
-            {
-                MessageBox.Show("Solo se permiten caracteres numericos.", "Campo Cedula.", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-            //Campo vacio
             if (ClienteIdTextBox.Text.Length == 0)
             {
                 esValido = false;
@@ -161,39 +143,153 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 GuardarButton.IsEnabled = true;
             }
 
-            bool paso1 = ClientesBLL.AutorizarEmail(EmailTextBox.Text);
-
-            if (paso1)
+            //Solo numero
+            /*if (!Regex.IsMatch(ClienteIdTextBox.Text, "^[0-9]+$"))
             {
-                MessageBox.Show("Email ya existe!", "Error!");
-                EmailTextBox.Clear();
-                EmailTextBox.Focus();
+                MessageBox.Show("Solo se permiten caracteres numericos.",
+                    "Campo ClienteId.", MessageBoxButton.OK, MessageBoxImage.Error);
+                ClienteIdTextBox.Clear();
+                return false;
             }
 
-            bool paso2 = ClientesBLL.AutorizarTelefono(TelefonoTextBox.Text);
-
-            if (paso1)
+            if (!Regex.IsMatch(TelefonoTextBox.Text, "^[0-9]+$"))
             {
-                MessageBox.Show("Telefono ya existe!", "Error!");
+                MessageBox.Show("Solo se permiten caracteres numericos.",
+                    "Campo Telefono.", MessageBoxButton.OK, MessageBoxImage.Error);
                 TelefonoTextBox.Clear();
-                TelefonoTextBox.Focus();
+                return false;
             }
+
+            if (!Regex.IsMatch(CedulaTextBox.Text, "^[0-9]+$"))
+            {
+                MessageBox.Show("Solo se permiten caracteres numericos.",
+                    "Campo Cedula.", MessageBoxButton.OK, MessageBoxImage.Error);
+                CedulaTextBox.Clear();
+                return false;
+            }*/
+
+            //Datos duplicado.
+            /*if (ClientesBLL.DuplicadoEmail(EmailTextBox.Text))
+            {
+                esValido = false;
+                GuardarButton.IsEnabled = false;
+                MessageBox.Show("Este Email ya existe!", "Error!",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                EmailTextBox.Clear();
+                //EmailTextBox.Focus();
+                GuardarButton.IsEnabled = true;
+            }
+
+            if (ClientesBLL.DuplicadoTelefono(TelefonoTextBox.Text))
+            {
+                esValido = false;
+                GuardarButton.IsEnabled = false;
+                MessageBox.Show("Este Telefono ya existe!", "Error!",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                TelefonoTextBox.Clear();
+                //TelefonoTextBox.Focus();
+                GuardarButton.IsEnabled = true;
+            }
+
+            if (ClientesBLL.DuplicadoCedula(CedulaTextBox.Text))
+            {
+                esValido = false;
+                GuardarButton.IsEnabled = false;
+                MessageBox.Show("Esta Cedula ya existe!", "Error!",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                CedulaTextBox.Clear();
+                //CedulaTextBox.Focus();
+                GuardarButton.IsEnabled = true;
+            }*/
 
             return esValido;
         }
-        //
-        public bool ValidarBuscar()
+
+        //Solo numero.
+        private bool ValidarSolonumero()
         {
-            bool ValidarB = true;
-            if (ClienteIdTextBox.Text.Length == 0)
+            bool NesValido = true;
+
+            if (!Regex.IsMatch(ClienteIdTextBox.Text, "^[0-9]+$"))
             {
-                ValidarB = false;
+                MessageBox.Show("Solo se permiten caracteres numericos.",
+                    "Campo ClienteId.", MessageBoxButton.OK, MessageBoxImage.Error);
+                ClienteIdTextBox.Clear();
+                return false;
+            }
+
+            if (!Regex.IsMatch(TelefonoTextBox.Text, "^[0-9]+$"))
+            {
+                MessageBox.Show("Solo se permiten caracteres numericos.",
+                    "Campo Telefono.", MessageBoxButton.OK, MessageBoxImage.Error);
+                TelefonoTextBox.Clear();
+                return false;
+            }
+
+            if (!Regex.IsMatch(CedulaTextBox.Text, "^[0-9]+$"))
+            {
+                MessageBox.Show("Solo se permiten caracteres numericos.",
+                    "Campo Cedula.", MessageBoxButton.OK, MessageBoxImage.Error);
+                CedulaTextBox.Clear();
+                return false;
+            }
+
+            return NesValido;
+        }
+
+        //Datos duplicado.
+        private bool Datosduplicado()
+        {
+            bool NoDuplicado = true;
+            
+            if (ClientesBLL.DuplicadoEmail(EmailTextBox.Text))
+            {
+                NoDuplicado = false;
                 GuardarButton.IsEnabled = false;
-                MessageBox.Show("ClienteId está vacio", "Fallo",
+                MessageBox.Show("Este Email ya existe!", "Error!",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
-                ClienteIdTextBox.Focus();
+                EmailTextBox.Clear();
+                //EmailTextBox.Focus();
                 GuardarButton.IsEnabled = true;
             }
+
+            if (ClientesBLL.DuplicadoTelefono(TelefonoTextBox.Text))
+            {
+                NoDuplicado = false;
+                GuardarButton.IsEnabled = false;
+                MessageBox.Show("Este Telefono ya existe!", "Error!",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                TelefonoTextBox.Clear();
+                //TelefonoTextBox.Focus();
+                GuardarButton.IsEnabled = true;
+            }
+
+            if (ClientesBLL.DuplicadoCedula(CedulaTextBox.Text))
+            {
+                NoDuplicado = false;
+                GuardarButton.IsEnabled = false;
+                MessageBox.Show("Esta Cedula ya existe!", "Error!",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                CedulaTextBox.Clear();
+                //CedulaTextBox.Focus();
+                GuardarButton.IsEnabled = true;
+            }
+            return NoDuplicado;
+        }
+
+            //
+        public bool ValidarBuscar()
+        {
+           bool ValidarB = true;
+           if (ClienteIdTextBox.Text.Length == 0)
+            {
+               ValidarB = false;
+               GuardarButton.IsEnabled = false;
+               MessageBox.Show("ClienteId está vacio", "Fallo",
+                   MessageBoxButton.OK, MessageBoxImage.Warning);
+               ClienteIdTextBox.Focus();
+               GuardarButton.IsEnabled = true;
+           }
             return ValidarB;
         }
         //
@@ -205,8 +301,9 @@ namespace ProyectoFinalAplicada1.UI.Registro
             if (clientes != null)
             {
                 this.clientes = clientes;
-                /*SexoComboBox.SelectedValuePath = "Clientes";
-                SexoComboBox.DisplayMemberPath = "Sexo";*/
+                SexoComboBox.SelectedValuePath = "Clientes";
+                SexoComboBox.DisplayMemberPath = "";
+                //SexoComboBox.DisplayMemberPath = "";
             }
             else
             {
@@ -231,6 +328,12 @@ namespace ProyectoFinalAplicada1.UI.Registro
             
 
             if (!Validar())
+                return;
+
+            if (!ValidarSolonumero())
+                return;
+
+            if (!Datosduplicado())
                 return;
 
             var paso = ClientesBLL.Guardar(clientes);
