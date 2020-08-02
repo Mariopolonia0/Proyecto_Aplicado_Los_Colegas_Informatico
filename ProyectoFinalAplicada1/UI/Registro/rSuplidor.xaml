@@ -15,7 +15,7 @@
         <StackPanel Orientation="Horizontal" Height="28" >
 
             <TextBox x:Name="VendedorIdTextBox" Text="{Binding VendedorId}" Width="90" />
-            <Button x:Name="BuscarButton" Margin="5,0" Click="BuscarButton_Click"  >
+            <Button x:Name="BuscarButton" Margin="5,0"   >
                 <StackPanel Orientation="Horizontal" >
                     <Image Source="/Resources/Buscar.png" Height="23" Width="45"  />
                     <Label Content="Buscar" Height="26"  Width="46"  />
@@ -42,21 +42,21 @@
         <!--BARRA BOTONES-->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="37" Margin="0,15,0,0"   >
 
-            <Button x:Name="NuevoButton" Margin="5,0,0,0"   Click="NuevoButton_Click" >
+            <Button x:Name="NuevoButton" Margin="5,0,0,0"    >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/Nuevo.png"  />
                     <Label Content="Nuevo" />
                 </StackPanel>
             </Button>
 
-            <Button x:Name="GuardarButton"  Click="GuardarButton_Click" Margin="5,0,0,0">
+            <Button x:Name="GuardarButton"  Margin="5,0,0,0">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/Guardar.png"  />
                     <Label Content="Guardar" />
                 </StackPanel>
             </Button>
-
-            <Button x:Name="EliminarButton"  Click="EliminarButton_Click" Margin="5,0,0,0" >
+            <!--Click="EliminarButton_Click"-->
+            <Button x:Name="EliminarButton"   Margin="5,0,0,0"  >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/Eliminar.png"  />
                     <Label Content="Eliminar" />
