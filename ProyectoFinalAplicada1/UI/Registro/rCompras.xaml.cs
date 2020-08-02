@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoFinalAplicada1.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,9 +18,43 @@ namespace ProyectoFinalAplicada1.UI.Registro
     /// </summary>
     public partial class rCompras : Window
     {
+        Compras compra = new Compras();
+
         public rCompras()
         {
             InitializeComponent();
+            this.DataContext = compra;
+            CompraIdTextBox.Text = "0";
+        }
+
+        private void BucarButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AgregarButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RemoverButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void NuevoButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void GuardarButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EliminarButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

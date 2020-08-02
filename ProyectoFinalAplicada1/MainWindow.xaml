@@ -34,7 +34,7 @@
                         </MenuItem.Icon>
                     </MenuItem>
 
-                    <MenuItem x:Name="ComprasMenuItem" Header="Compras"  >
+                    <MenuItem x:Name="ComprasMenuItem" Header="Compras" Click="ComprasMenuItem_Click">
                         <MenuItem.Icon>
                             <Image Source="/Resources/Comprar.jfif"/>
                         </MenuItem.Icon>

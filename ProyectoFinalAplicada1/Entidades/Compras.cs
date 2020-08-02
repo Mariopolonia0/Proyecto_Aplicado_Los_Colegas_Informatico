@@ -11,14 +11,12 @@ namespace ProyectoFinalAplicada1.Entidades
         [Key]
         public int CompraId { get; set; }
         public DateTime Fecha { get; set; }
-        public string TipoCompra { get; set; }
-        public string Efectivo { get; set; }
-        public string Tarjeta { get; set; }
-        public string Devuelta { get; set; }
+        public string Suplidor { get; set; }
         public decimal Monto { get; set; }
-        public decimal Balance { get; set; }
-        public double Descuento { get; set; }
+        public string NCF { get; set; }
+        public double ITBIS { get; set; }
         public int UsuarioId { get; set; }
+        public double Transporte { get; set; }
 
         [ForeignKey("CompraId")]
         public virtual List<ComprasDetalles> CompraDetalle { get; set; }
@@ -27,14 +25,12 @@ namespace ProyectoFinalAplicada1.Entidades
         {
             CompraId = 0;
             Fecha = DateTime.Now;
-            TipoCompra = string.Empty;
-            Efectivo = string.Empty;
-            Tarjeta = string.Empty;
-            Devuelta = string.Empty;
+            Suplidor = string.Empty;
             Monto = 0;
-            Balance = 0;
-            Descuento = 0;
+            NCF = string.Empty;
+            ITBIS = 0;
             UsuarioId = 0;
+            Transporte = 0;
 
             CompraDetalle = new List<ComprasDetalles>();
         }

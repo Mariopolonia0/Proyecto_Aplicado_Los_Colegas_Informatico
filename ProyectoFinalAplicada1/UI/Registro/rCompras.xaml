@@ -11,13 +11,13 @@
         <StackPanel Orientation="Vertical" Margin="10,10,10,10">
             <Label Content="CompraId" FontSize="11"/>
 
-            <!--OrdenIdTextBox y BuscarButton-->
+            <!--CompraIdTextBox y BuscarButton-->
             <StackPanel Orientation="Horizontal">
                 <!--TextBox-->
-                <TextBox Name="CompraIdIdTextBox" Width="625" Height="20" Margin="5,0" Text="{Binding OrdenId}"/>
+                <TextBox Name="CompraIdTextBox" Width="625" Height="20" Margin="5,0" Text="{Binding CompraId}"/>
 
                 <!--Button-->
-                <Button Name="BucarButton" Width="60" Height="20" Margin="5,0" >
+                <Button Name="BucarButton" Width="60" Height="20" Margin="5,0" Click="BucarButton_Click" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Buscar.png" />
                         <Label Content="Buscar" Margin="4,0" Padding="-1"/>
@@ -39,7 +39,7 @@
             </StackPanel>
 
             <Label Content="Monto" FontSize="11"/>
-            <TextBox Name="MontoTextBox" Width="695" Height="20" IsReadOnly="True" Margin="5,0" Text="{Binding Monto}" HorizontalAlignment="Left"/>
+            <TextBox Name="MontoTextBox" Width="69" Height="20" IsReadOnly="True" Margin="5,0" Text="{Binding Monto}" HorizontalAlignment="Left"/>
 
             <GroupBox Header="Orden Detalle" Width="697" BorderBrush="#FF414649" HorizontalAlignment="Left" Margin="5,10,5,0">
 
@@ -62,7 +62,7 @@
                         <TextBox Name="CostoTextBox" Width="50" Height="20" IsReadOnly="True" HorizontalAlignment="Left" Margin="23,0,0,0"/>
                         <TextBox Name="DescripcionTextBox" Width="117" Height="20" IsReadOnly="True" HorizontalAlignment="Left" Margin="23,0,0,0"/>
 
-                        <Button Name="AgregarButton" Width="69" Height="20" Margin="22,0,5,0">
+                        <Button Name="AgregarButton" Width="69" Height="20" Margin="22,0,5,0" Click="AgregarButton_Click">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="/Resources/agregar.png" />
                                 <Label Content="Agregar" Margin="4,0" Padding="-1"/>
@@ -70,7 +70,7 @@
                         </Button>
 
                         <!--RemoverButton-->
-                        <Button Name="RemoverButton" Width="72" Height="20" Margin="5,0" >
+                        <Button Name="RemoverButton" Width="72" Height="20" Margin="5,0" Click="RemoverButton_Click" >
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="/Resources/Eliminar.png" />
                                 <Label Content="Remover" Margin="4,0" Padding="-1"/>
@@ -101,21 +101,21 @@
 
             <!--Barra de botones-->
             <StackPanel Orientation="Horizontal" Width="210" Margin="0,20,0,0">
-                <Button Name="NuevoButton" Width="60" Height="20" >
+                <Button Name="NuevoButton" Width="60" Height="20" Click="NuevoButton_Click" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Nuevo.png" />
                         <Label Content="Nuevo" Padding="-1" Margin="4,0"/>
                     </StackPanel>
                 </Button>
 
-                <Button Name="GuardarButton" Width="67" Height="20" Margin="5,0,0,0">
+                <Button Name="GuardarButton" Width="67" Height="20" Margin="5,0,0,0" Click="GuardarButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Guardar.png" />
                         <Label Content="Guardar" Padding="-1" Margin="4,0"/>
                     </StackPanel>
                 </Button>
 
-                <Button Name="EliminarButton" Width="67" Height="20" Margin="5,0,0,0">
+                <Button Name="EliminarButton" Width="67" Height="20" Margin="5,0,0,0" Click="EliminarButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Eliminar.png" />
                         <Label Content="Eliminar" Padding="-1" Margin="4,0"/>
