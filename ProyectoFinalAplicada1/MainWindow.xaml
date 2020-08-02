@@ -38,8 +38,8 @@
                         <MenuItem.Icon>
                             <Image Source="/Resources/Comprar.jfif"/>
                         </MenuItem.Icon>
-
                     </MenuItem>
+                    
                     <MenuItem x:Name="ProductosMenuItem" Header="Productos" Click="ProductosMenuItem_Click">
                         <MenuItem.Icon>
                             <Image Source="/Resources/Productos.jfif" />

@@ -17,7 +17,6 @@ namespace ProyectoFinalAplicada1.Entidades
         public double ITBIS { get; set; }
         public double Ganancia { get; set; }
         
-
         public VentasDetalles()
         {
             Id = 0;
@@ -37,9 +36,7 @@ namespace ProyectoFinalAplicada1.Entidades
             Descripcion = descripcion;
             Precio =  precio * cantidad;
             ITBIS = itbis;
-            Ganancia = ganancia;
-            
+            Ganancia = ganancia; 
         }
-
     }
 }

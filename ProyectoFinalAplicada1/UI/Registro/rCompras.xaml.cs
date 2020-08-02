@@ -56,5 +56,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
         {
 
         }
+
+        
     }
 }
