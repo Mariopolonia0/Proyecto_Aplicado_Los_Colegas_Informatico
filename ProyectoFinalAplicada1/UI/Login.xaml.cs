@@ -24,7 +24,6 @@ namespace ProyectoFinalAplicada1.UI
         public Login()
         {
             InitializeComponent();
-            
         }
 
         private void IngresarButton_Click(object sender, RoutedEventArgs e)
@@ -46,11 +45,39 @@ namespace ProyectoFinalAplicada1.UI
 
         private void CancelarButton_Click(object sender, RoutedEventArgs e)
         {
-
             base.OnClosed(e);
-
             Application.Current.Shutdown();
+        }
 
+        private void StackPanel_KeyDown(object sender, KeyEventArgs e)
+        {
+           // NombreUsuarioTextBox.Focus
+        }
+
+        private void ContrasenaPasswordBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                bool paso = UsuariosBLL.Autorizar(NombreUsuarioTextBox.Text, ContrasenaPasswordBox.Password);
+
+                if (paso)
+                {
+                    this.Close();
+                    Principal.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Error Nombre Usuario o Contraseña incorrecta!", "Error!");
+                    ContrasenaPasswordBox.Clear();
+                    NombreUsuarioTextBox.Focus();
+                }
+            }
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            MessageBox.Show("Hasta Luego");
+            this.Close();
         }
     }
 }

@@ -7,20 +7,21 @@
         xmlns:PasswordHelper="clr-namespace:ProyectoFinalAplicada1.Resources.PasswordHelper"
         mc:Ignorable="d"
         Icon="/Resources/Window.png"
-        Title="Login" Height="230" Width="350" FontSize="15" FontFamily="Segoe UI" Topmost="True">
+        Title="Login" Height="230" Width="350" FontSize="15" FontFamily="Segoe UI" Topmost="True" Closed="Window_Closed">
     <Grid>
 
         <StackPanel Orientation="Vertical" Margin="10,10,10,10">
             <StackPanel Orientation="Vertical">
                 <Label Content="Nombre Usuario"/>
 
-                <TextBox x:Name="NombreUsuarioTextBox" Text="{Binding NombreUsuario}" />
+                <TextBox x:Name="NombreUsuarioTextBox" Text="{Binding NombreUsuario}"  />
 
                 <Label Content="Contraseña"/>
 
-                <PasswordBox x:Name="ContrasenaPasswordBox" PasswordHelper:PasswordHelper.Attach="True" PasswordHelper:PasswordHelper.Password="{Binding Contrasena, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <PasswordBox x:Name="ContrasenaPasswordBox" PasswordHelper:PasswordHelper.Attach="True" PasswordHelper:PasswordHelper.Password="{Binding Contrasena, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" KeyUp="ContrasenaPasswordBox_KeyUp" />
 
             </StackPanel>
+            
             <StackPanel Orientation="Horizontal" Margin="0,15" Height="42" >
                 <Button x:Name="IngresarButton" Margin="50,0" Click="IngresarButton_Click">
                     <StackPanel Orientation="Horizontal">

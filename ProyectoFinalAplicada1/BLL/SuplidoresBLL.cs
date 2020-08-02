@@ -10,7 +10,7 @@ namespace ProyectoFinalAplicada1.BLL
 {
     class SuplidoresBLL
     {
-        /*//Metodo Existe.
+        //Metodo Existe.
         public static bool Existe(int id)
         {
             Contexto contexto = new Contexto();
@@ -18,7 +18,7 @@ namespace ProyectoFinalAplicada1.BLL
 
             try
             {
-                encontrado = contexto.Categorias.Any(c => c.CategoriaId == id);
+                encontrado = contexto.Suplidores.Any(c => c.SuplidorId == id);
             }
             catch (Exception)
             {
@@ -33,14 +33,14 @@ namespace ProyectoFinalAplicada1.BLL
         }
 
         //Metodo Insertar.
-        private static bool Insertar(Suplidores suplidor)
+       private static bool Insertar(Suplidores suplidor)
         {
             bool key = false;
             Contexto contexto = new Contexto();
 
             try
             {
-                contexto..Add(suplidor);
+                contexto.Suplidores.Add(suplidor);
                 key = contexto.SaveChanges() > 0;
             }
             catch (Exception)
@@ -54,160 +54,115 @@ namespace ProyectoFinalAplicada1.BLL
 
             return key;
         }
+        
+       //Metodo Modificar.
+       private static bool Modificar(Suplidores suplidor)
+       {
+           bool key = false;
+           Contexto contexto = new Contexto();
 
-        //Metodo Modificar.
-        private static bool Modificar(Categorias categorias)
-        {
-            bool key = false;
-            Contexto contexto = new Contexto();
+           try
+           {
 
-            try
-            {
+               contexto.Entry(suplidor).State = EntityState.Modified;
+               key = contexto.SaveChanges() > 0;
+           }
+           catch (Exception)
+           {
+               throw;
+           }
+           finally
+           {
+               contexto.Dispose();
+           }
 
-                contexto.Entry(categorias).State = EntityState.Modified;
-                key = contexto.SaveChanges() > 0;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
+           return key;
+       }
 
-            return key;
-        }
+       //Metodo Guardar.
+       public static bool Guardar(Suplidores suplidor)
+       {
+           if (!Existe(suplidor.SuplidorId))
+           {
+               return Insertar(suplidor);
+           }
+           else
+           {
+               return Modificar(suplidor);
+           }
+       }
 
-        //Metodo Guardar.
-        public static bool Guardar(Categorias categorias)
-        {
-            if (!Existe(categorias.CategoriaId))
-            {
-                return Insertar(categorias);
-            }
-            else
-            {
-                return Modificar(categorias);
-            }
-        }
+       //Metodo Eliminar.
+       public static bool Eliminar(int id)
+       {
+           bool key = false;
+           Contexto contexto = new Contexto();
 
-        //Metodo Eliminar.
-        public static bool Eliminar(int id)
-        {
-            bool key = false;
-            Contexto contexto = new Contexto();
+           try
+           {
+               Suplidores suplidor = contexto.Suplidores.Find(id);
 
-            try
-            {
-                var categorias = contexto.Categorias.Find(id);
+               if (suplidor != null)
+               {
+                   contexto.Suplidores.Remove(suplidor);
+                   key = contexto.SaveChanges() > 0;
+               }
+           }
+           catch (Exception)
+           {
+               throw;
+           }
+           finally
+           {
+               contexto.Dispose();
+           }
 
-                if (categorias != null)
-                {
-                    contexto.Categorias.Remove(categorias);
-                    key = contexto.SaveChanges() > 0;
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
+           return key;
+       }
 
-            return key;
-        }
+       //Metodo Buscar.
+       public static Suplidores Buscar(int id)
+       {
+           Contexto contexto = new Contexto();
+           Suplidores suplidore;
 
-        //Metodo Buscar.
-        public static Categorias Buscar(int id)
-        {
-            Contexto contexto = new Contexto();
-            Categorias categorias;
+           try
+           {
+                suplidore = contexto.Suplidores.Find(id);
+           }
+           catch (Exception)
+           {
+               throw;
+           }
+           finally
+           {
+               contexto.Dispose();
+           }
 
-            try
-            {
-                categorias = contexto.Categorias.Find(id);
+           return suplidore;
+       }
 
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
+       public static List<Suplidores> GetCategorias()
+       {
+           Contexto contexto = new Contexto();
+           List<Suplidores> suplidores = new List<Suplidores>();
 
-            return categorias;
-        }
+           try
+           {
+                suplidores = contexto.Suplidores.ToList();
+           }
+           catch (Exception)
+           {
 
-        public static List<Categorias> GetCategorias()
-        {
-            Contexto contexto = new Contexto();
-            List<Categorias> categorias = new List<Categorias>();
+               throw;
+           }
+           finally
+           {
+               contexto.Dispose();
+           }
 
-            try
-            {
-                categorias = contexto.Categorias.ToList();
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
-
-            return categorias;
-        }
-
-        public static List<Categorias> GetList(Expression<Func<Categorias, bool>> categorias)
-        {
-            List<Categorias> lista = new List<Categorias>();
-            Contexto contexto = new Contexto();
-            try
-            {
-                lista = contexto.Categorias.Where(categorias).ToList();
-            }
-            catch
-            {
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
-
-            return lista;
-        }
-
-        //Datos duplicado
-        public static bool DuplicadoDescripcion(string descripcion)
-        {
-            bool paso = false;
-            Contexto contexto = new Contexto();
-
-            try
-            {
-                paso = contexto.Categorias.Any(u => u.Descripcion.Equals(descripcion));
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
-
-            return paso;
-        }
-        */
+           return suplidores;
+       }
     }
 }
 

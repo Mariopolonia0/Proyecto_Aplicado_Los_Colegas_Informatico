@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
         mc:Ignorable="d"
         Icon="/Resources/vendedores.png"
-        Title="Registro Vendedores"  FontSize="15" Height="253" Width="319">
+        Title="Registro Vendedores"  FontSize="15" Height="273" Width="319">
 
     <StackPanel  >
         

@@ -8,6 +8,10 @@
         Icon="/Resources/Window.png"
         Title="Menu Pricipal" Height="400" Width="600">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="99*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <StackPanel Grid.ColumnSpan="2">
             <Menu Height="46">
                 <MenuItem Header="   Registros" Width="94"   >
