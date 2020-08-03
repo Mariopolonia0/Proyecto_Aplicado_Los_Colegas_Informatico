@@ -107,8 +107,8 @@ namespace ProyectoFinalAplicada1.Migrations
                     b.Property<string>("NCF")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Suplidor")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("SuplidorId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<double>("Transporte")
                         .HasColumnType("REAL");
@@ -202,7 +202,7 @@ namespace ProyectoFinalAplicada1.Migrations
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("NombreReresentante")
+                    b.Property<string>("NombreRepresentante")
                         .HasColumnType("TEXT");
 
                     b.HasKey("SuplidorId");

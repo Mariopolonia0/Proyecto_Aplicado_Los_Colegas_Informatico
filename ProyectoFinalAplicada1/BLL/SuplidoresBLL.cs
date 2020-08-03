@@ -142,27 +142,25 @@ namespace ProyectoFinalAplicada1.BLL
            return suplidore;
        }
 
-       public static List<Suplidores> GetCategorias()
-       {
-           Contexto contexto = new Contexto();
-           List<Suplidores> suplidores = new List<Suplidores>();
+        public static bool DuplicadoSuplidorId(int id)
+        {
+            bool paso = false;
+            Contexto contexto = new Contexto();
 
-           try
-           {
-                suplidores = contexto.Suplidores.ToList();
-           }
-           catch (Exception)
-           {
-
-               throw;
-           }
-           finally
-           {
-               contexto.Dispose();
-           }
-
-           return suplidores;
-       }
+            try
+            {
+                paso = contexto.Suplidores.Any(u => u.SuplidorId.Equals(id));
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return paso;
+        }
     }
 }
 

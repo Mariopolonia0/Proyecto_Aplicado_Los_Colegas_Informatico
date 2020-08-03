@@ -64,7 +64,6 @@ namespace ProyectoFinalAplicada1.BLL
 
             try
             {
-
                 contexto.Entry(categorias).State = EntityState.Modified;
                 key = contexto.SaveChanges() > 0;
             }

@@ -56,7 +56,18 @@
                             <Image Source="/Resources/vendedores.png" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem x:Name="CategoriasMenuItem" Header="Categorias" Click="CategoriasMenuItem_Click" />
+
+                    <MenuItem x:Name="CategoriasMenuItem" Header="Categorias" Click="CategoriasMenuItem_Click" >
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/Categoria.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem x:Name="SuplidorMenuItem" Header="Suplidor" Click="SuplidorMenuItem_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/Suplidor.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
 
                 </MenuItem>
 

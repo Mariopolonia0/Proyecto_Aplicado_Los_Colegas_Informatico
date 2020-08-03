@@ -9,8 +9,8 @@ using ProyectoFinalAplicada1.DAL;
 namespace ProyectoFinalAplicada1.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200802190414_migracion inicial")]
-    partial class migracioninicial
+    [Migration("20200803005444_primera migracion")]
+    partial class primeramigracion
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -109,8 +109,8 @@ namespace ProyectoFinalAplicada1.Migrations
                     b.Property<string>("NCF")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Suplidor")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("SuplidorId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<double>("Transporte")
                         .HasColumnType("REAL");
@@ -204,7 +204,7 @@ namespace ProyectoFinalAplicada1.Migrations
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("NombreReresentante")
+                    b.Property<string>("NombreRepresentante")
                         .HasColumnType("TEXT");
 
                     b.HasKey("SuplidorId");

@@ -10,14 +10,14 @@ namespace ProyectoFinalAplicada1.Entidades
         [Key]
         public int SuplidorId  { get; set; }
         public string Compania { get; set; }
-        public string NombreReresentante { get; set; }
+        public string NombreRepresentante { get; set; }
         public  DateTime Fecha { get; set; }
 
         public Suplidores()
         {
             SuplidorId = 0;
             Compania = string.Empty;
-            NombreReresentante = string.Empty;
+            NombreRepresentante = string.Empty;
             Fecha = DateTime.Now;
         }
     } 

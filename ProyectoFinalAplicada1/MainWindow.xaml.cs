@@ -114,5 +114,11 @@ namespace ProyectoFinalAplicada1
             rCompras compras = new rCompras();
             compras.Show();
         }
+
+        private void SuplidorMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            rSuplidor suplidor = new rSuplidor();
+            suplidor.Show();
+        }
     }
 }

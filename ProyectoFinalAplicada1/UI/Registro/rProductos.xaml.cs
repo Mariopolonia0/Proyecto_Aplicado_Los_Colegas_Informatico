@@ -114,16 +114,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 GuardarButton.IsEnabled = true;
             }
 
-           /* if (CantidadTextBox.Text.Length == 0)
-            {
-                esValido = false;
-                GuardarButton.IsEnabled = false;
-                MessageBox.Show("Cantidad está vacia", "Fallo",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
-                CantidadTextBox.Focus();
-                GuardarButton.IsEnabled = true;
-            }
-            */
             if (ITBISComboBox.SelectedIndex == 0)
             {
                 esValido = false;
@@ -203,8 +193,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
                     MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
-        
-
         private void ITBISComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             double Costo = 0;
@@ -235,43 +223,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
                     break;
             }
         }
-
-        /*private void GananciaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            double Costo = 0;
-
-            switch (GananciaComboBox.SelectedIndex)
-            {
-
-                case 1:
-                    productos.Ganancia = 0.75;
-                    Costo = Convert.ToDouble(PrecioTextBox.Text) * 0.75;
-                    productos.Costo = productos.Precio + Costo;
-                    CostoLabel.Content = productos.Costo.ToString();
-                    break;
-
-                case 2:
-                    productos.Ganancia = 0.50;
-                    Costo = Convert.ToDouble(PrecioTextBox.Text) * 0.50;
-                    productos.Costo = productos.Precio + Costo;
-                    CostoLabel.Content = productos.Costo.ToString();
-                    break;
-
-                case 3:
-                    productos.Ganancia = 0.30;
-                    Costo = Convert.ToDouble(PrecioTextBox.Text) * 0.30;
-                    productos.Costo = productos.Precio + Costo;
-                    CostoLabel.Content = productos.Costo.ToString();
-                    break;
-
-                case 4:
-                    productos.Ganancia = 0.00;
-                    productos.Costo = productos.Precio;
-                    CostoLabel.Content = productos.Costo.ToString();
-                    break;
-            }
-        }*/
     }
-
 }
 

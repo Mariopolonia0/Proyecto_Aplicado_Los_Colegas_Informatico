@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProyectoFinalAplicada1.Migrations
 {
-    public partial class migracioninicial : Migration
+    public partial class primeramigracion : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,7 +47,7 @@ namespace ProyectoFinalAplicada1.Migrations
                     CompraId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Fecha = table.Column<DateTime>(nullable: false),
-                    Suplidor = table.Column<string>(nullable: true),
+                    SuplidorId = table.Column<int>(nullable: false),
                     Monto = table.Column<decimal>(nullable: false),
                     NCF = table.Column<string>(nullable: true),
                     ITBIS = table.Column<double>(nullable: false),
@@ -87,7 +87,7 @@ namespace ProyectoFinalAplicada1.Migrations
                     SuplidorId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Compania = table.Column<string>(nullable: true),
-                    NombreReresentante = table.Column<string>(nullable: true),
+                    NombreRepresentante = table.Column<string>(nullable: true),
                     Fecha = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>

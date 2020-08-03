@@ -11,7 +11,7 @@ namespace ProyectoFinalAplicada1.Entidades
         [Key]
         public int CompraId { get; set; }
         public DateTime Fecha { get; set; }
-        public string Suplidor { get; set; }
+        public int SuplidorId { get; set; }
         public decimal Monto { get; set; }
         public string NCF { get; set; }
         public double ITBIS { get; set; }
@@ -25,7 +25,7 @@ namespace ProyectoFinalAplicada1.Entidades
         {
             CompraId = 0;
             Fecha = DateTime.Now;
-            Suplidor = string.Empty;
+            SuplidorId = 0;
             Monto = 0;
             NCF = string.Empty;
             ITBIS = 0;
@@ -34,13 +34,5 @@ namespace ProyectoFinalAplicada1.Entidades
 
             CompraDetalle = new List<ComprasDetalles>();
         }
-        /*[Key]
-        public int ComprasId { get; set; }
-        public DateTime Fecha { get; set; }
-        public int SuplidorId { get; set; }
-        public double Monto { get; set; }
-        public int UsuarioId { get; set; }
-        public string NCF { get; set; }
-        public double ITBS  { get; set; }*/
     }
 }

@@ -56,7 +56,7 @@ namespace ProyectoFinalAplicada1.UI
 
         private void ContrasenaPasswordBox_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            if (e.Key ==  Key.Enter)
             {
                 bool paso = UsuariosBLL.Autorizar(NombreUsuarioTextBox.Text, ContrasenaPasswordBox.Password);
 
@@ -72,12 +72,6 @@ namespace ProyectoFinalAplicada1.UI
                     NombreUsuarioTextBox.Focus();
                 }
             }
-        }
-
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            MessageBox.Show("Hasta Luego");
-            this.Close();
-        }
+        }    
     }
 }

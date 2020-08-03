@@ -30,8 +30,8 @@
         </StackPanel>
 
         <StackPanel Orientation="Vertical">
-            <Label Content="Suplidor" />
-            <ComboBox Name="SuplidorIdComboBox"/>
+            <Label Content="Suplidor Id" />
+            <ComboBox Name="SuplidorIdComboBox" />
         </StackPanel>
 
         <StackPanel>

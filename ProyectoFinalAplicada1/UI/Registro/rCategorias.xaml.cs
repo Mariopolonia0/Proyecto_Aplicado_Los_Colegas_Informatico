@@ -31,9 +31,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
         private void Limpiar()
         {
             CategoriaIdTextBox.Text = "0";
-            //NombreTextBox.Text = string.Empty;
             DescripcionTextBox.Text = string.Empty;
-            //EstadoTextBox.Text = string.Empty;
         }
 
         private bool Existe()
@@ -56,16 +54,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 GuardarButton.IsEnabled = true;
             }
 
-            /*if (NombreTextBox.Text.Length == 0)
-            {
-                esValido = false;
-                GuardarButton.IsEnabled = false;
-                MessageBox.Show("Nombre está vacio", "Fallo",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
-                NombreTextBox.Focus();
-                GuardarButton.IsEnabled = true;
-            }*/
-
             if (DescripcionTextBox.Text.Length == 0)
             {
                 esValido = false;
@@ -75,8 +63,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 DescripcionTextBox.Focus();
                 GuardarButton.IsEnabled = true;
             }
-
-            //esValido = CategoriasBLL.DuplicadoDescripcion(DescripcionTextBox.Text);
 
             if (CategoriasBLL.DuplicadoDescripcion(DescripcionTextBox.Text))
             {

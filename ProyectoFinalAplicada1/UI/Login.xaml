@@ -7,7 +7,7 @@
         xmlns:PasswordHelper="clr-namespace:ProyectoFinalAplicada1.Resources.PasswordHelper"
         mc:Ignorable="d"
         Icon="/Resources/Window.png"
-        Title="Login" Height="230" Width="350" FontSize="15" FontFamily="Segoe UI" Topmost="True" Closed="Window_Closed">
+        Title="Login" Height="230" Width="350" FontSize="15" FontFamily="Segoe UI" Topmost="True">
     <Grid>
 
         <StackPanel Orientation="Vertical" Margin="10,10,10,10">

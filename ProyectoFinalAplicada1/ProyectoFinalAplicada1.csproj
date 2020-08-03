@@ -24,6 +24,7 @@
     <None Remove="Resources\Nuevo.png" />
     <None Remove="Resources\Productos.jfif" />
     <None Remove="Resources\Registro.png" />
+    <None Remove="Resources\Suplidor.png" />
     <None Remove="Resources\Usuario.png" />
     <None Remove="Resources\vendedores.png" />
     <None Remove="Resources\Venta.png" />
@@ -73,6 +74,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="Resources\Productos.jfif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Suplidor.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Venta.png">

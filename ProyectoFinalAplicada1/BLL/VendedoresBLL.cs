@@ -158,5 +158,25 @@ namespace ProyectoFinalAplicada1.BLL
 
             return lista;
         }
+        public static bool DuplicadoVendedorId(int id)
+        {
+            bool paso = false;
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                paso = contexto.Vendedores.Any(u => u.VendedorId.Equals(id));
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return paso;
+        }
+
     }
 }

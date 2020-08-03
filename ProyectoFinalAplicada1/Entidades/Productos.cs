@@ -19,7 +19,6 @@ namespace ProyectoFinalAplicada1.Entidades
         public int Cantidad { get; set; }
         public int CategoriaId { get; set; }
 
-
         public Productos()
         {
             ProductoId = 0;
@@ -33,6 +32,5 @@ namespace ProyectoFinalAplicada1.Entidades
             UsuarioId = 0;
             CategoriaId = 0;
         }
-
     }
 }
