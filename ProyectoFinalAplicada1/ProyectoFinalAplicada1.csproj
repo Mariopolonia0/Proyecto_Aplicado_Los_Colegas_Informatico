@@ -12,6 +12,7 @@
     <None Remove="Resources\Ayuda.jfif" />
     <None Remove="Resources\Buscar.png" />
     <None Remove="Resources\Cancelar.jfif" />
+    <None Remove="Resources\Categoria.png" />
     <None Remove="Resources\Cliente.png" />
     <None Remove="Resources\Comprar.jfif" />
     <None Remove="Resources\Consulta.jfif" />
@@ -50,6 +51,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Cancelar.jfif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Categoria.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Cliente.png">

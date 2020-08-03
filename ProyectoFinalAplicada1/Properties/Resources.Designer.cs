@@ -73,6 +73,16 @@ namespace ProyectoFinalAplicada1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Categoria {
+            get {
+                object obj = ResourceManager.GetObject("Categoria", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Comprar {
             get {
                 object obj = ResourceManager.GetObject("Comprar", resourceCulture);

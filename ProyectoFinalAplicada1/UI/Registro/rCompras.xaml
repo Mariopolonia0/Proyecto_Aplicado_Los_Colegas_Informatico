@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
         mc:Ignorable="d"
-        Title="Registro Compras" Height="478" Width="729">
+        Title="Registro Compras" Height="538" Width="729" FontSize="14">
 
 
     <StackPanel Orientation="Vertical" >
-        <Label Content="CompraId" FontSize="11"/>
+        <Label Content="CompraId" />
 
         <!--CompraIdTextBox y BuscarButton-->
         <StackPanel Orientation="Horizontal">
@@ -29,20 +29,24 @@
             <DatePicker Name="FechaDatePicker"  SelectedDate="{Binding Fecha}"  />
         </StackPanel>
 
-        <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Horizontal">
             <Label Content="Suplidor Id" />
-            <ComboBox Name="SuplidorIdComboBox" />
+            <Label Content="Nombre" Margin="55,0,0,0"/>
+            <Label Content="Compañia" Margin="100,0,0,0"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <ComboBox Name="SuplidorIdComboBox" Width="93" SelectionChanged="SuplidorIdComboBox_SelectionChanged"/>
+            <Label x:Name="NombreSuplidoraLabel" Content="" Margin="30,0,0,0" Width="154"/>
+            <Label x:Name="CompaniaSuplidorLabel" Content="" Margin="0,0,0,0" Width="211"/>
         </StackPanel>
 
         <StackPanel>
-
             <Label Content="NCF"/>
             <TextBox Name="NCFTextBox"/>
-
         </StackPanel>
 
-
-        <GroupBox Header="Orden Detalle" Width="697" BorderBrush="#FF414649" HorizontalAlignment="Left" Margin="5,10,5,0">
+        <GroupBox Header="Orden Detalle"  BorderBrush="#FF414649"  >
 
             <StackPanel Orientation="Vertical">
 
@@ -50,26 +54,27 @@
                     <Label Content="Producto Id"   />
                     <Label Content="Cantidad" Margin="10,0" />
                     <Label Content="Descripción" Margin="10,0"/>
-                    <Label Content="Precio" Margin="58,0"/>
+                    <Label Content="Precio" Margin="83,0,0,0" Width="53"/>
 
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Height="27">
 
-                    <TextBox Name="ProductoidComboBox" Margin="5,0" Width="60" Height="20" />
-                    <TextBox Name="CantidadTextBox" Width="54" Height="20"  Margin="16,0,0,0" />
-                    <TextBox Name="DescripcionTextBox" Width="117" Height="20" IsReadOnly="True" Margin="23,0,0,0"/>
-                    <TextBox Name="PrecioTextBox" Width="74" Height="20" IsReadOnly="True" Margin="23,0,0,0"/>
-
-                    <Button Name="AgregarButton" Width="109" Height="20" Margin="22,0,5,0" Click="AgregarButton_Click">
+                    <TextBox Name="ProductoIdTextBox" Margin="5,0,0,0" Width="60" TextChanged="ProductoidComboBox_TextChanged"  />
+                    <TextBox Name="CantidadTextBox" Width="54"  Margin="35,0,0,0" />
+                    <TextBox Name="DescripcionTextBox" Width="140" Margin="32,0,0,0"/>
+                    <TextBox Name="PrecioTextBox" Width="74"   Margin="30,0,0,0"/>
+                    <!--RemoverButton-->
+                    
+                    <Button Name="AgregarButton" Width="109"  Margin="50,0,0,0" Click="AgregarButton_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Resources/agregar.png" />
-                            <Label Content="Agregar" Margin="4,0" Padding="-1"/>
+                            <Label Content="Agregar" Margin="4,0" Padding="-1" Height="22"/>
                         </StackPanel>
                     </Button>
 
-                    <!--RemoverButton-->
-                    <Button Name="RemoverButton" Width="109" Margin="5,0" Click="RemoverButton_Click" >
+                    
+                    <Button Name="RemoverButton" Width="109" Margin="10,0,0,0" Click="RemoverButton_Click" >
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Resources/Eliminar.png" />
                             <Label Content="Remover" Margin="4,0" Padding="-1"/>
@@ -84,7 +89,7 @@
 
                 </StackPanel>
 
-                <DataGrid x:Name="DetalleDataGrid" Height="88" HorizontalAlignment="Left" AlternatingRowBackground="#FFBAE3FF" AutoGenerateColumns="False" ItemsSource="{Binding ComprasDetalles}" Margin="0,5,0,0" Width="677">
+                <DataGrid x:Name="DetalleDataGrid" Height="117"  AlternatingRowBackground="#FFBAE3FF" AutoGenerateColumns="False" ItemsSource="{Binding ComprasDetalles}" Margin="0,5,0,0" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Producto Id" IsReadOnly="True" Binding="{Binding ProductoId}"/>
                         <DataGridTextColumn Header="Cantidad" IsReadOnly="True" Binding="{Binding Cantidad}"/>

@@ -158,6 +158,28 @@ namespace ProyectoFinalAplicada1.BLL
 
             return lista;
         }
+
+        public static List<Vendedores> GetVendedores()
+        {
+            Contexto contexto = new Contexto();
+            List<Vendedores> vendedor = new List<Vendedores>();
+
+            try
+            {
+                vendedor = contexto.Vendedores.ToList();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return vendedor;
+        }
         public static bool DuplicadoVendedorId(int id)
         {
             bool paso = false;

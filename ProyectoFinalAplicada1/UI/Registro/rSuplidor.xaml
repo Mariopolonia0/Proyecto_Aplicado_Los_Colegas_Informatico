@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
         mc:Ignorable="d"
-        Title="Registro Suplidor" Height="279" Width="324">
+        Title="Registro Suplidor" Height="293" Width="324">
     <StackPanel  >
 
         <StackPanel>
@@ -58,7 +58,7 @@
             <!--Click="EliminarButton_Click"-->
             <Button x:Name="EliminarButton"   Margin="5,0,0,0" Click="EliminarButton_Click"  >
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="/Resources/Eliminar.png"  />
+                    <Image Source="/Resources/Cancelar.jfif"  />
                     <Label Content="Eliminar" />
                 </StackPanel>
             </Button>

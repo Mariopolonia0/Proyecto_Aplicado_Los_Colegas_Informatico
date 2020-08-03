@@ -69,12 +69,6 @@ namespace ProyectoFinalAplicada1
             categorias.Show();
         }
 
-        /*private void ProductoMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            cProductos productos = new cProductos();
-            productos.Show();
-        }
-        */
         private void VendedoresMenuItem_Click(object sender, RoutedEventArgs e)
         {
             cVendedores vendedores = new cVendedores();

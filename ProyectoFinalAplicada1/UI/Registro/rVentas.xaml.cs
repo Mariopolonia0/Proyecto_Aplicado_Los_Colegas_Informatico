@@ -29,6 +29,9 @@ namespace ProyectoFinalAplicada1.UI.Registro
             venta.GananciaTotal = 0;
             venta.ITBISTotal = 0;
             venta.PrecioTotal = 0;
+            VendedorIdComboBox.ItemsSource = VendedoresBLL.GetVendedores();
+            VendedorIdComboBox.SelectedValuePath = "VendedorId";
+            VendedorIdComboBox.DisplayMemberPath = "VendedorId";
         }
 
         private void Limpiar()
@@ -238,6 +241,13 @@ namespace ProyectoFinalAplicada1.UI.Registro
             {
                 DescripcionTextBox.Text = producto.Descripcion;
             }
+        }
+
+        private void VendedorIdComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Vendedores vendedor= VendedoresBLL.Buscar(Convert.ToInt32(VendedorIdComboBox.SelectedValue));
+            NombreVendedorLabel.Content = vendedor.Nombres;
+            ApellidovendedorLabel.Content = vendedor.Apellidos;
         }
     }
 }

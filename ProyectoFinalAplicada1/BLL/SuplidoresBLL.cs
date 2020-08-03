@@ -121,26 +121,48 @@ namespace ProyectoFinalAplicada1.BLL
        }
 
        //Metodo Buscar.
-       public static Suplidores Buscar(int id)
-       {
-           Contexto contexto = new Contexto();
-           Suplidores suplidore;
+        public static Suplidores Buscar(int id)
+        {
+            Contexto contexto = new Contexto();
+            Suplidores suplidore;
+            
+            try
+            {
+                 suplidore = contexto.Suplidores.Find(id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
 
-           try
-           {
-                suplidore = contexto.Suplidores.Find(id);
-           }
-           catch (Exception)
-           {
-               throw;
-           }
-           finally
-           {
-               contexto.Dispose();
-           }
+            return suplidore;
+        }
+        
+        public static List<Suplidores> GetSuplidores()
+        {
+            Contexto contexto = new Contexto();
+            List<Suplidores> suplidor = new List<Suplidores>();
 
-           return suplidore;
-       }
+            try
+            {
+                suplidor = contexto.Suplidores.ToList();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return suplidor;
+        }
 
         public static bool DuplicadoSuplidorId(int id)
         {
