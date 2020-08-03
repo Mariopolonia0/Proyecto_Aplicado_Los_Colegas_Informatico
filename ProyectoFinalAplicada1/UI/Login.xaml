@@ -14,11 +14,11 @@
             <StackPanel Orientation="Vertical">
                 <Label Content="Nombre Usuario"/>
 
-                <TextBox x:Name="NombreUsuarioTextBox" Text="{Binding NombreUsuario}"  />
+                <TextBox x:Name="NombreUsuarioTextBox" Text="{Binding NombreUsuario}" KeyDown="NombreUsuarioTextBox_KeyDown"  />
 
                 <Label Content="Contraseña"/>
 
-                <PasswordBox x:Name="ContrasenaPasswordBox" PasswordHelper:PasswordHelper.Attach="True" PasswordHelper:PasswordHelper.Password="{Binding Contrasena, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" KeyUp="ContrasenaPasswordBox_KeyUp" />
+                <PasswordBox x:Name="ContrasenaPasswordBox" PasswordHelper:PasswordHelper.Attach="True" PasswordHelper:PasswordHelper.Password="{Binding Contrasena, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" KeyDown="ContrasenaPasswordBox_KeyDown" />
 
             </StackPanel>
             
