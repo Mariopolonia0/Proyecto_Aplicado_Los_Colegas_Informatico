@@ -38,6 +38,9 @@
                 <Label Content="Ganancia"/>
                 <TextBox x:Name="GananciaTextBox" Text="{Binding Ganancia}"/>
 
+                <Label Content="Existencia"/>
+                <TextBox x:Name="ExistenciaTextBox" Text="{Binding Existencia}"/>
+
                 <Label Content="ITBIS:"/>
                 <ComboBox x:Name="ITBISComboBox" SelectedIndex="0" SelectionChanged="ITBISComboBox_SelectionChanged" >
                     <ComboBoxItem  Content="Seleccione opción"/>
