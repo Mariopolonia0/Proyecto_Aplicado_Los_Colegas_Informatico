@@ -38,6 +38,30 @@ namespace ProyectoFinalAplicada1.UI.Registro
             CompaniaSuplidorLabel.Content = suplidor.Compania;
         }
 
+        public void Limpiar()
+        {
+            CompraIdTextBox.Text = "0";
+            //SuplidorIdComboBox.SelectedItem = null;
+            CantidadTextBox.Clear();
+            NCFTextBox.Clear();
+            DescripcionTextBox.Clear();
+            TransporteTextBox.Clear();
+        }
+
+        public void LimpiarDetalle()
+        {
+            ProductoIdTextBox.Text = "0";
+            CantidadTextBox.Clear();
+            DescripcionTextBox.Clear();
+            PrecioTextBox.Clear();
+        }
+
+        private void Cargar()
+        {
+            this.DataContext = null;
+            this.DataContext = compra;
+        }
+
         private void ProductoidTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (ProductoIdTextBox.Text.Length == 0)
@@ -82,16 +106,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 GuardarButton.IsEnabled = true;
             }
 
-           /* if (VentaIdTextBox.Text.Length == 0)
-            {
-                esValido = false;
-                GuardarButton.IsEnabled = false;
-                MessageBox.Show("Venta Id está vacio", "Fallo",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
-                VentaIdTextBox.Focus();
-                GuardarButton.IsEnabled = true;
-            }
-            */
             if (CantidadTextBox.Text.Length == 0)
             {
                 esValido = false;
@@ -102,16 +116,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 GuardarButton.IsEnabled = true;
             }
 
-           /* if (ClienteIdTextBox.Text.Length == 0)
-            {
-                esValido = false;
-                GuardarButton.IsEnabled = false;
-                MessageBox.Show("Cliente Id está vacia", "Fallo",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
-                ClienteIdTextBox.Focus();
-                GuardarButton.IsEnabled = true;
-            }
-            */
             if (FechaDatePicker.Text.Length == 0)
             {
                 esValido = false;
@@ -133,16 +137,20 @@ namespace ProyectoFinalAplicada1.UI.Registro
             return esValido;
         }
 
-
         private void BucarButton_Click(object sender, RoutedEventArgs e)
         {
+            Compras encontrado = ComprasBLL.Buscar(compra.CompraId);
 
-        }
-
-        private void Cargar()
-        {
-            this.DataContext = null;
-            this.DataContext = compra;
+            if (encontrado != null)
+            {
+                compra = encontrado;
+                Cargar();
+            }
+            else
+            {
+                Limpiar();
+                MessageBox.Show("La Compra no Existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
@@ -168,17 +176,57 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
         private void RemoverButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (DetalleDataGrid.Items.Count >= 1 && DetalleDataGrid.SelectedIndex <= DetalleDataGrid.Items.Count - 1)
+            {
+                compra.CompraDetalle.RemoveAt(DetalleDataGrid.SelectedIndex);
+                Cargar();
+            }
         }
 
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
+            Limpiar();
+            if (DetalleDataGrid.Items.Count >= 1 && DetalleDataGrid.SelectedIndex <= DetalleDataGrid.Items.Count - 1)
+            {
+                compra.CompraDetalle.RemoveAt(DetalleDataGrid.SelectedIndex);
+                Cargar();
+            }
+        }
 
+        private bool ExisteEnLaBaseDeDatos()
+        {
+            Compras esValido = ComprasBLL.Buscar(compra.CompraId);
+
+            return (esValido != null);
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
+            bool paso = false;
 
+            if (compra.CompraId == 0)
+            {
+                paso = ComprasBLL.Guardar(compra);
+            }
+            else
+            {
+                if (ExisteEnLaBaseDeDatos())
+                {
+                    paso = ComprasBLL.Guardar(compra);
+                }
+                else
+                {
+                    MessageBox.Show("La Compra no existe en la base de datos", "ERROR");
+                }
+            }
+
+            if (paso)
+            {
+                Limpiar();
+                MessageBox.Show("Guardado!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+                MessageBox.Show("Fallo al guardar", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
