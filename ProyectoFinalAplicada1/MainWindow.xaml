@@ -51,7 +51,7 @@
                         
                     </MenuItem>
                   
-                    <MenuItem x:Name="VendedorMenuItem" Header="Vendedor" Click="VendedorMenuItem_Click"  >
+                    <MenuItem x:Name="VendedorMenuItem" Header="Vendedores" Click="VendedorMenuItem_Click"  >
                         <MenuItem.Icon>
                             <Image Source="/Resources/vendedores.png" />
                         </MenuItem.Icon>
@@ -63,7 +63,7 @@
                         </MenuItem.Icon>
                     </MenuItem>
 
-                    <MenuItem x:Name="SuplidorMenuItem" Header="Suplidor" Click="SuplidorMenuItem_Click">
+                    <MenuItem x:Name="SuplidorMenuItem" Header="Suplidores" Click="SuplidorMenuItem_Click">
                         <MenuItem.Icon>
                             <Image Source="/Resources/Suplidor.png" />
                         </MenuItem.Icon>
@@ -72,7 +72,7 @@
                 </MenuItem>
 
                 <!--Consultas-->
-                <MenuItem Header="   Consulta"  Height="46" Width="92"  >
+                <MenuItem Header="   Consultas"  Height="46" Width="92"  >
                     
                     <MenuItem.Icon>
                         <Image Source="/Resources/Consulta.jfif"  Margin="-4,-15,-14,-15"/>
