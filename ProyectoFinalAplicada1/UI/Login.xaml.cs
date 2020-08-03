@@ -69,16 +69,6 @@ namespace ProyectoFinalAplicada1.UI
                 NombreUsuarioTextBox.Focus();
             }
 
-            /*if (ContrasenaPasswordBox.Password.Length == 0)
-            {
-                esValido = false;
-                IngresarButton.IsEnabled = false;
-                MessageBox.Show("Contraseña está vacio", "Fallo",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
-                ContrasenaPasswordBox.Focus();
-                //IngresarButton.IsEnabled = true;
-            }*/
-
             return esValido;
         }
 
@@ -103,38 +93,11 @@ namespace ProyectoFinalAplicada1.UI
                 }
             }
         }
-
-        /*private void ContrasenaPasswordBox_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (ContrasenaPasswordBox.Focus() && !Validar())
-            {
-                if (e.Key == Key.Enter)
-                {
-                    bool paso = UsuariosBLL.Autorizar(NombreUsuarioTextBox.Text, ContrasenaPasswordBox.Password);
-
-                    if (paso)
-                    {
-                        this.Close();
-                        Principal.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error Nombre Usuario o Contraseña incorrecta!", "Error!");
-                        ContrasenaPasswordBox.Clear();
-                        NombreUsuarioTextBox.Focus();
-                    }
-                }
-            }
-            else
-                return;
-        }*/
-
+        //
         private void Window_Closed(object sender, EventArgs e)
         {
             MessageBox.Show("Hasta Luego");
             this.Close();
         }
-
-        
     }
 }
