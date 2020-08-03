@@ -59,7 +59,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
         }
 
         //Minimo
-        /*private bool ValidarMM()
+        private bool ValidarMM()
         {
             bool Maximo = true;
 
@@ -86,7 +86,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
             }
 
             return Maximo;
-        }*/
+        }
 
         //Campo vacio
         private bool Validar()
@@ -177,7 +177,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
         }
 
         //Solo numero.
-        /*private bool ValidarSolonumero()
+        private bool ValidarSolonumero()
         {
             bool NesValido = true;
 
@@ -206,7 +206,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
             }
 
             return NesValido;
-        }*/
+        }
 
         //Datos duplicado.
         private bool Datosduplicado()
