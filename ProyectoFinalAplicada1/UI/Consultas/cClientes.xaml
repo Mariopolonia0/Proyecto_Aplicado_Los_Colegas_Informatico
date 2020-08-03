@@ -5,8 +5,52 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Consultas"
         mc:Ignorable="d"
-        Title="cClientes" Height="450" Width="800">
+        Title="Consulta Clientes" Height="450" Width="640">
     <Grid>
-        
+
+        <StackPanel Orientation="Vertical" Margin="10,5,10,0">
+
+            <StackPanel Orientation="Horizontal" Height="58">
+                <StackPanel>
+                    <Label Content="Desde:"/>
+                    <DatePicker x:Name="DesdeDataPicker"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" Margin="5,0">
+                    <Label Content="Hasta:" />
+                    <DatePicker x:Name="HastaDatePicker"/>
+                </StackPanel>
+
+                <StackPanel Margin="5,0">
+                    <Label Content="Filtro:" />
+                    <ComboBox x:Name="FiltroComboBox" Width="100">
+                        <ComboBoxItem Content="ClienteId"/>
+                        <ComboBoxItem Content="Nombres"/>
+                        <ComboBoxItem Content="Apellidos"/>
+                        <ComboBoxItem Content="Telefono"/>
+                        <ComboBoxItem Content="Cedula"/>
+                        <ComboBoxItem Content="Direccion"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Margin="5,0">
+                    <Label Content="Critero:"/>
+                    <TextBox x:Name="CriterioTextBox" Width="100"/>
+
+                </StackPanel>
+
+                <Button x:Name="BuscarButton" Height="34" Width="93" Click="ConsultarButton_Click" >
+                    <StackPanel Orientation="Horizontal" >
+                        <Image Source="/Resources/Buscar.png"  />
+                        <Label Content="Buscar" />
+                    </StackPanel>
+                </Button>
+
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Left" >
+                <DataGrid x:Name="DatosDataGrid" Height="350" Width="527"/>
+            </StackPanel>
+        </StackPanel>
+
     </Grid>
 </Window>
