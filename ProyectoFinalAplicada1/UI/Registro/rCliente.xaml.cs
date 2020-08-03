@@ -32,19 +32,19 @@ namespace ProyectoFinalAplicada1.UI.Registro
             SexoComboBox.DisplayMemberPath = "Sexo";
 
         }
-        //
+        //Existe.
         private bool Existe()
         {
             Clientes clienteA = ClientesBLL.Buscar(clientes.ClienteId);
             return (clientes != null);
         }
         //
-        private void Actualizar()
+        /*private void Actualizar()
         {
             this.DataContext = null;
             this.DataContext = clientes;
-        }
-        //
+        }*/
+        //Limpiar.
         private void Limpiar()
         {
             ClienteIdTextBox.Text = "0";
@@ -63,8 +63,8 @@ namespace ProyectoFinalAplicada1.UI.Registro
         {
             bool Maximo = true;
 
-            var cadena = TelefonoTextBox.Text;
-            if (cadena.Length < 12)
+            var cadenaT = TelefonoTextBox.Text;
+            if (cadenaT.Length < 10)
             {
                 Maximo = false;
                 GuardarButton.IsEnabled = false;
@@ -74,7 +74,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 TelefonoTextBox.Focus();
                 GuardarButton.IsEnabled = true;
             }
-            else if (cadena.Length >= 13)
+            else if (cadenaT.Length >= 13)
             {
                 Maximo = false;
                 GuardarButton.IsEnabled = false;
@@ -82,6 +82,29 @@ namespace ProyectoFinalAplicada1.UI.Registro
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 TelefonoTextBox.Clear();
                 TelefonoTextBox.Focus();
+                GuardarButton.IsEnabled = true;
+            }
+
+            var cadenaC = CedulaTextBox.Text;
+            if (cadenaC.Length < 10)
+            {
+                Maximo = false;
+                GuardarButton.IsEnabled = false;
+                MessageBox.Show("La Cedula no es Valido", "Error",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                CedulaTextBox.Clear();
+                CedulaTextBox.Focus();
+                GuardarButton.IsEnabled = true;
+            }
+
+            else if (cadenaC.Length >= 14)
+            {
+                Maximo = false;
+                GuardarButton.IsEnabled = false;
+                MessageBox.Show("La Cedula no es Valido", "Error",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                CedulaTextBox.Clear();
+                CedulaTextBox.Focus();
                 GuardarButton.IsEnabled = true;
             }
 
