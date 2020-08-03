@@ -115,9 +115,6 @@ namespace ProyectoFinalAplicada1.BLL
             return paso;
         }
 
-
-
-
         public static List<Compras> GetList(Expression<Func<Compras, bool>> compras)
         {
             List<Compras> lista = new List<Compras>();
@@ -137,6 +134,5 @@ namespace ProyectoFinalAplicada1.BLL
 
             return lista;
         }
-
     }
 }

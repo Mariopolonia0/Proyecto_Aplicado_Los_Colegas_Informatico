@@ -85,7 +85,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
         }
         private void RemoverButton_Click(object sender, RoutedEventArgs e)
         {
-
             if (DetalleDataGrid.SelectedIndex < 0)
                 return;
 

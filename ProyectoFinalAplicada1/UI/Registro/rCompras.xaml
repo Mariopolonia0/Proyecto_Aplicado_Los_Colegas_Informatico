@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
         mc:Ignorable="d"
-        Title="Registro Compras" Height="585" Width="729" FontSize="14">
+        Title="Registro Compras" Height="570" Width="742" FontSize="14">
 
 
-    <StackPanel Orientation="Vertical" >
+    <StackPanel Orientation="Vertical"  >
         <Label Content="CompraId" />
 
         <!--CompraIdTextBox y BuscarButton-->
@@ -41,9 +41,14 @@
             <Label x:Name="CompaniaSuplidorLabel" Content="" Margin="0,0,0,0" Width="211"/>
         </StackPanel>
 
-        <StackPanel>
-            <Label Content="NCF"/>
-            <TextBox Name="NCFTextBox"/>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="NCF" />
+            <Label Content="Transporte" Margin="205,0,0,0"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <TextBox Name="NCFTextBox" Width="225" />
+            <TextBox Name="TransporteTextBox" Width="149" Margin="25,0,0,0"/>
         </StackPanel>
 
         <GroupBox Header="Orden Detalle"  BorderBrush="#FF414649"  >
@@ -89,12 +94,13 @@
 
                 </StackPanel>
 
-                <DataGrid x:Name="DetalleDataGrid" AlternatingRowBackground="#FFBAE3FF" AutoGenerateColumns="False" ItemsSource="{Binding ComprasDetalles}" Margin="0,5,0,0" Height="117" >
+                <DataGrid x:Name="DetalleDataGrid" AlternatingRowBackground="#FFBAE3FF" AutoGenerateColumns="False" ItemsSource="{Binding CompraDetalle}" Margin="0,5,0,0" Height="117" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Producto Id"  Binding="{Binding ProductoId}" />
                         <DataGridTextColumn Header="Cantidad"  Binding="{Binding Cantidad}" />
                         <DataGridTextColumn Header="Descripción"  Binding="{Binding Descripcion}" />
                         <DataGridTextColumn Header="Precio"  Binding="{Binding Precio}" />
+                        <DataGridTextColumn Header="Total"  Binding="{Binding Total}" />
                     </DataGrid.Columns>
                 </DataGrid>
 
@@ -103,17 +109,13 @@
         </GroupBox>
 
         <StackPanel Orientation="Horizontal">
-
-            <Label Content="Transporte" Margin="5,0,0,0" />
             <Label Content="ITBIS" Margin="20,0,0,0" Width="45" />
-            <Label Content="Total"  Margin="35,0,0,0"/>
-
+            <Label Content="Total"  Margin="100,0,0,0"/>
         </StackPanel >
 
         <StackPanel Orientation="Horizontal">
-            <Label Content="0" Margin="5,0,0,0" Width="76" />
-            <Label Content="0" Margin="20,0,0,0" Width="69" />
-            <Label Content="0" Width="85" Margin="10,0,0,0"  />
+            <Label x:Name="ITBISLabel" Content="0" Margin="20,0,0,0" Width="123" />
+            <Label x:Name="TotalLabel" Content="0" Width="149" Margin="30,0,0,0"  />
         </StackPanel>
 
 
