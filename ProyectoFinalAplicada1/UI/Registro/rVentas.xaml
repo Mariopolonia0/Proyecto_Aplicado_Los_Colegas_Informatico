@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
         mc:Ignorable="d"
         Icon="/Resources/Venta.png"
-        Title="Registro Ventas" Height="648" Width="766" FontSize="15">
+        Title="Registro Ventas" Height="671" Width="766" FontSize="15">
     <Grid  >
 
         <StackPanel Orientation="Vertical" >
@@ -83,7 +83,7 @@
                     <DataGrid x:Name="DetalleDataGrid" AlternatingRowBackground="#FFBAE3FF" AutoGenerateColumns="False" ItemsSource="{Binding VentaDetalle}" Margin="0,5,0,0" Width="735"  Height="189">
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ProductoIdTextBox"  Binding="{Binding ProductoId}"/>
+                            <DataGridTextColumn Header="Producto Id"  Binding="{Binding ProductoId}"/>
                             <DataGridTextColumn Header="Cantidad"  Binding="{Binding Cantidad}"/>
                             <DataGridTextColumn Header="Descripción"  Binding="{Binding Descripcion}"/>
                             <DataGridTextColumn Header="Precio"  Binding="{Binding Precio}"/>
@@ -126,10 +126,10 @@
                     </StackPanel>
                 </Button>
 
-                <Button x:Name="ImprimirButton" Width="111" >
+                <Button x:Name="ImprimirButton" Width="130" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Imprimir.png" />
-                        <Label Content="Imprimir" Height="30" Width="62"  />
+                        <Label Content="Imprimir" Height="30" Width="76"  />
                     </StackPanel>
                 </Button>
             </StackPanel>

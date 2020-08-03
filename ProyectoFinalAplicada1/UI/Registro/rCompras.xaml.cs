@@ -41,11 +41,13 @@ namespace ProyectoFinalAplicada1.UI.Registro
             CompaniaSuplidorLabel.Content = suplidor.Compania;
         }
 
-        private void ProductoidComboBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void ProductoidTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (ProductoIdTextBox.Text.Length == 0)
                 return;
-
+            else if (Convert.ToInt32(ProductoIdTextBox.Text) == 0)
+                return;
+                
             Productos producto = ProductosBLL.Buscar(Convert.ToInt32(ProductoIdTextBox.Text));
             if (producto == null)
             {
@@ -148,18 +150,20 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!Validar())
-                return;
+            //if (!Validar())
+              //  return;
 
-            //Productos producto = ProductosBLL.Buscar(Convert.ToInt32(ProductoIdTextBox.Text));
-
-            compra.CompraDetalle.Add(new ComprasDetalles(Convert.ToInt32(CompraIdTextBox.Text), Convert.ToInt32(ProductoIdTextBox.Text), Convert.ToInt32(CantidadTextBox.Text),DescripcionTextBox.Text,Convert.ToDecimal(DescripcionTextBox.Text)));
+            compra.CompraDetalle.Add(new ComprasDetalles(Convert.ToInt32(CompraIdTextBox.Text), Convert.ToInt32(ProductoIdTextBox.Text), Convert.ToInt32(CantidadTextBox.Text),DescripcionTextBox.Text,Convert.ToDecimal(PrecioTextBox.Text)));
             Cargar();
 
-          /*  venta.CostoTotal = venta.CostoTotal + (producto.Costo * Convert.ToInt32(CantidadTextBox.Text));
-            PrecioTotalLabel.Content = venta.CostoTotal.ToString();
-            */
+            /*  venta.CostoTotal = venta.CostoTotal + (producto.Costo * Convert.ToInt32(CantidadTextBox.Text));
+              PrecioTotalLabel.Content = venta.CostoTotal.ToString();
+              */
+            ProductoIdTextBox.Text = "0";
             CantidadTextBox.Text = "0";
+            PrecioTextBox.Text = "0";
+            DescripcionTextBox.Text = "";
+
         }
 
         private void RemoverButton_Click(object sender, RoutedEventArgs e)

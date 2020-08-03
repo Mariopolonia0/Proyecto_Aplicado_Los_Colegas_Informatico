@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
         mc:Ignorable="d"
-        Title="Registro Compras" Height="538" Width="729" FontSize="14">
+        Title="Registro Compras" Height="585" Width="729" FontSize="14">
 
 
     <StackPanel Orientation="Vertical" >
@@ -60,12 +60,12 @@
 
                 <StackPanel Orientation="Horizontal" Height="27">
 
-                    <TextBox Name="ProductoIdTextBox" Margin="5,0,0,0" Width="60" TextChanged="ProductoidComboBox_TextChanged"  />
+                    <TextBox Name="ProductoIdTextBox" Margin="5,0,0,0" Width="60" TextChanged="ProductoidTextBox_TextChanged"  />
                     <TextBox Name="CantidadTextBox" Width="54"  Margin="35,0,0,0" />
                     <TextBox Name="DescripcionTextBox" Width="140" Margin="32,0,0,0"/>
                     <TextBox Name="PrecioTextBox" Width="74"   Margin="30,0,0,0"/>
                     <!--RemoverButton-->
-                    
+
                     <Button Name="AgregarButton" Width="109"  Margin="50,0,0,0" Click="AgregarButton_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Resources/agregar.png" />
@@ -73,7 +73,7 @@
                         </StackPanel>
                     </Button>
 
-                    
+
                     <Button Name="RemoverButton" Width="109" Margin="10,0,0,0" Click="RemoverButton_Click" >
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Resources/Eliminar.png" />
@@ -89,12 +89,12 @@
 
                 </StackPanel>
 
-                <DataGrid x:Name="DetalleDataGrid" Height="117"  AlternatingRowBackground="#FFBAE3FF" AutoGenerateColumns="False" ItemsSource="{Binding ComprasDetalles}" Margin="0,5,0,0" >
+                <DataGrid x:Name="DetalleDataGrid" AlternatingRowBackground="#FFBAE3FF" AutoGenerateColumns="False" ItemsSource="{Binding ComprasDetalles}" Margin="0,5,0,0" Height="117" >
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Producto Id" IsReadOnly="True" Binding="{Binding ProductoId}"/>
-                        <DataGridTextColumn Header="Cantidad" IsReadOnly="True" Binding="{Binding Cantidad}"/>
-                        <DataGridTextColumn Header="Descripción" IsReadOnly="True" Binding="{Binding Descripcion}"/>
-                        <DataGridTextColumn Header="Precio" IsReadOnly="True" Binding="{Binding precio}"/>
+                        <DataGridTextColumn Header="Producto Id"  Binding="{Binding ProductoId}" />
+                        <DataGridTextColumn Header="Cantidad"  Binding="{Binding Cantidad}" />
+                        <DataGridTextColumn Header="Descripción"  Binding="{Binding Descripcion}" />
+                        <DataGridTextColumn Header="Precio"  Binding="{Binding Precio}" />
                     </DataGrid.Columns>
                 </DataGrid>
 
@@ -106,14 +106,14 @@
 
             <Label Content="Transporte" Margin="5,0,0,0" />
             <Label Content="ITBIS" Margin="20,0,0,0" Width="45" />
-            <Label Content="Total"  Margin="20,0,0,0"/>
+            <Label Content="Total"  Margin="35,0,0,0"/>
 
         </StackPanel >
 
         <StackPanel Orientation="Horizontal">
             <Label Content="0" Margin="5,0,0,0" Width="76" />
-            <Label Content="0" Margin="10,0,0,0" Width="69" />
-            <Label Content="0" Width="85"  />
+            <Label Content="0" Margin="20,0,0,0" Width="69" />
+            <Label Content="0" Width="85" Margin="10,0,0,0"  />
         </StackPanel>
 
 
@@ -123,7 +123,7 @@
 
 
         <!--Barra de botones-->
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="312" Height="33">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="290" Height="37">
 
             <Button Name="NuevoButton" Click="NuevoButton_Click" >
                 <StackPanel Orientation="Horizontal" >
