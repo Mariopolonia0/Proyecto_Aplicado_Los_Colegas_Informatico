@@ -141,7 +141,27 @@ namespace ProyectoFinalAplicada1.BLL
 
             return suplidore;
         }
-        
+
+
+        public static List<Suplidores> GetList(Expression<Func<Suplidores, bool>> suplidores)
+        {
+            List<Suplidores> lista = new List<Suplidores>();
+            Contexto contexto = new Contexto();
+            try
+            {
+                lista = contexto.Suplidores.Where(suplidores).ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return lista;
+        }
+
         public static List<Suplidores> GetSuplidores()
         {
             Contexto contexto = new Contexto();

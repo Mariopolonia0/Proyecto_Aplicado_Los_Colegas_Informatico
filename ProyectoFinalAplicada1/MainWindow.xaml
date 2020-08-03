@@ -57,7 +57,7 @@
                         </MenuItem.Icon>
                     </MenuItem>
 
-                    <MenuItem x:Name="CategoriasMenuItem" Header="Categorias" Click="CategoriasMenuItem_Click" >
+                    <MenuItem x:Name="CategoriasMenuItem" Header="Categorías" Click="CategoriasMenuItem_Click" >
                         <MenuItem.Icon>
                             <Image Source="/Resources/Categoria.png" />
                         </MenuItem.Icon>

@@ -23,13 +23,13 @@
                     </Button>
                 </StackPanel>
 
-                <Label Content="Descripcion"/>
+                <Label Content="Descripción"/>
                 <TextBox x:Name="DescripcionTextBox" Text="{Binding Descripcion}" />
 
                 <Label Content="Fecha"/>
                 <DatePicker Name="FechaDatePicker"  SelectedDate="{Binding Fecha,StringFormat=dd/MM/yyyy}"   />
 
-                <Label Content="Categoria"/>
+                <Label Content="Categoría "/>
                 <ComboBox Name="CategoriaIdComboBox"  />
                 
                 <Label Content="Precio"/>
@@ -40,7 +40,7 @@
 
                 <Label Content="ITBIS:"/>
                 <ComboBox x:Name="ITBISComboBox" SelectedIndex="0" SelectionChanged="ITBISComboBox_SelectionChanged" >
-                    <ComboBoxItem  Content="Seleccione opcion"/>
+                    <ComboBoxItem  Content="Seleccione opción"/>
                     <ComboBoxItem  Content="18%"/>
                     <ComboBoxItem  Content="10%"/>
                     <ComboBoxItem  Content="0%" />

@@ -27,52 +27,38 @@ namespace ProyectoFinalAplicada1.UI.Consultas
             this.DataContext = usuarios;
         }
 
-        private void BuscarButton_Click(object sender, RoutedEventArgs e)
+        private void ConsultarButton_Click(object sender, RoutedEventArgs e)
         {
+            var listado = new List<Usuarios>();
 
-            switch (SeleccionComboBox.SelectedIndex)
+            if (CriterioTextBox.Text.Trim().Length > 0)
             {
-
-                case 0:
-                    {
-                        MessageBox.Show("EN LA PROXIMA ACTULIZACION PODRA TODOS LOS USUARIOS", "AVISO", MessageBoxButton.OK, MessageBoxImage.Information);
-                        return;
-                    }
-
-                case 1:
-                    { 
-                        if (BusquedaTextBox.Text.Length == 0)
-                        {
-                            MessageBox.Show("Falta Id Para Buscar","ERROR DATO",MessageBoxButton.OK, MessageBoxImage.Error);
-                            return;
-                        }
-                        else
-                        {
-                            var listado = new List<Usuarios>();
-
-                            listado = UsuariosBLL.GetList(e => e.UsuarioId == Utilidades.ToInt(BusquedaTextBox.Text));
-                    
-                            DetalleDataGrid.ItemsSource = null;
-                            DetalleDataGrid.ItemsSource = listado;
-
-                        }
+                switch (FiltroComboBox.SelectedIndex)
+                {
+                    case 0: //ProductoId
+                        listado = UsuariosBLL.GetList(p => p.UsuarioId == Utilidades.ToInt(CriterioTextBox.Text));
                         break;
-                    }
 
-                case 2:
-                    { 
-                        if (BusquedaTextBox.Text.Length == 0)
-                        {
-                            MessageBox.Show("Falta Nombre Para Buscar","ERROR DATO", MessageBoxButton.OK, MessageBoxImage.Error);
-                            return;
-                        }
-                        else
-                        {
-                            MessageBox.Show("EN LA PROXIMA ACTULIZACION PODRA BUSCAR POR NOMBRE", "AVISO", MessageBoxButton.OK, MessageBoxImage.Information);
-                            return;
-                        }
-                    }
+                    case 1: //Nombres                       
+                        listado = UsuariosBLL.GetList(p => p.Nombres.Contains(CriterioTextBox.Text, StringComparison.OrdinalIgnoreCase));
+                        break;
+
+                    case 2: //Apellidos                       
+                        listado = UsuariosBLL.GetList(p => p.Apellidos.Contains(CriterioTextBox.Text, StringComparison.OrdinalIgnoreCase));
+                        break;
+
+                    case 3: //Nombre Usuario                       
+                        listado = UsuariosBLL.GetList(p => p.NombreUsuario.Contains(CriterioTextBox.Text, StringComparison.OrdinalIgnoreCase));
+                        break;
+                }
             }
-        }   
+            else
+            {
+                listado = UsuariosBLL.GetList(c => true);
+            }
+
+            DatosDataGrid.ItemsSource = null;
+            DatosDataGrid.ItemsSource = listado;
+        }
     }
 }
