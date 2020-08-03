@@ -26,17 +26,13 @@ namespace ProyectoFinalAplicada1
         
         public MainWindow()
         {
-
             InitializeComponent();
-           
         }
-
         private void UsuariosMenuItem_Click(object sender, RoutedEventArgs e)
         {
             rUsuarios usuarios = new rUsuarios();
             usuarios.Show()  ;
         }
-
         private void UsuarioMenuItem_Click(object sender, RoutedEventArgs e)
         {
             cUsuarios usuarios = new cUsuarios();
