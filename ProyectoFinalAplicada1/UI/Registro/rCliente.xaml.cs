@@ -58,6 +58,36 @@ namespace ProyectoFinalAplicada1.UI.Registro
             //UsuarioIdTextBox.Text = "0";
         }
 
+        //Minimo
+        /*private bool ValidarMM()
+        {
+            bool Maximo = true;
+
+            var cadena = TelefonoTextBox.Text;
+            if (cadena.Length < 12)
+            {
+                Maximo = false;
+                GuardarButton.IsEnabled = false;
+                MessageBox.Show("El Telefono no es Valido", "Error",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                TelefonoTextBox.Clear();
+                TelefonoTextBox.Focus();
+                GuardarButton.IsEnabled = true;
+            }
+            else if (cadena.Length >= 13)
+            {
+                Maximo = false;
+                GuardarButton.IsEnabled = false;
+                MessageBox.Show("El Telefono no es Valido", "Error",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                TelefonoTextBox.Clear();
+                TelefonoTextBox.Focus();
+                GuardarButton.IsEnabled = true;
+            }
+
+            return Maximo;
+        }*/
+
         //Campo vacio
         private bool Validar()
         {
@@ -143,70 +173,11 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 GuardarButton.IsEnabled = true;
             }
 
-            //Solo numero
-            /*if (!Regex.IsMatch(ClienteIdTextBox.Text, "^[0-9]+$"))
-            {
-                MessageBox.Show("Solo se permiten caracteres numericos.",
-                    "Campo ClienteId.", MessageBoxButton.OK, MessageBoxImage.Error);
-                ClienteIdTextBox.Clear();
-                return false;
-            }
-
-            if (!Regex.IsMatch(TelefonoTextBox.Text, "^[0-9]+$"))
-            {
-                MessageBox.Show("Solo se permiten caracteres numericos.",
-                    "Campo Telefono.", MessageBoxButton.OK, MessageBoxImage.Error);
-                TelefonoTextBox.Clear();
-                return false;
-            }
-
-            if (!Regex.IsMatch(CedulaTextBox.Text, "^[0-9]+$"))
-            {
-                MessageBox.Show("Solo se permiten caracteres numericos.",
-                    "Campo Cedula.", MessageBoxButton.OK, MessageBoxImage.Error);
-                CedulaTextBox.Clear();
-                return false;
-            }*/
-
-            //Datos duplicado.
-            /*if (ClientesBLL.DuplicadoEmail(EmailTextBox.Text))
-            {
-                esValido = false;
-                GuardarButton.IsEnabled = false;
-                MessageBox.Show("Este Email ya existe!", "Error!",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
-                EmailTextBox.Clear();
-                //EmailTextBox.Focus();
-                GuardarButton.IsEnabled = true;
-            }
-
-            if (ClientesBLL.DuplicadoTelefono(TelefonoTextBox.Text))
-            {
-                esValido = false;
-                GuardarButton.IsEnabled = false;
-                MessageBox.Show("Este Telefono ya existe!", "Error!",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
-                TelefonoTextBox.Clear();
-                //TelefonoTextBox.Focus();
-                GuardarButton.IsEnabled = true;
-            }
-
-            if (ClientesBLL.DuplicadoCedula(CedulaTextBox.Text))
-            {
-                esValido = false;
-                GuardarButton.IsEnabled = false;
-                MessageBox.Show("Esta Cedula ya existe!", "Error!",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
-                CedulaTextBox.Clear();
-                //CedulaTextBox.Focus();
-                GuardarButton.IsEnabled = true;
-            }*/
-
             return esValido;
         }
 
         //Solo numero.
-        private bool ValidarSolonumero()
+        /*private bool ValidarSolonumero()
         {
             bool NesValido = true;
 
@@ -218,7 +189,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 return false;
             }
 
-            if (!Regex.IsMatch(TelefonoTextBox.Text, "^[0-9]+$"))
+            if (!Regex.IsMatch(TelefonoTextBox.Text, "^[0-9-]+$"))
             {
                 MessageBox.Show("Solo se permiten caracteres numericos.",
                     "Campo Telefono.", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -235,7 +206,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
             }
 
             return NesValido;
-        }
+        }*/
 
         //Datos duplicado.
         private bool Datosduplicado()
@@ -333,6 +304,9 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 return;
 
             if (!Datosduplicado())
+                return;
+
+            if (!ValidarMM())
                 return;
 
             var paso = ClientesBLL.Guardar(clientes);
