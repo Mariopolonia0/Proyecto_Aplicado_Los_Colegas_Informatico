@@ -66,7 +66,7 @@ namespace ProyectoFinalAplicada1.BLL
                 {
                     var producto = contexto.Productos.Find(item.CompraId);
                     if (producto != null)
-                        producto.Cantidad += item.Cantidad;
+                        producto.Existencia += item.Cantidad;
 
                     if (!Existe(compras.CompraId))//si no existe insertamos
                         return Insertar(compras);
