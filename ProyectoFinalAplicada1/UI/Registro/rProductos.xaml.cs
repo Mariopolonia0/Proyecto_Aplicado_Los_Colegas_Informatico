@@ -20,6 +20,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
     public partial class rProductos : Window
     {
         Productos productos = new Productos();
+        Compras compras = new Compras();
 
         public rProductos()
         {
@@ -140,10 +141,11 @@ namespace ProyectoFinalAplicada1.UI.Registro
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
             var productos = ProductosBLL.Buscar(int.Parse(ProductoIdTextBox.Text));
-
+            var compras = ComprasBLL.Buscar(int.Parse(ProductoIdTextBox.Text));
             if (productos != null)
             {
                 this.productos = productos;
+                this.compras = compras;
             }
             else
             {

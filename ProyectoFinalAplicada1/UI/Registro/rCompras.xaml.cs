@@ -20,6 +20,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
     public partial class rCompras : Window
     {
         Compras compra = new Compras();
+        Productos productos = new Productos();
         public rCompras()
         {
             InitializeComponent();
@@ -186,11 +187,11 @@ namespace ProyectoFinalAplicada1.UI.Registro
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
             Limpiar();
-            if (DetalleDataGrid.Items.Count >= 1 && DetalleDataGrid.SelectedIndex <= DetalleDataGrid.Items.Count - 1)
+            /*if (DetalleDataGrid.Items.Count >= 1 && DetalleDataGrid.SelectedIndex <= DetalleDataGrid.Items.Count - 1)
             {
                 compra.CompraDetalle.RemoveAt(DetalleDataGrid.SelectedIndex);
                 Cargar();
-            }
+            }*/
         }
 
         private bool ExisteEnLaBaseDeDatos()
@@ -206,27 +207,21 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
             if (compra.CompraId == 0)
             {
+                MessageBox.Show("Algo salio mal.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            /*if (ComprasBLL.Guardar(compra))
+            {
+                var 
+                
+            }*/
+            else
+            {
                 paso = ComprasBLL.Guardar(compra);
-            }
-            else
-            {
-                if (ExisteEnLaBaseDeDatos())
-                {
-                    paso = ComprasBLL.Guardar(compra);
-                }
-                else
-                {
-                    MessageBox.Show("La Compra no existe en la base de datos", "ERROR");
-                }
-            }
-
-            if (paso)
-            {
+                paso = ProductosBLL.Guardar(productos);
                 Limpiar();
-                MessageBox.Show("Guardado!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Guardado.", "Exito.", MessageBoxButton.OK, MessageBoxImage.Information);
+                
             }
-            else
-                MessageBox.Show("Fallo al guardar", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
