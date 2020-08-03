@@ -326,7 +326,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             
-
             if (!Validar())
                 return;
 

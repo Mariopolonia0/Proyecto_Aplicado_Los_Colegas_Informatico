@@ -49,17 +49,47 @@ namespace ProyectoFinalAplicada1.UI
             Application.Current.Shutdown();
         }
 
-        private void StackPanel_KeyDown(object sender, KeyEventArgs e)
-        {
-           // NombreUsuarioTextBox.Focus
-        }
-
-        private void ContrasenaPasswordBox_KeyUp(object sender, KeyEventArgs e)
+        private void NombreUsuarioTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                bool paso = UsuariosBLL.Autorizar(NombreUsuarioTextBox.Text, ContrasenaPasswordBox.Password);
+                ContrasenaPasswordBox.Focus();
+            }
+        }
 
+        private bool Validar()
+        {
+            bool esValido = true;
+
+            if (NombreUsuarioTextBox.Text.Length == 0)
+            {
+                esValido = false;
+                MessageBox.Show("Usuario está vacio", "Fallo",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                NombreUsuarioTextBox.Focus();
+            }
+
+            /*if (ContrasenaPasswordBox.Password.Length == 0)
+            {
+                esValido = false;
+                IngresarButton.IsEnabled = false;
+                MessageBox.Show("Contraseña está vacio", "Fallo",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                ContrasenaPasswordBox.Focus();
+                //IngresarButton.IsEnabled = true;
+            }*/
+
+            return esValido;
+        }
+
+        private void ContrasenaPasswordBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!Validar())
+                return;
+
+            if (e.Key == Key.Enter)
+            {
+                bool paso = UsuariosBLL.Autorizar(NombreUsuarioTextBox.Text, ContrasenaPasswordBox.Password);
                 if (paso)
                 {
                     this.Close();
@@ -74,10 +104,37 @@ namespace ProyectoFinalAplicada1.UI
             }
         }
 
+        /*private void ContrasenaPasswordBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (ContrasenaPasswordBox.Focus() && !Validar())
+            {
+                if (e.Key == Key.Enter)
+                {
+                    bool paso = UsuariosBLL.Autorizar(NombreUsuarioTextBox.Text, ContrasenaPasswordBox.Password);
+
+                    if (paso)
+                    {
+                        this.Close();
+                        Principal.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error Nombre Usuario o Contraseña incorrecta!", "Error!");
+                        ContrasenaPasswordBox.Clear();
+                        NombreUsuarioTextBox.Focus();
+                    }
+                }
+            }
+            else
+                return;
+        }*/
+
         private void Window_Closed(object sender, EventArgs e)
         {
             MessageBox.Show("Hasta Luego");
             this.Close();
         }
+
+        
     }
 }
