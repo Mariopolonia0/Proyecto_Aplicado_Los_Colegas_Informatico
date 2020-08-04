@@ -158,9 +158,6 @@ namespace ProyectoFinalAplicada1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Cantidad")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("CategoriaId")
                         .HasColumnType("INTEGER");
 
@@ -169,6 +166,9 @@ namespace ProyectoFinalAplicada1.Migrations
 
                     b.Property<string>("Descripcion")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("Existencia")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("FechaEntrada")
                         .HasColumnType("TEXT");
@@ -310,17 +310,20 @@ namespace ProyectoFinalAplicada1.Migrations
                     b.Property<int>("Cantidad")
                         .HasColumnType("INTEGER");
 
+                    b.Property<double>("Costo")
+                        .HasColumnType("REAL");
+
                     b.Property<string>("Descripcion")
                         .HasColumnType("TEXT");
+
+                    b.Property<double>("Precio")
+                        .HasColumnType("REAL");
 
                     b.Property<int>("ProductoId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("VentaId")
                         .HasColumnType("INTEGER");
-
-                    b.Property<double>("costo")
-                        .HasColumnType("REAL");
 
                     b.HasKey("Id");
 

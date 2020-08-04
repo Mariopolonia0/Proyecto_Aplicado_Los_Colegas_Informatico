@@ -13,7 +13,8 @@ namespace ProyectoFinalAplicada1.Entidades
         public int ProductoId { get; set; }
         public int Cantidad { get; set; }
         public string Descripcion { get; set; }
-        public double costo { get; set; }
+        public double Precio { get; set; }
+        public double Costo { get; set; }
 
         
         
@@ -24,16 +25,17 @@ namespace ProyectoFinalAplicada1.Entidades
             ProductoId = 0;
             Cantidad = 0;
             Descripcion = string.Empty;
-            costo = 0;
+            Costo = 0;
         }
-        public VentasDetalles(int ventaid, int productoid, int cantidad, string descripcion,double costo )
+        public VentasDetalles(int ventaid, int productoid, int cantidad, string descripcion,double precio )
         {
             Id = 0;
             VentaId = ventaid;
             ProductoId = productoid;
             Cantidad = cantidad;
             Descripcion = descripcion;
-            costo =  costo * cantidad; 
+            Precio = precio;
+            Costo =  Precio * cantidad; 
         }
     }
 }

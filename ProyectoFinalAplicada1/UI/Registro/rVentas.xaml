@@ -86,7 +86,8 @@
                             <DataGridTextColumn Header="Producto Id"  Binding="{Binding ProductoId}"/>
                             <DataGridTextColumn Header="Cantidad"  Binding="{Binding Cantidad}"/>
                             <DataGridTextColumn Header="Descripción"  Binding="{Binding Descripcion}"/>
-                            <DataGridTextColumn Header="Precio"  Binding="{Binding Costo}"/>
+                            <DataGridTextColumn Header="Precio"  Binding="{Binding Precio}"/>
+                            <DataGridTextColumn Header="Costo"  Binding="{Binding Costo}"/>
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -95,7 +96,7 @@
             </GroupBox>
 
             <StackPanel Orientation="Horizontal">
-                <Label Content="Precio Total" Margin="30,0"/>
+                <Label Content="Monto Total" Margin="30,0"/>
 
             </StackPanel>
             <StackPanel Orientation="Horizontal"  Height="43">

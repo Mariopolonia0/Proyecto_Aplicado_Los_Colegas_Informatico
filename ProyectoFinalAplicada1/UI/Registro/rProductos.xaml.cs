@@ -217,7 +217,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
         {
             double Costo = 0;
 
-            /*
+            /*trataba de poner a que despues de modificar el combobox de itbis se pudiarla modificar la ganancia y el precio y se calculara att Mario Polonia
                 switch (ITBISComboBox.SelectedIndex)
                 {   
                         case 1:
@@ -262,7 +262,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
                             productos.Costo = Convert.ToDouble(CostoLabel.Content);
                             CostoLabel.Content = PrecioTextBox.Text.ToString();
                     break;
-                   
             }
         }
 

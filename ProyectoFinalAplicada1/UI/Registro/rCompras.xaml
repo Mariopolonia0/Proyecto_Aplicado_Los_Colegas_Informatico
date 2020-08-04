@@ -109,13 +109,11 @@
         </GroupBox>
 
         <StackPanel Orientation="Horizontal">
-            <Label Content="ITBIS" Margin="20,0,0,0" Width="45" />
-            <Label Content="Total"  Margin="100,0,0,0"/>
+            <Label Content="Total"  Margin="10,0,0,0"/>
         </StackPanel >
 
         <StackPanel Orientation="Horizontal">
-            <Label x:Name="ITBISLabel" Content="0" Margin="20,0,0,0" Width="123" />
-            <Label x:Name="TotalLabel" Content="0" Width="149" Margin="30,0,0,0"  />
+            <Label x:Name="TotalLabel" Content="0" Width="149" Margin="20,0,0,0"  />
         </StackPanel>
 
 

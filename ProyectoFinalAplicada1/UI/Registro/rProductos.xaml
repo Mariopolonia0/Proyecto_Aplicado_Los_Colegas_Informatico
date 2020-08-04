@@ -6,54 +6,53 @@
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
         mc:Ignorable="d"
         Icon="/Resources/Productos.jfif"
-        Title="Registro Productos" Height="520" Width="350" FontSize="14">
+        Title="Registro Productos" Height="577" Width="350" FontSize="14">
     <Grid>
-        
+
         <StackPanel Orientation="Vertical" Margin="4,0,4,0">
-            <StackPanel Orientation="Vertical" Height="424">
-                <Label Content="Producto Id"/>
-                
-                <StackPanel Orientation="Horizontal">
-                    <TextBox x:Name="ProductoIdTextBox" Text="{Binding ProductoId}" Width="100" Height="23"/>
-                    <Button x:Name="BuscarButton" Margin="6,0" Click="BuscarButton_Click">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="/Resources/Buscar.png" Height="28" Width="31"/>
-                            <Label Content="Buscar"/>
-                        </StackPanel>
-                    </Button>
-                </StackPanel>
 
-                <Label Content="Descripción"/>
-                <TextBox x:Name="DescripcionTextBox" Text="{Binding Descripcion}" />
+            <Label Content="Producto Id"/>
 
-                <Label Content="Fecha"/>
-                <DatePicker Name="FechaDatePicker"  SelectedDate="{Binding Fecha,StringFormat=dd/MM/yyyy}"   />
-
-                <Label Content="Categoría "/>
-                <ComboBox Name="CategoriaIdComboBox"  />
-                
-                <Label Content="Precio"/>
-                <TextBox x:Name="PrecioTextBox" Text="{Binding Precio}"/>
-                
-                <Label Content="Ganancia"/>
-                <TextBox x:Name="GananciaTextBox" Text="{Binding Ganancia}" TextChanged="GananciaTextBox_TextChanged"/>
-
-                <Label Content="Existencia"/>
-                <TextBox x:Name="ExistenciaTextBox" Text="{Binding Existencia}"/>
-
-                <Label Content="ITBIS:"/>
-                <ComboBox x:Name="ITBISComboBox" SelectedIndex="0" SelectionChanged="ITBISComboBox_SelectionChanged" >
-                    <ComboBoxItem  Content="Seleccione opción"/>
-                    <ComboBoxItem  Content="18%"/>
-                    <ComboBoxItem  Content="10%"/>
-                    <ComboBoxItem  Content="0%" />
-                </ComboBox>
-
-                <Label Content="Costo:" Height="26"/>
-                <Label x:Name="CostoLabel" Content="{Binding Costo}" Height="26" />
-                    
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="ProductoIdTextBox" Text="{Binding ProductoId}" Width="100" Height="23"/>
+                <Button x:Name="BuscarButton" Margin="6,0" Click="BuscarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Buscar.png" Height="28" Width="31"/>
+                        <Label Content="Buscar"/>
+                    </StackPanel>
+                </Button>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Width="304" Height="41">
+
+            <Label Content="Descripción"/>
+            <TextBox x:Name="DescripcionTextBox" Text="{Binding Descripcion}" />
+
+            <Label Content="Fecha"/>
+            <DatePicker Name="FechaDatePicker"  SelectedDate="{Binding Fecha,StringFormat=dd/MM/yyyy}"   />
+
+            <Label Content="Categoría "/>
+            <ComboBox Name="CategoriaIdComboBox"  />
+
+            <Label Content="Precio"/>
+            <TextBox x:Name="PrecioTextBox" Text="{Binding Precio}"/>
+
+            <Label Content="Ganancia"/>
+            <TextBox x:Name="GananciaTextBox" Text="{Binding Ganancia}" TextChanged="GananciaTextBox_TextChanged"/>
+
+            <Label Content="Existencia"/>
+            <TextBox x:Name="ExistenciaTextBox" Text="{Binding Existencia}"/>
+
+            <Label Content="ITBIS:"/>
+            <ComboBox x:Name="ITBISComboBox" SelectedIndex="0" SelectionChanged="ITBISComboBox_SelectionChanged" >
+                <ComboBoxItem  Content="Seleccione opción"/>
+                <ComboBoxItem  Content="18%"/>
+                <ComboBoxItem  Content="10%"/>
+                <ComboBoxItem  Content="0%" />
+            </ComboBox>
+            <StackPanel Orientation="Vertical" Height="63">
+                <Label Content="Costo:" Height="26" />
+                <Label x:Name="CostoLabel" Content="{Binding Costo}" Height="27"  />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="307" Height="41">
                 <Button x:Name="NuevoButton" Click="NuevoButton_Click" Width="83">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Nuevo.png" Height="38" Width="30"/>
@@ -75,6 +74,7 @@
                     </StackPanel>
                 </Button>
             </StackPanel>
+            <!--barra botones-->
         </StackPanel>
 
     </Grid>

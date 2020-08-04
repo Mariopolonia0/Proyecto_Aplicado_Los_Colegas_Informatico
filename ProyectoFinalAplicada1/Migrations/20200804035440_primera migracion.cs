@@ -72,7 +72,7 @@ namespace ProyectoFinalAplicada1.Migrations
                     Costo = table.Column<double>(nullable: false),
                     Ganancia = table.Column<double>(nullable: false),
                     UsuarioId = table.Column<int>(nullable: false),
-                    Cantidad = table.Column<int>(nullable: false),
+                    Existencia = table.Column<int>(nullable: false),
                     CategoriaId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -181,7 +181,8 @@ namespace ProyectoFinalAplicada1.Migrations
                     ProductoId = table.Column<int>(nullable: false),
                     Cantidad = table.Column<int>(nullable: false),
                     Descripcion = table.Column<string>(nullable: true),
-                    costo = table.Column<double>(nullable: false)
+                    Precio = table.Column<double>(nullable: false),
+                    Costo = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
