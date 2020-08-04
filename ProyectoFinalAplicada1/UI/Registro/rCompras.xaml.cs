@@ -26,6 +26,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
             this.DataContext = compra;
             CompraIdTextBox.Text = "0";
             DescripcionTextBox.Text = "0";
+            CantidadTextBox.Text = "0";
             SuplidorIdComboBox.ItemsSource = SuplidoresBLL.GetSuplidores();
             SuplidorIdComboBox.SelectedValuePath = "SuplidorId";
             SuplidorIdComboBox.DisplayMemberPath = "SuplidorId";                      
@@ -184,6 +185,31 @@ namespace ProyectoFinalAplicada1.UI.Registro
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void PrecioTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            Utilidades.ValidarSoloNumeros(e);
+        }
+
+        private void TransporteTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            Utilidades.ValidarSoloNumeros(e);
+        }
+
+        private void ProductoIdTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            Utilidades.ValidarSoloNumeros(e);
+        }
+
+        private void CantidadTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            Utilidades.ValidarSoloNumeros(e);
+        }
+
+        private void CompraIdTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            Utilidades.ValidarSoloNumeros(e);
         }
     }
 }

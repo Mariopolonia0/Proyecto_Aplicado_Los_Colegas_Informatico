@@ -195,33 +195,88 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
         private void ITBISComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            double Costo = 0;
+            
             if (PrecioTextBox.Text.Length == 0)
-                return;
-
-            switch (ITBISComboBox.SelectedIndex)
             {
-                
-                case 1:
-                    productos.ITBIS = 0.18;
-                    Costo = Convert.ToDouble(PrecioTextBox.Text) * 0.18;
-                    productos.Costo = Costo + productos.Precio;
-                    CostoLabel.Content = productos.Costo.ToString();
-                    break;
-
-                case 2:
-                    productos.ITBIS = 0.10;
-                    Costo = Convert.ToDouble(PrecioTextBox.Text) * 0.10;
-                    productos.Costo = Costo + productos.Precio;
-                    CostoLabel.Content = productos.Costo.ToString();
-                    break;
-
-                case 3:
-                    productos.ITBIS = 0.00;
-                    productos.Costo = Convert.ToDouble(PrecioTextBox.Text);
-                    CostoLabel.Content = PrecioTextBox.Text.ToString();
-                    break;
+                return;
+            }   
+            else if (Convert.ToDecimal(PrecioTextBox.Text) == 0)
+            {
+                ITBISComboBox.SelectedIndex = 0;
+                MessageBox.Show("Precio Esta Vacio Introduzca Precio Por Favor", "Fallo",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
+
+            calcularITBIS();
+        }
+
+        public void calcularITBIS()
+        {
+            double Costo = 0;
+
+            /*
+                switch (ITBISComboBox.SelectedIndex)
+                {   
+                        case 1:
+                            productos.ITBIS = 0.18;
+                            Costo = Convert.ToDouble(PrecioTextBox.Text) * 0.18;
+                            productos.Costo = Costo + productos.Precio;
+                            CostoLabel.Content = productos.Costo.ToString();
+                        break;
+
+                        case 2:
+                            productos.ITBIS = 0.10;
+                            Costo = Convert.ToDouble(PrecioTextBox.Text) * 0.10;
+                            productos.Costo = Costo + productos.Precio;
+                            CostoLabel.Content = productos.Costo.ToString();
+                        break;
+
+                        case 3:
+                            productos.ITBIS = 0.00;
+                            productos.Costo = Convert.ToDouble(PrecioTextBox.Text);
+                            CostoLabel.Content = PrecioTextBox.Text.ToString();
+                        break;
+                }
+            */
+                switch (ITBISComboBox.SelectedIndex)
+                {
+                    case 1:
+                            productos.ITBIS = 0.18;
+                            Costo = Convert.ToDouble(CostoLabel.Content) * 0.18;
+                            productos.Costo = Costo + productos.Precio;
+                            CostoLabel.Content = productos.Costo.ToString();
+                    break;
+
+                    case 2:
+                            productos.ITBIS = 0.10;
+                            Costo = Convert.ToDouble(CostoLabel.Content) * 0.10;
+                            productos.Costo = Costo + productos.Precio;
+                            CostoLabel.Content = productos.Costo.ToString();
+                    break;
+
+                    case 3:
+                            productos.ITBIS = 0.00;
+                            productos.Costo = Convert.ToDouble(CostoLabel.Content);
+                            CostoLabel.Content = PrecioTextBox.Text.ToString();
+                    break;
+                   
+            }
+        }
+
+        private void GananciaTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (PrecioTextBox.Text.Length == 0)
+            {
+                return;
+            }
+            else if (Convert.ToDecimal(PrecioTextBox.Text) == 0)
+            {
+                return;
+            }
+
+            productos.Costo = Convert.ToDouble(PrecioTextBox.Text)+( Convert.ToDouble(PrecioTextBox.Text) * Convert.ToDouble(GananciaTextBox.Text) )  ;
+            CostoLabel.Content = productos.Costo.ToString();
         }
     }
 }

@@ -75,7 +75,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 return;
 
             Productos producto = ProductosBLL.Buscar(Convert.ToInt32(ProductoIdTextBox.Text));
-            venta.VentaDetalle.Add(new VentasDetalles(Convert.ToInt32(VentaIdTextBox.Text), producto.ProductoId, Convert.ToInt32(CantidadTextBox.Text), producto.Descripcion, producto.Precio, producto.ITBIS, producto.Ganancia, producto.Costo));
+            venta.VentaDetalle.Add(new VentasDetalles(Convert.ToInt32(VentaIdTextBox.Text), producto.ProductoId, Convert.ToInt32(CantidadTextBox.Text), producto.Descripcion, producto.Costo));
             Cargar();
 
             venta.CostoTotal = venta.CostoTotal + (producto.Costo * Convert.ToInt32(CantidadTextBox.Text));
@@ -227,7 +227,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
         private void ProductoIdTextBox_TextChanged_1(object sender, TextChangedEventArgs e)
         {
-            if (ProductoIdTextBox.Text.Length == 0)
+           if (ProductoIdTextBox.Text.Length == 0)
                 return;
 
             Productos producto = ProductosBLL.Buscar(Convert.ToInt32(ProductoIdTextBox.Text));
@@ -247,6 +247,26 @@ namespace ProyectoFinalAplicada1.UI.Registro
             Vendedores vendedor= VendedoresBLL.Buscar(Convert.ToInt32(VendedorIdComboBox.SelectedValue));
             NombreVendedorLabel.Content = vendedor.Nombres;
             ApellidovendedorLabel.Content = vendedor.Apellidos;
+        }
+
+        private void VentaIdTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            Utilidades.ValidarSoloNumeros(e);
+        }
+
+        private void ClienteIdTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            Utilidades.ValidarSoloNumeros(e);
+        }
+
+        private void ProductoIdTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            Utilidades.ValidarSoloNumeros(e);
+        }
+
+        private void CantidadTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            Utilidades.ValidarSoloNumeros(e);
         }
     }
 }

@@ -9,7 +9,7 @@ using ProyectoFinalAplicada1.DAL;
 namespace ProyectoFinalAplicada1.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200803015529_primera migracion")]
+    [Migration("20200804022146_primera migracion")]
     partial class primeramigracion
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -315,20 +315,14 @@ namespace ProyectoFinalAplicada1.Migrations
                     b.Property<string>("Descripcion")
                         .HasColumnType("TEXT");
 
-                    b.Property<double>("Ganancia")
-                        .HasColumnType("REAL");
-
-                    b.Property<double>("ITBIS")
-                        .HasColumnType("REAL");
-
-                    b.Property<double>("Precio")
-                        .HasColumnType("REAL");
-
                     b.Property<int>("ProductoId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("VentaId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<double>("costo")
+                        .HasColumnType("REAL");
 
                     b.HasKey("Id");
 

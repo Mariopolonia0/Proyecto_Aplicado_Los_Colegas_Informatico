@@ -14,7 +14,7 @@
         <!--CompraIdTextBox y BuscarButton-->
         <StackPanel Orientation="Horizontal">
 
-            <TextBox Name="CompraIdTextBox" Width="150"  Text="{Binding CompraId}"/>
+            <TextBox Name="CompraIdTextBox" Width="150"  Text="{Binding CompraId}" KeyDown="CompraIdTextBox_KeyDown"/>
 
             <Button Name="BucarButton" Width="82" Height="20" Margin="5,0" Click="BucarButton_Click"  >
                 <StackPanel Orientation="Horizontal">
@@ -48,7 +48,7 @@
 
         <StackPanel Orientation="Horizontal">
             <TextBox Name="NCFTextBox" Width="225" />
-            <TextBox Name="TransporteTextBox" Width="149" Margin="25,0,0,0"/>
+            <TextBox Name="TransporteTextBox" Width="149" Margin="25,0,0,0" KeyDown="TransporteTextBox_KeyDown"/>
         </StackPanel>
 
         <GroupBox Header="Orden Detalle"  BorderBrush="#FF414649"  >
@@ -65,10 +65,10 @@
 
                 <StackPanel Orientation="Horizontal" Height="27">
 
-                    <TextBox Name="ProductoIdTextBox" Margin="5,0,0,0" Width="60" TextChanged="ProductoidTextBox_TextChanged"  />
-                    <TextBox Name="CantidadTextBox" Width="54"  Margin="35,0,0,0" />
+                    <TextBox Name="ProductoIdTextBox" Margin="5,0,0,0" Width="60" TextChanged="ProductoidTextBox_TextChanged" KeyDown="ProductoIdTextBox_KeyDown"  />
+                    <TextBox Name="CantidadTextBox" Width="54"  Margin="35,0,0,0" KeyDown="CantidadTextBox_KeyDown" />
                     <TextBox Name="DescripcionTextBox" Width="140" Margin="32,0,0,0"/>
-                    <TextBox Name="PrecioTextBox" Width="74"   Margin="30,0,0,0"/>
+                    <TextBox Name="PrecioTextBox" Width="74"   Margin="30,0,0,0" KeyDown="PrecioTextBox_KeyDown"/>
                     <!--RemoverButton-->
 
                     <Button Name="AgregarButton" Width="109"  Margin="50,0,0,0" Click="AgregarButton_Click">

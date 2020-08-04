@@ -181,9 +181,7 @@ namespace ProyectoFinalAplicada1.Migrations
                     ProductoId = table.Column<int>(nullable: false),
                     Cantidad = table.Column<int>(nullable: false),
                     Descripcion = table.Column<string>(nullable: true),
-                    Precio = table.Column<double>(nullable: false),
-                    ITBIS = table.Column<double>(nullable: false),
-                    Ganancia = table.Column<double>(nullable: false)
+                    costo = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {

@@ -36,7 +36,7 @@
                 <TextBox x:Name="PrecioTextBox" Text="{Binding Precio}"/>
                 
                 <Label Content="Ganancia"/>
-                <TextBox x:Name="GananciaTextBox" Text="{Binding Ganancia}"/>
+                <TextBox x:Name="GananciaTextBox" Text="{Binding Ganancia}" TextChanged="GananciaTextBox_TextChanged"/>
 
                 <Label Content="ITBIS:"/>
                 <ComboBox x:Name="ITBISComboBox" SelectedIndex="0" SelectionChanged="ITBISComboBox_SelectionChanged" >
@@ -47,7 +47,7 @@
                 </ComboBox>
 
                 <Label Content="Costo:" Height="26"/>
-                <Label x:Name="CostoLabel" Content="{Binding Costo}" Height="31" />
+                <Label x:Name="CostoLabel" Content="{Binding Costo}" Height="26" />
                     
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="304" Height="41">

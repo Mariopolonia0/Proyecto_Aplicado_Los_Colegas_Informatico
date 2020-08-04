@@ -17,7 +17,7 @@
             <!--"BucarButton_Click"-->
             <StackPanel Orientation="Horizontal" >
                 
-                <TextBox x:Name="VentaIdTextBox" Width="150" Text="{Binding VentaId}"/>
+                <TextBox x:Name="VentaIdTextBox" Width="150" Text="{Binding VentaId}" KeyDown="VentaIdTextBox_KeyDown"/>
                 
                 <Button Name="BucarButton" Margin="20,0" Click="BucarButton_Click" >
                     <StackPanel Orientation="Horizontal">
@@ -35,7 +35,7 @@
 
             <StackPanel Orientation="Vertical" >
                 <Label Content="Cliente Id" />
-                <TextBox Name="ClienteIdTextBox" Text="{Binding ClienteId}"  />
+                <TextBox Name="ClienteIdTextBox" Text="{Binding ClienteId}" KeyDown="ClienteIdTextBox_KeyDown"  />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" >
@@ -60,8 +60,8 @@
                     </StackPanel>
                     
                     <StackPanel Orientation="Horizontal"  >
-                        <TextBox x:Name="ProductoIdTextBox" Width="70" Height="20" Margin="5,0,0,0" Text="{Binding ProductoId}" TextChanged="ProductoIdTextBox_TextChanged_1" />
-                        <TextBox x:Name="CantidadTextBox" Width="70" Height="20" Margin="33,0,0,0" Text="{Binding Cantidad}" />
+                        <TextBox x:Name="ProductoIdTextBox" Width="70" Height="20" Margin="5,0,0,0" Text="{Binding ProductoId}" TextChanged="ProductoIdTextBox_TextChanged_1" KeyDown="ProductoIdTextBox_KeyDown" />
+                        <TextBox x:Name="CantidadTextBox" Width="70" Height="20" Margin="33,0,0,0" Text="{Binding Cantidad}" KeyDown="CantidadTextBox_KeyDown" />
                         <TextBox x:Name="DescripcionTextBox" Width="260" Height="20" Margin="22,0,0,0" Text="{Binding Descripcion}" />
 
                         <Button Name="AgregarButton" Width="88" Height="23" Margin="22,0,5,0" Click="AgregarButton_Click" >
@@ -86,7 +86,7 @@
                             <DataGridTextColumn Header="Producto Id"  Binding="{Binding ProductoId}"/>
                             <DataGridTextColumn Header="Cantidad"  Binding="{Binding Cantidad}"/>
                             <DataGridTextColumn Header="Descripción"  Binding="{Binding Descripcion}"/>
-                            <DataGridTextColumn Header="Precio"  Binding="{Binding Precio}"/>
+                            <DataGridTextColumn Header="Precio"  Binding="{Binding Costo}"/>
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -95,13 +95,11 @@
             </GroupBox>
 
             <StackPanel Orientation="Horizontal">
-                <Label Content="ITBIS Total" Margin="18,0"/>
-                <Label Content="Precio Total" Margin="70,0"/>
+                <Label Content="Precio Total" Margin="30,0"/>
 
             </StackPanel>
             <StackPanel Orientation="Horizontal"  Height="43">
-                <Label x:Name="ITBISTotalLabel" FontSize="20" Content="0"  Width="122" Margin="20,0" />
-                <Label x:Name="PrecioTotalLabel" FontSize="20" Content="0" Width="123" Margin="25,0" />
+                <Label x:Name="PrecioTotalLabel" FontSize="20" Content="0" Width="123" Margin="35,0" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="538" Height="49" >
 

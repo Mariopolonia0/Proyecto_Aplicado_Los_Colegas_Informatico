@@ -313,20 +313,14 @@ namespace ProyectoFinalAplicada1.Migrations
                     b.Property<string>("Descripcion")
                         .HasColumnType("TEXT");
 
-                    b.Property<double>("Ganancia")
-                        .HasColumnType("REAL");
-
-                    b.Property<double>("ITBIS")
-                        .HasColumnType("REAL");
-
-                    b.Property<double>("Precio")
-                        .HasColumnType("REAL");
-
                     b.Property<int>("ProductoId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("VentaId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<double>("costo")
+                        .HasColumnType("REAL");
 
                     b.HasKey("Id");
 
