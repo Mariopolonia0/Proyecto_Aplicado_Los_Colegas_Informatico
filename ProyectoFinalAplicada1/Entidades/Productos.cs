@@ -16,7 +16,7 @@ namespace ProyectoFinalAplicada1.Entidades
         public double Costo { get; set; }
         public double Ganancia { get; set; }
         public int UsuarioId { get; set; }
-        public int Cantidad { get; set; }
+        public int Existencia { get; set; }
         public int CategoriaId { get; set; }
 
         public Productos()
@@ -28,7 +28,7 @@ namespace ProyectoFinalAplicada1.Entidades
             FechaEntrada = DateTime.Now;
             Costo = 0;
             Ganancia = 0;
-            Cantidad = 0;
+            Existencia = 0;
             UsuarioId = 0;
             CategoriaId = 0;
         }

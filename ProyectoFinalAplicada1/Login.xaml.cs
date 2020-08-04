@@ -1,5 +1,4 @@
 ﻿using ProyectoFinalAplicada1.BLL;
-using ProyectoFinalAplicada1.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,7 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ProyectoFinalAplicada1.UI
+namespace ProyectoFinalAplicada1
 {
     /// <summary>
     /// Interaction logic for Login.xaml
@@ -20,7 +19,7 @@ namespace ProyectoFinalAplicada1.UI
     public partial class Login : Window
     {
         MainWindow Principal = new MainWindow();
-        
+
         public Login()
         {
             InitializeComponent();
@@ -29,7 +28,7 @@ namespace ProyectoFinalAplicada1.UI
         private void IngresarButton_Click(object sender, RoutedEventArgs e)
         {
             bool paso = UsuariosBLL.Autorizar(NombreUsuarioTextBox.Text, ContrasenaPasswordBox.Password);
-            
+
             if (paso)
             {
                 this.Close();

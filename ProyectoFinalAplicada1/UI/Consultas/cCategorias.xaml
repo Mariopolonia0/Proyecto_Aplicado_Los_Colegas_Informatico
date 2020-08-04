@@ -16,8 +16,6 @@
                     <Label Content="Filtro:" />
                     <ComboBox x:Name="FiltroComboBox" Width="100">
                         <ComboBoxItem Content="CategoriaId"/>
-                        <ComboBoxItem Content="Nombre"/>
-                        <ComboBoxItem Content="Estado"/>
                         <ComboBoxItem Content="Descripcion"/>
                     </ComboBox>
                 </StackPanel>

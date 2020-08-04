@@ -39,7 +39,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
             return (clientes != null);
         }
         //
-        /*private void Actualizar()
+        /*private void cargar()
         {
             this.DataContext = null;
             this.DataContext = clientes;

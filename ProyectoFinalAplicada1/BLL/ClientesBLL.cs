@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Windows.Automation.Peers;
 
 namespace ProyectoFinalAplicada1.BLL
 {
@@ -43,8 +44,10 @@ namespace ProyectoFinalAplicada1.BLL
 
             try
             {
+                
                 contexto.Clientes.Add(clientes);
                 key = contexto.SaveChanges() > 0;
+                //contexto.Entry(Item.clientes).State = EntityState.Modified;
             }
             catch (Exception)
             {

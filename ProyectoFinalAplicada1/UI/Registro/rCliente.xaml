@@ -33,18 +33,19 @@
                 <Label Content="Email:"/>
                 <TextBox x:Name="EmailTextBox" Text="{Binding Email}"/>
 
-                <Label Content="Telefono:"/>
+                <Label Content="Teléfono:"/>
                 <TextBox x:Name="TelefonoTextBox" Text="{Binding Telefono}"/>
 
                 <Label Content="Cedula:"/>
                 <TextBox x:Name="CedulaTextBox" Text="{Binding Cedula}"/>
 
-                <Label Content="Direccion:"/>
+                <Label Content="Dirección:"/>
                 <TextBox x:Name="DireccionTextBox" Text="{Binding Direccion}"/>
             </StackPanel>
 
             <Label Content="Sexo:"/>
             <StackPanel Orientation="Horizontal">
+                
                 <ComboBox Name="SexoComboBox" Width="100" Height="25" Margin="5,0" HorizontalAlignment="Left"/>
             </StackPanel>
 

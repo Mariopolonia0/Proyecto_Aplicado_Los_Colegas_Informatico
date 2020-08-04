@@ -12,6 +12,49 @@ namespace ProyectoFinalAplicada1.BLL
     public class ComprasBLL
     {
 
+        public static bool Existe(int id)
+        {
+            Contexto contexto = new Contexto();
+            bool encontrado = false;
+
+            try
+            {
+                encontrado = contexto.Compras.Any(e => e.CompraId == id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return encontrado;
+        }
+
+        private static bool Insertar(Compras compras)
+        {
+            bool paso = false;
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                //Agregar la entidad que se desea insertar al contexto
+                contexto.Compras.Add(compras);
+                paso = contexto.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return paso;
+        }
+
         public static bool Guardar(Compras compras)
         {
             bool paso = false;
@@ -21,9 +64,14 @@ namespace ProyectoFinalAplicada1.BLL
             {
                 foreach (var item in compras.CompraDetalle)
                 {
-                    var producto = contexto.Productos.Find(item.ProductoId);
+                    var producto = contexto.Productos.Find(item.CompraId);
                     if (producto != null)
-                        producto.Cantidad += item.Cantidad;
+                        producto.Existencia += item.Cantidad;
+
+                    if (!Existe(compras.CompraId))//si no existe insertamos
+                        return Insertar(compras);
+                    else
+                        return Modificar(compras);
                 }
                 if (contexto.Compras.Add(compras) != null)
                     paso = contexto.SaveChanges() > 0;

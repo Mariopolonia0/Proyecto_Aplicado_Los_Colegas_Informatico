@@ -1,9 +1,9 @@
-﻿<Window x:Class="ProyectoFinalAplicada1.UI.Login"
+﻿<Window x:Class="ProyectoFinalAplicada1.Login"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI"
+        xmlns:local="clr-namespace:ProyectoFinalAplicada1"
         xmlns:PasswordHelper="clr-namespace:ProyectoFinalAplicada1.Resources.PasswordHelper"
         mc:Ignorable="d"
         Icon="/Resources/Window.png"
@@ -21,7 +21,7 @@
                 <PasswordBox x:Name="ContrasenaPasswordBox" PasswordHelper:PasswordHelper.Attach="True" PasswordHelper:PasswordHelper.Password="{Binding Contrasena, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" KeyDown="ContrasenaPasswordBox_KeyDown" />
 
             </StackPanel>
-            
+
             <StackPanel Orientation="Horizontal" Margin="0,15" Height="42" >
                 <Button x:Name="IngresarButton" Margin="50,0" Click="IngresarButton_Click">
                     <StackPanel Orientation="Horizontal">
@@ -38,5 +38,6 @@
 
             </StackPanel>
         </StackPanel>
+
     </Grid>
 </Window>

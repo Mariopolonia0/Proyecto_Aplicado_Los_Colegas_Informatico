@@ -23,7 +23,7 @@ namespace ProyectoFinalAplicada1.BLL
                 {
                     var producto = contexto.Productos.Find(item.ProductoId);
                     if (producto != null)
-                        producto.Cantidad -= item.Cantidad;
+                        producto.Existencia -= item.Cantidad;
                 }
 
                 if (contexto.Ventas.Add(ventas) != null)
