@@ -36,13 +36,13 @@
             <TextBox x:Name="PrecioTextBox" Text="{Binding Precio}"/>
 
             <Label Content="Ganancia"/>
-            <TextBox x:Name="GananciaTextBox" Text="{Binding Ganancia}" TextChanged="GananciaTextBox_TextChanged"/>
+            <TextBox x:Name="GananciaTextBox" Text="{Binding Ganancia}" KeyUp="GananciaTextBox_KeyUp"/>
 
             <Label Content="Existencia"/>
             <TextBox x:Name="ExistenciaTextBox" Text="{Binding Existencia}"/>
 
             <Label Content="ITBIS:"/>
-            <ComboBox x:Name="ITBISComboBox" SelectedIndex="0" SelectionChanged="ITBISComboBox_SelectionChanged" >
+            <ComboBox x:Name="ITBISComboBox" SelectedIndex="0" DropDownClosed="ITBISComboBox_DropDownClosed" >
                 <ComboBoxItem  Content="Seleccione opción"/>
                 <ComboBoxItem  Content="18%"/>
                 <ComboBoxItem  Content="10%"/>

@@ -38,9 +38,14 @@ namespace ProyectoFinalAplicada1.UI.Registro
         {
             ProductoIdTextBox.Text = "0";
             DescripcionTextBox.Text = string.Empty;
-          //  CantidadTextBox.Text = "0";
+            GananciaTextBox.Text = "0";
             PrecioTextBox.Text = "0";
+            FechaDatePicker = null;
             CategoriaIdComboBox.SelectedItem = null;
+            ExistenciaTextBox.Text = "0";
+            ITBISComboBox.SelectedItem = 1;
+            CostoLabel.Content = "0";
+
         }
 
         private bool Existe()
@@ -83,28 +88,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 GuardarButton.IsEnabled = true;
             }
 
-            
-
-           /* if (//CostoTextBox.Text.Length == 0)
-            {
-                esValido = false;
-                GuardarButton.IsEnabled = false;
-                MessageBox.Show("Costo está vacia", "Fallo",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
-                CostoTextBox.Focus();
-                GuardarButton.IsEnabled = true;
-            }
-            */
-          /*  if (GananciaComboBox.SelectedIndex == 0)
-            {
-                esValido = false;
-                GuardarButton.IsEnabled = false;
-                MessageBox.Show("Ganancia está vacia", "Fallo",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
-                GananciaComboBox.Focus();
-                GuardarButton.IsEnabled = true;
-            }
-            */
             if (ProductoIdTextBox.Text.Length == 0)
             {
                 esValido = false;
@@ -141,11 +124,10 @@ namespace ProyectoFinalAplicada1.UI.Registro
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
             var productos = ProductosBLL.Buscar(int.Parse(ProductoIdTextBox.Text));
-            var compras = ComprasBLL.Buscar(int.Parse(ProductoIdTextBox.Text));
+          
             if (productos != null)
             {
                 this.productos = productos;
-                this.compras = compras;
             }
             else
             {
@@ -154,8 +136,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
                      MessageBoxButton.OK, MessageBoxImage.Information);
                 Limpiar();
             }
-
-            //Limpiar();
             this.DataContext = this.productos;
         }
 
@@ -195,15 +175,17 @@ namespace ProyectoFinalAplicada1.UI.Registro
                     MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
-        private void ITBISComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+       /* private void ITBISComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
             if (PrecioTextBox.Text.Length == 0)
             {
                 return;
-            }   
+            } 
             else if (Convert.ToDecimal(PrecioTextBox.Text) == 0)
             {
+                
+                
                 ITBISComboBox.SelectedIndex = 0;
                 MessageBox.Show("Precio Esta Vacio Introduzca Precio Por Favor", "Fallo",
                     MessageBoxButton.OK, MessageBoxImage.Error);
@@ -212,48 +194,21 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
             calcularITBIS();
         }
+        */
 
         public void calcularITBIS()
         {
-            double Costo = 0;
-
-            /*trataba de poner a que despues de modificar el combobox de itbis se pudiarla modificar la ganancia y el precio y se calculara att Mario Polonia
-                switch (ITBISComboBox.SelectedIndex)
-                {   
-                        case 1:
-                            productos.ITBIS = 0.18;
-                            Costo = Convert.ToDouble(PrecioTextBox.Text) * 0.18;
-                            productos.Costo = Costo + productos.Precio;
-                            CostoLabel.Content = productos.Costo.ToString();
-                        break;
-
-                        case 2:
-                            productos.ITBIS = 0.10;
-                            Costo = Convert.ToDouble(PrecioTextBox.Text) * 0.10;
-                            productos.Costo = Costo + productos.Precio;
-                            CostoLabel.Content = productos.Costo.ToString();
-                        break;
-
-                        case 3:
-                            productos.ITBIS = 0.00;
-                            productos.Costo = Convert.ToDouble(PrecioTextBox.Text);
-                            CostoLabel.Content = PrecioTextBox.Text.ToString();
-                        break;
-                }
-            */
                 switch (ITBISComboBox.SelectedIndex)
                 {
                     case 1:
-                            productos.ITBIS = 0.18;
-                            Costo = Convert.ToDouble(CostoLabel.Content) * 0.18;
-                            productos.Costo = Costo + productos.Precio;
+                            productos.ITBIS = 1.18;
+                            productos.Costo = Convert.ToDouble((Convert.ToDouble(PrecioTextBox.Text) + Convert.ToDouble(GananciaTextBox.Text))) * 1.18;
                             CostoLabel.Content = productos.Costo.ToString();
                     break;
 
                     case 2:
-                            productos.ITBIS = 0.10;
-                            Costo = Convert.ToDouble(CostoLabel.Content) * 0.10;
-                            productos.Costo = Costo + productos.Precio;
+                            productos.ITBIS = 1.10;
+                            productos.Costo = Convert.ToDouble((Convert.ToDouble(PrecioTextBox.Text) + Convert.ToDouble(GananciaTextBox.Text))) * 1.10;
                             CostoLabel.Content = productos.Costo.ToString();
                     break;
 
@@ -265,9 +220,13 @@ namespace ProyectoFinalAplicada1.UI.Registro
             }
         }
 
-        private void GananciaTextBox_TextChanged(object sender, TextChangedEventArgs e)
+
+        private void GananciaTextBox_KeyUp(object sender, KeyEventArgs e)
         {
-            if (PrecioTextBox.Text.Length == 0)
+            if (Utilidades.ValidarSoloNumeros(e))
+                return;
+
+            if (PrecioTextBox.Text.Length == 0 | GananciaTextBox.Text.Length == 0)
             {
                 return;
             }
@@ -276,9 +235,30 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 return;
             }
 
-            productos.Costo = Convert.ToDouble(PrecioTextBox.Text)+( Convert.ToDouble(PrecioTextBox.Text) * Convert.ToDouble(GananciaTextBox.Text) )  ;
+            productos.Costo = Convert.ToDouble(PrecioTextBox.Text) + Convert.ToDouble(GananciaTextBox.Text);
             CostoLabel.Content = productos.Costo.ToString();
         }
+
+        private void ITBISComboBox_DropDownClosed(object sender, EventArgs e)
+        {
+            if (PrecioTextBox.Text.Length == 0)
+            {
+                return;
+            }
+            else if (Convert.ToDecimal(PrecioTextBox.Text) == 0)
+            {
+                ITBISComboBox.SelectedIndex = 0;
+                MessageBox.Show("Precio Esta Vacio Introduzca Precio Por Favor", "Fallo",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            calcularITBIS(); 
+        }
+
+       
     }
+
+
 }
 

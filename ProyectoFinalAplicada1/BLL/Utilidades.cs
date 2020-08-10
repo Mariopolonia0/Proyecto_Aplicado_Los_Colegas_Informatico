@@ -40,8 +40,9 @@ namespace ProyectoFinalAplicada1.BLL
         }
 
 
-             public static void ValidarSoloNumeros(KeyEventArgs v)
+             public static bool ValidarSoloNumeros(KeyEventArgs v)
              {
+                 
                  if (Char.IsLetter(Convert.ToChar(v.Key)))
                  {
                      v.Handled = false;
@@ -59,6 +60,7 @@ namespace ProyectoFinalAplicada1.BLL
                      v.Handled = true;
                      MessageBox.Show("Solo Puede Digitar Numero","Informacion Importante",MessageBoxButton.OK,MessageBoxImage.Information);
                  }
+                 return v.Handled;
              }
              
 
