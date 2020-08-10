@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using ProyectoFinalAplicada1.DAL;
 using ProyectoFinalAplicada1.Entidades;
 using System;
@@ -172,6 +173,30 @@ namespace ProyectoFinalAplicada1.BLL
             stream = sha256.ComputeHash(encoding.GetBytes(str));
             for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
             return sb.ToString();
+        }
+
+        public static Usuarios BuscarNombre(string nombre)
+        {
+            bool paso = false;
+            Contexto contexto = new Contexto();
+            Usuarios usuario = new Usuarios();
+
+            try
+            {
+                usuario = contexto.Usuarios.AsNoTracking().Where(c => c.Nombres == nombre).FirstOrDefault();
+                  
+                //usuario = contexto.Usuarios.Any(u => u.NombreUsuario.Equals(nombre));
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return usuario;
         }
 
         //Metodo para validar Usuario y contraseña en el Login.

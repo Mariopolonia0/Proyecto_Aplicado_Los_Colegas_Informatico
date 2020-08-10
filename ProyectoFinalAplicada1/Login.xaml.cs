@@ -18,7 +18,7 @@ namespace ProyectoFinalAplicada1
     /// </summary>
     public partial class Login : Window
     {
-        MainWindow Principal = new MainWindow();
+        
 
         public Login()
         {
@@ -31,6 +31,7 @@ namespace ProyectoFinalAplicada1
 
             if (paso)
             {
+                MainWindow Principal = new MainWindow();
                 this.Close();
                 Principal.Show();
             }
@@ -81,6 +82,8 @@ namespace ProyectoFinalAplicada1
                 bool paso = UsuariosBLL.Autorizar(NombreUsuarioTextBox.Text, ContrasenaPasswordBox.Password);
                 if (paso)
                 {
+                    
+                    MainWindow Principal = new MainWindow();
                     this.Close();
                     Principal.Show();
                 }

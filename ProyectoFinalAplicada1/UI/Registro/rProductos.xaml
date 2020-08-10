@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
         mc:Ignorable="d"
         Icon="/Resources/Productos.jfif"
-        Title="Registro Productos" Height="577" Width="350" FontSize="14">
+        Title="Registro Productos" Height="532" Width="350" FontSize="14">
     <Grid>
 
         <StackPanel Orientation="Vertical" Margin="4,0,4,0">
@@ -37,9 +37,6 @@
 
             <Label Content="Ganancia"/>
             <TextBox x:Name="GananciaTextBox" Text="{Binding Ganancia}" KeyUp="GananciaTextBox_KeyUp"/>
-
-            <Label Content="Existencia"/>
-            <TextBox x:Name="ExistenciaTextBox" Text="{Binding Existencia}"/>
 
             <Label Content="ITBIS:"/>
             <ComboBox x:Name="ITBISComboBox" SelectedIndex="0" DropDownClosed="ITBISComboBox_DropDownClosed" >
