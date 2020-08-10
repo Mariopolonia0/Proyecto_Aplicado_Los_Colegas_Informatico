@@ -100,7 +100,7 @@
 
             </StackPanel>
             <StackPanel Orientation="Horizontal"  Height="43">
-                <Label x:Name="PrecioTotalLabel" FontSize="20" Content="0" Width="123" Margin="35,0" />
+                <Label x:Name="PrecioTotalLabel" FontSize="20" Content="{Binding CostoTotal}"  Width="123" Margin="35,0" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="538" Height="49" >
 

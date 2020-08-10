@@ -37,10 +37,14 @@ namespace ProyectoFinalAplicada1.UI.Registro
         private void Limpiar()
         {
             VentaIdTextBox.Text = "0";
-            ClienteIdTextBox.Text = string.Empty;
-            ProductoIdTextBox.Text = string.Empty;
-            CantidadTextBox.Text = string.Empty;
+            ClienteIdTextBox.Text = "0";
+            ProductoIdTextBox.Text = "0";
+            CantidadTextBox.Text = "0";
             DescripcionTextBox.Text = string.Empty;
+            // venta.VentaDetalle = null;
+            PrecioTotalLabel.Content = "0";
+            DetalleDataGrid.ItemsSource = null;
+
         }
 
         private void BucarButton_Click(object sender, RoutedEventArgs e)
