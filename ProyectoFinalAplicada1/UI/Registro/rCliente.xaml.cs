@@ -220,7 +220,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 return false;
             }
 
-            if (!Regex.IsMatch(CedulaTextBox.Text, "^[0-9]+$"))
+            if (!Regex.IsMatch(CedulaTextBox.Text, "^[0-9-]+$"))
             {
                 MessageBox.Show("Solo se permiten caracteres numericos.",
                     "Campo Cedula.", MessageBoxButton.OK, MessageBoxImage.Error);

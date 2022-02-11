@@ -60,9 +60,9 @@
                     </StackPanel>
                     
                     <StackPanel Orientation="Horizontal"  >
-                        <TextBox x:Name="ProductoIdTextBox" Width="70" Height="20" Margin="5,0,0,0" Text="{Binding ProductoId}" TextChanged="ProductoIdTextBox_TextChanged_1" KeyDown="ProductoIdTextBox_KeyDown" />
-                        <TextBox x:Name="CantidadTextBox" Width="70" Height="20" Margin="33,0,0,0" Text="{Binding Cantidad}" KeyDown="CantidadTextBox_KeyDown" />
-                        <TextBox x:Name="DescripcionTextBox" Width="260" Height="20" Margin="22,0,0,0" Text="{Binding Descripcion}" />
+                        <TextBox x:Name="ProductoIdTextBox" Width="70" Height="20" Margin="5,0,0,0"  KeyUp="ProductoIdTextBox_KeyUp" />
+                        <TextBox x:Name="CantidadTextBox" Width="70" Height="20" Margin="33,0,0,0"  KeyDown="CantidadTextBox_KeyDown" />
+                        <TextBox x:Name="DescripcionTextBox" Width="260" Height="20" Margin="22,0,0,0"  />
 
                         <Button Name="AgregarButton" Width="88" Height="23" Margin="22,0,5,0" Click="AgregarButton_Click" >
                             <StackPanel Orientation="Horizontal">
@@ -80,7 +80,7 @@
                         </Button>
                     </StackPanel>
 
-                    <DataGrid x:Name="DetalleDataGrid" AlternatingRowBackground="#FFBAE3FF" AutoGenerateColumns="False" ItemsSource="{Binding VentaDetalle}" Margin="0,5,0,0" Width="735"  Height="189">
+                    <DataGrid x:Name="DetalleDataGrid" AlternatingRowBackground="#FFBAE3FF" AutoGenerateColumns="False"  Margin="0,5,0,0" Width="735"  Height="189">
 
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Producto Id"  Binding="{Binding ProductoId}"/>

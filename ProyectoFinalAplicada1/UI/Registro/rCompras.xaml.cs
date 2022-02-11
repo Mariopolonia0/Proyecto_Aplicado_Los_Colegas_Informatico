@@ -8,9 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+
 
 namespace ProyectoFinalAplicada1.UI.Registro
 {
@@ -36,6 +34,8 @@ namespace ProyectoFinalAplicada1.UI.Registro
         private void SuplidorIdComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Suplidores suplidor = SuplidoresBLL.Buscar(Convert.ToInt32(SuplidorIdComboBox.SelectedValue));
+            if (suplidor == null)
+                return;
             NombreSuplidoraLabel.Content = suplidor.NombreRepresentante;
             CompaniaSuplidorLabel.Content = suplidor.Compania;
         }
@@ -168,7 +168,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
             */
             TotalLabel.Content = Convert.ToString(Convert.ToDecimal(TotalLabel.Content) + (Convert.ToDecimal(PrecioTextBox.Text) * Convert.ToDecimal(CantidadTextBox.Text)));
 
-
             ProductoIdTextBox.Text = "0";
             CantidadTextBox.Text = "0";
             PrecioTextBox.Text = "0";
@@ -204,21 +203,20 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
-            bool paso = false;
+            // bool paso = false;
+
+            compra.SuplidorId = Convert.ToInt32(SuplidorIdComboBox.SelectedValue);
+            compra.Monto = Convert.ToDecimal(TotalLabel.Content.ToString());
+            compra.ITBIS = 0.18;
 
             if (compra.CompraId == 0)
             {
                 MessageBox.Show("Algo salio mal.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            /*if (ComprasBLL.Guardar(compra))
-            {
-                var 
-                
-            }*/
             else
             {
-                paso = ComprasBLL.Guardar(compra);
-                paso = ProductosBLL.Guardar(productos);
+                ComprasBLL.Guardar(compra);
+               // paso = ProductosBLL.Guardar(productos);
                 Limpiar();
                 MessageBox.Show("Guardado.", "Exito.", MessageBoxButton.OK, MessageBoxImage.Information);
                 
@@ -227,7 +225,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-
+            TotalLabel.Content = Convert.ToInt32(SuplidorIdComboBox.SelectedValue).ToString();
         }
 
         private void PrecioTextBox_KeyDown(object sender, KeyEventArgs e)

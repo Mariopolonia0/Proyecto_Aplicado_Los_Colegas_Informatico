@@ -47,8 +47,8 @@
         </StackPanel>
 
         <StackPanel Orientation="Horizontal">
-            <TextBox Name="NCFTextBox" Width="225" />
-            <TextBox Name="TransporteTextBox" Width="149" Margin="25,0,0,0" KeyDown="TransporteTextBox_KeyDown"/>
+            <TextBox Name="NCFTextBox" Text="{Binding NCF}" Width="225"  />
+            <TextBox Name="TransporteTextBox" Text="{Binding Transporte}" Width="149" Margin="25,0,0,0" KeyDown="TransporteTextBox_KeyDown"/>
         </StackPanel>
 
         <GroupBox Header="Orden Detalle"  BorderBrush="#FF414649"  >
@@ -113,7 +113,7 @@
         </StackPanel >
 
         <StackPanel Orientation="Horizontal">
-            <Label x:Name="TotalLabel" Content="0" Width="149" Margin="20,0,0,0"  />
+            <Label x:Name="TotalLabel"  Width="149" Content="{Binding Monto}" Margin="20,0,0,0"  />
         </StackPanel>
 
 

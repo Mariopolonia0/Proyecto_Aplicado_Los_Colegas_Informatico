@@ -20,6 +20,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
     public partial class rVentas : Window
     {
         Ventas venta = new Ventas();
+        Productos producto = new Productos();
         public rVentas()
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
             venta.ITBISTotal = 0;
             venta.PrecioTotal = 0;
             VendedorIdComboBox.ItemsSource = VendedoresBLL.GetVendedores();
+            
             VendedorIdComboBox.SelectedValuePath = "VendedorId";
             VendedorIdComboBox.DisplayMemberPath = "VendedorId";
         }
@@ -50,21 +52,25 @@ namespace ProyectoFinalAplicada1.UI.Registro
         private void BucarButton_Click(object sender, RoutedEventArgs e)
         {
             var venta = VentasBLL.Buscar(Convert.ToInt32(VentaIdTextBox.Text));
-
+            
             if (venta != null)
             {
+                Limpiar();
                 this.venta = venta;
+                VendedorIdComboBox.SelectedIndex = venta.VendedorId;
+                DetalleDataGrid.ItemsSource = venta.VentaDetalle;
             }
             else
             {
+                Limpiar();
                 this.venta = new Entidades.Ventas();
                 MessageBox.Show("El Registro No Existe", "Fallo",
                      MessageBoxButton.OK, MessageBoxImage.Information);
                 Limpiar();
             }
 
-            Limpiar();
-            this.DataContext = this.venta;
+            
+            //this.DataContext = this.venta;
         }
 
         private void Cargar()
@@ -78,9 +84,12 @@ namespace ProyectoFinalAplicada1.UI.Registro
             if (!Validar())
                 return;
 
-            Productos producto = ProductosBLL.Buscar(Convert.ToInt32(ProductoIdTextBox.Text));
+            producto = ProductosBLL.Buscar(Convert.ToInt32(ProductoIdTextBox.Text));
             venta.VentaDetalle.Add(new VentasDetalles(Convert.ToInt32(VentaIdTextBox.Text), producto.ProductoId, Convert.ToInt32(CantidadTextBox.Text), producto.Descripcion, producto.Costo));
-            Cargar();
+            
+            DetalleDataGrid.ItemsSource = null;
+            DetalleDataGrid.ItemsSource = venta.VentaDetalle;
+            //Cargar();
 
             venta.CostoTotal = venta.CostoTotal + (producto.Costo * Convert.ToInt32(CantidadTextBox.Text));
             PrecioTotalLabel.Content = venta.CostoTotal.ToString();
@@ -100,13 +109,13 @@ namespace ProyectoFinalAplicada1.UI.Registro
         {
             bool esValido = true;
 
-            if (ProductoIdTextBox.Text.Length == 0)
+            if (VentaIdTextBox.Text.Length == 0)
             {
                 esValido = false;
                 GuardarButton.IsEnabled = false;
-                MessageBox.Show("Producto Id está vacio", "Fallo",
+                MessageBox.Show("VentaId está vacio", "Fallo",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
-                ProductoIdTextBox.Focus();
+                VentaIdTextBox.Focus();
                 GuardarButton.IsEnabled = true;
             }
 
@@ -215,7 +224,8 @@ namespace ProyectoFinalAplicada1.UI.Registro
         {
             if (!Validarguardar())
                 return;
-
+           
+            venta.VendedorId = VendedorIdComboBox.SelectedIndex;
             var paso = VentasBLL.Guardar(venta);
 
             if (paso)
@@ -229,7 +239,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
                     MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
-        private void ProductoIdTextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        private void ProductoIdTextBox_Buscar()
         {
            if (ProductoIdTextBox.Text.Length == 0)
                 return;
@@ -263,9 +273,12 @@ namespace ProyectoFinalAplicada1.UI.Registro
             Utilidades.ValidarSoloNumeros(e);
         }
 
-        private void ProductoIdTextBox_KeyDown(object sender, KeyEventArgs e)
+        private void ProductoIdTextBox_KeyUp(object sender, KeyEventArgs e)
         {
-            Utilidades.ValidarSoloNumeros(e);
+            if (Utilidades.ValidarSoloNumeros(e))
+                return;
+            
+            ProductoIdTextBox_Buscar();
         }
 
         private void CantidadTextBox_KeyDown(object sender, KeyEventArgs e)

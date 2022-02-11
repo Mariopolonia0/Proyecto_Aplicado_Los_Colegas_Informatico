@@ -64,9 +64,27 @@ namespace ProyectoFinalAplicada1.BLL
             {
                 foreach (var item in compras.CompraDetalle)
                 {
-                    var producto = contexto.Productos.Find(item.CompraId);
+                    var producto = contexto.Productos.Find(item.ProductoId);
                     if (producto != null)
+                    {
                         producto.Existencia += item.Cantidad;
+                        contexto.Entry(producto).State = EntityState.Modified;
+                        contexto.SaveChanges() ;
+                    }
+                    else
+                    {
+                        Productos product = new Productos();
+                        product.ProductoId = item.ProductoId;
+                        product.Existencia = item.Cantidad;
+                        product.Costo = (double)item.Precio;
+                        product.Descripcion = item.Descripcion;
+                        product.FechaEntrada = compras.Fecha;
+                        product.ITBIS = 0.18;
+                        product.Ganancia = 0.20;
+
+                        ProductosBLL.Guardar(product);
+                        contexto.SaveChanges();
+                    }
 
                     if (!Existe(compras.CompraId))//si no existe insertamos
                         return Insertar(compras);

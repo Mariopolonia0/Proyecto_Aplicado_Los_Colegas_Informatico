@@ -12,7 +12,7 @@ namespace ProyectoFinalAplicada1.Entidades
         public int CompraId { get; set; }
         public int ProductoId { get; set; }
         public int Cantidad { get; set; }
-        public String Descripcion { get; set; }
+        public string Descripcion { get; set; }
         public decimal Precio { get; set; }
         public decimal Total { get; set; }
 
@@ -28,7 +28,7 @@ namespace ProyectoFinalAplicada1.Entidades
 
         }
 
-        public ComprasDetalles(int Compraid, int productoid, int cantidad,String descripcion, decimal precio)
+        public ComprasDetalles(int Compraid, int productoid, int cantidad,string descripcion, decimal precio)
         {
             CompraDetalleId = 0;
             CompraId = Compraid;

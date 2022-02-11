@@ -16,8 +16,6 @@ namespace ProyectoFinalAplicada1.Entidades
         public double Precio { get; set; }
         public double Costo { get; set; }
 
-        
-        
         public VentasDetalles()
         {
             Id = 0;
@@ -35,7 +33,7 @@ namespace ProyectoFinalAplicada1.Entidades
             Cantidad = cantidad;
             Descripcion = descripcion;
             Precio = precio;
-            Costo =  Precio * cantidad; 
+            Costo =  precio * cantidad; 
         }
     }
 }

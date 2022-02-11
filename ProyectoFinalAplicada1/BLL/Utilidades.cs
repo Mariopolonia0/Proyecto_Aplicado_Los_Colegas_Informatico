@@ -63,32 +63,6 @@ namespace ProyectoFinalAplicada1.BLL
                  return v.Handled;
              }
              
-
-
-            /* public static void NumerosDecimales(KeyEventArgs v)
-             {
-                 if (Char.IsDigit(v.Key))
-                 {
-                     v.Handled = false;
-                 }
-                 else if (Char.IsSeparator(v.KeyChar))
-                 {
-                     v.Handled = false;
-                 }
-                 else if (Char.IsControl(v.KeyChar))
-                 {
-                     v.Handled = false;
-                 }
-                 else if (v.KeyChar.ToString().Equals("."))
-                 {
-                     v.Handled = false;
-                 }
-                 else
-                 {
-                     v.Handled = true;
-                     MessageBox.Show("Solo numeros o numeros con punto decimal");
-                 }
-             }*/
         }
 
     }

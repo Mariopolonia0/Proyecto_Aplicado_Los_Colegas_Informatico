@@ -23,7 +23,11 @@ namespace ProyectoFinalAplicada1.BLL
                 {
                     var producto = contexto.Productos.Find(item.ProductoId);
                     if (producto != null)
+                    {
                         producto.Existencia -= item.Cantidad;
+                        contexto.Entry(producto).State = EntityState.Modified;
+                    }
+                    
                 }
 
                 if (contexto.Ventas.Add(ventas) != null)
@@ -71,12 +75,12 @@ namespace ProyectoFinalAplicada1.BLL
 
             try
             {
-                contexto.Database.ExecuteSqlRaw($"DELETE FROM VentasDetalles Where VentaId = {ventas.VentaId}");
-                foreach (var anterior in ventas.VentaDetalle)
+               //contexto.Database.ExecuteSqlRaw($"DELETE FROM VentasDetalles Where VentaId = {ventas.VentaId}");
+            /*  foreach (var anterior in ventas.VentaDetalle)
                 {
                     contexto.Entry(anterior).State = EntityState.Added;
                 }
-
+            */
                 contexto.Entry(ventas).State = EntityState.Modified;
                 paso = (contexto.SaveChanges() > 0);
             }

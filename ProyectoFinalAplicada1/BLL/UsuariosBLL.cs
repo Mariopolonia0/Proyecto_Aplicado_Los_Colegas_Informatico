@@ -177,16 +177,14 @@ namespace ProyectoFinalAplicada1.BLL
 
         public static Usuarios BuscarNombre(string nombre)
         {
-            bool paso = false;
+            //bool paso = false;
             Contexto contexto = new Contexto();
             Usuarios usuario = new Usuarios();
 
             try
             {
                 usuario = contexto.Usuarios.AsNoTracking().Where(c => c.Nombres == nombre).FirstOrDefault();
-                  
-                //usuario = contexto.Usuarios.Any(u => u.NombreUsuario.Equals(nombre));
-
+        
             }
             catch (Exception)
             {

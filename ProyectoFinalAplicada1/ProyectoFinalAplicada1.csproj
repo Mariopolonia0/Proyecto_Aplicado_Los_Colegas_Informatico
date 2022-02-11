@@ -128,4 +128,10 @@
     <Folder Include="DATA\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="DATA\BDProyectoFinal.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProyectoFinalAplicada1.Migrations
 {
-    public partial class primeramigracion : Migration
+    public partial class Inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -139,8 +139,7 @@ namespace ProyectoFinalAplicada1.Migrations
                     PrecioTotal = table.Column<double>(nullable: false),
                     GananciaTotal = table.Column<double>(nullable: false),
                     ITBISTotal = table.Column<double>(nullable: false),
-                    CostoTotal = table.Column<double>(nullable: false),
-                    Cantidad = table.Column<int>(nullable: false)
+                    CostoTotal = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {

@@ -10,13 +10,13 @@
 
     <StackPanel  >
         
-        <StackPanel>
-            <Label Content="Vendedor Id:" />
+        <StackPanel Margin="5,0,0,0">
+            <Label Content="Vendedor Id:"  />
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" Height="28" >
+        <StackPanel Orientation="Horizontal" Margin="10,0,0,0"  >
             
-            <TextBox x:Name="VendedorIdTextBox" Text="{Binding VendedorId}" Width="90" />
+            <TextBox x:Name="VendedorIdTextBox" Text="{Binding VendedorId}" Width="90"  />
             <Button x:Name="BuscarButton" Margin="5,0" Click="BuscarButton_Click"  >
                 <StackPanel Orientation="Horizontal" Height="26">
                     <Image Source="/Resources/Buscar.png" Height="23" Width="45"  />
@@ -26,19 +26,19 @@
 
         </StackPanel>
 
-        <StackPanel>
+        <StackPanel Margin="10,0,10,0" >
             <Label Content="Nombres:" />
             <TextBox x:Name="NombresTextBox" Text="{Binding Nombres}" />
         </StackPanel>
 
-        <StackPanel>
+        <StackPanel Margin="10,0,10,0">
             <Label Content="Apellidos:"/>
             <TextBox x:Name="ApellidosTextBox" Text="{Binding Apellidos}" />
         </StackPanel>
         <!--BARRA BOTONES-->
-        <StackPanel Orientation="Horizontal" Height="37" Margin="0,15,0,0"  >
+        <StackPanel Orientation="Horizontal" Height="37" Margin="10,15,10,0"  >
 
-            <Button x:Name="NuevoButton" Margin="5,0,0,0"   Click="NuevoButton_Click" >
+            <Button x:Name="NuevoButton"    Click="NuevoButton_Click" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/Nuevo.png"  />
                     <Label Content="Nuevo" />
