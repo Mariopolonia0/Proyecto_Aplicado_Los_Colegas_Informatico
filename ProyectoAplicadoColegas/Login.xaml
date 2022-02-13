@@ -1,0 +1,43 @@
+﻿<Window x:Class="ProyectoFinalAplicada1.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoFinalAplicada1"
+        xmlns:PasswordHelper="clr-namespace:ProyectoFinalAplicada1.Resources.PasswordHelper"
+        mc:Ignorable="d"
+        Icon="/Resources/Window.png"
+        Title="Login" Height="230" Width="350" FontSize="15" FontFamily="Segoe UI" Topmost="True">
+    <Grid>
+
+        <StackPanel Orientation="Vertical" Margin="10,10,10,10">
+            <StackPanel Orientation="Vertical">
+                <Label Content="Nombre Usuario"/>
+
+                <TextBox x:Name="NombreUsuarioTextBox" Text="{Binding NombreUsuario}" KeyDown="NombreUsuarioTextBox_KeyDown"  />
+
+                <Label Content="Contraseña"/>
+
+                <PasswordBox x:Name="ContrasenaPasswordBox" PasswordHelper:PasswordHelper.Attach="True" PasswordHelper:PasswordHelper.Password="{Binding Contrasena, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" KeyDown="ContrasenaPasswordBox_KeyDown" />
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,15" Height="42" >
+                <Button x:Name="IngresarButton" Margin="50,0" Click="IngresarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/entrar.png" Height="44" Width="31"  />
+                        <Label Content="Ingresar" Height="30"  />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="CancelarButton"   Margin="5,0" Click="CancelarButton_Click">
+                    <StackPanel Orientation="Horizontal" >
+                        <Image Source="/Resources/Cancelar.jfif" Height="39" Width="30"  />
+                        <Label Content="Cancelar" Height="30" />
+                    </StackPanel>
+                </Button>
+
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>

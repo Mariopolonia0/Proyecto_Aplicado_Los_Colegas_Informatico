@@ -1,0 +1,79 @@
+﻿<Window x:Class="ProyectoFinalAplicada1.UI.Registro.rCliente"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
+        mc:Ignorable="d"
+        Icon="/Resources/Cliente.png"
+        Title="Registro Cliente" Height="470" Width="350">
+    <Grid>
+        
+        <StackPanel Orientation="Vertical" Margin="4,0,4,0">
+            <StackPanel Orientation="Vertical">
+                <Label Content="Cliente Id:"/>
+                <!-- -->
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="ClienteIdTextBox" Text="{Binding ClienteId}" Width="100" Height="18"/>
+                    <Button x:Name="BuscarButton" Margin="6,0" Click="BuscarButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resources/Buscar.png" Height="20"/>
+                            <Label Content="Buscar"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+
+                <!---->
+                <Label Content="Nombres:"/>
+                <TextBox x:Name="NombresTextBox" Text="{Binding Nombres}" />
+
+                <Label Content="Apellidos:"/>
+                <TextBox x:Name="ApellidosTextBox" Text="{Binding Apellidos}"/>
+
+                <Label Content="Email:"/>
+                <TextBox x:Name="EmailTextBox" Text="{Binding Email}"/>
+
+                <Label Content="Teléfono:"/>
+                <TextBox x:Name="TelefonoTextBox" Text="{Binding Telefono}"/>
+
+                <Label Content="Cedula:"/>
+                <TextBox x:Name="CedulaTextBox" Text="{Binding Cedula}"/>
+
+                <Label Content="Dirección:"/>
+                <TextBox x:Name="DireccionTextBox" Text="{Binding Direccion}"/>
+            </StackPanel>
+
+            <Label Content="Sexo:"/>
+            <StackPanel Orientation="Horizontal">
+                
+                <ComboBox Name="SexoComboBox" Width="100" Height="25" Margin="5,0" HorizontalAlignment="Left"/>
+            </StackPanel>
+
+
+            <StackPanel Orientation="Horizontal" Margin="0,15">
+                <Button x:Name="NuevoButton" Click="NuevoButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Nuevo.png" Height="20"/>
+                        <Label Content="Nuevo"/>
+                    </StackPanel>
+                </Button>
+
+                <Button x:Name="GuardarButton" Margin="15,0" Click="GuardarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Guardar.png" Height="20"/>
+                        <Label Content="Guardar"/>
+                    </StackPanel>
+                </Button>
+
+                <Button x:Name="EliminarButton" Click="EliminarButton_Click" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Eliminar.png" Height="20"/>
+                        <Label Content="Eliminar"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+
+
+    </Grid>
+</Window>

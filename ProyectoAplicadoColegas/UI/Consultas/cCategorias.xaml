@@ -1,0 +1,43 @@
+﻿<Window x:Class="ProyectoFinalAplicada1.UI.Consultas.cCategorias"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Consultas"
+        mc:Ignorable="d"
+        Title="Consulta Categorias" Height="450" Width="550">
+    <Grid>
+
+        <StackPanel Orientation="Vertical" Margin="10,5,10,0">
+
+            <StackPanel Orientation="Horizontal" Height="58">
+
+                <StackPanel Margin="5,0">
+                    <Label Content="Filtro:" />
+                    <ComboBox x:Name="FiltroComboBox" Width="100">
+                        <ComboBoxItem Content="CategoriaId"/>
+                        <ComboBoxItem Content="Descripcion"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Margin="5,0">
+                    <Label Content="Critero:"/>
+                    <TextBox x:Name="CriterioTextBox" Width="100"/>
+
+                </StackPanel>
+
+                <Button x:Name="BuscarButton" Height="34" Width="93" Click="ConsultarButton_Click" >
+                    <StackPanel Orientation="Horizontal" >
+                        <Image Source="/Resources/Buscar.png"  />
+                        <Label Content="Buscar" />
+                    </StackPanel>
+                </Button>
+
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Left" >
+                <DataGrid x:Name="DatosDataGrid" Height="350" Width="527"/>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>

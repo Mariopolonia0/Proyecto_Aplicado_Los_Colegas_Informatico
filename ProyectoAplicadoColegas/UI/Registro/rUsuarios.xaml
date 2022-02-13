@@ -1,0 +1,69 @@
+﻿<Window x:Class="ProyectoFinalAplicada1.UI.Registro.rUsuarios"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
+        xmlns:PasswordHelper="clr-namespace:ProyectoFinalAplicada1.Resources.PasswordHelper"
+        mc:Ignorable="d"
+        Icon="/Resources/Usuario.png"
+        Title="Registro Usuarios" Height="400" Width="400">
+    <Grid>
+
+        <StackPanel Orientation="Vertical" Margin="10,0,0,0">
+            <StackPanel Orientation="Vertical">
+                <Label Content="UsuarioId:"/>
+                <!-- -->
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="UsuarioIdTextBox" Text="{Binding UsuarioId}" Width="100" Height="18"/>
+                    <Button x:Name="BuscarButton" Margin="6,0" Click="BuscarButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resources/Buscar.png" Height="20"/>
+                            <Label Content="Buscar"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+
+                <Label Content="Nombres:"/>
+                <TextBox x:Name="NombresTextBox" Text="{Binding Nombres}" />
+
+                <Label Content="Apellidos:"/>
+                <TextBox x:Name="ApellidosTextBox" Text="{Binding Apellidos}"/>
+
+                <Label Content="Nombre usuario:"/>
+                <TextBox x:Name="NombreUsuarioTextBox" Text="{Binding NombreUsuario}"/>
+
+                <Label Content="Contraseña:"/>
+                <PasswordBox x:Name="ContrasenaPasswordBox" PasswordHelper:PasswordHelper.Attach="True" PasswordHelper:PasswordHelper.Password="{Binding Contrasena,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Label Content="Confirmar contraseña:"/>
+                <PasswordBox x:Name="ConfirmarContrasenaPasswordBox"/>
+            </StackPanel>
+
+
+            <StackPanel Orientation="Horizontal" Margin="0,15">
+                <Button x:Name="NuevoButton" Click="NuevoButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Nuevo.png" Height="20"/>
+                        <Label Content="Nuevo"/>
+                    </StackPanel>
+                </Button>
+
+                <Button x:Name="GuardarButton" Margin="15,0" Click="GuardarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Guardar.png" Height="20"/>
+                        <Label Content="Guardar"/>
+                    </StackPanel>
+                </Button>
+
+                <Button x:Name="EliminarButton" Click="EliminarButton_Click" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/Eliminar.png" Height="20"/>
+                        <Label Content="Eliminar"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>
