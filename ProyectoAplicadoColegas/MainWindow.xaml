@@ -25,7 +25,7 @@
                     <!--MenuItem x:Name="UsuariosMenuItem" Header="Usuarios" Click="UsuariosMenuItem_Click" >
                         <MenuItem.Icon>
                             <Image Source="/Resources/Usuario.png" />
-                        </MenuItem.Icon>
+                        </MenuItem.Icfffon>
                     </MenuItem-->
 
                     <!--MenuItem  x:Name="ClienteMenuItem" Header="Clientes" Click="ClienteMenuItem_Click" >
