@@ -7,19 +7,19 @@
         mc:Ignorable="d"
         Icon="/Resources/Window.png"
         WindowStartupLocation="CenterScreen"
-        Title="Menu Pricipal" Height="250" Width="499">
+        Title="Menu Pricipal" Height="350" Width="400">
     <Grid  >
 
         <StackPanel >
-            <Menu FontSize="16" >
+            <Menu FontSize="16" Background="#FFD4D4D4"  >
                 <MenuItem Height="40"  >
 
                     <MenuItem.Header >
-                        <TextBlock Text="Registros"  VerticalAlignment="Center" Margin="15,0,0,0"/>
+                        <TextBlock Text="Registros"   VerticalAlignment="Center" Margin="15,0,0,0" Foreground="Black"/>
                     </MenuItem.Header>
 
                     <MenuItem.Icon>
-                        <Image Source="/Resources/Registro.png" Margin="-4,-15,-14,-15"/>
+                        <Image Source="/Resources/IconoRegistro.png" Margin="-2,-10,-18,-14" HorizontalAlignment="Center" VerticalAlignment="Center"  />
                     </MenuItem.Icon>
 
                     <!--MenuItem x:Name="UsuariosMenuItem" Header="Usuarios" Click="UsuariosMenuItem_Click" >
@@ -76,11 +76,11 @@
                 <!--Consultas-->
                 <MenuItem >
                     <MenuItem.Header >
-                        <TextBlock Text="Consultas"  VerticalAlignment="Center" RenderTransformOrigin="0.541,0.497"  Margin="15,0,0,0"/>
+                        <TextBlock Text="Consultas"  VerticalAlignment="Center" Margin="15,0,0,0" Foreground="Black"/>
                     </MenuItem.Header>
 
                     <MenuItem.Icon>
-                        <Image Source="/Resources/Consulta.jfif"  Margin="-4,-15,-14,-15"/>
+                        <Image Source="/Resources/IconoConsulta.png" Margin="-2,-9,-21,-10" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </MenuItem.Icon>
 
                     <!--MenuItem x:Name="UsuarioMenuItem" Header="Consulta Usuarios"  Click="UsuarioMenuItem_Click"  /-->
@@ -98,22 +98,22 @@
 
                 </MenuItem>
 
-                <MenuItem >
+                <MenuItem VerticalAlignment="Center" >
                     <MenuItem.Header >
-                        <TextBlock Text="Ayuda"  VerticalAlignment="Center" RenderTransformOrigin="0.541,0.497"  Margin="15,0,0,0"/>
+                        <TextBlock Text="Ayuda"  VerticalAlignment="Center" Foreground="Black"  Margin="15,0,0,0"/>
                     </MenuItem.Header>
 
                     <MenuItem.Icon>
-                        <Image Source="/Resources/Ayuda.jfif"  Margin="-4,-15,-14,-15"/>
+                        <Image Source="/Resources/IconoAyuda.png"  Margin="-4,-15,-14,-15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </MenuItem.Icon>
 
                     <MenuItem x:Name="InformacionMenuItem" Header="Informacion" />
                 </MenuItem>
             </Menu>
-            
-            
+
+
         </StackPanel>
-        
+
         <StackPanel VerticalAlignment="Bottom">
             <Image Source="/Resources/Fondo.jfif" />
         </StackPanel>

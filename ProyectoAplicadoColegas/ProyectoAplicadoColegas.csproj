@@ -21,6 +21,9 @@
     <None Remove="Resources\entrar.png" />
     <None Remove="Resources\Fondo.jfif" />
     <None Remove="Resources\Guardar.png" />
+    <None Remove="Resources\IconoAyuda.png" />
+    <None Remove="Resources\IconoConsulta.png" />
+    <None Remove="Resources\IconoRegistro.png" />
     <None Remove="Resources\Imprimir.png" />
     <None Remove="Resources\Nuevo.png" />
     <None Remove="Resources\Productos.jfif" />
@@ -72,6 +75,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Content Include="Resources\entrar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\IconoAyuda.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\IconoConsulta.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\IconoRegistro.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Window.png">

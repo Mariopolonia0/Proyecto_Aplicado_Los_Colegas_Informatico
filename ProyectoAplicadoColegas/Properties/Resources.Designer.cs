@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProyectoFinalAplicada1.Properties {
+namespace ProyectoAplicadoColegas.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ProyectoFinalAplicada1.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ProyectoFinalAplicada1.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ProyectoAplicadoColegas.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -96,6 +96,26 @@ namespace ProyectoFinalAplicada1.Properties {
         internal static byte[] entrar {
             get {
                 object obj = ResourceManager.GetObject("entrar", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] IconoConsulta {
+            get {
+                object obj = ResourceManager.GetObject("IconoConsulta", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] IconoRegistro {
+            get {
+                object obj = ResourceManager.GetObject("IconoRegistro", resourceCulture);
                 return ((byte[])(obj));
             }
         }
