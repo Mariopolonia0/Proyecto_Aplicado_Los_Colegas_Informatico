@@ -35,6 +35,5 @@ namespace ProyectoFinalAplicada1.Entidades
             CostoTotal = 0;
             VentaDetalle = new List<VentasDetalles>();
         }
-
     }
 }

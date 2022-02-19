@@ -18,7 +18,7 @@
             <StackPanel Orientation="Horizontal">
                 <ComboBox x:Name="FiltroComboBox" Width="150"/>
                 <TextBox x:Name="CriterioTextBox" Width="150" Margin="15,0,0,0"/>
-                <Button x:Name="BuscarButton" Height="35" Width="100" Click="ConsultarButton_Click" Margin="10,0,0,0" >
+                <Button x:Name="BuscarButton" Height="35" Width="100"  Margin="10,0,0,0" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Buscar.png"/>
                         <Label HorizontalAlignment="Center" Content="Buscar"/>

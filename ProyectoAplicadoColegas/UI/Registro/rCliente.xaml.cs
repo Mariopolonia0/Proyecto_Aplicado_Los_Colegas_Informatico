@@ -32,7 +32,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
             SexoComboBox.DisplayMemberPath = "Sexo";
 
         }
-        //Existe.
+    /*    //Existe.
         private bool Existe()
         {
             Clientes clienteA = ClientesBLL.Buscar(clientes.ClienteId);
@@ -232,7 +232,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
         }
 
         //Datos duplicado.
-        private bool Datosduplicado()
+       /* private bool Datosduplicado()
         {
             bool NoDuplicado = true;
             
@@ -269,7 +269,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 GuardarButton.IsEnabled = true;
             }
             return NoDuplicado;
-        }
+        }*/
 
             //
         public bool ValidarBuscar()
@@ -317,7 +317,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
         }
 
 
-        private void GuardarButton_Click(object sender, RoutedEventArgs e)
+       /* private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             
             if (!Validar())
@@ -356,7 +356,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
             else
                 MessageBox.Show("No fue posible eliminar el registro", "Fallo",
                     MessageBoxButton.OK, MessageBoxImage.Error);
-        }
+        }*/
     }
 }
 /*

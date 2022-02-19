@@ -24,7 +24,7 @@ namespace ProyectoFinalAplicada1.UI.Consultas
             InitializeComponent();
         }
 
-        private void ConsultarButton_Click(object sender, RoutedEventArgs e)
+      /*  private void ConsultarButton_Click(object sender, RoutedEventArgs e)
         {
             var listado = new List<Clientes>();
 
@@ -64,6 +64,6 @@ namespace ProyectoFinalAplicada1.UI.Consultas
 
             DatosDataGrid.ItemsSource = null;
             DatosDataGrid.ItemsSource = listado;
-        }
+        }*/
     }
 }

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Windows;
 using System.Windows.Automation.Peers;
 
 namespace ProyectoFinalAplicada1.BLL
@@ -37,28 +38,27 @@ namespace ProyectoFinalAplicada1.BLL
         }
 
         //Metodo Insertar.
-        private static bool Insertar(Clientes clientes)
+        public static int Insertar(Clientes clientes)
         {
-            bool key = false;
             Contexto contexto = new Contexto();
+            int id = 0;
 
             try
             {
-                
-                contexto.Clientes.Add(clientes);
-                key = contexto.SaveChanges() > 0;
-                //contexto.Entry(Item.clientes).State = EntityState.Modified;
+                Clientes cli = contexto.Clientes.Add(clientes).Entity;
+                contexto.SaveChanges();
+                id = cli.ClienteId;
             }
             catch (Exception)
             {
-                throw;
+                return 0;
             }
             finally
             {
                 contexto.Dispose();
             }
 
-            return key;
+            return id;
         }
 
         //Metodo Modificar.
@@ -67,11 +67,10 @@ namespace ProyectoFinalAplicada1.BLL
             bool key = false;
             Contexto contexto = new Contexto();
 
-            try
-            {
-
+            try{ 
                 contexto.Entry(clientes).State = EntityState.Modified;
                 key = contexto.SaveChanges() > 0;
+               
             }
             catch (Exception)
             {
@@ -97,7 +96,7 @@ namespace ProyectoFinalAplicada1.BLL
         {
             if (!Existe(clientes.ClienteId))
             {
-                return Insertar(clientes);
+                return false;//Insertar(clientes);
             }
             else
             {
@@ -120,6 +119,7 @@ namespace ProyectoFinalAplicada1.BLL
                     contexto.Clientes.Remove(clientes);
                     key = contexto.SaveChanges() > 0;
                 }
+
             }
             catch (Exception)
             {
@@ -202,7 +202,7 @@ namespace ProyectoFinalAplicada1.BLL
 
         //Metodo Datos Duplicados.
         //Email
-        public static bool DuplicadoEmail(string email)
+       /* public static bool DuplicadoEmail(string email)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
@@ -222,7 +222,7 @@ namespace ProyectoFinalAplicada1.BLL
             }
 
             return paso;
-        }
+        }*/
 
         //Telefono
         public static bool DuplicadoTelefono(string telefono)
@@ -248,7 +248,7 @@ namespace ProyectoFinalAplicada1.BLL
         }
 
         //Telefono
-        public static bool DuplicadoCedula(string cedula)
+       /* public static bool DuplicadoCedula(string cedula)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
@@ -268,7 +268,7 @@ namespace ProyectoFinalAplicada1.BLL
             }
 
             return paso;
-        }
+        }*/
 
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ProyectoFinalAplicada1.Migrations
+namespace ProyectoAplicadoColegas.Migrations
 {
     public partial class Inicial : Migration
     {
@@ -27,13 +27,9 @@ namespace ProyectoFinalAplicada1.Migrations
                     ClienteId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Nombres = table.Column<string>(nullable: true),
-                    Apellidos = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
+                    comprobanteFiscal = table.Column<string>(nullable: true),
                     Telefono = table.Column<string>(nullable: true),
-                    Cedula = table.Column<string>(nullable: true),
-                    Direccion = table.Column<string>(nullable: true),
-                    UsuarioId = table.Column<int>(nullable: false),
-                    Sexo = table.Column<string>(nullable: true)
+                    UsuarioId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -174,7 +170,7 @@ namespace ProyectoFinalAplicada1.Migrations
                 name: "VentasDetalles",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    VentaDetalleId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     VentaId = table.Column<int>(nullable: false),
                     ProductoId = table.Column<int>(nullable: false),
@@ -185,7 +181,7 @@ namespace ProyectoFinalAplicada1.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_VentasDetalles", x => x.Id);
+                    table.PrimaryKey("PK_VentasDetalles", x => x.VentaDetalleId);
                     table.ForeignKey(
                         name: "FK_VentasDetalles_Ventas_VentaId",
                         column: x => x.VentaId,
@@ -193,16 +189,6 @@ namespace ProyectoFinalAplicada1.Migrations
                         principalColumn: "VentaId",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.InsertData(
-                table: "Clientes",
-                columns: new[] { "ClienteId", "Apellidos", "Cedula", "Direccion", "Email", "Nombres", "Sexo", "Telefono", "UsuarioId" },
-                values: new object[] { -1, null, "", "", "", "", "Masculino", "", 0 });
-
-            migrationBuilder.InsertData(
-                table: "Clientes",
-                columns: new[] { "ClienteId", "Apellidos", "Cedula", "Direccion", "Email", "Nombres", "Sexo", "Telefono", "UsuarioId" },
-                values: new object[] { -2, null, "", "", "", "", "Femenino", "", 0 });
 
             migrationBuilder.InsertData(
                 table: "Usuarios",

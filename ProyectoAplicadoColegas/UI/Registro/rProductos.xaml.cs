@@ -180,20 +180,23 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 {
                     case 1:
                             productos.ITBIS = 1.18;
-                            productos.Costo = Convert.ToDouble((Convert.ToDouble(PrecioTextBox.Text) + Convert.ToDouble(GananciaTextBox.Text))) * 1.18;
-                            CostoLabel.Content = productos.Costo.ToString();
+                            productos.Costo = Convert.ToDouble(Convert.ToDouble(PrecioTextBox.Text) + Convert.ToDouble(GananciaTextBox.Text) * 1.18) ;
+                            CostoLabel.Content = productos.Costo.ToString("0.00");
+                            productos.Costo = Convert.ToDouble(CostoLabel.Content);
                     break;
 
                     case 2:
                             productos.ITBIS = 1.10;
                             productos.Costo = Convert.ToDouble((Convert.ToDouble(PrecioTextBox.Text) + Convert.ToDouble(GananciaTextBox.Text))) * 1.10;
-                            CostoLabel.Content = productos.Costo.ToString();
+                            CostoLabel.Content = productos.Costo.ToString("0.00");
+                            productos.Costo = Convert.ToDouble(CostoLabel.Content);
                     break;
 
                     case 3:
                             productos.ITBIS = 0.00;
                             productos.Costo = Convert.ToDouble(Convert.ToDouble(PrecioTextBox.Text) + Convert.ToDouble(GananciaTextBox.Text));
-                            CostoLabel.Content = productos.Costo;
+                            CostoLabel.Content = productos.Costo.ToString("0.00");
+                            productos.Costo = Convert.ToDouble(CostoLabel.Content);
                     break;
             }
         }

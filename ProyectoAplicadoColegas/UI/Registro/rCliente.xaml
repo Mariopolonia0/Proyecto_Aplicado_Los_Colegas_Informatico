@@ -58,14 +58,14 @@
                     </StackPanel>
                 </Button>
 
-                <Button x:Name="GuardarButton" Margin="15,0" Click="GuardarButton_Click">
+                <Button x:Name="GuardarButton" Margin="15,0" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Guardar.png" Height="20"/>
                         <Label Content="Guardar"/>
                     </StackPanel>
                 </Button>
 
-                <Button x:Name="EliminarButton" Click="EliminarButton_Click" >
+                <Button x:Name="EliminarButton" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Eliminar.png" Height="20"/>
                         <Label Content="Eliminar"/>

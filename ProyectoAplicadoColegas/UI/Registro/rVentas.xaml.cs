@@ -38,39 +38,45 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
         private void Limpiar()
         {
-            VentaIdTextBox.Text = "0";
-            ClienteIdTextBox.Text = "0";
+            venta = new Ventas();
+            producto = new Productos();
+            Cargar();
+           /* VentaIdTextBox.Text = "0";
+           // ClienteIdTextBox.Text = "0";
             ProductoIdTextBox.Text = "0";
             CantidadTextBox.Text = "0";
             DescripcionTextBox.Text = string.Empty;
             // venta.VentaDetalle = null;
-            PrecioTotalLabel.Content = "0";
-            DetalleDataGrid.ItemsSource = null;
+            PrecioTotalLabel.Content = "0";*/
+            //VentasDetalleDataGrid.ItemsSource = null;
 
         }
 
         private void BucarButton_Click(object sender, RoutedEventArgs e)
         {
-            var venta = VentasBLL.Buscar(Convert.ToInt32(VentaIdTextBox.Text));
+            var ventaEncotrada = VentasBLL.Buscar(Convert.ToInt32(VentaIdTextBox.Text));
             
             if (venta != null)
             {
                 Limpiar();
-                this.venta = venta;
+                this.venta = ventaEncotrada;
+                Cargar();
                 VendedorIdComboBox.SelectedIndex = venta.VendedorId;
-                DetalleDataGrid.ItemsSource = venta.VentaDetalle;
+                var cliente = ClientesBLL.Buscar(venta.ClienteId);
+                NombreClienteTextBox.Text = cliente.Nombres;
+                NumeroClienteTextBox.Text = cliente.Telefono;
+                ComprobanteFiscalClienteTextBox.Text = cliente.comprobanteFiscal;
             }
             else
             {
-                Limpiar();
-                this.venta = new Entidades.Ventas();
+                
+                this.venta = new Ventas();
                 MessageBox.Show("El Registro No Existe", "Fallo",
                      MessageBoxButton.OK, MessageBoxImage.Information);
                 Limpiar();
             }
 
             
-            //this.DataContext = this.venta;
         }
 
         private void Cargar()
@@ -84,24 +90,31 @@ namespace ProyectoFinalAplicada1.UI.Registro
             if (!Validar())
                 return;
 
-            producto = ProductosBLL.Buscar(Convert.ToInt32(ProductoIdTextBox.Text));
-            venta.VentaDetalle.Add(new VentasDetalles(Convert.ToInt32(VentaIdTextBox.Text), producto.ProductoId, Convert.ToInt32(CantidadTextBox.Text), producto.Descripcion, producto.Costo));
+            //producto = ProductosBLL.Buscar(Convert.ToInt32(ProductoIdTextBox.Text));
+            venta.VentaDetalle.Add(new VentasDetalles(Convert.ToInt32(VentaIdTextBox.Text), Convert.ToInt32(ProductoIdTextBox.Text), 
+                Convert.ToInt32(CantidadTextBox.Text), DescripcionTextBox.Text, producto.Costo));
             
-            DetalleDataGrid.ItemsSource = null;
-            DetalleDataGrid.ItemsSource = venta.VentaDetalle;
-            //Cargar();
+            Cargar();
 
             venta.CostoTotal = venta.CostoTotal + (producto.Costo * Convert.ToInt32(CantidadTextBox.Text));
             PrecioTotalLabel.Content = venta.CostoTotal.ToString();
 
+            
+            venta.ITBISTotal += producto.ITBIS;
+            venta.GananciaTotal += producto.Ganancia;
+            venta.PrecioTotal += producto.Precio;
+
             CantidadTextBox.Text = "0";
+            ProductoIdTextBox.Text = "0";
+            CantidadTextBox.Text = "0";
+            DescripcionTextBox.Text = "";
         }
         private void RemoverButton_Click(object sender, RoutedEventArgs e)
         {
-            if (DetalleDataGrid.SelectedIndex < 0)
+            if (VentasDetalleDataGrid.SelectedIndex < 0)
                 return;
 
-            venta.VentaDetalle.RemoveAt(DetalleDataGrid.SelectedIndex);
+            venta.VentaDetalle.RemoveAt(VentasDetalleDataGrid.SelectedIndex);
             Cargar();
             CantidadTextBox.Clear();
         }
@@ -118,6 +131,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 VentaIdTextBox.Focus();
                 GuardarButton.IsEnabled = true;
             }
+
 
             if (DescripcionTextBox.Text.Length == 0)
             {
@@ -146,16 +160,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 MessageBox.Show("Cantidad está vacia", "Fallo",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 CantidadTextBox.Focus();
-                GuardarButton.IsEnabled = true;
-            }
-
-            if (ClienteIdTextBox.Text.Length == 0)
-            {
-                esValido = false;
-                GuardarButton.IsEnabled = false;
-                MessageBox.Show("Cliente Id está vacia", "Fallo",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
-                ClienteIdTextBox.Focus();
                 GuardarButton.IsEnabled = true;
             }
 
@@ -194,16 +198,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 GuardarButton.IsEnabled = true;
             }
 
-            if (ClienteIdTextBox.Text.Length == 0)
-            {
-                esValido = false;
-                GuardarButton.IsEnabled = false;
-                MessageBox.Show("Cliente Id está vacia", "Fallo",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
-                ClienteIdTextBox.Focus();
-                GuardarButton.IsEnabled = true;
-            }
-
             if (FechaDatePicker.Text.Length == 0)
             {
                 esValido = false;
@@ -213,6 +207,47 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 FechaDatePicker.Focus();
                 GuardarButton.IsEnabled = true;
             }
+
+            if (NombreClienteTextBox.Text.Length == 0)
+            {
+                esValido = false;
+                GuardarButton.IsEnabled = false;
+                MessageBox.Show("Nombre Cliente está vacio", "Fallo",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                NombreClienteTextBox.Focus();
+                GuardarButton.IsEnabled = true;
+            }
+
+            if (ComprobanteFiscalClienteTextBox.Text.Length == 0)
+            {
+                esValido = false;
+                GuardarButton.IsEnabled = false;
+                MessageBox.Show("Comprobante Fiscal está vacia", "Fallo",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                ComprobanteFiscalClienteTextBox.Focus();
+                GuardarButton.IsEnabled = true;
+            }
+
+            if (NumeroClienteTextBox.Text.Length == 0)
+            {
+                esValido = false;
+                GuardarButton.IsEnabled = false;
+                MessageBox.Show("Numero Cliente está vacia", "Fallo",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                NumeroClienteTextBox.Focus();
+                GuardarButton.IsEnabled = true;
+            }
+
+            if(Convert.ToInt32(VendedorIdComboBox.SelectedValue) <= 0)
+            {
+                esValido = false;
+                GuardarButton.IsEnabled = false;
+                MessageBox.Show("VendedorId está vacia", "Fallo",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                VendedorIdComboBox.Focus();
+                GuardarButton.IsEnabled = true;
+            }
+
             return esValido;
         }
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
@@ -224,7 +259,18 @@ namespace ProyectoFinalAplicada1.UI.Registro
         {
             if (!Validarguardar())
                 return;
-           
+
+            Clientes cliente = new Clientes();
+            cliente.Nombres = NombreClienteTextBox.Text;
+            cliente.comprobanteFiscal = ComprobanteFiscalClienteTextBox.Text;
+            cliente.Telefono = NumeroClienteTextBox.Text;
+            cliente.ClienteId = 0;
+
+            venta.ClienteId = ClientesBLL.Insertar(cliente);
+            venta.VendedorId = Convert.ToInt32(VendedorIdComboBox.SelectedValue.ToString());
+            venta.CostoTotal = Convert.ToDouble(PrecioTotalLabel.Content.ToString());
+            venta.VendedorId = 2;
+            
             venta.VendedorId = VendedorIdComboBox.SelectedIndex;
             var paso = VentasBLL.Guardar(venta);
 
@@ -244,7 +290,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
            if (ProductoIdTextBox.Text.Length == 0)
                 return;
 
-            Productos producto = ProductosBLL.Buscar(Convert.ToInt32(ProductoIdTextBox.Text));
+            producto = ProductosBLL.Buscar(Convert.ToInt32(ProductoIdTextBox.Text));
             if (producto == null)
             {
                 MessageBox.Show("producto no existe");

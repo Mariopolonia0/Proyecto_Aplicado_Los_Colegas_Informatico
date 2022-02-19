@@ -85,14 +85,14 @@ namespace ProyectoFinalAplicada1.BLL
                         ProductosBLL.Guardar(product);
                         contexto.SaveChanges();
                     }
-
-                    if (!Existe(compras.CompraId))//si no existe insertamos
-                        return Insertar(compras);
-                    else
-                        return Modificar(compras);
+ 
                 }
-                if (contexto.Compras.Add(compras) != null)
-                    paso = contexto.SaveChanges() > 0;
+                if (!Existe(compras.CompraId))//si no existe insertamos
+                    paso = Insertar(compras);
+                else
+                    paso = Modificar(compras);
+
+                paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
             {
@@ -104,6 +104,33 @@ namespace ProyectoFinalAplicada1.BLL
             }
 
             return paso;
+        }
+        public static bool Modificar(Compras compras)
+        {
+            bool paso = false;
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                //contexto.Database.ExecuteSqlRaw($"Delete FROM ComprasDetalles Where CompraId={compras.CompraId}");
+                foreach (var anterior in compras.CompraDetalle)
+                {
+                    contexto.Entry(anterior).State = EntityState.Added;
+                }
+                contexto.Entry(compras).State = EntityState.Modified;
+                paso = contexto.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return paso;
+
         }
 
         public static Compras Buscar(int id)
@@ -129,33 +156,7 @@ namespace ProyectoFinalAplicada1.BLL
 
             return compras;
         }
-        public static bool Modificar(Compras compras)
-        {
-            bool paso = false;
-            Contexto contexto = new Contexto();
-
-            try
-            {
-                contexto.Database.ExecuteSqlRaw($"Delete FROM ComprasDetalles Where CompraId={compras.CompraId}");
-                foreach (var anterior in compras.CompraDetalle)
-                {
-                    contexto.Entry(anterior).State = EntityState.Added;
-                }
-                contexto.Entry(compras).State = EntityState.Modified;
-                paso = (contexto.SaveChanges() > 0);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
-
-            return paso;
-
-        }
+        
 
         public static bool Eliminar(int id)
         {

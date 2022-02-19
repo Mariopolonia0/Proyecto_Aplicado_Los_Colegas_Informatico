@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProyectoFinalAplicada1.DAL;
 
-namespace ProyectoFinalAplicada1.Migrations
+namespace ProyectoAplicadoColegas.Migrations
 {
     [DbContext(typeof(Contexto))]
     partial class ContextoModelSnapshot : ModelSnapshot
@@ -36,22 +36,7 @@ namespace ProyectoFinalAplicada1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Apellidos")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Cedula")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Direccion")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Nombres")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Sexo")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Telefono")
@@ -60,33 +45,12 @@ namespace ProyectoFinalAplicada1.Migrations
                     b.Property<int>("UsuarioId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("comprobanteFiscal")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("ClienteId");
 
                     b.ToTable("Clientes");
-
-                    b.HasData(
-                        new
-                        {
-                            ClienteId = -1,
-                            Cedula = "",
-                            Direccion = "",
-                            Email = "",
-                            Nombres = "",
-                            Sexo = "Masculino",
-                            Telefono = "",
-                            UsuarioId = 0
-                        },
-                        new
-                        {
-                            ClienteId = -2,
-                            Cedula = "",
-                            Direccion = "",
-                            Email = "",
-                            Nombres = "",
-                            Sexo = "Femenino",
-                            Telefono = "",
-                            UsuarioId = 0
-                        });
                 });
 
             modelBuilder.Entity("ProyectoFinalAplicada1.Entidades.Compras", b =>
@@ -300,7 +264,7 @@ namespace ProyectoFinalAplicada1.Migrations
 
             modelBuilder.Entity("ProyectoFinalAplicada1.Entidades.VentasDetalles", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("VentaDetalleId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -322,7 +286,7 @@ namespace ProyectoFinalAplicada1.Migrations
                     b.Property<int>("VentaId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("Id");
+                    b.HasKey("VentaDetalleId");
 
                     b.HasIndex("VentaId");
 

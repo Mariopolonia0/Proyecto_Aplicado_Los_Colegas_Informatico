@@ -160,7 +160,9 @@ namespace ProyectoFinalAplicada1.UI.Registro
             if (!Validar())
                 return;
             
-            compra.CompraDetalle.Add(new ComprasDetalles(Convert.ToInt32(CompraIdTextBox.Text), Convert.ToInt32(ProductoIdTextBox.Text), Convert.ToInt32(CantidadTextBox.Text),DescripcionTextBox.Text,Convert.ToDecimal(PrecioTextBox.Text)));
+            compra.CompraDetalle.Add(new ComprasDetalles(Convert.ToInt32(CompraIdTextBox.Text), 
+                Convert.ToInt32(ProductoIdTextBox.Text), Convert.ToInt32(CantidadTextBox.Text),
+                DescripcionTextBox.Text,Convert.ToDecimal(PrecioTextBox.Text)));
             Cargar();
 
            /* venta.CostoTotal = venta.CostoTotal + (producto.Costo * Convert.ToInt32(CantidadTextBox.Text));
@@ -168,10 +170,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
             */
             TotalLabel.Content = Convert.ToString(Convert.ToDecimal(TotalLabel.Content) + (Convert.ToDecimal(PrecioTextBox.Text) * Convert.ToDecimal(CantidadTextBox.Text)));
 
-            ProductoIdTextBox.Text = "0";
-            CantidadTextBox.Text = "0";
-            PrecioTextBox.Text = "0";
-            DescripcionTextBox.Text = "";
+            LimpiarDetalle();
 
         }
 

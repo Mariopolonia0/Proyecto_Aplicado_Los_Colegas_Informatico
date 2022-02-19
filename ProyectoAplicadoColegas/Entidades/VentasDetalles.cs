@@ -8,7 +8,7 @@ namespace ProyectoFinalAplicada1.Entidades
     public class VentasDetalles
     {
         [Key]
-        public int Id { get; set; }
+        public int VentaDetalleId { get; set; }
         public int VentaId { get; set; }
         public int ProductoId { get; set; }
         public int Cantidad { get; set; }
@@ -18,7 +18,7 @@ namespace ProyectoFinalAplicada1.Entidades
 
         public VentasDetalles()
         {
-            Id = 0;
+            VentaDetalleId = 0;
             VentaId = 0;
             ProductoId = 0;
             Cantidad = 0;
@@ -27,7 +27,7 @@ namespace ProyectoFinalAplicada1.Entidades
         }
         public VentasDetalles(int ventaid, int productoid, int cantidad, string descripcion,double precio )
         {
-            Id = 0;
+            VentaDetalleId = 0;
             VentaId = ventaid;
             ProductoId = productoid;
             Cantidad = cantidad;

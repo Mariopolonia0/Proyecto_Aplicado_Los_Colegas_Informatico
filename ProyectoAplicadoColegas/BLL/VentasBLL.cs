@@ -11,7 +11,47 @@ namespace ProyectoFinalAplicada1.BLL
 {
     public class VentasBLL
     {
+        public static bool Existe(int id)
+        {
+            Contexto contexto = new Contexto();
+            bool encontrado = false;
 
+            try
+            {
+                encontrado = contexto.Ventas.Any(e => e.VentaId == id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return encontrado;
+        }
+        private static bool Insertar(Ventas ventas)
+        {
+            bool paso = false;
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                //Agregar la entidad que se desea insertar al contexto
+                contexto.Ventas.Add(ventas);
+                paso = contexto.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return paso;
+        }
         public static bool Guardar(Ventas ventas)
         {
             bool paso = false;
@@ -27,11 +67,15 @@ namespace ProyectoFinalAplicada1.BLL
                         producto.Existencia -= item.Cantidad;
                         contexto.Entry(producto).State = EntityState.Modified;
                     }
-                    
                 }
 
-                if (contexto.Ventas.Add(ventas) != null)
-                    paso = contexto.SaveChanges() > 0;
+                if (!Existe(ventas.VentaId))
+                    paso = Insertar(ventas);
+                else
+                    paso = Modificar(ventas);
+
+                paso = contexto.SaveChanges() > 0;
+
             }
             catch (Exception)
             {
@@ -44,7 +88,34 @@ namespace ProyectoFinalAplicada1.BLL
 
             return paso;
         }
+        public static bool Modificar(Ventas ventas)
+        {
+            bool paso = false;
+            Contexto contexto = new Contexto();
 
+            try
+            {
+                //contexto.Database.ExecuteSqlRaw($"DELETE FROM VentasDetalles Where VentaId = {ventas.VentaId}");
+                foreach (var anterior in ventas.VentaDetalle)
+                {
+                    contexto.Entry(anterior).State = EntityState.Added;
+                }
+
+                contexto.Entry(ventas).State = EntityState.Modified;
+                paso = contexto.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return paso;
+
+        }
         public static Ventas Buscar(int id)
         {
             Contexto contexto = new Contexto();
@@ -68,35 +139,6 @@ namespace ProyectoFinalAplicada1.BLL
 
             return ventas;
         }
-        public static bool Modificar(Ventas ventas)
-        {
-            bool paso = false;
-            Contexto contexto = new Contexto();
-
-            try
-            {
-               //contexto.Database.ExecuteSqlRaw($"DELETE FROM VentasDetalles Where VentaId = {ventas.VentaId}");
-            /*  foreach (var anterior in ventas.VentaDetalle)
-                {
-                    contexto.Entry(anterior).State = EntityState.Added;
-                }
-            */
-                contexto.Entry(ventas).State = EntityState.Modified;
-                paso = (contexto.SaveChanges() > 0);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
-
-            return paso;
-
-        }
-
         public static bool Eliminar(int id)
         {
             bool paso = false;
