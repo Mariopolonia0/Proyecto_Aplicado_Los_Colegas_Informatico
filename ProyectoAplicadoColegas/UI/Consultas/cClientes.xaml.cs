@@ -22,48 +22,44 @@ namespace ProyectoFinalAplicada1.UI.Consultas
         public cClientes()
         {
             InitializeComponent();
+            
+            
+            FiltroComboBox.Items.Add("Todos");
+            FiltroComboBox.Items.Add("Nombre");
+            FiltroComboBox.Items.Add("Comprobante Fiscal");
+            FiltroComboBox.SelectedIndex = 0;
         }
 
-      /*  private void ConsultarButton_Click(object sender, RoutedEventArgs e)
+       private void ConsultarButton_Click(object sender, RoutedEventArgs e)
         {
             var listado = new List<Clientes>();
-
-            if (CriterioTextBox.Text.Trim().Length > 0)
+            
+            if (CriterioTextBox.Text.Trim().Length >= 0)
             {
                 switch (FiltroComboBox.SelectedIndex)
                 {
                     case 0: //ClienteId
-                        listado = ClientesBLL.GetList(e => e.ClienteId == Utilidades.ToInt(CriterioTextBox.Text));
+                        listado = ClientesBLL.GetClientes();
                         break;
 
-                    case 1: //Nombres                       
-                        listado = ClientesBLL.GetList(e => e.Nombres.Contains(CriterioTextBox.Text, StringComparison.OrdinalIgnoreCase));
-                        break;
+                    case 1: //Nombres
+                            MessageBox.Show("No Esta Disponible", "Informacion",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
+                        return;
+                        // listado = ClientesBLL.GetList(e => e.Nombres.Contains(CriterioTextBox.Text, StringComparison.OrdinalIgnoreCase));
+                        //break;
 
-                    case 2: //Apellidos                       
-                        listado = ClientesBLL.GetList(e => e.Apellidos.Contains(CriterioTextBox.Text, StringComparison.OrdinalIgnoreCase));
-                        break;
-
-                    case 3: //Telefono                       
-                        listado = ClientesBLL.GetList(e => e.Telefono.Contains(CriterioTextBox.Text, StringComparison.OrdinalIgnoreCase));
-                        break;
-
-                    case 4: //Cedula                       
-                        listado = ClientesBLL.GetList(e => e.Cedula.Contains(CriterioTextBox.Text, StringComparison.OrdinalIgnoreCase));
-                        break;
-
-                    case 5: //Direccion                       
-                        listado = ClientesBLL.GetList(e => e.Direccion.Contains(CriterioTextBox.Text, StringComparison.OrdinalIgnoreCase));
-                        break;
+                    case 2: //Apellidos
+                            MessageBox.Show("No Esta Disponible", "Informacion",
+                             MessageBoxButton.OK, MessageBoxImage.Information);
+                        return;
+                        //istado = ClientesBLL.GetList(e => e.Apellidos.Contains(CriterioTextBox.Text, StringComparison.OrdinalIgnoreCase));
+                   
                 }
             }
-            else
-            {
-                listado = ClientesBLL.GetList(c => true);
-            }
-
-            DatosDataGrid.ItemsSource = null;
-            DatosDataGrid.ItemsSource = listado;
-        }*/
+            
+            ClienteDatosDataGrid.ItemsSource = null;
+            ClienteDatosDataGrid.ItemsSource = listado;
+        }
     }
 }
