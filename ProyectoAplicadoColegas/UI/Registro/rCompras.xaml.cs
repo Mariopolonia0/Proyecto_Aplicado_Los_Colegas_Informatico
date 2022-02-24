@@ -1,11 +1,8 @@
 ﻿using ProyectoFinalAplicada1.BLL;
 using ProyectoFinalAplicada1.Entidades;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-
 using System.Windows.Input;
 
 
