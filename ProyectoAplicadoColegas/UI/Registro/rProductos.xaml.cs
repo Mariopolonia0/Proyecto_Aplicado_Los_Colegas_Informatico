@@ -20,11 +20,13 @@ namespace ProyectoFinalAplicada1.UI.Registro
     public partial class rProductos : Window
     {
         Productos productos = new Productos();
+        List<string> listaDescripcion = new List<string> { };
         public rProductos()
         {
             InitializeComponent();
             this.DataContext = productos;
-            ProductoIdTextBox.Text = "0"; 
+            productos.ProductoId = ProductosBLL.SiguienteIdProducto();
+            //ProductoIdTextBox.Text 
             productos.FechaEntrada = DateTime.Now;
             CategoriaIdComboBox.ItemsSource = CategoriasBLL.GetCategorias();
             CategoriaIdComboBox.SelectedValuePath = "Categoria";
@@ -32,24 +34,25 @@ namespace ProyectoFinalAplicada1.UI.Registro
             productos.CategoriaId = 1;
             productos.Costo = 0;
             productos.UsuarioId = 1;
+            productos.disponible = true;
         }
 
         private void Limpiar()
         {
             ITBISComboBox.SelectedIndex = 0;
-            ProductoIdTextBox.Text = "0";
-            DescripcionTextBox.Text = string.Empty;
+            productos.ProductoId = ProductosBLL.SiguienteIdProducto();
+            DescripcionComboBox.Text = string.Empty;
             GananciaTextBox.Text = "0";
             PrecioTextBox.Text = "0";
             productos.FechaEntrada = DateTime.Now;
             CategoriaIdComboBox.SelectedItem = null;
             CostoLabel.Content = "0";
-
+            productos.disponible = true;
         }
 
         private bool Existe()
         {
-            Productos productoA = ProductosBLL.Buscar(productos.ProductoId);
+            Productos productoA = ProductosBLL.BuscarDescripcion(productos.Descripcion);
             return (productos != null);
         }
 
@@ -67,13 +70,13 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 GuardarButton.IsEnabled = true;
             }
 
-            if (DescripcionTextBox.Text.Length == 0)
+            if (DescripcionComboBox.Text.Length == 0)
             {
                 esValido = false;
                 GuardarButton.IsEnabled = false;
                 MessageBox.Show("Descripcion está vacio", "Fallo",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
-                DescripcionTextBox.Focus();
+                DescripcionComboBox.Focus();
                 GuardarButton.IsEnabled = true;
             }
 
@@ -237,9 +240,36 @@ namespace ProyectoFinalAplicada1.UI.Registro
             calcularITBIS(); 
         }
 
-       
+        private void DescripcionTextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            DescripcionComboBox.IsDropDownOpen = true;
+            var descripcion = DescripcionComboBox.Text.ToString();
+            listaDescripcion.Clear();
+            DescripcionComboBox.ItemsSource = null;
+            foreach (var p in ProductosBLL.BuscarListaDescripcion(descripcion))
+                listaDescripcion.Add(p.Descripcion );
+
+            DescripcionComboBox.ItemsSource = listaDescripcion;
+           
+        }
+
+        private void DescripcionComboBox_DropDownClosed(object sender, EventArgs e)
+        {
+            var productos = ProductosBLL.BuscarDescripcion(DescripcionComboBox.Text.ToString());
+
+            if (productos != null)
+            {
+                this.productos = productos;
+            }
+            else
+            {
+                this.productos = new Entidades.Productos();
+                MessageBox.Show("El Producto no existe", "Fallo",
+                     MessageBoxButton.OK, MessageBoxImage.Information);
+                Limpiar();
+            }
+            this.DataContext = this.productos;
+        }
     }
-
-
 }
 

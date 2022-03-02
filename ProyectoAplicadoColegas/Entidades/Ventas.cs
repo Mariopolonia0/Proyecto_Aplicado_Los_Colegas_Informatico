@@ -18,7 +18,8 @@ namespace ProyectoFinalAplicada1.Entidades
         public double GananciaTotal { get; set; }
         public double ITBISTotal { get; set; }
         public double CostoTotal { get; set; }
-       
+        public bool disponible { get; set; }
+
         [ForeignKey("VentaId")]
         public virtual List<VentasDetalles> VentaDetalle { get; set; }
 

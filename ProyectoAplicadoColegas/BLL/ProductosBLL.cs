@@ -57,6 +57,26 @@ namespace ProyectoFinalAplicada1.BLL
             return key;
         }
 
+        public static int SiguienteIdProducto()
+        {
+            Contexto contexto = new Contexto();
+            int idnuevo = 0;
+            try
+            {
+                idnuevo = contexto.Productos.Max(c => c.ProductoId) + 1;
+            }
+            catch (Exception)
+            {
+                idnuevo = 100;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return idnuevo;
+
+        }
+
         //Metodo Modificar.
         private static bool Modificar(Productos productos)
         {
@@ -145,6 +165,72 @@ namespace ProyectoFinalAplicada1.BLL
 
             return productos;
         }
+
+        public static Productos BuscarDescripcion(String descripcion)
+        {
+            Contexto contexto = new Contexto();
+            Productos productos;
+
+            try
+            {
+                productos = contexto.Productos.Where(p => p.Descripcion.Contains(descripcion)).First();
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return productos;
+        }
+
+        public static bool DuplicadoDescripcion(string descripcion)
+        {
+            bool paso = false;
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                paso = contexto.Clientes.Any(c => c.Equals(descripcion));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return paso;
+        }*/
+        public static List<Productos> BuscarListaDescripcion(string descripcion)
+        {
+            Contexto contexto = new Contexto();
+            List<Productos> productoslista;
+
+            try
+            {
+                productoslista = contexto.Productos.Where(p => p.Descripcion.Contains(descripcion)).ToList();
+            }
+            catch (Exception)
+            {
+                return null;// throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return productoslista;
+        }
+
+
 
 
         public static List<Productos> GetList(Expression<Func<Productos, bool>> productos)

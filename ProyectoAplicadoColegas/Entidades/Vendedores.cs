@@ -12,6 +12,7 @@ namespace ProyectoFinalAplicada1.Entidades
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
         public int UsuarioId { get; set; }
+        public bool disponible { get; set; }
 
         public Vendedores()
         {

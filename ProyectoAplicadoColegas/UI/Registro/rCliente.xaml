@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
         mc:Ignorable="d"
         Icon="/Resources/Cliente.png"
+        WindowStartupLocation="CenterScreen"
         Title="Registro Cliente" Height="470" Width="350">
     <Grid>
         
@@ -58,9 +59,9 @@
                     </StackPanel>
                 </Button>
 
-                <Button x:Name="GuardarButton" Margin="15,0" >
+                <Button x:Name="GuardarButton" Margin="15,0" Click="GuardarButton_Click" >
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/Guardar.png" Height="20"/>
+                        <Image Source="/Resources/Guardar.png"  Height="20"/>
                         <Label Content="Guardar"/>
                     </StackPanel>
                 </Button>

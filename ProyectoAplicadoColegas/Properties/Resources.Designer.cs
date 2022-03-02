@@ -63,9 +63,9 @@ namespace ProyectoAplicadoColegas.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] Ayuda {
+        internal static byte[] Cancelar {
             get {
-                object obj = ResourceManager.GetObject("Ayuda", resourceCulture);
+                object obj = ResourceManager.GetObject("Cancelar", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -96,6 +96,16 @@ namespace ProyectoAplicadoColegas.Properties {
         internal static byte[] entrar {
             get {
                 object obj = ResourceManager.GetObject("entrar", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Guardar {
+            get {
+                object obj = ResourceManager.GetObject("Guardar", resourceCulture);
                 return ((byte[])(obj));
             }
         }

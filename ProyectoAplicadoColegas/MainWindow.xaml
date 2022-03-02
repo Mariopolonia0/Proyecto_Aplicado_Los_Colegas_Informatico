@@ -10,8 +10,8 @@
         Title="Menu Pricipal" Height="350" Width="400">
     <Grid  >
 
-        <StackPanel >
-            <Menu FontSize="16" Background="#FFD4D4D4"  >
+        <StackPanel  >
+            <Menu   FontSize="16" Background="#FFD4D4D4"  >
                 <MenuItem Height="40"  >
 
                     <MenuItem.Header >
@@ -22,16 +22,16 @@
                         <Image Source="/Resources/IconoRegistro.png" Margin="-2,-10,-18,-14" HorizontalAlignment="Center" VerticalAlignment="Center"  />
                     </MenuItem.Icon>
 
-                    <!--MenuItem x:Name="UsuariosMenuItem" Header="Usuarios" Click="UsuariosMenuItem_Click" >
+                    <MenuItem x:Name="UsuariosMenuItem" Header="Usuarios" Click="UsuariosMenuItem_Click" >
                         <MenuItem.Icon>
                             <Image Source="/Resources/Usuario.png" />
-                        </MenuItem.Icfffon>
-                    </MenuItem-->
+                        </MenuItem.Icon>
+                    </MenuItem>
 
                     <!--MenuItem  x:Name="ClienteMenuItem" Header="Clientes" Click="ClienteMenuItem_Click" >
                         <MenuItem.Icon>
                             <Image Source="/Resources/Cliente.png"/>
-                        </MenuItem.Icon>ksadgfkasdg
+                        </MenuItem.Icon>
                     </MenuItem-->
 
                     <MenuItem x:Name="VentasMenuItem" Header="Ventas" Click="VentasMenuItem_Click"  >

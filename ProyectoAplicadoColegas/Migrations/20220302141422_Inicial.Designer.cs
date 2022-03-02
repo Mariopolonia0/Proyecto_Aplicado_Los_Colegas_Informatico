@@ -9,7 +9,7 @@ using ProyectoFinalAplicada1.DAL;
 namespace ProyectoAplicadoColegas.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20220219140838_Inicial")]
+    [Migration("20220302141422_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,6 +27,9 @@ namespace ProyectoAplicadoColegas.Migrations
                     b.Property<string>("Descripcion")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("disponible")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("CategoriaId");
 
                     b.ToTable("Categorias");
@@ -38,7 +41,19 @@ namespace ProyectoAplicadoColegas.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Cedula")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Direccion")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Nombres")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Sexo")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Telefono")
@@ -49,6 +64,9 @@ namespace ProyectoAplicadoColegas.Migrations
 
                     b.Property<string>("comprobanteFiscal")
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("disponible")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("ClienteId");
 
@@ -82,6 +100,9 @@ namespace ProyectoAplicadoColegas.Migrations
                     b.Property<int>("UsuarioId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("disponible")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("CompraId");
 
                     b.ToTable("Compras");
@@ -110,6 +131,9 @@ namespace ProyectoAplicadoColegas.Migrations
 
                     b.Property<decimal>("Total")
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("disponible")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("CompraDetalleId");
 
@@ -151,6 +175,9 @@ namespace ProyectoAplicadoColegas.Migrations
                     b.Property<int>("UsuarioId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("disponible")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("ProductoId");
 
                     b.ToTable("Productos");
@@ -170,6 +197,9 @@ namespace ProyectoAplicadoColegas.Migrations
 
                     b.Property<string>("NombreRepresentante")
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("disponible")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("SuplidorId");
 
@@ -194,6 +224,9 @@ namespace ProyectoAplicadoColegas.Migrations
                     b.Property<string>("Nombres")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("disponible")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("UsuarioId");
 
                     b.ToTable("Usuarios");
@@ -205,7 +238,8 @@ namespace ProyectoAplicadoColegas.Migrations
                             Apellidos = "Admin",
                             Contrasena = "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
                             NombreUsuario = "admin",
-                            Nombres = "Admin"
+                            Nombres = "Admin",
+                            disponible = false
                         });
                 });
 
@@ -222,6 +256,9 @@ namespace ProyectoAplicadoColegas.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<int>("UsuarioId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("disponible")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("VendedorId");
@@ -259,6 +296,9 @@ namespace ProyectoAplicadoColegas.Migrations
                     b.Property<int>("VendedorId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("disponible")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("VentaId");
 
                     b.ToTable("Ventas");
@@ -286,6 +326,9 @@ namespace ProyectoAplicadoColegas.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("VentaId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("disponible")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("VentaDetalleId");

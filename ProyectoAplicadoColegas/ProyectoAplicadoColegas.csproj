@@ -12,6 +12,7 @@
     <None Remove="Resources\Ayuda.jfif" />
     <None Remove="Resources\Buscar.png" />
     <None Remove="Resources\Cancelar.jfif" />
+    <None Remove="Resources\Cancelar.png" />
     <None Remove="Resources\Categoria.png" />
     <None Remove="Resources\Cliente.png" />
     <None Remove="Resources\Comprar.jfif" />
@@ -23,6 +24,7 @@
     <None Remove="Resources\Guardar.png" />
     <None Remove="Resources\IconoAgregar.png" />
     <None Remove="Resources\IconoAyuda.png" />
+    <None Remove="Resources\IconoConsulta - Copy.png" />
     <None Remove="Resources\IconoConsulta.png" />
     <None Remove="Resources\IconoQuitar.png" />
     <None Remove="Resources\IconoRegistro.png" />
@@ -49,13 +51,10 @@
     <Resource Include="Resources\agregar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Ayuda.jfif">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Resources\Buscar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Cancelar.jfif">
+    <Resource Include="Resources\Cancelar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Categoria.png">
@@ -135,6 +134,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -152,11 +156,9 @@
     <None Update="DATA\BDProyectoFinal.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="DATA\BDProyectoFinal.db-shm">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="DATA\BDProyectoFinal.db-wal">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
 

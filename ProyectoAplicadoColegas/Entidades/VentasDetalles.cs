@@ -15,6 +15,7 @@ namespace ProyectoFinalAplicada1.Entidades
         public string Descripcion { get; set; }
         public double Precio { get; set; }
         public double Costo { get; set; }
+        public bool disponible { get; set; }
 
         public VentasDetalles()
         {

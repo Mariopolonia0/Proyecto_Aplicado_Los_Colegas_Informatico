@@ -209,7 +209,7 @@ namespace ProyectoFinalAplicada1.BLL
 
             try
             {
-                paso = contexto.Clientes.Any(c => c.Email.Equals(email));
+                paso = contexto.Clientes.Any(c => c.Equals(email));
             }
             catch (Exception)
             {
@@ -248,7 +248,7 @@ namespace ProyectoFinalAplicada1.BLL
         }
 
         //Telefono
-       /* public static bool DuplicadoCedula(string cedula)
+        public static bool DuplicadoCedula(string cedula)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
@@ -268,7 +268,7 @@ namespace ProyectoFinalAplicada1.BLL
             }
 
             return paso;
-        }*/
+        }
 
     }
 }

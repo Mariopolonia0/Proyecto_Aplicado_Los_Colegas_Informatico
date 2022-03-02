@@ -11,12 +11,13 @@ namespace ProyectoFinalAplicada1.Entidades
         public int ClienteId { get; set; }
         public string Nombres { get; set; }
         public string comprobanteFiscal { get; set; }
-       // public string Email { get; set; }
+        public string Email { get; set; }
         public string Telefono { get; set; }
-        //public string Cedula { get; set; }
-        //public string Direccion { get; set; }
+        public string Cedula { get; set; }
+        public string Direccion { get; set; }
+        public string Sexo { get; set; }
         public int UsuarioId { get; set; }
- 
+        public bool disponible { get; set; }
 
         public Clientes()
         {
@@ -24,11 +25,10 @@ namespace ProyectoFinalAplicada1.Entidades
             Nombres = string.Empty;
             comprobanteFiscal = string.Empty;
             Telefono = string.Empty;
-           //Cedula = string.Empty;
-           // Direccion = string.Empty;
-           // UsuarioId = 0;
-           // Sexo = string.Empty;
+            Cedula = string.Empty;
+            Direccion = string.Empty;
+            UsuarioId = 0;
+            Sexo = string.Empty;
         }
-
     }
 }

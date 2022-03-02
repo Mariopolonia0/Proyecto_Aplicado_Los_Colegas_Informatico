@@ -12,6 +12,7 @@ namespace ProyectoFinalAplicada1.Entidades
         public string Compania { get; set; }
         public string NombreRepresentante { get; set; }
         public  DateTime Fecha { get; set; }
+        public bool disponible { get; set; }
 
         public Suplidores()
         {

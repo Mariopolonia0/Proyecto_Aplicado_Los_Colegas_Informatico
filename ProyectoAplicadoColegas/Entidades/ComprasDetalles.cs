@@ -15,6 +15,7 @@ namespace ProyectoFinalAplicada1.Entidades
         public string Descripcion { get; set; }
         public decimal Precio { get; set; }
         public decimal Total { get; set; }
+        public bool disponible { get; set; }
 
         public ComprasDetalles()
         {

@@ -14,6 +14,7 @@ namespace ProyectoFinalAplicada1.Entidades
         public String Apellidos { get; set; }
         public String NombreUsuario { get; set; }
         public String Contrasena { get; set; }
+        public bool disponible { get; set; }
 
         public Usuarios()
         {

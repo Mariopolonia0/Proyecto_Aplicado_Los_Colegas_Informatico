@@ -27,23 +27,22 @@ namespace ProyectoFinalAplicada1.UI.Registro
             this.DataContext = clientes;
             ClienteIdTextBox.Text = "0";
             this.clientes.UsuarioId = 1;
-            SexoComboBox.ItemsSource = ClientesBLL.GetClientes();
-            SexoComboBox.SelectedValuePath = "Clientes";
-            SexoComboBox.DisplayMemberPath = "Sexo";
-
+            SexoComboBox.Items.Add("Masculino");
+            SexoComboBox.Items.Add("Femenino");
+            
         }
-    /*    //Existe.
+        //Existe.
         private bool Existe()
         {
             Clientes clienteA = ClientesBLL.Buscar(clientes.ClienteId);
             return (clientes != null);
         }
         //
-        /*private void cargar()
+        private void cargar()
         {
             this.DataContext = null;
             this.DataContext = clientes;
-        }*/
+        }
         //Limpiar.
         private void Limpiar()
         {
@@ -232,11 +231,11 @@ namespace ProyectoFinalAplicada1.UI.Registro
         }
 
         //Datos duplicado.
-       /* private bool Datosduplicado()
+        private bool Datosduplicado()
         {
             bool NoDuplicado = true;
             
-            if (ClientesBLL.DuplicadoEmail(EmailTextBox.Text))
+            /**if (ClientesBLL.DuplicadoEmail(EmailTextBox.Text))
             {
                 NoDuplicado = false;
                 GuardarButton.IsEnabled = false;
@@ -245,7 +244,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 EmailTextBox.Clear();
                 //EmailTextBox.Focus();
                 GuardarButton.IsEnabled = true;
-            }
+            }*/
 
             if (ClientesBLL.DuplicadoTelefono(TelefonoTextBox.Text))
             {
@@ -269,7 +268,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 GuardarButton.IsEnabled = true;
             }
             return NoDuplicado;
-        }*/
+        }
 
             //
         public bool ValidarBuscar()
@@ -316,10 +315,9 @@ namespace ProyectoFinalAplicada1.UI.Registro
             Limpiar();
         }
 
-
-       /* private void GuardarButton_Click(object sender, RoutedEventArgs e)
+        private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
-            
+
             if (!Validar())
                 return;
 
@@ -331,6 +329,11 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
             if (!ValidarMM())
                 return;
+            //clientes.UsuarioId = 0;
+           // clientes.ClienteId = Convert.ToInt32( ClienteIdTextBox.Text.ToString());
+            //clientes.Nombres = "mario";
+            clientes.comprobanteFiscal = "";
+            clientes.UsuarioId = 0;
 
             var paso = ClientesBLL.Guardar(clientes);
 
@@ -356,7 +359,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
             else
                 MessageBox.Show("No fue posible eliminar el registro", "Fallo",
                     MessageBoxButton.OK, MessageBoxImage.Error);
-        }*/
+        }
     }
 }
 /*

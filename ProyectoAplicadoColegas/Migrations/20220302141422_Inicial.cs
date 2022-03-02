@@ -13,7 +13,8 @@ namespace ProyectoAplicadoColegas.Migrations
                 {
                     CategoriaId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Descripcion = table.Column<string>(nullable: true)
+                    Descripcion = table.Column<string>(nullable: true),
+                    disponible = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -28,8 +29,13 @@ namespace ProyectoAplicadoColegas.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Nombres = table.Column<string>(nullable: true),
                     comprobanteFiscal = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
                     Telefono = table.Column<string>(nullable: true),
-                    UsuarioId = table.Column<int>(nullable: false)
+                    Cedula = table.Column<string>(nullable: true),
+                    Direccion = table.Column<string>(nullable: true),
+                    Sexo = table.Column<string>(nullable: true),
+                    UsuarioId = table.Column<int>(nullable: false),
+                    disponible = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -48,7 +54,8 @@ namespace ProyectoAplicadoColegas.Migrations
                     NCF = table.Column<string>(nullable: true),
                     ITBIS = table.Column<double>(nullable: false),
                     UsuarioId = table.Column<int>(nullable: false),
-                    Transporte = table.Column<double>(nullable: false)
+                    Transporte = table.Column<double>(nullable: false),
+                    disponible = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -69,7 +76,8 @@ namespace ProyectoAplicadoColegas.Migrations
                     Ganancia = table.Column<double>(nullable: false),
                     UsuarioId = table.Column<int>(nullable: false),
                     Existencia = table.Column<int>(nullable: false),
-                    CategoriaId = table.Column<int>(nullable: false)
+                    CategoriaId = table.Column<int>(nullable: false),
+                    disponible = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -84,7 +92,8 @@ namespace ProyectoAplicadoColegas.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Compania = table.Column<string>(nullable: true),
                     NombreRepresentante = table.Column<string>(nullable: true),
-                    Fecha = table.Column<DateTime>(nullable: false)
+                    Fecha = table.Column<DateTime>(nullable: false),
+                    disponible = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -100,7 +109,8 @@ namespace ProyectoAplicadoColegas.Migrations
                     Nombres = table.Column<string>(nullable: true),
                     Apellidos = table.Column<string>(nullable: true),
                     NombreUsuario = table.Column<string>(nullable: true),
-                    Contrasena = table.Column<string>(nullable: true)
+                    Contrasena = table.Column<string>(nullable: true),
+                    disponible = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -115,7 +125,8 @@ namespace ProyectoAplicadoColegas.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Nombres = table.Column<string>(nullable: true),
                     Apellidos = table.Column<string>(nullable: true),
-                    UsuarioId = table.Column<int>(nullable: false)
+                    UsuarioId = table.Column<int>(nullable: false),
+                    disponible = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -135,7 +146,8 @@ namespace ProyectoAplicadoColegas.Migrations
                     PrecioTotal = table.Column<double>(nullable: false),
                     GananciaTotal = table.Column<double>(nullable: false),
                     ITBISTotal = table.Column<double>(nullable: false),
-                    CostoTotal = table.Column<double>(nullable: false)
+                    CostoTotal = table.Column<double>(nullable: false),
+                    disponible = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -153,7 +165,8 @@ namespace ProyectoAplicadoColegas.Migrations
                     Cantidad = table.Column<int>(nullable: false),
                     Descripcion = table.Column<string>(nullable: true),
                     Precio = table.Column<decimal>(nullable: false),
-                    Total = table.Column<decimal>(nullable: false)
+                    Total = table.Column<decimal>(nullable: false),
+                    disponible = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -177,7 +190,8 @@ namespace ProyectoAplicadoColegas.Migrations
                     Cantidad = table.Column<int>(nullable: false),
                     Descripcion = table.Column<string>(nullable: true),
                     Precio = table.Column<double>(nullable: false),
-                    Costo = table.Column<double>(nullable: false)
+                    Costo = table.Column<double>(nullable: false),
+                    disponible = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -192,8 +206,8 @@ namespace ProyectoAplicadoColegas.Migrations
 
             migrationBuilder.InsertData(
                 table: "Usuarios",
-                columns: new[] { "UsuarioId", "Apellidos", "Contrasena", "NombreUsuario", "Nombres" },
-                values: new object[] { 1, "Admin", "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918", "admin", "Admin" });
+                columns: new[] { "UsuarioId", "Apellidos", "Contrasena", "NombreUsuario", "Nombres", "disponible" },
+                values: new object[] { 1, "Admin", "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918", "admin", "Admin", false });
 
             migrationBuilder.CreateIndex(
                 name: "IX_ComprasDetalles_CompraId",

@@ -18,6 +18,7 @@ namespace ProyectoFinalAplicada1.Entidades
         public int UsuarioId { get; set; }
         public int Existencia { get; set; }
         public int CategoriaId { get; set; }
+        public bool disponible { get; set; }
 
         public Productos()
         {

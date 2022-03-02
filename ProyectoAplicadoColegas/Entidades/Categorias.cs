@@ -10,6 +10,7 @@ namespace ProyectoFinalAplicada1.Entidades
         [Key]
         public int CategoriaId { get; set; }
         public string Descripcion { get; set; }
+        public bool disponible { get; set; }
 
         public Categorias()
         {

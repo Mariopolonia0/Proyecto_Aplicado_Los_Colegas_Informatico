@@ -17,6 +17,7 @@ namespace ProyectoFinalAplicada1.Entidades
         public double ITBIS { get; set; }
         public int UsuarioId { get; set; }
         public double Transporte { get; set; }
+        public bool disponible { get; set; }
 
         [ForeignKey("CompraId")]
         public virtual List<ComprasDetalles> CompraDetalle { get; set; }

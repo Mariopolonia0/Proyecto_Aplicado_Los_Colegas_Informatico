@@ -23,7 +23,6 @@ namespace ProyectoFinalAplicada1
     /// </summary>
     public partial class MainWindow : Window
     {
-        
         public MainWindow()
         {
             InitializeComponent();
@@ -39,11 +38,11 @@ namespace ProyectoFinalAplicada1
             usuarios.Show();
         }
 
-        private void ClienteMenuItem_Click(object sender, RoutedEventArgs e)
+        /*private void ClienteMenuItem_Click(object sender, RoutedEventArgs e)
         {
             rCliente cliente = new rCliente();
             cliente.Show();
-        }
+        }*/
 
         private void VendedorMenuItem_Click(object sender, RoutedEventArgs e)
         {
