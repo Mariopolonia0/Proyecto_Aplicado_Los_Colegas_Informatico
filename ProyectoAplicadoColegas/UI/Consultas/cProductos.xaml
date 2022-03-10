@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Consultas"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="Consulta Productos" Height="440" Width="680">
     <Grid>
 
@@ -23,7 +24,6 @@
                         <ComboBoxItem Content="ProductoId"/>
                         <ComboBoxItem Content="Descripcion"/>
                         <ComboBoxItem Content="Categoria"/>
-
                     </ComboBox>
                 </StackPanel>
 
@@ -42,7 +42,19 @@
 
             </StackPanel>
             <StackPanel HorizontalAlignment="Left" >
-                <DataGrid x:Name="DatosDataGrid" Height="350" Width="657"/>
+                <DataGrid x:Name="DatosDataGrid">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Producto Id"  Binding="{Binding ProductoId}" />
+                        <DataGridTextColumn Header="Descripcion"  Binding="{Binding Descripcion}" />
+                        <DataGridTextColumn Header="Fecha Entrada"  Binding="{Binding FechaEntrada}" />
+                        <DataGridTextColumn Header="Precio"  Binding="{Binding Precio}" />
+                        <DataGridTextColumn Header="ITBIS"  Binding="{Binding ITBIS}" />
+                        <DataGridTextColumn Header="Costo"  Binding="{Binding Costo}" />
+                        <DataGridTextColumn Header="Ganancia"  Binding="{Binding Ganancia}" />
+                        <DataGridTextColumn Header="Existencia"  Binding="{Binding Existencia}" />
+                        <DataGridTextColumn Header="Categoria"  Binding="{Binding CategoriaId}" />
+                    </DataGrid.Columns>
+                </DataGrid>
             </StackPanel>
         </StackPanel>
 

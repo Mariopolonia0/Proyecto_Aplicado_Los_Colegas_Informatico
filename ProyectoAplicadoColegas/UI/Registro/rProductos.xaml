@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
         mc:Ignorable="d"
-        Icon="/Resources/Productos.jfif"
+        Icon="/Resources/Productos.png"
+        WindowStartupLocation="CenterScreen"
         Title="Registro Productos" Height="532" Width="350" FontSize="14">
     <Grid>
         <StackPanel HorizontalAlignment="Center" Orientation="Vertical" Margin="4,0,4,0">
@@ -13,7 +14,7 @@
             <Label Content="Producto Id"/>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock x:Name="ProductoIdTextBox" Text="{Binding ProductoId}" Width="100" Height="23" Margin="10,0,0,0"/>
+                <Label x:Name="ProductoIdTextBox" Content="{Binding ProductoId}" Margin="10,0,0,0"/>
                 <Button x:Name="BuscarButton" Margin="6,0" Click="BuscarButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Buscar.png" Height="28" Width="31"/>
@@ -23,7 +24,7 @@
             </StackPanel>
 
             <Label Content="Descripción"/>
-            <ComboBox x:Name="DescripcionComboBox" IsTextSearchEnabled="False" DropDownClosed="DescripcionComboBox_DropDownClosed" StaysOpenOnEdit="True" KeyUp="DescripcionTextBox_KeyUp" IsEditable="True" Text="{Binding Descripcion}" Margin="5,0,0,0" />
+            <TextBox x:Name="DescripcionTextBox" Text="{Binding Descripcion}" Margin="5,0,0,0" />
 
             <Label Content="Fecha"/>
             <DatePicker Name="FechaDatePicker"  SelectedDate="{Binding Fecha,StringFormat=dd/MM/yyyy}" Margin="5,0,0,0"   />

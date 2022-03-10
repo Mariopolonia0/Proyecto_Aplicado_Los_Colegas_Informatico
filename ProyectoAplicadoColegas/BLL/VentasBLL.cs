@@ -126,7 +126,6 @@ namespace ProyectoFinalAplicada1.BLL
                 ventas = contexto.Ventas.Include(x => x.VentaDetalle)
                     .Where(p => p.VentaId == id)
                     .SingleOrDefault();
-
             }
             catch
             {
@@ -147,7 +146,7 @@ namespace ProyectoFinalAplicada1.BLL
             try
             {
                 var eliminar = contexto.Ventas.Find(id);
-                contexto.Entry(eliminar).State = EntityState.Deleted;
+                contexto.Entry(eliminar).State = EntityState.Modified;
 
                 paso = (contexto.SaveChanges() > 0);
             }
@@ -164,6 +163,45 @@ namespace ProyectoFinalAplicada1.BLL
         }
 
         //
+        public static List<Ventas> GetVentas()
+        {
+            List<Ventas> ListaVentas = new List<Ventas>();
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                //obtener la lista y filtrarla según el criterio recibido por parametro.
+                ListaVentas = contexto.Ventas.ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return ListaVentas;
+        }
+        public static int SiguienteIdVenta()
+        {
+            Contexto contexto = new Contexto();
+            int idnuevo = 0;
+            try
+            {
+                idnuevo = contexto.Ventas.Max(c => c.VentaId) + 1;
+            }
+            catch (Exception)
+            {
+                idnuevo = 100;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return idnuevo;
+
+        }
         public static List<Ventas> GetList(Expression<Func<Ventas, bool>> ventas)
         {
             List<Ventas> lista = new List<Ventas>();

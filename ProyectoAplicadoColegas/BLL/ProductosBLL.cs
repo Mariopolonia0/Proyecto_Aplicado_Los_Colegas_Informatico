@@ -11,7 +11,6 @@ namespace ProyectoFinalAplicada1.BLL
 {
     public class ProductosBLL
     {
-
         //Metodo Existe.
         public static bool Existe(int id)
         {
@@ -76,7 +75,6 @@ namespace ProyectoFinalAplicada1.BLL
             return idnuevo;
 
         }
-
         //Metodo Modificar.
         private static bool Modificar(Productos productos)
         {
@@ -100,20 +98,14 @@ namespace ProyectoFinalAplicada1.BLL
 
             return key;
         }
-
         //Metodo Guardar.
         public static bool Guardar(Productos productos)
         {
             if (!Existe(productos.ProductoId))
-            {
                 return Insertar(productos);
-            }
             else
-            {
                 return Modificar(productos);
-            }
         }
-
         //Metodo Eliminar.
         public static bool Eliminar(int id)
         {
@@ -126,8 +118,8 @@ namespace ProyectoFinalAplicada1.BLL
 
                 if (productos != null)
                 {
-                    contexto.Productos.Remove(productos);
-                    key = contexto.SaveChanges() > 0;
+                    productos.disponible = false;
+                    key = Modificar(productos);
                 }
             }
             catch (Exception)
@@ -141,8 +133,6 @@ namespace ProyectoFinalAplicada1.BLL
 
             return key;
         }
-
-
         //Metodo Buscar.
         public static Productos Buscar(int id)
         {
@@ -152,7 +142,10 @@ namespace ProyectoFinalAplicada1.BLL
             try
             {
                 productos = contexto.Productos.Find(id);
-
+                if (productos == null)
+                    return null;
+                if (productos.disponible == false)
+                    return null;
             }
             catch (Exception)
             {
@@ -165,7 +158,6 @@ namespace ProyectoFinalAplicada1.BLL
 
             return productos;
         }
-
         public static Productos BuscarDescripcion(String descripcion)
         {
             Contexto contexto = new Contexto();
@@ -174,7 +166,6 @@ namespace ProyectoFinalAplicada1.BLL
             try
             {
                 productos = contexto.Productos.Where(p => p.Descripcion.Contains(descripcion)).First();
-
             }
             catch (Exception)
             {
@@ -187,7 +178,6 @@ namespace ProyectoFinalAplicada1.BLL
 
             return productos;
         }
-
         public static bool DuplicadoDescripcion(string descripcion)
         {
             bool paso = false;
@@ -195,7 +185,32 @@ namespace ProyectoFinalAplicada1.BLL
 
             try
             {
-                paso = contexto.Clientes.Any(c => c.Equals(descripcion));
+                paso = contexto.Productos.Any(c => c.Descripcion.Equals(descripcion));
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return paso;
+        }
+
+        public static List<Productos> GetProductos() {
+
+            Contexto contexto = new Contexto();
+            List<Productos> productos = new List<Productos>();
+
+            try
+            {
+                foreach (var C in contexto.Productos.ToList())
+                {
+                    if (C.disponible == true)
+                        productos.Add(C);
+                }
             }
             catch (Exception)
             {
@@ -207,16 +222,22 @@ namespace ProyectoFinalAplicada1.BLL
                 contexto.Dispose();
             }
 
-            return paso;
-        }*/
+            return productos;
+        }
+
+
         public static List<Productos> BuscarListaDescripcion(string descripcion)
         {
             Contexto contexto = new Contexto();
-            List<Productos> productoslista;
+            List<Productos> productoslista = new List<Productos>();
 
             try
             {
-                productoslista = contexto.Productos.Where(p => p.Descripcion.Contains(descripcion)).ToList();
+                foreach(var C in contexto.Productos.Where(p => p.Descripcion.Contains(descripcion)).ToList())
+                {
+                    if (C.disponible == true)
+                        productoslista.Add(C);
+                }
             }
             catch (Exception)
             {
@@ -229,9 +250,6 @@ namespace ProyectoFinalAplicada1.BLL
 
             return productoslista;
         }
-
-
-
 
         public static List<Productos> GetList(Expression<Func<Productos, bool>> productos)
         {
@@ -251,6 +269,5 @@ namespace ProyectoFinalAplicada1.BLL
             }
             return lista;
         }
-
     }
 }

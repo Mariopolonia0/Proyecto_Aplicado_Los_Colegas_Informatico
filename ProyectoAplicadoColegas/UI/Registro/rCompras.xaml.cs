@@ -62,7 +62,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
         private void ProductoidTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (ProductoIdTextBox.Text.Length == 0)
+           /* if (ProductoIdTextBox.Text.Length == 0)
                 return;
             else if (Convert.ToInt32(ProductoIdTextBox.Text) == 0)
                 return;
@@ -77,7 +77,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
             {
                 DescripcionTextBox.Text = producto.Descripcion;
                 PrecioTextBox.Text = producto.Precio.ToString();
-            }
+            }*/
         }
 
         private bool Validar()

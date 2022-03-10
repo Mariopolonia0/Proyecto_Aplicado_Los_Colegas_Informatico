@@ -46,10 +46,13 @@
                         </MenuItem.Icon>
                     </MenuItem>
 
-                    <MenuItem x:Name="ProductosMenuItem" Header="Productos" Click="ProductosMenuItem_Click">
-                        <MenuItem.Icon>
-                            <Image Source="/Resources/Productos.jfif" />
+                    <MenuItem x:Name="ProductosMenuItem" Click="ProductosMenuItem_Click">
+                        <MenuItem.Icon >
+                            <Image Source="/Resources/Productos.png"/>
                         </MenuItem.Icon>
+                        <MenuItem.Header>
+                            Productos
+                        </MenuItem.Header>
 
                     </MenuItem>
 
@@ -98,7 +101,7 @@
 
                 </MenuItem>
 
-                <MenuItem VerticalAlignment="Center" >
+                <MenuItem  >
                     <MenuItem.Header >
                         <TextBlock Text="Ayuda"  VerticalAlignment="Center" Foreground="Black"  Margin="15,0,0,0"/>
                     </MenuItem.Header>

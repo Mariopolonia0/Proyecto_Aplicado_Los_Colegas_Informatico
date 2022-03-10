@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen"
         Title="Registro Ventas" Height="690" Width="780" FontSize="15">
     <Grid   >
-        <StackPanel Orientation="Vertical" Margin="10,10,10,0" >
+        <StackPanel  Orientation="Vertical" Margin="10,10,10,0" HorizontalAlignment="Center" VerticalAlignment="Top" >
             <StackPanel Orientation="Horizontal">
                 <Label Content="Venta Id" FontSize="16" />
                 <Label Content="Fecha" Margin="250,0,0,0"  />
@@ -21,8 +21,8 @@
             <!--Button-->
             <!--"BucarButton_Click"-->
             <StackPanel Orientation="Horizontal" >
-                
-                <TextBox x:Name="VentaIdTextBox" VerticalAlignment="Center" Width="150" Text="{Binding VentaId}" KeyDown="VentaIdTextBox_KeyDown"/>
+
+                <Label x:Name="VentaIdLabel" Width="75" Content="{Binding VentaId}"  Margin="10,0,0,0"/>
                 
                 <Button Name="BucarButton" Margin="20,0" Click="BucarButton_Click" >
                     <StackPanel Orientation="Horizontal">
@@ -31,7 +31,7 @@
                     </StackPanel>
                 </Button>
 
-                <DatePicker x:Name="FechaDatePicker" SelectedDate="{Binding Fecha,StringFormat=dd/MM/yyyy}" Margin="40,0,0,0"  />
+                <DatePicker x:Name="FechaDatePicker" SelectedDate="{Binding Fecha,StringFormat=dd/MM/yyyy}" Margin="110,0,0,0"  />
 
             </StackPanel>
 
@@ -77,15 +77,20 @@
                 <StackPanel Orientation="Vertical" Margin="4,0,0,0">
                     <StackPanel Orientation="Horizontal" >
                         <Label Content="Producto ID" FontSize="14" Margin="0,0,0,0"/>
-                        <Label Content="Cantidad" FontSize="14" Margin="19,0,0,0"/>
+                        <Label Content="Cantidad" FontSize="14" Margin="40,0,0,0"/>
                         <Label Content="Descripcion" FontSize="14" Margin="25,0,0,0"/>
 
                     </StackPanel>
                     
                     <StackPanel Orientation="Horizontal"  >
                         <TextBox x:Name="ProductoIdTextBox" Width="70" Height="30" Margin="5,0,0,0"  KeyUp="ProductoIdTextBox_KeyUp" />
-                        <TextBox x:Name="CantidadTextBox" Width="70" Height="30" Margin="33,0,0,0"  KeyDown="CantidadTextBox_KeyDown" />
-                        <TextBox x:Name="DescripcionTextBox" Width="260" Height="30" Margin="22,0,0,0"  />
+                        <Button Name="BucarButtonProductoVenta" Margin="10,0,0,0" Click="BucarButtonProductoVenta_Click" >
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Resources/IconoConsulta.png" Width="25" />
+                            </StackPanel>
+                        </Button>
+                        <TextBox x:Name="CantidadTextBox" Width="70" Height="30" Margin="10,0,0,0"  KeyDown="CantidadTextBox_KeyDown" />
+                        <TextBox x:Name="DescripcionTextBox" Width="260" Height="30" Margin="10,0,0,0"  />
 
                         <Button Name="AgregarButton" Width="100" Height="30" Margin="22,0,5,0" Click="AgregarButton_Click" >
                             <StackPanel Orientation="Horizontal">
@@ -118,14 +123,14 @@
 
             </GroupBox>
 
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Monto Total" Margin="30,0"/>
-
+            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right" Margin="8,0,10,0">
+                <Label Content="Monto Total : " FontSize="20" Margin="30,0,0,0"/>
+                <Label x:Name="PrecioTotalLabel"  HorizontalAlignment="Center" FontSize="20" Content="{Binding CostoTotal}" />
             </StackPanel>
             <StackPanel Orientation="Horizontal"  >
-                <Label x:Name="PrecioTotalLabel" Margin="40,0,30,0" FontSize="20" Content="{Binding CostoTotal}"   />
+               
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="50"  >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="50" Margin="0,5,0,0"  >
 
                 <Button x:Name="NuevoButton" Margin="15,0"  Click="NuevoButton_Click" Width="110"  >
                     <StackPanel Orientation="Horizontal">
@@ -141,14 +146,14 @@
                     </StackPanel>
                 </Button>
 
-                <Button x:Name="EliminarButton" Margin="15,0" Width="121"  >
+                <Button x:Name="EliminarButton" Margin="15,0" Width="121" Click="EliminarButton_Click"  >
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/Cancelar.jfif" />
+                        <Image Source="/Resources/Cancelar.png" />
                         <Label Content="Eliminar" Height="28" Width="70"  />
                     </StackPanel>
                 </Button>
 
-                <Button x:Name="ImprimirButton" Width="130" >
+                <Button x:Name="ImprimirButton" Width="130"  >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Imprimir.png" />
                         <Label Content="Imprimir" Height="30" Width="76"  />

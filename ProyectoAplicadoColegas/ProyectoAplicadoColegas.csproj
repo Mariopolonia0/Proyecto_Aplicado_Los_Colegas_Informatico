@@ -31,6 +31,7 @@
     <None Remove="Resources\Imprimir.png" />
     <None Remove="Resources\Nuevo.png" />
     <None Remove="Resources\Productos.jfif" />
+    <None Remove="Resources\Productos.png" />
     <None Remove="Resources\Registro.png" />
     <None Remove="Resources\Suplidor.png" />
     <None Remove="Resources\Usuario.png" />
@@ -93,12 +94,12 @@
     <Content Include="Resources\IconoRegistro.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Productos.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Window.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Resources\Productos.jfif">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Resources\Suplidor.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -117,9 +118,9 @@
     <Resource Include="Resources\Nuevo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Registro.png">
+    <Content Include="Resources\Registro.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
     <Resource Include="Resources\Usuario.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

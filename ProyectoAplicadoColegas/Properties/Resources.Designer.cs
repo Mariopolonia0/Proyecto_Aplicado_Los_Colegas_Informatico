@@ -163,6 +163,16 @@ namespace ProyectoAplicadoColegas.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Productos {
+            get {
+                object obj = ResourceManager.GetObject("Productos", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Venta {
             get {
                 object obj = ResourceManager.GetObject("Venta", resourceCulture);
