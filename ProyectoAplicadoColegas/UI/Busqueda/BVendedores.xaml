@@ -1,0 +1,66 @@
+﻿<Window x:Class="ProyectoAplicadoColegas.UI.Busqueda.BVendedores"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoAplicadoColegas.UI.Busqueda"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Buscar Vendedores" Height="450" Width="800">
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="10,5,10,0">
+
+            <GroupBox  BorderThickness="2" BorderBrush="Blue">
+                <StackPanel Orientation="Horizontal" Height="58">
+
+                    <StackPanel>
+                        <Label Content="Desde:"/>
+                        <DatePicker x:Name="DesdeDataPicker" Width="115" MouseEnter="enter"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Margin="5,0">
+                        <Label Content="Hasta:" />
+                        <DatePicker x:Name="HastaDatePicker" Width="115" MouseEnter="limpiar"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="5,0" VerticalAlignment="Center">
+                        <Label Content="Filtro:" />
+                        <ComboBox x:Name="FiltroComboBoxBuscarVendedor" Width="160">
+                            <ComboBoxItem Content="Vendedor Id"/>
+                            <ComboBoxItem Content="Nombres"/>
+                            <ComboBoxItem Content="Apellidos"/>
+                            <ComboBoxItem Content="Fecha Registro"/>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <StackPanel VerticalAlignment="Center" Margin="5,0">
+                        <Label Content="Critero:" />
+                        <TextBox x:Name="CriterioTextBoxBuscarVendedor" Width="180"/>
+
+                    </StackPanel>
+
+                    <Button x:Name="BuscarButton" VerticalAlignment="Center" Height="34" Width="93" Click="BuscarButton_Click">
+                        <StackPanel Orientation="Horizontal" >
+                            <Image Source="/Resources/Buscar.png"  />
+                            <Label Content="Buscar" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+
+            </GroupBox>
+            <GroupBox BorderThickness="1" BorderBrush="Blue" >
+                <StackPanel HorizontalAlignment="Left" Margin="0,5">
+                    <DataGrid x:Name="BuscarVendedorDataGrid" AlternatingRowBackground="#FFBAE3FF" IsReadOnly="True" AutoGenerateColumns="False" SelectionChanged="BuscarSuplidorDataGrid_SelectionChanged" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Vendedor Id"  Binding="{Binding VendedorId}" />
+                            <DataGridTextColumn Header="Nombres"  Binding="{Binding Nombres}" />
+                            <DataGridTextColumn Header="Apellidos"  Binding="{Binding Apellidos}" />
+                            <DataGridTextColumn Header="FechaRegistro"  Binding="{Binding FechaRegistro}" />
+                            <DataGridTextColumn Header="UsuarioId"  Binding="{Binding UsuarioId}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</Window>

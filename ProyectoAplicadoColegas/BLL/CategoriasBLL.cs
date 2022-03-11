@@ -82,6 +82,8 @@ namespace ProyectoFinalAplicada1.BLL
         //Metodo Guardar.
         public static bool Guardar(Categorias categorias)
         {
+            categorias.disponible = true;
+
             if (!Existe(categorias.CategoriaId))
             {
                 return Insertar(categorias);

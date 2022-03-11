@@ -79,6 +79,7 @@ namespace ProyectoFinalAplicada1.BLL
 
         public static bool Guardar(Vendedores vendedores)
         {
+            vendedores.disponible = true;
             if (!Existe(vendedores.VendedorId))
             {
                 return Insertar(vendedores);
@@ -114,6 +115,26 @@ namespace ProyectoFinalAplicada1.BLL
             }
 
             return key;
+        }
+
+        public static int SiguienteIdVendedor()
+        {
+            Contexto contexto = new Contexto();
+            int idnuevo = 0;
+            try
+            {
+                idnuevo = contexto.Vendedores.Max(c => c.VendedorId) + 1;
+            }
+            catch (Exception)
+            {
+                idnuevo = 100;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return idnuevo;
+
         }
 
         public static Vendedores Buscar(int id)

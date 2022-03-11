@@ -11,7 +11,8 @@ namespace ProyectoFinalAplicada1.Entidades
         public int SuplidorId  { get; set; }
         public string Compania { get; set; }
         public string NombreRepresentante { get; set; }
-        public  DateTime Fecha { get; set; }
+        public string NCF { get; set; }
+        public  DateTime FechaRegistro { get; set; }
         public bool disponible { get; set; }
 
         public Suplidores()
@@ -19,7 +20,7 @@ namespace ProyectoFinalAplicada1.Entidades
             SuplidorId = 0;
             Compania = string.Empty;
             NombreRepresentante = string.Empty;
-            Fecha = DateTime.Now;
+            FechaRegistro = DateTime.Now;
         }
     } 
 }

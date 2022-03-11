@@ -1,16 +1,7 @@
 ﻿using ProyectoFinalAplicada1.BLL;
 using ProyectoFinalAplicada1.Entidades;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ProyectoFinalAplicada1.UI.Registro
 {
@@ -23,26 +14,19 @@ namespace ProyectoFinalAplicada1.UI.Registro
         public rSuplidor()
         {
             InitializeComponent();
+            suplidor.SuplidorId = SuplidoresBLL.SiguienteIdSuplidor();
             this.DataContext = suplidor;
-            SuplidorIdTextBox.Text = "0";
         }
 
         private void Limpiar()
         {
-            SuplidorIdTextBox.Text = "0";
-            ConpaniaTextBox.Text= string.Empty;
-            NombresRepresentanteTextBox.Text = string.Empty;
+            suplidor = new Suplidores();
+            suplidor.SuplidorId = SuplidoresBLL.SiguienteIdSuplidor();
+            this.DataContext = suplidor;
         }
-
-        private bool Existe()
-        {
-            Suplidores suplidores = SuplidoresBLL.Buscar(suplidor.SuplidorId);
-            return (suplidores != null);
-        }
-
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            var suplidor = SuplidoresBLL.Buscar(int.Parse(SuplidorIdTextBox.Text));
+            var suplidor = SuplidoresBLL.Buscar(int.Parse(SuplidorIdLabel.Content.ToString()));
 
             if (suplidor != null)
             {
@@ -50,13 +34,11 @@ namespace ProyectoFinalAplicada1.UI.Registro
             }
             else
             {
-                this.suplidor = new Entidades.Suplidores();
-                MessageBox.Show("La Categoria no existe", "Fallo",
+                this.suplidor = new Suplidores();
+                MessageBox.Show("La Suplidor no existe", "Fallo",
                      MessageBoxButton.OK, MessageBoxImage.Information);
                 Limpiar();
             }
-
-            //Limpiar();
             this.DataContext = this.suplidor;
         }
 
@@ -83,14 +65,14 @@ namespace ProyectoFinalAplicada1.UI.Registro
         {
             bool esValido = true;
 
-            if (SuplidoresBLL.DuplicadoSuplidorId(Convert.ToInt32(SuplidorIdTextBox.Text)))
+            if (SuplidoresBLL.DuplicadoSuplidorId(Convert.ToInt32(SuplidorIdLabel.Content)))
             {
                 esValido = false;
                 GuardarButton.IsEnabled = false;
                 MessageBox.Show("CategoriaId está vacio", "Fallo",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
-                SuplidorIdTextBox.Clear();
-                SuplidorIdTextBox.Focus();
+                SuplidorIdLabel.Content = "0";
+                SuplidorIdLabel.Focus();
                 GuardarButton.IsEnabled = true;
             }
 
@@ -124,7 +106,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (SuplidoresBLL.Eliminar(Convert.ToInt32(SuplidorIdTextBox.Text)))
+            if (SuplidoresBLL.Eliminar(Convert.ToInt32(SuplidorIdLabel.Content.ToString())))
             {
                 Limpiar();
                 MessageBox.Show("Categoria eliminada!", "Exito",
@@ -136,9 +118,3 @@ namespace ProyectoFinalAplicada1.UI.Registro
         }
     }
 }
-/*
- 
-     
-     
-     
-     */

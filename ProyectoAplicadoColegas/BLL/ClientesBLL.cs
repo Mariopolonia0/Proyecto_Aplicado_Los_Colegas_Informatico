@@ -94,6 +94,8 @@ namespace ProyectoFinalAplicada1.BLL
         //Metodo Guardar.
         public static bool Guardar(Clientes clientes)
         {
+            clientes.disponible = true;
+
             if (!Existe(clientes.ClienteId))
             {
                 return false;//Insertar(clientes);

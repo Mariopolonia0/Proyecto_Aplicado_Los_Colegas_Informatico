@@ -16,75 +16,81 @@ using System.Windows.Shapes;
 namespace ProyectoAplicadoColegas.UI.Busqueda
 {
     /// <summary>
-    /// Interaction logic for BProducto.xaml
+    /// Interaction logic for BSuplidor.xaml
     /// </summary>
-    public partial class BProducto : Window
+    public partial class BSuplidor : Window
     {
-        public static Productos producto = new Productos();
-        public BProducto()
+        public int suplidorid = 0;
+        public BSuplidor()
         {
             InitializeComponent();
             //BuscarProductoDataGrid = null;
-            BuscarProductoDataGrid.ItemsSource = ProductosBLL.GetProductos();
+            BuscarSuplidorDataGrid.ItemsSource = SuplidoresBLL.GetSuplidores();
         }
 
-        private void BuscarProductoDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void BuscarSuplidores()
         {
-            producto = (Productos)BuscarProductoDataGrid.SelectedItem;
-            this.Close();
-        }
-
-        private void BuscarProductos()
-        {
-            if (FiltroComboBoxBuscarProducto.SelectedIndex == -1)
+            if (FiltroComboBoxBuscarSuplidor.SelectedIndex == -1)
             {
                 MessageBox.Show("Seleccione un opcion en el filtro", "Error");
                 return;
             }
-              
-            switch (FiltroComboBoxBuscarProducto.SelectedIndex)
+
+
+            switch (FiltroComboBoxBuscarSuplidor.SelectedIndex)
             {
                 case 0:
                     if (!ValidarCriterio())
                         return;
-                    int id = Convert.ToInt32(CriterioTextBoxBuscarProducto.Text.ToString());
-                    producto = ProductosBLL.Buscar(id);
-                    if (producto == null)
+                    int id = Convert.ToInt32(FiltroComboBoxBuscarSuplidor.Text.ToString());
+                    Suplidores suplidor = SuplidoresBLL.Buscar(id);
+                    if (suplidor == null)
                     {
-                        MessageBox.Show("No existe el producto", "Error");
+                        MessageBox.Show("No existe el suplidor", "Error");
                         return;
                     }
-                        
-                    BuscarProductoDataGrid.ItemsSource = null;
-                    BuscarProductoDataGrid.Items.Add(producto);
+
+                    BuscarSuplidorDataGrid.ItemsSource = null;
+                    BuscarSuplidorDataGrid.Items.Add(suplidor);
                     break;
 
                 case 1:
-                    BuscarProductoDataGrid.ItemsSource = ProductosBLL.BuscarListaDescripcion(CriterioTextBoxBuscarProducto.Text.ToString());
+                    BuscarSuplidorDataGrid.ItemsSource = ProductosBLL.BuscarListaDescripcion(FiltroComboBoxBuscarSuplidor.Text.ToString());
                     break;
             }
         }
 
         private bool ValidarCriterio()
         {
-            if (CriterioTextBoxBuscarProducto.Text.Length == 0)
+            if (CriterioTextBoxBuscarSuplidor.Text.Length == 0)
             {
                 MessageBox.Show(" Criterio Esta vacio", "Error");
                 return false;
             }
-            if (!Regex.IsMatch(CriterioTextBoxBuscarProducto.Text, "^[0-9]+$"))
+            if (!Regex.IsMatch(FiltroComboBoxBuscarSuplidor.Text, "^[0-9]+$"))
             {
                 MessageBox.Show("Solo se permiten caracteres numericos.",
                     "Campo Criterio.", MessageBoxButton.OK, MessageBoxImage.Error);
-                CriterioTextBoxBuscarProducto.Clear();
+                CriterioTextBoxBuscarSuplidor.Clear();
                 return false;
             }
             return true;
         }
-
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            BuscarProductos();
+            BuscarSuplidores();
+        }
+
+        private void BuscarSuplidorDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            suplidorid = ((Suplidores)BuscarSuplidorDataGrid.SelectedItem).SuplidorId;
+            this.Close();
+        }
+
+        public int GetSuplidorIdEncotrado()
+        {
+            return suplidorid;
         }
     }
 }

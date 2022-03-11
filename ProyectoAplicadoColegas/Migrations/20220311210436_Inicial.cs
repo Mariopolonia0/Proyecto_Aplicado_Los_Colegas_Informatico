@@ -51,7 +51,6 @@ namespace ProyectoAplicadoColegas.Migrations
                     Fecha = table.Column<DateTime>(nullable: false),
                     SuplidorId = table.Column<int>(nullable: false),
                     Monto = table.Column<decimal>(nullable: false),
-                    NCF = table.Column<string>(nullable: true),
                     ITBIS = table.Column<double>(nullable: false),
                     UsuarioId = table.Column<int>(nullable: false),
                     Transporte = table.Column<double>(nullable: false),
@@ -92,7 +91,8 @@ namespace ProyectoAplicadoColegas.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Compania = table.Column<string>(nullable: true),
                     NombreRepresentante = table.Column<string>(nullable: true),
-                    Fecha = table.Column<DateTime>(nullable: false),
+                    NCF = table.Column<string>(nullable: true),
+                    FechaRegistro = table.Column<DateTime>(nullable: false),
                     disponible = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
@@ -126,6 +126,7 @@ namespace ProyectoAplicadoColegas.Migrations
                     Nombres = table.Column<string>(nullable: true),
                     Apellidos = table.Column<string>(nullable: true),
                     UsuarioId = table.Column<int>(nullable: false),
+                    FechaRegistro = table.Column<DateTime>(nullable: false),
                     disponible = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>

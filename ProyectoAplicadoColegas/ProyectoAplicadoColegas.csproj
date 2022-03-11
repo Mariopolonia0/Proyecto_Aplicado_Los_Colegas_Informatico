@@ -154,9 +154,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="DATA\BDProyectoFinal.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

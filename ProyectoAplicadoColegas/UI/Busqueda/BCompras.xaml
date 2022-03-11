@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoAplicadoColegas.UI.Busqueda"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="BCompras" Height="450" Width="800">
     <Grid >
         <StackPanel >

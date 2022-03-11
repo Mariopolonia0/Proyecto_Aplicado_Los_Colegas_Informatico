@@ -1,5 +1,6 @@
 ﻿using ProyectoFinalAplicada1.BLL;
 using ProyectoFinalAplicada1.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,8 +29,21 @@ namespace ProyectoAplicadoColegas.UI.Busqueda
             {
                 switch (FiltroComboBox.SelectedIndex)
                 {
-                    case 0: //ProductoId
+                    case 0: //CompraId
                         listado = ComprasBLL.GetList(p => p.CompraId == Utilidades.ToInt(CriterioTextBox.Text));
+                        DesdeDataPicker.SelectedDate = null;
+                        HastaDatePicker.SelectedDate = null;
+                        break;
+
+                    case 1: //Suplidor ID
+                        listado = ComprasBLL.GetList(p => p.SuplidorId == Utilidades.ToInt(CriterioTextBox.Text));
+                        DesdeDataPicker.SelectedDate = null;
+                        HastaDatePicker.SelectedDate = null;
+                        break;
+                        
+
+                    case 2: //Monto
+                        listado = ComprasBLL.GetList(p => p.Monto == Convert.ToDecimal(CriterioTextBox.Text.ToString()));
                         DesdeDataPicker.SelectedDate = null;
                         HastaDatePicker.SelectedDate = null;
                         break;

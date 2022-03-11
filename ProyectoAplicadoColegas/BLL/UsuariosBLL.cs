@@ -83,6 +83,8 @@ namespace ProyectoFinalAplicada1.BLL
         //Metodo Guardar.
         public static bool Guardar(Usuarios usuario)
         {
+            usuario.disponible = true;
+
             if (!Existe(usuario.UsuarioId))
                 return Insertar(usuario);
             else

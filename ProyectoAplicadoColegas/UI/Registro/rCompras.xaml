@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="Registro Compras" Height="570" Width="780" FontSize="14">
 
 
@@ -12,48 +13,50 @@
         
         <StackPanel Orientation="Horizontal">
             <Label Content="CompraId" />
-            <Label Content="Fecha" Margin="180,0,0,0" />
+            <Label Content="Fecha" Margin="158,0,0,0" />
+            <Label Content="Transporte" Margin="165,0,0,0" />
         </StackPanel>
         
 
         <!--CompraIdTextBox y BuscarButton-->
         <StackPanel Orientation="Horizontal">
 
-            <TextBox Name="CompraIdTextBox" Width="75"  Text="{Binding CompraId}" KeyDown="CompraIdTextBox_KeyDown"/>
+            <Label Name="CompraIdLabel" Margin="8,0,0,0"  Width="80"  Content="{Binding CompraId}" />
 
-            <Button Name="BucarButton"  Height="30" Margin="5,0" Click="BucarButton_Click"  >
+            <Button Name="BucarButton"  Height="30" Margin="8,0" Click="BucarButton_Click"  >
                 <StackPanel Orientation="Horizontal" >
                     <Image Source="/Resources/Buscar.png"  />
                     <Label Content="Buscar" />
                 </StackPanel>
             </Button>
 
-            <DatePicker Name="FechaDatePicker"  SelectedDate="{Binding Fecha}" Margin="90,0,0,0"  />
+            <DatePicker Name="FechaDatePicker"  SelectedDate="{Binding Fecha}" Margin="50,0,0,0"  />
+
+            <TextBox x:Name="TransporteTextBox" Margin="50,0,0,0" Text="{Binding Transporte}" Width="150"></TextBox>
         </StackPanel>
 
         <GroupBox Header="Detalle de suplidor" Margin="0,5,0,0" BorderBrush="#FF414649">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Suplidor Id" />
-                    <Label Content="Nombre" Margin="55,0,0,0"/>
-                    <Label Content="Compañia" Margin="100,0,0,0"/>
+                    <Label Content="Nombre" Margin="70,0,0,0"/>
+                    <Label Content="Compañia" Margin="90,0,0,0"/>
+                    <Label Content="Comprobante Fiscale (NCF)" Margin="105,0,0,0"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
-                    <ComboBox Name="SuplidorIdComboBox" Width="93" SelectionChanged="SuplidorIdComboBox_SelectionChanged"/>
+                    <Label Name="SuplidorIdLabel" Width="80" Content="{Binding SuplidorId}" />
+                    <Button Name="BucarButtonSuplidorCompra" Margin="10,0,0,0" Click="BucarButtonSuplidorCompra_Click" >
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resources/IconoConsulta.png" Width="25" />
+                        </StackPanel>
+                    </Button>
                     <Label x:Name="NombreSuplidoraLabel" Content="" Margin="30,0,0,0" Width="154"/>
-                    <Label x:Name="CompaniaSuplidorLabel" Content="" Margin="0,0,0,0" Width="211"/>
+                    <Label x:Name="CompaniaSuplidorLabel" Content="" Margin="0,0,0,0" Width="150"/>
+                    <Label x:Name="NCFSuplidorLabel"  Width="150" Margin="30,0,0,0"/>
+                    
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal">
-                    <Label Content="NCF" />
-                    <Label Content="Transporte" Margin="205,0,0,0"/>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal">
-                    <TextBox Name="NCFTextBox" Text="{Binding NCF}" Width="225"  />
-                    <TextBox Name="TransporteTextBox" Text="{Binding Transporte}" Width="149" Margin="25,0,0,0" KeyDown="TransporteTextBox_KeyDown"/>
-                </StackPanel>
             </StackPanel>
             
         </GroupBox>
@@ -64,15 +67,15 @@
 
                 <StackPanel Orientation="Horizontal" >
                     <Label Content="Producto Id"   />
-                    <Label Content="Cantidad" Margin="40,0,0,0" />
+                    <Label Content="Cantidad" Margin="55,0,0,0" />
                     <Label Content="Descripción" Margin="15,0,0,0"  />
-                    <Label Content="Precio" Margin="90,0,0,0" Width="53"/>
+                    <Label Content="Precio" Margin="80,0,0,0" Width="53"/>
 
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Height="27">
 
-                    <TextBox Name="ProductoIdTextBox" Margin="5,0,0,0" Width="60" TextChanged="ProductoIdTextBox_TextChanged"  KeyDown="ProductoIdTextBox_KeyDown"  />
+                    <TextBox Name="ProductoIdTextBox" Margin="5,0,0,0" Width="75" TextChanged="ProductoIdTextBox_TextChanged"  KeyDown="ProductoIdTextBox_KeyDown"  />
                     <Button Name="BucarButtonProductoCompra" Margin="10,0,0,0" Click="BucarButtonProductoCompra_Click" >
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Resources/IconoConsulta.png" Width="25" />
@@ -80,10 +83,10 @@
                     </Button>
                     <TextBox Name="CantidadTextBox" Width="54"  Margin="23,0,0,0" KeyDown="CantidadTextBox_KeyDown" />
                     <TextBox Name="DescripcionTextBox" Width="140" Margin="28,0,0,0"/>
-                    <TextBox Name="PrecioTextBox" Width="74"   Margin="30,0,0,0" KeyDown="PrecioTextBox_KeyDown"/>
+                    <TextBox Name="PrecioTextBox" Width="74"   Margin="18,0,0,0" KeyDown="PrecioTextBox_KeyDown"/>
                     <!--RemoverButton-->
 
-                    <Button Name="AgregarButton" Width="109"  Margin="50,0,0,0" Click="AgregarButton_Click">
+                    <Button Name="AgregarButton" Width="109"  Margin="30,0,0,0" Click="AgregarButton_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Resources/Iconoagregar.png" />
                             <Label Content="Agregar" Margin="4,0" Padding="-1" Height="22"/>
@@ -106,7 +109,7 @@
 
                 </StackPanel>
 
-                <DataGrid x:Name="DetalleDataGrid" AlternatingRowBackground="#FFBAE3FF" AutoGenerateColumns="False" ItemsSource="{Binding CompraDetalle}" Margin="0,5,0,0" Height="117" >
+                <DataGrid x:Name="DetalleDataGrid" AlternatingRowBackground="#FFBAE3FF" AutoGenerateColumns="False" ItemsSource="{Binding CompraDetalle}" Margin="0,5,0,0" Height="220" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Producto Id"  Binding="{Binding ProductoId}" />
                         <DataGridTextColumn Header="Cantidad"  Binding="{Binding Cantidad}" />

@@ -12,6 +12,7 @@ namespace ProyectoFinalAplicada1.Entidades
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
         public int UsuarioId { get; set; }
+        public DateTime FechaRegistro { get; set; }
         public bool disponible { get; set; }
 
         public Vendedores()
@@ -19,6 +20,7 @@ namespace ProyectoFinalAplicada1.Entidades
             VendedorId = 0;
             Nombres = string.Empty;
             Apellidos = string.Empty;
+            FechaRegistro = DateTime.Now;
             UsuarioId = 0;
         }
     }

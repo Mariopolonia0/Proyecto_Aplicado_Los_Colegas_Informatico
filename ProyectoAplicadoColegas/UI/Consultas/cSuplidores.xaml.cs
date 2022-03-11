@@ -33,15 +33,15 @@ namespace ProyectoFinalAplicada1.UI.Consultas
                 switch (FiltroComboBox.SelectedIndex)
                 {
                     case 0: //SuplidorId
-                        listado = SuplidoresBLL.GetList(p => p.SuplidorId == Utilidades.ToInt(CriterioTextBox.Text));
+                        listado = SuplidoresBLL.GetList(s => s.SuplidorId == Utilidades.ToInt(CriterioTextBox.Text));
                         break;
 
                     case 1: //NombreRepresentante                       
-                        listado = SuplidoresBLL.GetList(p => p.NombreRepresentante.Contains(CriterioTextBox.Text, StringComparison.OrdinalIgnoreCase));
+                        listado = SuplidoresBLL.GetList(s => s.NombreRepresentante.Contains(CriterioTextBox.Text, StringComparison.OrdinalIgnoreCase));
                         break;
 
                     case 2: //Compañia                       
-                        listado = SuplidoresBLL.GetList(p => p.Compania.Contains(CriterioTextBox.Text, StringComparison.OrdinalIgnoreCase));
+                        listado = SuplidoresBLL.GetList(s => s.Compania.Contains(CriterioTextBox.Text, StringComparison.OrdinalIgnoreCase));
                          break;
                 }
             }
@@ -51,7 +51,7 @@ namespace ProyectoFinalAplicada1.UI.Consultas
             }
 
             if (EntradaDatePicker.SelectedDate != null)
-                listado = SuplidoresBLL.GetList(c => c.Fecha.Date >= EntradaDatePicker.SelectedDate);
+                listado = SuplidoresBLL.GetList(s => s.FechaRegistro.Date >= EntradaDatePicker.SelectedDate);
 
             DatosDataGrid.ItemsSource = null;
             DatosDataGrid.ItemsSource = listado;

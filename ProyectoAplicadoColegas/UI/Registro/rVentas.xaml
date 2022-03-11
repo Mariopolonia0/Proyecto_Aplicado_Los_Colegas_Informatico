@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Icon="/Resources/Venta.png"
         WindowStartupLocation="CenterScreen"
-        Title="Registro Ventas" Height="690" Width="780" FontSize="15">
+        Title="Registro Ventas" Height="750" Width="790" FontSize="15">
     <Grid   >
         <StackPanel  Orientation="Vertical" Margin="10,10,10,0" HorizontalAlignment="Center" VerticalAlignment="Top" >
             <StackPanel Orientation="Horizontal">
@@ -39,7 +39,7 @@
                
             </StackPanel>
 
-            <GroupBox Header="Dato Cliente" BorderBrush="#FF414649"  Margin="0,10,0,0">
+            <GroupBox Header="Dato del cliente" BorderBrush="#FF414649"  Margin="0,10,0,0">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" >
                         <Label Content="Nombre Cliente" />
@@ -53,25 +53,32 @@
                         <TextBox Name="ComprobanteFiscalClienteTextBox" Margin="30,0,0,0" Width="150" />
                         <TextBox Name="NumeroClienteTextBox" Margin="40,0,0,0" Width="150"   />
                     </StackPanel>
+                </StackPanel>
+            </GroupBox>
 
+            <GroupBox Header="Vendedor Detalle" BorderBrush="#FF414649" Margin="0,5,0,0"   >
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" >
+                        <Label Content="Vendedor Id" />
+                        <Label Content="Nombre" Margin="90,0,0,0" />
+                        <Label Content="Apellido" Margin="160,0,0,0" />
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Name="VendedorIdLabel" Width="80" Content="{Binding VendedorId}"  Margin="10,0,0,0"  />
+                        <Button Name="BucarButtonVendedorVenta" Margin="10,0,0,0" Click="BucarButtonVendedorVenta_Click" >
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Resources/IconoConsulta.png" Width="25" />
+                            </StackPanel>
+                        </Button>
+                        <Label x:Name="NombreVendedorLabel" Content="" Margin="55,0,0,0" Width="198"/>
+                        <Label x:Name="ApellidoVendedorLabel" Content="" Width="254" Margin="30,0,0,0" />
+                    </StackPanel>
                 </StackPanel>
                 
-
             </GroupBox>
 
             
-
-            <StackPanel Orientation="Horizontal" >
-                <Label Content="Vendedor Id" />
-                <Label Content="Nombre" Margin="60,0,0,0" />
-                <Label Content="Apellido" Margin="140,0,0,0" />
-                
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <ComboBox Name="VendedorIdComboBox" Width="100" SelectionChanged="VendedorIdComboBox_SelectionChanged" Margin="10,0,0,0"  />
-                <Label x:Name="NombreVendedorLabel" Content="" Margin="55,0,0,0" Width="198"/>
-                <Label x:Name="ApellidovendedorLabel" Content="" Width="254" Margin="5,0,0,0" />
-            </StackPanel>
 
             <GroupBox Header="Orden Detalle" BorderBrush="#FF414649" Margin="0,5,0,0"   >
                 <StackPanel Orientation="Vertical" Margin="4,0,0,0">
@@ -83,7 +90,7 @@
                     </StackPanel>
                     
                     <StackPanel Orientation="Horizontal"  >
-                        <TextBox x:Name="ProductoIdTextBox" Width="70" Height="30" Margin="5,0,0,0"  KeyUp="ProductoIdTextBox_KeyUp" />
+                        <TextBox x:Name="ProductoIdTextBox" Width="80" Height="30" Margin="5,0,0,0"  KeyUp="ProductoIdTextBox_KeyUp" />
                         <Button Name="BucarButtonProductoVenta" Margin="10,0,0,0" Click="BucarButtonProductoVenta_Click" >
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="/Resources/IconoConsulta.png" Width="25" />
@@ -108,7 +115,7 @@
                         </Button>
                     </StackPanel>
 
-                    <DataGrid x:Name="VentasDetalleDataGrid" AlternatingRowBackground="#FFBAE3FF" AutoGenerateColumns="False" ItemsSource="{Binding VentaDetalle}"  Margin="0,5,0,0" Width="735"  Height="189">
+                    <DataGrid x:Name="VentasDetalleDataGrid" AlternatingRowBackground="#FFBAE3FF" AutoGenerateColumns="False" ItemsSource="{Binding VentaDetalle}"  Margin="0,5,0,0" Width="735"  Height="220">
 
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Producto Id"  Binding="{Binding ProductoId}"/>

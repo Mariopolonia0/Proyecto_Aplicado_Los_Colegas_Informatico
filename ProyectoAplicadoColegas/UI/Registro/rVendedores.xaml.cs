@@ -1,16 +1,7 @@
 ﻿using ProyectoFinalAplicada1.BLL;
 using ProyectoFinalAplicada1.Entidades;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ProyectoFinalAplicada1.UI.Registro
 {
@@ -23,35 +14,28 @@ namespace ProyectoFinalAplicada1.UI.Registro
         public rVendedores()
         {
             InitializeComponent();
+            vendedores.VendedorId = VendedoresBLL.SiguienteIdVendedor();
             this.DataContext = vendedores;
-            VendedorIdTextBox.Text = "0";
         }
 
         private void Limpiar()
         {
-            VendedorIdTextBox.Text = "0";
-            NombresTextBox.Text = string.Empty;
-            ApellidosTextBox.Text = string.Empty;
-           // UsuarioIdTextBox.Text = 0;
-        }
-
-        private bool Existe()
-        {
-            Vendedores vendedor = VendedoresBLL.Buscar(vendedores.VendedorId);
-            return (vendedores != null);
+            vendedores = new Vendedores();
+            vendedores.VendedorId = VendedoresBLL.SiguienteIdVendedor();
+            this.DataContext = vendedores;
         }
 
         private bool Validar()
         {
             bool esValido = true;
 
-            if (VendedorIdTextBox.Text.Length == 0)
+            if (Convert.ToInt32(VendedorIdLabel.Content) <= 0)
             {
                 esValido = false;
                 GuardarButton.IsEnabled = false;
                 MessageBox.Show("VendedorId está vacio", "Fallo",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
-                VendedorIdTextBox.Focus();
+                VendedorIdLabel.Focus();
                 GuardarButton.IsEnabled = true;
             }
 
@@ -80,7 +64,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            var vendedores = VendedoresBLL.Buscar(int.Parse(VendedorIdTextBox.Text));
+            var vendedores = VendedoresBLL.Buscar(int.Parse(VendedorIdLabel.Content.ToString()));
 
             if (vendedores != null)
             {
@@ -88,13 +72,11 @@ namespace ProyectoFinalAplicada1.UI.Registro
             }
             else
             {
-                this.vendedores = new Entidades.Vendedores();
+                this.vendedores = new Vendedores();
                 MessageBox.Show("El Vendedor no existe", "Fallo",
                      MessageBoxButton.OK, MessageBoxImage.Information);
                 Limpiar();
             }
-
-            //Limpiar();
             this.DataContext = this.vendedores;
         }
 
@@ -123,13 +105,13 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            if(VendedoresBLL.Eliminar(Convert.ToInt32(VendedorIdTextBox.Text)))
+           /* if(VendedoresBLL.Eliminar(Convert.ToInt32(VendedorIdLabel.Text.ToString)))
             {
                 Limpiar();
                 MessageBox.Show("Vendedor eliminado!", "Exito",
                     MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            else
+            else*/
                 MessageBox.Show("No fue posible eliminar al Vendedor", "Fallo",
                     MessageBoxButton.OK, MessageBoxImage.Error);
         }

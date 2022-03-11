@@ -86,9 +86,6 @@ namespace ProyectoAplicadoColegas.Migrations
                     b.Property<decimal>("Monto")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("NCF")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("SuplidorId")
                         .HasColumnType("INTEGER");
 
@@ -190,7 +187,10 @@ namespace ProyectoAplicadoColegas.Migrations
                     b.Property<string>("Compania")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("Fecha")
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NCF")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("NombreRepresentante")
@@ -248,6 +248,9 @@ namespace ProyectoAplicadoColegas.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Apellidos")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("FechaRegistro")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Nombres")

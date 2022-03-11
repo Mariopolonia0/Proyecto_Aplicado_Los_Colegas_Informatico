@@ -19,31 +19,24 @@ namespace ProyectoFinalAplicada1.UI.Registro
         public rCompras()
         {
             InitializeComponent();
+            compra.CompraId = ComprasBLL.SiguienteIdCompra();
             this.DataContext = compra;
-            CompraIdTextBox.Text = "0";
             DescripcionTextBox.Text = "0";
             CantidadTextBox.Text = "0";
-            SuplidorIdComboBox.ItemsSource = SuplidoresBLL.GetSuplidores();
-            SuplidorIdComboBox.SelectedValuePath = "SuplidorId";
-            SuplidorIdComboBox.DisplayMemberPath = "SuplidorId";                      
         }
-
-        private void SuplidorIdComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Suplidores suplidor = SuplidoresBLL.Buscar(Convert.ToInt32(SuplidorIdComboBox.SelectedValue));
-            if (suplidor == null)
-                return;
-            NombreSuplidoraLabel.Content = suplidor.NombreRepresentante;
-            CompaniaSuplidorLabel.Content = suplidor.Compania;
-        }
-
         public void Limpiar()
         {
-            CompraIdTextBox.Text = "0";
-            CantidadTextBox.Clear();
-            NCFTextBox.Clear();
+            compra = new Compras();
+            producto = new Productos();
+            compra.CompraId = ComprasBLL.SiguienteIdCompra();
+            NCFSuplidorLabel.Content = "";
+            NombreSuplidoraLabel.Content = "";
+            CompaniaSuplidorLabel.Content = "";
+            PrecioTextBox.Text = "0";
             DescripcionTextBox.Clear();
-            TransporteTextBox.Clear();
+            CantidadTextBox.Clear();
+            ProductoIdTextBox.Clear();
+            Cargar();
         }
 
         public void LimpiarDetalle()
@@ -58,7 +51,9 @@ namespace ProyectoFinalAplicada1.UI.Registro
         {
             this.DataContext = null;
             this.DataContext = compra;
-            SuplidorIdComboBox.SelectedValue = compra.SuplidorId;
+            Suplidores suplidor = SuplidoresBLL.Buscar(compra.SuplidorId);
+            if(suplidor != null)
+                cargarSuplidor(suplidor);
         }
 
         private void ProductoIdTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -67,12 +62,12 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 return;
             else if (Convert.ToInt32(ProductoIdTextBox.Text) == 0)
                 return;
-                
+
             Productos producto = ProductosBLL.Buscar(Convert.ToInt32(ProductoIdTextBox.Text));
             if (producto != null)
-            { 
+            {
                 DescripcionTextBox.Text = producto.Descripcion;
-                PrecioTextBox.Text = producto.Precio.ToString();
+                PrecioTextBox.Text = producto.Costo.ToString();
             }
         }
 
@@ -133,7 +128,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
         private void BucarButton_Click(object sender, RoutedEventArgs e)
         {
-
             BCompras bCompras = new BCompras();
             bCompras.ShowDialog();
 
@@ -147,10 +141,10 @@ namespace ProyectoFinalAplicada1.UI.Registro
         {
             if (!Validar())
                 return;
-            
-            compra.CompraDetalle.Add(new ComprasDetalles(Convert.ToInt32(CompraIdTextBox.Text), 
+
+            compra.CompraDetalle.Add(new ComprasDetalles(Convert.ToInt32(CompraIdLabel.Content),
                 Convert.ToInt32(ProductoIdTextBox.Text), Convert.ToInt32(CantidadTextBox.Text),
-                DescripcionTextBox.Text,Convert.ToDecimal(PrecioTextBox.Text)));
+                DescripcionTextBox.Text, Convert.ToDecimal(PrecioTextBox.Text)));
             Cargar();
             TotalLabel.Content = Convert.ToString(Convert.ToDecimal(TotalLabel.Content) + (Convert.ToDecimal(PrecioTextBox.Text) * Convert.ToDecimal(CantidadTextBox.Text)));
 
@@ -171,11 +165,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
             Limpiar();
-            /*if (DetalleDataGrid.Items.Count >= 1 && DetalleDataGrid.SelectedIndex <= DetalleDataGrid.Items.Count - 1)
-            {
-                compra.CompraDetalle.RemoveAt(DetalleDataGrid.SelectedIndex);
-                Cargar();
-            }*/
         }
 
         private bool ExisteEnLaBaseDeDatos()
@@ -187,9 +176,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
-            // bool paso = false;
-
-            compra.SuplidorId = Convert.ToInt32(SuplidorIdComboBox.SelectedValue);
+           //compra.SuplidorId = Convert.ToInt32(SuplidorIdLabel.Content);
             compra.Monto = Convert.ToDecimal(TotalLabel.Content.ToString());
             compra.ITBIS = 0.18;
 
@@ -200,16 +187,48 @@ namespace ProyectoFinalAplicada1.UI.Registro
             else
             {
                 ComprasBLL.Guardar(compra);
-               // paso = ProductosBLL.Guardar(productos);
+                // paso = ProductosBLL.Guardar(productos);
                 Limpiar();
                 MessageBox.Show("Guardado.", "Exito.", MessageBoxButton.OK, MessageBoxImage.Information);
-                
             }
+        }
+
+        private void BucarButtonProductoCompra_Click(object sender, RoutedEventArgs e)
+        {
+            BProducto bProducto = new BProducto();
+            bProducto.ShowDialog();
+
+            if (BProducto.producto == null)
+                return;
+
+            producto = BProducto.producto;
+            ProductoIdTextBox.Text = producto.ProductoId.ToString();
+            DescripcionTextBox.Text = producto.Descripcion;
+            PrecioTextBox.Text = producto.Costo.ToString();
+        }
+
+        private void BucarButtonSuplidorCompra_Click(object sender, RoutedEventArgs e)
+        {
+            BSuplidor bSuplidor = new BSuplidor();
+            bSuplidor.ShowDialog();
+
+            if (bSuplidor.GetSuplidorIdEncotrado() == 0)
+                return;
+
+            compra.SuplidorId = bSuplidor.GetSuplidorIdEncotrado();
+            Cargar();
+        }
+
+        private void cargarSuplidor(Suplidores suplidor)
+        { 
+            CompaniaSuplidorLabel.Content = suplidor.Compania;
+            NombreSuplidoraLabel.Content = suplidor.NombreRepresentante;
+            NCFSuplidorLabel.Content = suplidor.NCF;
         }
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            TotalLabel.Content = Convert.ToInt32(SuplidorIdComboBox.SelectedValue).ToString();
+            //TotalLabel.Content = Convert.ToInt32(SuplidorIdComboBox.SelectedValue).ToString();
         }
 
         private void PrecioTextBox_KeyDown(object sender, KeyEventArgs e)
@@ -237,18 +256,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
             Utilidades.ValidarSoloNumeros(e);
         }
 
-        private void BucarButtonProductoCompra_Click(object sender, RoutedEventArgs e)
-        {
-            BProducto bProducto = new BProducto();
-            bProducto.ShowDialog();
-
-            if (BProducto.producto == null)
-                return;
-
-            producto = BProducto.producto;
-            ProductoIdTextBox.Text = producto.ProductoId.ToString();
-            DescripcionTextBox.Text = producto.Descripcion;
-        }
-
+        
     }
 }

@@ -82,6 +82,8 @@ namespace ProyectoFinalAplicada1.BLL
        //Metodo Guardar.
        public static bool Guardar(Suplidores suplidor)
        {
+           suplidor.disponible = true;
+
            if (!Existe(suplidor.SuplidorId))
            {
                return Insertar(suplidor);
@@ -92,8 +94,28 @@ namespace ProyectoFinalAplicada1.BLL
            }
        }
 
-       //Metodo Eliminar.
-       public static bool Eliminar(int id)
+        public static int SiguienteIdSuplidor()
+        {
+            Contexto contexto = new Contexto();
+            int idnuevo = 0;
+            try
+            {
+                idnuevo = contexto.Suplidores.Max(c => c.SuplidorId) + 1;
+            }
+            catch (Exception)
+            {
+                idnuevo = 100;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return idnuevo;
+
+        }
+
+        //Metodo Eliminar.
+        public static bool Eliminar(int id)
        {
            bool key = false;
            Contexto contexto = new Contexto();

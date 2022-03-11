@@ -19,67 +19,59 @@ namespace ProyectoFinalAplicada1.UI.Registro
         public rVentas()
         {
             InitializeComponent();
-            this.DataContext = venta;
-            //VentaIdLabel.Content = "0";
             venta.VentaId = VentasBLL.SiguienteIdVenta();
             venta.CostoTotal = 0;
             venta.GananciaTotal = 0;
             venta.ITBISTotal = 0;
             venta.PrecioTotal = 0;
-            VendedorIdComboBox.ItemsSource = VendedoresBLL.GetVendedores();
-            VendedorIdComboBox.SelectedValuePath = "VendedorId";
-            VendedorIdComboBox.DisplayMemberPath = "VendedorId";
+            this.DataContext = venta;
         }
 
         private void Limpiar()
         {
             venta = new Ventas();
             producto = new Productos();
+            venta.VentaId = VentasBLL.SiguienteIdVenta();
             Cargar();
-           /* VentaIdTextBox.Text = "0";
-           // ClienteIdTextBox.Text = "0";
-            ProductoIdTextBox.Text = "0";
-            CantidadTextBox.Text = "0";
-            DescripcionTextBox.Text = string.Empty;
-            // venta.VentaDetalle = null;
-            PrecioTotalLabel.Content = "0";*/
-            //VentasDetalleDataGrid.ItemsSource = null;
-
+            limpiarOtrosCampos();
         }
 
+        private void Cargar()
+        {
+            this.DataContext = null;
+            this.DataContext = this.venta;
+            var vendedor = VendedoresBLL.Buscar(venta.VendedorId);
+            var cliente = ClientesBLL.Buscar(venta.ClienteId);
+            if (vendedor != null)
+                cargarVendedor(vendedor);
+           
+            if (cliente != null)
+                cargarCliente(cliente);
+
+        }
         private void BucarButton_Click(object sender, RoutedEventArgs e)
         {
             BVentas bVenta = new BVentas();
             bVenta.ShowDialog();
 
             venta = BVentas.venta;
-
-             //if(bVenta.GetVentasSelect == null)
-             //  return;
-
-            if (venta == null)
-                return;
-
-            Cargar();
           
-            VendedorIdComboBox.SelectedIndex = venta.VendedorId;
-            
-            var cliente = ClientesBLL.Buscar(venta.ClienteId);
-            if (cliente == null)
-                return;
-            
-            NombreClienteTextBox.Text = cliente.Nombres;
-            NumeroClienteTextBox.Text = cliente.Telefono;
-            ComprobanteFiscalClienteTextBox.Text = cliente.comprobanteFiscal;
-
+            Cargar();
         }
-
-        private void Cargar()
+        private void limpiarOtrosCampos()
         {
-            this.DataContext = null;
-            this.DataContext = this.venta; 
-            
+            NombreClienteTextBox.Text = "";
+            ComprobanteFiscalClienteTextBox.Text = "";
+            NumeroClienteTextBox.Text = "";
+            NombreVendedorLabel.Content = "";
+            ApellidoVendedorLabel.Content = "";
+            CantidadTextBox.Text = "0";
+            ProductoIdTextBox.Text = "0";
+            CantidadTextBox.Text = "0";
+            DescripcionTextBox.Text = "";
         }
+
+        
 
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -90,15 +82,14 @@ namespace ProyectoFinalAplicada1.UI.Registro
             venta.VentaDetalle.Add(new VentasDetalles(Convert.ToInt32(VentaIdLabel.Content), Convert.ToInt32(ProductoIdTextBox.Text), 
                 Convert.ToInt32(CantidadTextBox.Text), DescripcionTextBox.Text, producto.Costo));
             
-            Cargar();
-
             venta.CostoTotal = venta.CostoTotal + (producto.Costo * Convert.ToInt32(CantidadTextBox.Text));
             PrecioTotalLabel.Content = venta.CostoTotal.ToString();
 
-            
             venta.ITBISTotal += producto.ITBIS;
             venta.GananciaTotal += producto.Ganancia;
             venta.PrecioTotal += producto.Precio;
+
+            Cargar();
 
             CantidadTextBox.Text = "0";
             ProductoIdTextBox.Text = "0";
@@ -119,16 +110,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
         }
         private bool Validar()
         {
-          /*  if (VentaIdLabel.Content == 0)
-            {
-                esValido = false;
-                GuardarButton.IsEnabled = false;
-                MessageBox.Show("VentaId está vacio", "Fallo",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
-                VentaIdLabel.Focus();
-                GuardarButton.IsEnabled = true;
-            }*/
-
             if (DescripcionTextBox.Text.Length == 0)
             {
                 GuardarButton.IsEnabled = false;
@@ -175,16 +156,16 @@ namespace ProyectoFinalAplicada1.UI.Registro
         {
             bool esValido = true;
 
-            /*if (VentaIdTextBox.Text.Length == 0)
+            if (Convert.ToInt32(VentaIdLabel.Content) <= 0)
             {
                 esValido = false;
                 GuardarButton.IsEnabled = false;
                 MessageBox.Show("Venta Id está vacio", "Fallo",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
-                VentaIdTextBox.Focus();
+                VentaIdLabel.Focus();
                 GuardarButton.IsEnabled = true;
             }
-            */
+            
             if (FechaDatePicker.Text.Length == 0)
             {
                 esValido = false;
@@ -225,13 +206,13 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 GuardarButton.IsEnabled = true;
             }
 
-            if(Convert.ToInt32(VendedorIdComboBox.SelectedValue) <= 0)
+            if(Convert.ToInt32(VendedorIdLabel.Content) <= 0)
             {
                 esValido = false;
                 GuardarButton.IsEnabled = false;
-                MessageBox.Show("VendedorId está vacia", "Fallo",
+                MessageBox.Show("Vendedor Id está vacia", "Fallo",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
-                VendedorIdComboBox.Focus();
+                VendedorIdLabel.Focus();
                 GuardarButton.IsEnabled = true;
             }
 
@@ -239,7 +220,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
         }
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
-                Limpiar();
+            Limpiar();
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
@@ -254,9 +235,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
             cliente.ClienteId = 0;
 
             venta.ClienteId = ClientesBLL.Insertar(cliente);
-            venta.VendedorId = Convert.ToInt32(VendedorIdComboBox.SelectedValue.ToString());
-            venta.CostoTotal = Convert.ToDouble(PrecioTotalLabel.Content.ToString());
-            venta.VendedorId = VendedorIdComboBox.SelectedIndex;
             var paso = VentasBLL.Guardar(venta);
 
             if (paso)
@@ -284,9 +262,9 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
         private void VendedorIdComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Vendedores vendedor= VendedoresBLL.Buscar(Convert.ToInt32(VendedorIdComboBox.SelectedValue));
+            Vendedores vendedor= VendedoresBLL.Buscar(Convert.ToInt32(VendedorIdLabel.Content));
             NombreVendedorLabel.Content = vendedor.Nombres;
-            ApellidovendedorLabel.Content = vendedor.Apellidos;
+            ApellidoVendedorLabel.Content = vendedor.Apellidos;
         }
 
         private void VentaIdTextBox_KeyDown(object sender, KeyEventArgs e)
@@ -336,6 +314,31 @@ namespace ProyectoFinalAplicada1.UI.Registro
             producto = BProducto.producto;
             ProductoIdTextBox.Text = producto.ProductoId.ToString();
             DescripcionTextBox.Text = producto.Descripcion;
+        }
+
+        private void BucarButtonVendedorVenta_Click(object sender, RoutedEventArgs e)
+        {
+            BVendedores bVendedores =new BVendedores();
+            bVendedores.ShowDialog();
+
+            if (bVendedores.GetSuplidorIdEncotrado() <= 0)
+                return;
+
+            venta.VendedorId = bVendedores.GetSuplidorIdEncotrado();
+            Cargar();
+        }
+
+        public void cargarVendedor(Vendedores vendedor)
+        {
+            NombreVendedorLabel.Content = vendedor.Nombres;
+            ApellidoVendedorLabel.Content = vendedor.Apellidos;
+        }
+
+        public void cargarCliente(Clientes cliente)
+        {
+            NombreClienteTextBox.Text = cliente.Nombres;
+            NumeroClienteTextBox.Text = cliente.Telefono;
+            ComprobanteFiscalClienteTextBox.Text = cliente.comprobanteFiscal;
         }
     }
 }

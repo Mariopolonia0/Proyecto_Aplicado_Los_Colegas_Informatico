@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
         mc:Ignorable="d"
-        Title="Registro Suplidor" Height="293" Width="324">
+        WindowStartupLocation="CenterScreen"
+        Title="Registro Suplidor" Height="350" Width="324">
     <StackPanel  HorizontalAlignment="Center" Margin="0,5,0,0"  >
 
         <StackPanel>
@@ -14,7 +15,7 @@
 
         <StackPanel Orientation="Horizontal" Height="28" >
 
-            <TextBox x:Name="SuplidorIdTextBox" Text="{Binding SuplidorId}" Width="90" />
+            <Label x:Name="SuplidorIdLabel" Content="{Binding SuplidorId}" Width="90" />
             <Button x:Name="BuscarButton" Margin="5,0" Click="BuscarButton_Click"   >
                 <StackPanel Orientation="Horizontal" >
                     <Image Source="/Resources/Buscar.png"  />
@@ -35,8 +36,13 @@
         </StackPanel>
 
         <StackPanel>
+            <Label Content="Comprobante Fiscale"/>
+            <TextBox x:Name="NCFTextBox" Text="{Binding NCF}" />
+        </StackPanel>
+
+        <StackPanel>
             <Label Content="Fecha"/>
-            <DatePicker x:Name="FechaDatePicker" Text="{Binding Fecha}" />
+            <DatePicker x:Name="FechaDatePicker" Text="{Binding FechaRegistro}" />
         </StackPanel>
         
         <!--BARRA BOTONES-->

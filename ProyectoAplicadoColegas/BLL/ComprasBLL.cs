@@ -76,11 +76,12 @@ namespace ProyectoFinalAplicada1.BLL
                         Productos product = new Productos();
                         product.ProductoId = item.ProductoId;
                         product.Existencia = item.Cantidad;
-                        product.Costo = (double)item.Precio;
+                        product.Precio =(double)item.Precio;
                         product.Descripcion = item.Descripcion;
                         product.FechaEntrada = compras.Fecha;
                         product.ITBIS = 0.18;
-                        product.Ganancia = 0.20;
+                        product.Ganancia = 0.5;
+                        product.Costo = product.Precio + ((product.Precio * product.Ganancia) + (product.Precio * product.ITBIS));
 
                         ProductosBLL.Guardar(product);
                         contexto.SaveChanges();
@@ -207,7 +208,7 @@ namespace ProyectoFinalAplicada1.BLL
             }
             return ListaCompras;
         }
-        public static int SiguienteIdVenta()
+        public static int SiguienteIdCompra()
         {
             Contexto contexto = new Contexto();
             int idnuevo = 0;

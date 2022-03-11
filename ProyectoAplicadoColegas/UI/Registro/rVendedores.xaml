@@ -6,21 +6,22 @@
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
         mc:Ignorable="d"
         Icon="/Resources/vendedores.png"
-        Title="Registro Vendedores"  FontSize="15" Height="273" Width="319">
+        WindowStartupLocation="CenterScreen"
+        Title="Registro Vendedores"  FontSize="15" Height="330" Width="340">
 
-    <StackPanel  >
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top"  >
         
         <StackPanel Margin="5,0,0,0">
             <Label Content="Vendedor Id:"  />
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Margin="10,0,0,0"  >
-            
-            <TextBox x:Name="VendedorIdTextBox" Text="{Binding VendedorId}" Width="90"  />
+
+            <Label x:Name="VendedorIdLabel" Content="{Binding VendedorId}" Width="90"  />
             <Button x:Name="BuscarButton" Margin="5,0" Click="BuscarButton_Click"  >
-                <StackPanel Orientation="Horizontal" Height="26">
-                    <Image Source="/Resources/Buscar.png" Height="23" Width="45"  />
-                    <Label Content="Buscar"  />
+                <StackPanel Orientation="Horizontal" Height="30">
+                    <Image Source="/Resources/Buscar.png"  />
+                    <Label Content="Buscar" VerticalAlignment="Center" />
                 </StackPanel>
             </Button>
 
@@ -34,6 +35,11 @@
         <StackPanel Margin="10,0,10,0">
             <Label Content="Apellidos:"/>
             <TextBox x:Name="ApellidosTextBox" Text="{Binding Apellidos}" />
+        </StackPanel>
+
+        <StackPanel Margin="10,0,10,0">
+            <Label Content="Fecha Registro"/>
+            <DatePicker x:Name="FechaRegistroDataPicker"  SelectedDate="{Binding FechaRegistro,StringFormat=dd/MM/yyyy}"/>
         </StackPanel>
         <!--BARRA BOTONES-->
         <StackPanel Orientation="Horizontal" Height="37" Margin="10,15,10,0"  >

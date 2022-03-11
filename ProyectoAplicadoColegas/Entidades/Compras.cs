@@ -13,7 +13,6 @@ namespace ProyectoFinalAplicada1.Entidades
         public DateTime Fecha { get; set; }
         public int SuplidorId { get; set; }
         public decimal Monto { get; set; }
-        public string NCF { get; set; }
         public double ITBIS { get; set; }
         public int UsuarioId { get; set; }
         public double Transporte { get; set; }
@@ -28,7 +27,6 @@ namespace ProyectoFinalAplicada1.Entidades
             Fecha = DateTime.Now;
             SuplidorId = 0;
             Monto = 0;
-            NCF = string.Empty;
             ITBIS = 0;
             UsuarioId = 0;
             Transporte = 0;

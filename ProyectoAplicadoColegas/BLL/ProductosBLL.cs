@@ -101,6 +101,8 @@ namespace ProyectoFinalAplicada1.BLL
         //Metodo Guardar.
         public static bool Guardar(Productos productos)
         {
+            productos.disponible = true;
+
             if (!Existe(productos.ProductoId))
                 return Insertar(productos);
             else

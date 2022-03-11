@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
         mc:Ignorable="d"
-        Title="Registro Categorias" Height="188" Width="295">
+        WindowStartupLocation="CenterScreen"
+        Title="Registro Categorias" Height="188" Width="300">
 
 
-    <StackPanel Orientation="Vertical" >
+    <StackPanel Orientation="Vertical" Margin="5,0,5,0" HorizontalAlignment="Center" >
         <StackPanel Orientation="Vertical">
             <Label Content="CategoríaId:"/>
         </StackPanel>
