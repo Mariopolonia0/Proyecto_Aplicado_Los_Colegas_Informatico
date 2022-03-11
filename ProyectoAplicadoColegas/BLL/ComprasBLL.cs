@@ -11,7 +11,6 @@ namespace ProyectoFinalAplicada1.BLL
 {
     public class ComprasBLL
     {
-
         public static bool Existe(int id)
         {
             Contexto contexto = new Contexto();
@@ -59,6 +58,7 @@ namespace ProyectoFinalAplicada1.BLL
         {
             bool paso = false;
             Contexto contexto = new Contexto();
+            compras.disponible = true;
 
             try
             {
@@ -132,7 +132,6 @@ namespace ProyectoFinalAplicada1.BLL
             return paso;
 
         }
-
         public static Compras Buscar(int id)
         {
             Contexto contexto = new Contexto();
@@ -143,7 +142,6 @@ namespace ProyectoFinalAplicada1.BLL
                 compras = contexto.Compras.Include(x => x.CompraDetalle)
                     .Where(p => p.CompraId == id)
                     .SingleOrDefault();
-
             }
             catch
             {
@@ -156,19 +154,19 @@ namespace ProyectoFinalAplicada1.BLL
 
             return compras;
         }
-        
-
-        public static bool Eliminar(int id)
+        public static bool Eliminar(Compras compra)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
 
             try
             {
-                var eliminar = contexto.Compras.Find(id);
-                contexto.Entry(eliminar).State = EntityState.Deleted;
-
-                paso = (contexto.SaveChanges() > 0);
+                if (compra != null)
+                {
+                    compra.disponible = true;
+                    contexto.Entry(compra).State = EntityState.Modified;
+                    paso = contexto.SaveChanges() > 0;
+                }
             }
             catch
             {
@@ -182,6 +180,52 @@ namespace ProyectoFinalAplicada1.BLL
             return paso;
         }
 
+        public static List<Compras> GetCompra()
+        {
+            List<Compras> ListaCompras = new List<Compras>();
+            Contexto contexto = new Contexto();
+
+            try
+            {
+               //esta for es para solo retonar los clietne que estan visibles
+                foreach (var compra in contexto.Compras.ToList())
+                {
+                    if (compra.disponible == true)
+                    {
+                        ListaCompras.Add(compra);
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return ListaCompras;
+        }
+        public static int SiguienteIdVenta()
+        {
+            Contexto contexto = new Contexto();
+            int idnuevo = 0;
+            try
+            {
+                idnuevo = contexto.Compras.Max(c => c.CompraId) + 1;
+            }
+            catch (Exception)
+            {
+                idnuevo = 100;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return idnuevo;
+
+        }
         public static List<Compras> GetList(Expression<Func<Compras, bool>> compras)
         {
             List<Compras> lista = new List<Compras>();

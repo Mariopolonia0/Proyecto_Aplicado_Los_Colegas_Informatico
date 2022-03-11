@@ -5,75 +5,87 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProyectoFinalAplicada1.UI.Registro"
         mc:Ignorable="d"
-        Title="Registro Compras" Height="570" Width="742" FontSize="14">
+        Title="Registro Compras" Height="570" Width="780" FontSize="14">
 
 
-    <StackPanel Orientation="Vertical"  >
-        <Label Content="CompraId" />
+    <StackPanel  HorizontalAlignment="Center" Margin="0,5,0,0" >
+        
+        <StackPanel Orientation="Horizontal">
+            <Label Content="CompraId" />
+            <Label Content="Fecha" Margin="180,0,0,0" />
+        </StackPanel>
+        
 
         <!--CompraIdTextBox y BuscarButton-->
         <StackPanel Orientation="Horizontal">
 
-            <TextBox Name="CompraIdTextBox" Width="150"  Text="{Binding CompraId}" KeyDown="CompraIdTextBox_KeyDown"/>
+            <TextBox Name="CompraIdTextBox" Width="75"  Text="{Binding CompraId}" KeyDown="CompraIdTextBox_KeyDown"/>
 
-            <Button Name="BucarButton" Width="82" Height="20" Margin="5,0" Click="BucarButton_Click"  >
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="/Resources/Buscar.png" Height="16" Width="24" />
-                    <Label Content="Buscar" Margin="4,0" Padding="-1"/>
+            <Button Name="BucarButton"  Height="30" Margin="5,0" Click="BucarButton_Click"  >
+                <StackPanel Orientation="Horizontal" >
+                    <Image Source="/Resources/Buscar.png"  />
+                    <Label Content="Buscar" />
                 </StackPanel>
             </Button>
+
+            <DatePicker Name="FechaDatePicker"  SelectedDate="{Binding Fecha}" Margin="90,0,0,0"  />
         </StackPanel>
 
-        <StackPanel>
-            <Label Content="Fecha" />
-            <DatePicker Name="FechaDatePicker"  SelectedDate="{Binding Fecha}"  />
-        </StackPanel>
+        <GroupBox Header="Detalle de suplidor" Margin="0,5,0,0" BorderBrush="#FF414649">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Suplidor Id" />
+                    <Label Content="Nombre" Margin="55,0,0,0"/>
+                    <Label Content="Compañia" Margin="100,0,0,0"/>
+                </StackPanel>
 
-        <StackPanel Orientation="Horizontal">
-            <Label Content="Suplidor Id" />
-            <Label Content="Nombre" Margin="55,0,0,0"/>
-            <Label Content="Compañia" Margin="100,0,0,0"/>
-        </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox Name="SuplidorIdComboBox" Width="93" SelectionChanged="SuplidorIdComboBox_SelectionChanged"/>
+                    <Label x:Name="NombreSuplidoraLabel" Content="" Margin="30,0,0,0" Width="154"/>
+                    <Label x:Name="CompaniaSuplidorLabel" Content="" Margin="0,0,0,0" Width="211"/>
+                </StackPanel>
 
-        <StackPanel Orientation="Horizontal">
-            <ComboBox Name="SuplidorIdComboBox" Width="93" SelectionChanged="SuplidorIdComboBox_SelectionChanged"/>
-            <Label x:Name="NombreSuplidoraLabel" Content="" Margin="30,0,0,0" Width="154"/>
-            <Label x:Name="CompaniaSuplidorLabel" Content="" Margin="0,0,0,0" Width="211"/>
-        </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="NCF" />
+                    <Label Content="Transporte" Margin="205,0,0,0"/>
+                </StackPanel>
 
-        <StackPanel Orientation="Horizontal">
-            <Label Content="NCF" />
-            <Label Content="Transporte" Margin="205,0,0,0"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Horizontal">
-            <TextBox Name="NCFTextBox" Text="{Binding NCF}" Width="225"  />
-            <TextBox Name="TransporteTextBox" Text="{Binding Transporte}" Width="149" Margin="25,0,0,0" KeyDown="TransporteTextBox_KeyDown"/>
-        </StackPanel>
-
-        <GroupBox Header="Orden Detalle"  BorderBrush="#FF414649"  >
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Name="NCFTextBox" Text="{Binding NCF}" Width="225"  />
+                    <TextBox Name="TransporteTextBox" Text="{Binding Transporte}" Width="149" Margin="25,0,0,0" KeyDown="TransporteTextBox_KeyDown"/>
+                </StackPanel>
+            </StackPanel>
+            
+        </GroupBox>
+        
+        <GroupBox Header="Detalle de productos"  BorderBrush="#FF414649"  >
 
             <StackPanel Orientation="Vertical">
 
                 <StackPanel Orientation="Horizontal" >
                     <Label Content="Producto Id"   />
-                    <Label Content="Cantidad" Margin="10,0" />
-                    <Label Content="Descripción" Margin="10,0"/>
-                    <Label Content="Precio" Margin="83,0,0,0" Width="53"/>
+                    <Label Content="Cantidad" Margin="40,0,0,0" />
+                    <Label Content="Descripción" Margin="15,0,0,0"  />
+                    <Label Content="Precio" Margin="90,0,0,0" Width="53"/>
 
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Height="27">
 
-                    <TextBox Name="ProductoIdTextBox" Margin="5,0,0,0" Width="60" TextChanged="ProductoidTextBox_TextChanged" KeyDown="ProductoIdTextBox_KeyDown"  />
-                    <TextBox Name="CantidadTextBox" Width="54"  Margin="35,0,0,0" KeyDown="CantidadTextBox_KeyDown" />
-                    <TextBox Name="DescripcionTextBox" Width="140" Margin="32,0,0,0"/>
+                    <TextBox Name="ProductoIdTextBox" Margin="5,0,0,0" Width="60" TextChanged="ProductoIdTextBox_TextChanged"  KeyDown="ProductoIdTextBox_KeyDown"  />
+                    <Button Name="BucarButtonProductoCompra" Margin="10,0,0,0" Click="BucarButtonProductoCompra_Click" >
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resources/IconoConsulta.png" Width="25" />
+                        </StackPanel>
+                    </Button>
+                    <TextBox Name="CantidadTextBox" Width="54"  Margin="23,0,0,0" KeyDown="CantidadTextBox_KeyDown" />
+                    <TextBox Name="DescripcionTextBox" Width="140" Margin="28,0,0,0"/>
                     <TextBox Name="PrecioTextBox" Width="74"   Margin="30,0,0,0" KeyDown="PrecioTextBox_KeyDown"/>
                     <!--RemoverButton-->
 
                     <Button Name="AgregarButton" Width="109"  Margin="50,0,0,0" Click="AgregarButton_Click">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Resources/agregar.png" />
+                            <Image Source="/Resources/Iconoagregar.png" />
                             <Label Content="Agregar" Margin="4,0" Padding="-1" Height="22"/>
                         </StackPanel>
                     </Button>
@@ -110,13 +122,8 @@
 
         <StackPanel Orientation="Horizontal">
             <Label Content="Total"  Margin="10,0,0,0"/>
-        </StackPanel >
-
-        <StackPanel Orientation="Horizontal">
             <Label x:Name="TotalLabel"  Width="149" Content="{Binding Monto}" Margin="20,0,0,0"  />
-        </StackPanel>
-
-
+        </StackPanel >
 
         <StackPanel/>
 

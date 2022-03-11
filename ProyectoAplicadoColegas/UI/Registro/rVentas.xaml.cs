@@ -61,8 +61,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 return;
 
             Cargar();
-            //this.DataContext = this.venta;
-
+          
             VendedorIdComboBox.SelectedIndex = venta.VendedorId;
             
             var cliente = ClientesBLL.Buscar(venta.ClienteId);
@@ -73,13 +72,11 @@ namespace ProyectoFinalAplicada1.UI.Registro
             NumeroClienteTextBox.Text = cliente.Telefono;
             ComprobanteFiscalClienteTextBox.Text = cliente.comprobanteFiscal;
 
-           
-
         }
 
         private void Cargar()
         {
-            //this.DataContext = null;
+            this.DataContext = null;
             this.DataContext = this.venta; 
             
         }
@@ -279,12 +276,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 return;
 
             producto = ProductosBLL.Buscar(Convert.ToInt32(ProductoIdTextBox.Text));
-            if (producto == null)
-            {
-                MessageBox.Show("producto no existe");
-                DescripcionTextBox.Text = "";
-            }
-            else
+            if (producto != null)
             {
                 DescripcionTextBox.Text = producto.Descripcion;
             }
@@ -322,11 +314,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (venta.VendedorId == 0 || venta == null)
-                return;
-            venta.disponible = false;
-
-            if (VentasBLL.Eliminar(venta.VendedorId))
+            if (VentasBLL.Eliminar(venta))
             {
                 Limpiar();
                 MessageBox.Show("La venta ha sido eliminada!", "Nitido",

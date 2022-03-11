@@ -56,6 +56,7 @@ namespace ProyectoFinalAplicada1.BLL
         {
             bool paso = false;
             Contexto contexto = new Contexto();
+            ventas.disponible = true;
 
             try
             {
@@ -126,6 +127,8 @@ namespace ProyectoFinalAplicada1.BLL
                 ventas = contexto.Ventas.Include(x => x.VentaDetalle)
                     .Where(p => p.VentaId == id)
                     .SingleOrDefault();
+                if (ventas.disponible == false)
+                    return null;
             }
             catch
             {
@@ -138,17 +141,19 @@ namespace ProyectoFinalAplicada1.BLL
 
             return ventas;
         }
-        public static bool Eliminar(int id)
+        public static bool Eliminar(Ventas ventas)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
 
             try
             {
-                var eliminar = contexto.Ventas.Find(id);
-                contexto.Entry(eliminar).State = EntityState.Modified;
-
-                paso = (contexto.SaveChanges() > 0);
+                if (ventas != null)
+                {
+                    ventas.disponible = true;
+                    contexto.Entry(ventas).State = EntityState.Modified;
+                    paso = contexto.SaveChanges() > 0;
+                }
             }
             catch
             {
@@ -170,8 +175,15 @@ namespace ProyectoFinalAplicada1.BLL
 
             try
             {
-                //obtener la lista y filtrarla según el criterio recibido por parametro.
-                ListaVentas = contexto.Ventas.ToList();
+                //esta for es para solo retonar los clietne que estan visibles
+                foreach (var venta in contexto.Ventas.ToList())
+                {
+                    if(venta.disponible == true)
+                    {
+                        ListaVentas.Add(venta);
+                    }
+                }
+
             }
             catch (Exception)
             {
@@ -208,7 +220,13 @@ namespace ProyectoFinalAplicada1.BLL
             Contexto contexto = new Contexto();
             try
             {
-                lista = contexto.Ventas.Where(ventas).ToList();
+                foreach (var venta in contexto.Ventas.Where(ventas).ToList())
+                {
+                    if (venta.disponible == true)
+                    {
+                        lista.Add(venta);
+                    }
+                }
             }
             catch
             {

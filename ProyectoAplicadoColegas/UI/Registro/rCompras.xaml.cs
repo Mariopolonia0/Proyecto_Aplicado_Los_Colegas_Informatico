@@ -1,4 +1,5 @@
-﻿using ProyectoFinalAplicada1.BLL;
+﻿using ProyectoAplicadoColegas.UI.Busqueda;
+using ProyectoFinalAplicada1.BLL;
 using ProyectoFinalAplicada1.Entidades;
 using System;
 using System.Windows;
@@ -14,7 +15,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
     public partial class rCompras : Window
     {
         Compras compra = new Compras();
-        Productos productos = new Productos();
+        Productos producto = new Productos();
         public rCompras()
         {
             InitializeComponent();
@@ -39,7 +40,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
         public void Limpiar()
         {
             CompraIdTextBox.Text = "0";
-            //SuplidorIdComboBox.SelectedItem = null;
             CantidadTextBox.Clear();
             NCFTextBox.Clear();
             DescripcionTextBox.Clear();
@@ -58,26 +58,22 @@ namespace ProyectoFinalAplicada1.UI.Registro
         {
             this.DataContext = null;
             this.DataContext = compra;
+            SuplidorIdComboBox.SelectedValue = compra.SuplidorId;
         }
 
-        private void ProductoidTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void ProductoIdTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-           /* if (ProductoIdTextBox.Text.Length == 0)
+            if (ProductoIdTextBox.Text.Length == 0)
                 return;
             else if (Convert.ToInt32(ProductoIdTextBox.Text) == 0)
                 return;
                 
             Productos producto = ProductosBLL.Buscar(Convert.ToInt32(ProductoIdTextBox.Text));
-            if (producto == null)
-            {
-                MessageBox.Show("Producto No Existe,Se Agregara Un Producto Nuevo A Guardar La Compra","Informacion",MessageBoxButton.OK,MessageBoxImage.Information);
-                DescripcionTextBox.Text = "";
-            }
-            else
-            {
+            if (producto != null)
+            { 
                 DescripcionTextBox.Text = producto.Descripcion;
                 PrecioTextBox.Text = producto.Precio.ToString();
-            }*/
+            }
         }
 
         private bool Validar()
@@ -137,18 +133,14 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
         private void BucarButton_Click(object sender, RoutedEventArgs e)
         {
-            Compras encontrado = ComprasBLL.Buscar(compra.CompraId);
 
-            if (encontrado != null)
-            {
-                compra = encontrado;
+            BCompras bCompras = new BCompras();
+            bCompras.ShowDialog();
+
+            compra = BCompras.compras;
+
+            if (compra != null)
                 Cargar();
-            }
-            else
-            {
-                Limpiar();
-                MessageBox.Show("La Compra no Existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
         }
 
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
@@ -160,10 +152,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
                 Convert.ToInt32(ProductoIdTextBox.Text), Convert.ToInt32(CantidadTextBox.Text),
                 DescripcionTextBox.Text,Convert.ToDecimal(PrecioTextBox.Text)));
             Cargar();
-
-           /* venta.CostoTotal = venta.CostoTotal + (producto.Costo * Convert.ToInt32(CantidadTextBox.Text));
-            TotalLabel.Content = venta.CostoTotal.ToString();
-            */
             TotalLabel.Content = Convert.ToString(Convert.ToDecimal(TotalLabel.Content) + (Convert.ToDecimal(PrecioTextBox.Text) * Convert.ToDecimal(CantidadTextBox.Text)));
 
             LimpiarDetalle();
@@ -175,6 +163,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
             if (DetalleDataGrid.Items.Count >= 1 && DetalleDataGrid.SelectedIndex <= DetalleDataGrid.Items.Count - 1)
             {
                 compra.CompraDetalle.RemoveAt(DetalleDataGrid.SelectedIndex);
+                compra.Monto -= ((ComprasDetalles)DetalleDataGrid.SelectedItem).Total;
                 Cargar();
             }
         }
@@ -247,5 +236,19 @@ namespace ProyectoFinalAplicada1.UI.Registro
         {
             Utilidades.ValidarSoloNumeros(e);
         }
+
+        private void BucarButtonProductoCompra_Click(object sender, RoutedEventArgs e)
+        {
+            BProducto bProducto = new BProducto();
+            bProducto.ShowDialog();
+
+            if (BProducto.producto == null)
+                return;
+
+            producto = BProducto.producto;
+            ProductoIdTextBox.Text = producto.ProductoId.ToString();
+            DescripcionTextBox.Text = producto.Descripcion;
+        }
+
     }
 }
