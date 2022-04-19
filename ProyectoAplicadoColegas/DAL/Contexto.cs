@@ -16,6 +16,8 @@ namespace ProyectoFinalAplicada1.DAL
         public DbSet<Vendedores> Vendedores { get; set; }
         public DbSet<Categorias> Categorias { get; set; }
         public DbSet<Suplidores> Suplidores { get; set; }
+        public DbSet<ComprasDetalles> ComprasDetalles { get; set; }
+        public DbSet<VentasDetalles> VentasDetalles { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -24,10 +26,6 @@ namespace ProyectoFinalAplicada1.DAL
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-         //   modelBuilder.Entity<Clientes>().HasData(new Clientes {  Sexo = "Masculino", ClienteId =-1 });
-           // modelBuilder.Entity<Clientes>().HasData(new Clientes {  Sexo = "Femenino" ,ClienteId =-2});
-
-            
             modelBuilder.Entity<Usuarios>().HasData(new Usuarios
             {
                 UsuarioId = 1,
@@ -36,7 +34,6 @@ namespace ProyectoFinalAplicada1.DAL
                 NombreUsuario = "admin",
                 Contrasena = "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"
             });
-            
         }
     }
 }

@@ -20,11 +20,12 @@ namespace ProyectoAplicadoColegas.UI.Busqueda
     /// </summary>
     public partial class BSuplidor : Window
     {
-        public int suplidorid = 0;
+        private Suplidores suplidor;
         public BSuplidor()
         {
             InitializeComponent();
             //BuscarProductoDataGrid = null;
+            suplidor = new Suplidores();
             BuscarSuplidorDataGrid.ItemsSource = SuplidoresBLL.GetSuplidores();
         }
 
@@ -83,14 +84,20 @@ namespace ProyectoAplicadoColegas.UI.Busqueda
 
         private void BuscarSuplidorDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-            suplidorid = ((Suplidores)BuscarSuplidorDataGrid.SelectedItem).SuplidorId;
+            suplidor = (Suplidores)BuscarSuplidorDataGrid.SelectedItem;
             this.Close();
         }
 
+        public Suplidores GetSuplidorEncotrado()
+        {
+            return suplidor;
+        }
         public int GetSuplidorIdEncotrado()
         {
-            return suplidorid;
+            if (suplidor == null)
+                return 0;
+            else
+                return suplidor.SuplidorId;
         }
     }
 }

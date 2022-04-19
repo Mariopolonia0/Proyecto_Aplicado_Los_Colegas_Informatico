@@ -34,6 +34,7 @@ namespace ProyectoFinalAplicada1.Entidades
             GananciaTotal = 0;
             ITBISTotal = 0;
             CostoTotal = 0;
+            disponible = true;
             VentaDetalle = new List<VentasDetalles>();
         }
     }

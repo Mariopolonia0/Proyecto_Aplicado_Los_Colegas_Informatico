@@ -83,7 +83,6 @@ namespace ProyectoFinalAplicada1.BLL
 
             try
             {
-
                 contexto.Entry(productos).State = EntityState.Modified;
                 key = contexto.SaveChanges() > 0;
             }
@@ -101,8 +100,6 @@ namespace ProyectoFinalAplicada1.BLL
         //Metodo Guardar.
         public static bool Guardar(Productos productos)
         {
-            productos.disponible = true;
-
             if (!Existe(productos.ProductoId))
                 return Insertar(productos);
             else
@@ -121,7 +118,8 @@ namespace ProyectoFinalAplicada1.BLL
                 if (productos != null)
                 {
                     productos.disponible = false;
-                    key = Modificar(productos);
+                    contexto.Productos.Update(productos);
+                    key = contexto.SaveChanges() > 0;
                 }
             }
             catch (Exception)
@@ -168,6 +166,8 @@ namespace ProyectoFinalAplicada1.BLL
             try
             {
                 productos = contexto.Productos.Where(p => p.Descripcion.Contains(descripcion)).First();
+                if (productos.disponible == false)
+                    return null;
             }
             catch (Exception)
             {
@@ -208,10 +208,10 @@ namespace ProyectoFinalAplicada1.BLL
 
             try
             {
-                foreach (var C in contexto.Productos.ToList())
+                foreach (var P in contexto.Productos.ToList())
                 {
-                    if (C.disponible == true)
-                        productos.Add(C);
+                    if (P.disponible == true)
+                        productos.Add(P);
                 }
             }
             catch (Exception)
@@ -259,7 +259,11 @@ namespace ProyectoFinalAplicada1.BLL
             Contexto contexto = new Contexto();
             try
             {
-                lista = contexto.Productos.Where(productos).ToList();
+                foreach (var P in contexto.Productos.Where(productos).ToList())
+                {
+                    if (P.disponible == true)
+                        lista.Add(P);
+                }
             }
             catch (Exception)
             {

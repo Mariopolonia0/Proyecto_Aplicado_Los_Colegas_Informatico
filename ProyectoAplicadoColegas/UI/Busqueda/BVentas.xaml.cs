@@ -20,10 +20,11 @@ namespace ProyectoAplicadoColegas.UI.Busqueda
     public partial class BVentas : Window
     {
 
-        public static Ventas venta = new Ventas();
+        public static Ventas venta ;
         public BVentas()
         {
             InitializeComponent();
+            venta = new Ventas();
             DatosDataGrid.ItemsSource = null;
             DatosDataGrid.ItemsSource = VentasBLL.GetVentas();
         }

@@ -83,8 +83,6 @@ namespace ProyectoFinalAplicada1.BLL
         //Metodo Guardar.
         public static bool Guardar(Usuarios usuario)
         {
-            usuario.disponible = true;
-
             if (!Existe(usuario.UsuarioId))
                 return Insertar(usuario);
             else
@@ -103,8 +101,9 @@ namespace ProyectoFinalAplicada1.BLL
 
                 if (usuario != null)
                 {
-                    contexto.Usuarios.Remove(usuario);
-                    eliminado = (contexto.SaveChanges() > 0);
+                    usuario.disponible = false;
+                    contexto.Usuarios.Update(usuario);
+                    eliminado = contexto.SaveChanges() > 0;
                 }
 
             }

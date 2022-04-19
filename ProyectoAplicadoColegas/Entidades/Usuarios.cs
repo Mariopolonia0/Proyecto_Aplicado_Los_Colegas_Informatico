@@ -23,6 +23,7 @@ namespace ProyectoFinalAplicada1.Entidades
             Apellidos = string.Empty;
             NombreUsuario = string.Empty;
             Contrasena = string.Empty;
+            disponible = true;
         }
     }
 }

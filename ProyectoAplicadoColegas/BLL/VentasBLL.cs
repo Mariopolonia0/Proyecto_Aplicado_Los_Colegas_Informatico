@@ -56,8 +56,7 @@ namespace ProyectoFinalAplicada1.BLL
         {
             bool paso = false;
             Contexto contexto = new Contexto();
-            ventas.disponible = true;
-
+          
             try
             {
                 foreach (var item in ventas.VentaDetalle)
@@ -66,7 +65,7 @@ namespace ProyectoFinalAplicada1.BLL
                     if (producto != null)
                     {
                         producto.Existencia -= item.Cantidad;
-                        contexto.Entry(producto).State = EntityState.Modified;
+                        contexto.Productos.Update(producto);
                     }
                 }
 
@@ -96,13 +95,16 @@ namespace ProyectoFinalAplicada1.BLL
 
             try
             {
-                //contexto.Database.ExecuteSqlRaw($"DELETE FROM VentasDetalles Where VentaId = {ventas.VentaId}");
+                foreach (var ventasDetalles in contexto.VentasDetalles.Where(vD => vD.VentaId == ventas.VentaId).ToList())
+                {
+                    contexto.VentasDetalles.Remove(ventasDetalles);
+                }
                 foreach (var anterior in ventas.VentaDetalle)
                 {
-                    contexto.Entry(anterior).State = EntityState.Added;
+                    contexto.VentasDetalles.Add(anterior);
                 }
 
-                contexto.Entry(ventas).State = EntityState.Modified;
+                contexto.Ventas.Update(ventas);
                 paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
@@ -150,7 +152,7 @@ namespace ProyectoFinalAplicada1.BLL
             {
                 if (ventas != null)
                 {
-                    ventas.disponible = true;
+                    ventas.disponible = false; 
                     contexto.Entry(ventas).State = EntityState.Modified;
                     paso = contexto.SaveChanges() > 0;
                 }

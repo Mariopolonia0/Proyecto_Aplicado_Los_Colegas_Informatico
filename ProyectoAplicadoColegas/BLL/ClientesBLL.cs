@@ -62,15 +62,14 @@ namespace ProyectoFinalAplicada1.BLL
         }
 
         //Metodo Modificar.
-        private static bool Modificar(Clientes clientes)
+        public static bool Modificar(Clientes clientes)
         {
             bool key = false;
             Contexto contexto = new Contexto();
 
-            try{ 
-                contexto.Entry(clientes).State = EntityState.Modified;
+            try{
+                contexto.Clientes.Update(clientes);
                 key = contexto.SaveChanges() > 0;
-               
             }
             catch (Exception)
             {
@@ -94,8 +93,6 @@ namespace ProyectoFinalAplicada1.BLL
         //Metodo Guardar.
         public static bool Guardar(Clientes clientes)
         {
-            clientes.disponible = true;
-
             if (!Existe(clientes.ClienteId))
             {
                 return false;//Insertar(clientes);
@@ -118,6 +115,7 @@ namespace ProyectoFinalAplicada1.BLL
 
                 if (clientes != null)
                 {
+                    clientes.disponible = false;
                     contexto.Clientes.Remove(clientes);
                     key = contexto.SaveChanges() > 0;
                 }

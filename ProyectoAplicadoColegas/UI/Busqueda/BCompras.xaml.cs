@@ -13,11 +13,12 @@ namespace ProyectoAplicadoColegas.UI.Busqueda
     /// </summary>
     public partial class BCompras : Window
     {
-        public static Compras compras = new Compras();
+        public static Compras compras;// = new Compras();
       
         public BCompras()
         {
             InitializeComponent();
+            compras = new Compras();
             DatosDataGridBuscarCompras.ItemsSource = null;
             DatosDataGridBuscarCompras.ItemsSource = ComprasBLL.GetCompra();
         }

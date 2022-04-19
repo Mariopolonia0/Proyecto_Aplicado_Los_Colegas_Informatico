@@ -28,6 +28,7 @@ namespace ProyectoFinalAplicada1.Entidades
             Cedula = string.Empty;
             Direccion = string.Empty;
             UsuarioId = 0;
+            disponible = true;
             Sexo = string.Empty;
         }
     }

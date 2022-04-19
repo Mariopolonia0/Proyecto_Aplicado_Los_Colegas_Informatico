@@ -30,7 +30,7 @@ namespace ProyectoFinalAplicada1.Entidades
             ITBIS = 0;
             UsuarioId = 0;
             Transporte = 0;
-
+            disponible = true;
             CompraDetalle = new List<ComprasDetalles>();
         }
     }

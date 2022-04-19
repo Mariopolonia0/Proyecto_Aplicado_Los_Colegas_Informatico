@@ -1,4 +1,5 @@
-﻿using ProyectoFinalAplicada1.BLL;
+﻿using ProyectoAplicadoColegas.UI.Busqueda;
+using ProyectoFinalAplicada1.BLL;
 using ProyectoFinalAplicada1.Entidades;
 using System;
 using System.Windows;
@@ -22,24 +23,25 @@ namespace ProyectoFinalAplicada1.UI.Registro
         {
             suplidor = new Suplidores();
             suplidor.SuplidorId = SuplidoresBLL.SiguienteIdSuplidor();
+            Cargar();
+        }
+
+        private void Cargar()
+        {
+            this.DataContext = null;
             this.DataContext = suplidor;
         }
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-            var suplidor = SuplidoresBLL.Buscar(int.Parse(SuplidorIdLabel.Content.ToString()));
+            BSuplidor bSuplidor = new BSuplidor();
+            bSuplidor.ShowDialog();
 
-            if (suplidor != null)
-            {
-                this.suplidor = suplidor;
-            }
-            else
-            {
-                this.suplidor = new Suplidores();
-                MessageBox.Show("La Suplidor no existe", "Fallo",
-                     MessageBoxButton.OK, MessageBoxImage.Information);
-                Limpiar();
-            }
-            this.DataContext = this.suplidor;
+            suplidor = bSuplidor.GetSuplidorEncotrado();
+
+            if (suplidor == null)
+                return;
+
+            Cargar();
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
@@ -65,22 +67,11 @@ namespace ProyectoFinalAplicada1.UI.Registro
         {
             bool esValido = true;
 
-            if (SuplidoresBLL.DuplicadoSuplidorId(Convert.ToInt32(SuplidorIdLabel.Content)))
-            {
-                esValido = false;
-                GuardarButton.IsEnabled = false;
-                MessageBox.Show("CategoriaId está vacio", "Fallo",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
-                SuplidorIdLabel.Content = "0";
-                SuplidorIdLabel.Focus();
-                GuardarButton.IsEnabled = true;
-            }
-
             if (ConpaniaTextBox.Text.Length == 0)
             {
                 esValido = false;
                 GuardarButton.IsEnabled = false;
-                MessageBox.Show("Descripcion está vacio", "Fallo",
+                MessageBox.Show("Compañia está vacio", "Fallo",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 ConpaniaTextBox.Focus();
                 GuardarButton.IsEnabled = true;
@@ -90,9 +81,19 @@ namespace ProyectoFinalAplicada1.UI.Registro
             {
                 esValido = false;
                 GuardarButton.IsEnabled = false;
-                MessageBox.Show("Esta Descripcion ya existe!", "Error!",
+                MessageBox.Show("Nombres Representante está vacio", "Error!",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 NombresRepresentanteTextBox.Focus();
+                GuardarButton.IsEnabled = true;
+            }
+
+             if (NCFTextBox.Text.Length == 0)
+            {
+                esValido = false;
+                GuardarButton.IsEnabled = false;
+                MessageBox.Show("Comprobante Fiscal (NCF) está vacio " , "Fallo",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                SuplidorIdLabel.Focus();
                 GuardarButton.IsEnabled = true;
             }
 
@@ -106,7 +107,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            if (SuplidoresBLL.Eliminar(Convert.ToInt32(SuplidorIdLabel.Content.ToString())))
+            if (SuplidoresBLL.Eliminar(suplidor))
             {
                 Limpiar();
                 MessageBox.Show("Categoria eliminada!", "Exito",

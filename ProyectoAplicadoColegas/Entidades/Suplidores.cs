@@ -21,6 +21,7 @@ namespace ProyectoFinalAplicada1.Entidades
             Compania = string.Empty;
             NombreRepresentante = string.Empty;
             FechaRegistro = DateTime.Now;
+            disponible = true;
         }
     } 
 }

@@ -82,8 +82,6 @@ namespace ProyectoFinalAplicada1.BLL
        //Metodo Guardar.
        public static bool Guardar(Suplidores suplidor)
        {
-           suplidor.disponible = true;
-
            if (!Existe(suplidor.SuplidorId))
            {
                return Insertar(suplidor);
@@ -115,42 +113,19 @@ namespace ProyectoFinalAplicada1.BLL
         }
 
         //Metodo Eliminar.
-        public static bool Eliminar(int id)
-       {
-           bool key = false;
-           Contexto contexto = new Contexto();
-
-           try
-           {
-               Suplidores suplidor = contexto.Suplidores.Find(id);
-
-               if (suplidor != null)
-               {
-                   contexto.Suplidores.Remove(suplidor);
-                   key = contexto.SaveChanges() > 0;
-               }
-           }
-           catch (Exception)
-           {
-               throw;
-           }
-           finally
-           {
-               contexto.Dispose();
-           }
-
-           return key;
-       }
-
-       //Metodo Buscar.
-        public static Suplidores Buscar(int id)
+        public static bool Eliminar(Suplidores suplidor)
         {
+            bool key = false;
             Contexto contexto = new Contexto();
-            Suplidores suplidore;
-            
+
             try
             {
-                 suplidore = contexto.Suplidores.Find(id);
+                if (suplidor != null)
+                {
+                    suplidor.disponible = false;
+                    contexto.Entry(suplidor).State = EntityState.Modified;
+                    key = contexto.SaveChanges() > 0;
+                }
             }
             catch (Exception)
             {
@@ -161,7 +136,33 @@ namespace ProyectoFinalAplicada1.BLL
                 contexto.Dispose();
             }
 
-            return suplidore;
+            return key;
+        }
+
+       //Metodo Buscar.
+        public static Suplidores Buscar(int id)
+        {
+            Contexto contexto = new Contexto();
+            Suplidores suplidor;
+            
+            try
+            {
+                suplidor = contexto.Suplidores.Find(id);
+                if (suplidor == null)
+                    return null;
+                if (suplidor.disponible == false)
+                    return null;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return suplidor;
         }
 
 
@@ -171,7 +172,11 @@ namespace ProyectoFinalAplicada1.BLL
             Contexto contexto = new Contexto();
             try
             {
-                lista = contexto.Suplidores.Where(suplidores).ToList();
+                foreach(var suplidor in contexto.Suplidores.Where(suplidores).ToList())
+                {
+                    if (suplidor.disponible == true)
+                        lista.Add(suplidor);
+                }
             }
             catch (Exception)
             {
@@ -187,11 +192,15 @@ namespace ProyectoFinalAplicada1.BLL
         public static List<Suplidores> GetSuplidores()
         {
             Contexto contexto = new Contexto();
-            List<Suplidores> suplidor = new List<Suplidores>();
+            List<Suplidores> suplidores = new List<Suplidores>();
 
             try
             {
-                suplidor = contexto.Suplidores.ToList();
+                foreach (var suplidor in contexto.Suplidores.ToList())
+                {
+                    if (suplidor.disponible == true)
+                        suplidores.Add(suplidor);
+                }
             }
             catch (Exception)
             {
@@ -203,7 +212,7 @@ namespace ProyectoFinalAplicada1.BLL
                 contexto.Dispose();
             }
 
-            return suplidor;
+            return suplidores;
         }
 
         public static bool DuplicadoSuplidorId(int id)

@@ -15,7 +15,8 @@ namespace ProyectoFinalAplicada1.Entidades
         public Categorias()
         {
             CategoriaId = 0;
-            Descripcion = string.Empty;  
+            Descripcion = string.Empty;
+            disponible = true;
         }
     }
 }

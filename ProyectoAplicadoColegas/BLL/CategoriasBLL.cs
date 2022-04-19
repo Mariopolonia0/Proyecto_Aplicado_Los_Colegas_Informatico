@@ -82,16 +82,12 @@ namespace ProyectoFinalAplicada1.BLL
         //Metodo Guardar.
         public static bool Guardar(Categorias categorias)
         {
-            categorias.disponible = true;
-
             if (!Existe(categorias.CategoriaId))
-            {
                 return Insertar(categorias);
-            }
+            
             else
-            {
                 return Modificar(categorias);
-            }
+            
         }
 
         //Metodo Eliminar.
@@ -106,7 +102,7 @@ namespace ProyectoFinalAplicada1.BLL
 
                 if (categorias != null)
                 {
-                    contexto.Categorias.Remove(categorias);
+                    contexto.Categorias.Update(categorias);
                     key = contexto.SaveChanges() > 0;
                 }
             }

@@ -20,11 +20,11 @@ namespace ProyectoAplicadoColegas.UI.Busqueda
     /// </summary>
     public partial class BProducto : Window
     {
-        public static Productos producto = new Productos();
+        public static Productos producto ;
         public BProducto()
         {
             InitializeComponent();
-            //BuscarProductoDataGrid = null;
+            producto = new Productos();
             BuscarProductoDataGrid.ItemsSource = ProductosBLL.GetProductos();
         }
 

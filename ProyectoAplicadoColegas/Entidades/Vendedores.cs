@@ -22,6 +22,7 @@ namespace ProyectoFinalAplicada1.Entidades
             Apellidos = string.Empty;
             FechaRegistro = DateTime.Now;
             UsuarioId = 0;
+            disponible = true;
         }
     }
 }

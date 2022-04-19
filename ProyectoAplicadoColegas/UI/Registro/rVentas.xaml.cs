@@ -16,6 +16,7 @@ namespace ProyectoFinalAplicada1.UI.Registro
     {
         Ventas venta = new Ventas();
         Productos producto = new Productos();
+        Clientes cliente = new Clientes();
         public rVentas()
         {
             InitializeComponent();
@@ -40,13 +41,20 @@ namespace ProyectoFinalAplicada1.UI.Registro
         {
             this.DataContext = null;
             this.DataContext = this.venta;
-            var vendedor = VendedoresBLL.Buscar(venta.VendedorId);
-            var cliente = ClientesBLL.Buscar(venta.ClienteId);
-            if (vendedor != null)
-                cargarVendedor(vendedor);
-           
-            if (cliente != null)
-                cargarCliente(cliente);
+            if(venta.VendedorId != 0)
+            {
+                var vendedor = VendedoresBLL.Buscar(venta.VendedorId);
+                if (vendedor != null)
+                    cargarVendedor(vendedor);
+            }
+            if(venta.ClienteId != 0)
+            {
+                cliente = ClientesBLL.Buscar(venta.ClienteId);
+                if (cliente != null)
+                    cargarCliente(cliente);
+            }
+            
+            
 
         }
         private void BucarButton_Click(object sender, RoutedEventArgs e)
@@ -70,8 +78,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
             CantidadTextBox.Text = "0";
             DescripcionTextBox.Text = "";
         }
-
-        
 
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
         {
@@ -228,13 +234,17 @@ namespace ProyectoFinalAplicada1.UI.Registro
             if (!Validarguardar())
                 return;
 
-            Clientes cliente = new Clientes();
-            cliente.Nombres = NombreClienteTextBox.Text;
-            cliente.comprobanteFiscal = ComprobanteFiscalClienteTextBox.Text;
-            cliente.Telefono = NumeroClienteTextBox.Text;
-            cliente.ClienteId = 0;
+            if (venta.ClienteId == 0)
+            {
+                cliente.Nombres = NombreClienteTextBox.Text;
+                cliente.comprobanteFiscal = ComprobanteFiscalClienteTextBox.Text;
+                cliente.Telefono = NumeroClienteTextBox.Text;
+                cliente.ClienteId = 0;
+                venta.ClienteId = ClientesBLL.Insertar(cliente);
+            }
+            else
+                ClientesBLL.Guardar(cliente);
 
-            venta.ClienteId = ClientesBLL.Insertar(cliente);
             var paso = VentasBLL.Guardar(venta);
 
             if (paso)

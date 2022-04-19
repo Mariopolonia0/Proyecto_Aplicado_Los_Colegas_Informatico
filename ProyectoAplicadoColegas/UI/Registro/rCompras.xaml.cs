@@ -51,6 +51,8 @@ namespace ProyectoFinalAplicada1.UI.Registro
         {
             this.DataContext = null;
             this.DataContext = compra;
+            if (compra.SuplidorId == 0)
+                return;
             Suplidores suplidor = SuplidoresBLL.Buscar(compra.SuplidorId);
             if(suplidor != null)
                 cargarSuplidor(suplidor);
@@ -133,8 +135,14 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
             compra = BCompras.compras;
 
-            if (compra != null)
+            if (compra.CompraId != 0)
                 Cargar();
+            else
+            {
+                compra.CompraId = ComprasBLL.SiguienteIdCompra();
+                Cargar();
+            }
+                
         }
 
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
@@ -165,13 +173,6 @@ namespace ProyectoFinalAplicada1.UI.Registro
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
             Limpiar();
-        }
-
-        private bool ExisteEnLaBaseDeDatos()
-        {
-            Compras esValido = ComprasBLL.Buscar(compra.CompraId);
-
-            return (esValido != null);
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
@@ -228,7 +229,15 @@ namespace ProyectoFinalAplicada1.UI.Registro
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
-            //TotalLabel.Content = Convert.ToInt32(SuplidorIdComboBox.SelectedValue).ToString();
+            if (ComprasBLL.Eliminar(compra))
+            {
+                Limpiar();
+                MessageBox.Show("La compra ha sido eliminada!", "Nitido",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+                MessageBox.Show("No fue posible eliminar la compra", "Fallo",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void PrecioTextBox_KeyDown(object sender, KeyEventArgs e)

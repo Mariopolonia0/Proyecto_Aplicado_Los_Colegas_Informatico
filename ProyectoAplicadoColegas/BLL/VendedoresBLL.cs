@@ -61,7 +61,6 @@ namespace ProyectoFinalAplicada1.BLL
 
             try
             {
-
                 contexto.Entry(vendedores).State = EntityState.Modified;
                 key = contexto.SaveChanges() > 0;
             }
@@ -79,7 +78,6 @@ namespace ProyectoFinalAplicada1.BLL
 
         public static bool Guardar(Vendedores vendedores)
         {
-            vendedores.disponible = true;
             if (!Existe(vendedores.VendedorId))
             {
                 return Insertar(vendedores);
@@ -90,18 +88,17 @@ namespace ProyectoFinalAplicada1.BLL
             }
         }
 
-        public static bool Eliminar(int id)
+        public static bool Eliminar(Vendedores vendedor)
         {
             bool key = false;
             Contexto contexto = new Contexto();
 
             try
             {
-                var vendedores = contexto.Vendedores.Find(id);
-
-                if (vendedores != null)
+                if (vendedor != null)
                 {
-                    contexto.Vendedores.Remove(vendedores);
+                    vendedor.disponible = false;
+                    contexto.Entry(vendedor).State = EntityState.Modified;
                     key = contexto.SaveChanges() > 0;
                 }
             }
@@ -140,12 +137,13 @@ namespace ProyectoFinalAplicada1.BLL
         public static Vendedores Buscar(int id)
         {
             Contexto contexto = new Contexto();
-            Vendedores vendedores;
+            Vendedores vendedor;
 
             try
             {
-                vendedores = contexto.Vendedores.Find(id);
-
+                vendedor = contexto.Vendedores.Find(id);
+                if (vendedor.disponible == false)
+                    return null;
             }
             catch (Exception)
             {
@@ -156,7 +154,7 @@ namespace ProyectoFinalAplicada1.BLL
                 contexto.Dispose();
             }
 
-            return vendedores;
+            return vendedor;
         }
 
         public static List<Vendedores> GetList(Expression<Func<Vendedores, bool>> criterio)
@@ -166,7 +164,11 @@ namespace ProyectoFinalAplicada1.BLL
 
             try
             {
-                lista = contexto.Vendedores.Where(criterio).ToList();
+                foreach(var vendedores in contexto.Vendedores.Where(criterio).ToList())
+                {
+                    if (vendedores.disponible == true)
+                        lista.Add(vendedores);
+                }
             }
             catch (Exception)
             {
@@ -183,11 +185,15 @@ namespace ProyectoFinalAplicada1.BLL
         public static List<Vendedores> GetVendedores()
         {
             Contexto contexto = new Contexto();
-            List<Vendedores> vendedor = new List<Vendedores>();
+            List<Vendedores> lista = new List<Vendedores>();
 
             try
             {
-                vendedor = contexto.Vendedores.ToList();
+                foreach (var vendedores in contexto.Vendedores.ToList())
+                {
+                    if (vendedores.disponible == true)
+                        lista.Add(vendedores);
+                }
             }
             catch (Exception)
             {
@@ -199,7 +205,7 @@ namespace ProyectoFinalAplicada1.BLL
                 contexto.Dispose();
             }
 
-            return vendedor;
+            return lista;
         }
         public static bool DuplicadoVendedorId(int id)
         {

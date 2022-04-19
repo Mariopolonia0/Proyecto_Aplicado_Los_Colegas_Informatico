@@ -32,6 +32,7 @@ namespace ProyectoFinalAplicada1.Entidades
             Existencia = 0;
             UsuarioId = 0;
             CategoriaId = 0;
+            disponible = true;
         }
     }
 }

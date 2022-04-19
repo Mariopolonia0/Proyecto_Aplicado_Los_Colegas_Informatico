@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace ProyectoFinalAplicada1.BLL
 {
@@ -58,8 +57,7 @@ namespace ProyectoFinalAplicada1.BLL
         {
             bool paso = false;
             Contexto contexto = new Contexto();
-            compras.disponible = true;
-
+           
             try
             {
                 foreach (var item in compras.CompraDetalle)
@@ -68,25 +66,14 @@ namespace ProyectoFinalAplicada1.BLL
                     if (producto != null)
                     {
                         producto.Existencia += item.Cantidad;
-                        contexto.Entry(producto).State = EntityState.Modified;
+                        contexto.Productos.Update(producto); 
                         contexto.SaveChanges() ;
                     }
                     else
                     {
-                        Productos product = new Productos();
-                        product.ProductoId = item.ProductoId;
-                        product.Existencia = item.Cantidad;
-                        product.Precio =(double)item.Precio;
-                        product.Descripcion = item.Descripcion;
-                        product.FechaEntrada = compras.Fecha;
-                        product.ITBIS = 0.18;
-                        product.Ganancia = 0.5;
-                        product.Costo = product.Precio + ((product.Precio * product.Ganancia) + (product.Precio * product.ITBIS));
-
-                        ProductosBLL.Guardar(product);
+                        ProductosBLL.Guardar(llenarNuevoProducto(item,compras.Fecha));
                         contexto.SaveChanges();
                     }
- 
                 }
                 if (!Existe(compras.CompraId))//si no existe insertamos
                     paso = Insertar(compras);
@@ -106,6 +93,20 @@ namespace ProyectoFinalAplicada1.BLL
 
             return paso;
         }
+
+        private static Productos llenarNuevoProducto(ComprasDetalles item,DateTime date)
+        {
+            Productos product = new Productos();
+            product.ProductoId = item.ProductoId;
+            product.Existencia = item.Cantidad;
+            product.Precio = (double)item.Precio;
+            product.Descripcion = item.Descripcion;
+            product.FechaEntrada = date;
+            product.ITBIS = 0.18;
+            product.Ganancia = 0.5;
+            product.Costo = product.Precio + ((product.Precio * product.Ganancia) + (product.Precio * product.ITBIS));
+            return product;
+        }
         public static bool Modificar(Compras compras)
         {
             bool paso = false;
@@ -113,11 +114,15 @@ namespace ProyectoFinalAplicada1.BLL
 
             try
             {
-                //contexto.Database.ExecuteSqlRaw($"Delete FROM ComprasDetalles Where CompraId={compras.CompraId}");
+                foreach (var anterior in contexto.ComprasDetalles.Where(C => C.CompraId == compras.CompraId).ToList())
+                {
+                    contexto.Remove(anterior);
+                }
                 foreach (var anterior in compras.CompraDetalle)
                 {
-                    contexto.Entry(anterior).State = EntityState.Added;
+                    contexto.Add(anterior);
                 }
+
                 contexto.Entry(compras).State = EntityState.Modified;
                 paso = contexto.SaveChanges() > 0;
             }
@@ -143,6 +148,8 @@ namespace ProyectoFinalAplicada1.BLL
                 compras = contexto.Compras.Include(x => x.CompraDetalle)
                     .Where(p => p.CompraId == id)
                     .SingleOrDefault();
+                if (compras.disponible == false)
+                    return null;
             }
             catch
             {
@@ -164,7 +171,7 @@ namespace ProyectoFinalAplicada1.BLL
             {
                 if (compra != null)
                 {
-                    compra.disponible = true;
+                    compra.disponible = false;
                     contexto.Entry(compra).State = EntityState.Modified;
                     paso = contexto.SaveChanges() > 0;
                 }
@@ -196,7 +203,6 @@ namespace ProyectoFinalAplicada1.BLL
                         ListaCompras.Add(compra);
                     }
                 }
-
             }
             catch (Exception)
             {
@@ -233,7 +239,13 @@ namespace ProyectoFinalAplicada1.BLL
             Contexto contexto = new Contexto();
             try
             {
-                lista = contexto.Compras.Where(compras).ToList();
+                foreach (var compra in contexto.Compras.Where(compras).ToList())
+                {
+                    if (compra.disponible == true)
+                    {
+                        lista.Add(compra);
+                    }
+                }
             }
             catch
             {
