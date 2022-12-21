@@ -14,7 +14,7 @@ recibirá un mensaje de error "Error Nombre Usuario o Contraseña incorrecta!".
 
 Si Nombre Usuario y Contraseña son correcto se le mostrara el Menú Principal.
 
-![Menu1](https://user-images.githubusercontent.com/64700344/89246765-dc5e2b80-d5d9-11ea-9278-caeffe4227ba.png)
+![Capture](https://user-images.githubusercontent.com/65502311/209022357-dc0407cb-27ca-46f6-936c-ae19faf46829.PNG)
 
 Aquí tiene 2 opciones a elegir Registros y Consultas.
 
